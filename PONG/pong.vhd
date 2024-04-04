@@ -41,6 +41,16 @@ ARCHITECTURE structural OF pong IS
         );
     END COMPONENT;
 
+    COMPONENT score_aff IS
+        PORT (
+            RST : IN STD_LOGIC;
+            HCOUNT, VCOUNT : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
+            J1COUNT, J2COUNT : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+            IS_NUMBER : OUT STD_LOGIC
+
+        );
+    END COMPONENT;
+
     COMPONENT image IS
         PORT (
             RST, BLANK, IS_BALLE : IN STD_LOGIC;
@@ -48,7 +58,8 @@ ARCHITECTURE structural OF pong IS
         );
     END COMPONENT;
 
-    SIGNAL pixel_clk, balle_clk, blank, frame, is_balle : STD_LOGIC;
+    SIGNAL pixel_clk, balle_clk, blank, frame, is_balle, is_number : STD_LOGIC;
+    SIGNAL j1count, j2count : STD_LOGIC_VECTOR(2 DOWNTO 0);
     SIGNAL hcount, vcount : STD_LOGIC_VECTOR(10 DOWNTO 0);
 
 BEGIN
@@ -57,6 +68,7 @@ BEGIN
     U1 : vga_controller_640_60 PORT MAP(PIXEL_CLK => pixel_clk, RST => RST, HS => HS, VS => VS, BLANK => blank, FRAME => frame, HCOUNT => hcount, VCOUNT => vcount);
     U2 : div_6MHz PORT MAP(CLK => CLK, RST => RST, BALLE_CLK => balle_clk);
     U3 : balle_move PORT MAP(BALLE_CLK => balle_clk, RST => RST, FRAME => frame, HCOUNT => hcount, VCOUNT => vcount, IS_BALLE => is_balle);
-    U4 : image PORT MAP(RST => RST, BLANK => blank, IS_BALLE => is_balle, RED => RED, GREEN => GREEN, BLUE => BLUE);
+    U4 : score_aff PORT MAP(RST => RST, HCOUNT => hcount, VCOUNT => vcount, J1COUNT => j1count, J2COUNT => j2count, IS_NUMBER = is_number);
+    U5 : image PORT MAP(RST => RST, BLANK => blank, IS_BALLE => is_balle, RED => RED, GREEN => GREEN, BLUE => BLUE);
 
 END structural;
