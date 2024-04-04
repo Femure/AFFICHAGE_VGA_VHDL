@@ -7,22 +7,21 @@ ENTITY score_aff IS
     PORT (
         RST : IN STD_LOGIC;
         HCOUNT, VCOUNT : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
-        J1COUNT, J2COUNT : IN STD_LOGIC_VECTOR(2 DOWNTO 0); -- Score J1 et J2
+        J1_SCORE, J2_SCORE : IN STD_LOGIC_VECTOR(2 DOWNTO 0); -- Score J1 et J2
         IS_NUMBER : OUT STD_LOGIC -- Retour pour l'affichage 
-
     );
 END score_aff;
 
 ARCHITECTURE rtl OF score_aff IS
     CONSTANT SCREEN_WIDTH : INTEGER := 640; -- largeur de l    
 BEGIN
-    PROCESS (RST, BLANK, HCOUNT, VCOUNT)
+    PROCESS (RST, HCOUNT, VCOUNT, J1_SCORE, J2_SCORE)
     BEGIN
         IF (RST = '1') THEN
             IS_NUMBER <= '0';
         ELSE
             -- Joueur 1 à gauche 
-            CASE J1COUNT IS
+            CASE J1_SCORE IS
                 WHEN "000" =>
                     -- affichage de 0
                     IF (HCOUNT <= SCREEN_WIDTH/2 - 60 AND HCOUNT >= SCREEN_WIDTH/2 - 90) AND (VCOUNT <= 105 AND VCOUNT >= 100) THEN -- segment A
@@ -116,7 +115,7 @@ BEGIN
             END CASE;
 
             -- Joueur 2 à droite
-            CASE J2COUNT IS
+            CASE J2_SCORE IS
                 WHEN "000" =>
                     -- affichage de 0
                     IF (HCOUNT <= SCREEN_WIDTH/2 + 90 AND HCOUNT >= SCREEN_WIDTH/2 + 60) AND (VCOUNT <= 105 AND VCOUNT >= 100) THEN -- segment A

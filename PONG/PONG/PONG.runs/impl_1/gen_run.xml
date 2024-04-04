@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1712236734">
+<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1712240043">
   <File Type="ROUTE-PWR" Name="pong_power_routed.rpt"/>
   <File Type="PA-TCL" Name="pong.tcl"/>
   <File Type="ROUTE-PWR-SUM" Name="pong_power_summary_routed.pb"/>
@@ -105,6 +105,18 @@
       </FileInfo>
     </File>
     <File Path="$PPRDIR/../image.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../score/mux_score.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../score/score_aff.vhd">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>

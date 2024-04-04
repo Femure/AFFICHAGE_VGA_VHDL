@@ -71,7 +71,6 @@ proc create_report { reportName command } {
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
 set_param chipscope.maxJobs 4
-set_param xicom.use_bs_reader 1
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a35tcpg236-1
 
@@ -91,6 +90,8 @@ read_vhdl -library xil_defaultlib {
   {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/div_25MHz.vhd}
   {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/Balle/div_6MHz.vhd}
   {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/image.vhd}
+  {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/score/mux_score.vhd}
+  {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/score/score_aff.vhd}
   {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/vga_controller_640_60.vhd}
   {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/pong.vhd}
 }
