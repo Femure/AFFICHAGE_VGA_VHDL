@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Thu Apr  4 16:14:34 2024
+| Date         : Thu Apr  4 17:59:47 2024
 | Host         : Max_Laptop running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file pong_control_sets_placed.rpt
 | Design       : pong
@@ -27,7 +27,7 @@ Table of Contents
 |    Minimum number of control sets                        |     8 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    30 |
+| Unused register locations in slices containing registers |    29 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -42,8 +42,8 @@ Table of Contents
 | Total control sets |     8 |
 | >= 0 to < 4        |     2 |
 | >= 4 to < 6        |     0 |
-| >= 6 to < 8        |     1 |
-| >= 8 to < 10       |     0 |
+| >= 6 to < 8        |     0 |
+| >= 8 to < 10       |     1 |
 | >= 10 to < 12      |     2 |
 | >= 12 to < 14      |     0 |
 | >= 14 to < 16      |     0 |
@@ -59,10 +59,10 @@ Table of Contents
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | No           | No                    | No                     |               2 |            2 |
-| No           | No                    | Yes                    |              17 |            7 |
+| No           | No                    | Yes                    |              18 |            8 |
 | No           | Yes                   | No                     |               1 |            1 |
 | Yes          | No                    | No                     |               0 |            0 |
-| Yes          | No                    | Yes                    |             134 |           36 |
+| Yes          | No                    | Yes                    |             134 |           35 |
 | Yes          | Yes                   | No                     |               0 |            0 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
@@ -73,14 +73,14 @@ Table of Contents
 +--------------------+----------------------+------------------+------------------+----------------+--------------+
 |    Clock Signal    |     Enable Signal    | Set/Reset Signal | Slice Load Count | Bel Load Count | Bels / Slice |
 +--------------------+----------------------+------------------+------------------+----------------+--------------+
-|  A1/score_1_reg[2] |                      | RST_IBUF         |                1 |              1 |         1.00 |
+|  A1/score_1_reg[1] |                      | RST_IBUF         |                1 |              1 |         1.00 |
 |  CLK_IBUF_BUFG     |                      |                  |                2 |              2 |         1.00 |
-|  CLK_IBUF_BUFG     |                      | RST_IBUF         |                3 |              7 |         2.33 |
+|  CLK_IBUF_BUFG     |                      | RST_IBUF         |                4 |              8 |         2.00 |
 |  A0/PIXEL_CLK      |                      | RST_IBUF         |                4 |             10 |         2.50 |
-|  A0/PIXEL_CLK      | A1/countY[9]_i_1_n_0 | RST_IBUF         |                4 |             10 |         2.50 |
-|  BALLE_CLK_BUFG    | B1/VyBalle_1         | RST_IBUF         |               10 |             30 |         3.00 |
+|  A0/PIXEL_CLK      | A1/countY[9]_i_1_n_0 | RST_IBUF         |                6 |             10 |         1.67 |
+|  BALLE_CLK_BUFG    | B1/VyBalle_1         | RST_IBUF         |                9 |             30 |         3.33 |
 |  BALLE_CLK_BUFG    | B1/VxBalle_0         | RST_IBUF         |                9 |             30 |         3.33 |
-|  BALLE_CLK_BUFG    | A1/E[0]              | RST_IBUF         |               13 |             64 |         4.92 |
+|  BALLE_CLK_BUFG    | A1/E[0]              | RST_IBUF         |               11 |             64 |         5.82 |
 +--------------------+----------------------+------------------+------------------+----------------+--------------+
 
 

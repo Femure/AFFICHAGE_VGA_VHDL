@@ -20,11 +20,11 @@ BEGIN
             BLUE <= (OTHERS => '0');
         ELSE
             IF (BLANK = '1') THEN
-                IF (IS_BALLE = '1') THEN
+                IF (IS_NUMBER = '1') THEN
                     RED <= "1111";
                     GREEN <= "1111";
                     BLUE <= "1111";
-                ELSIF (IS_NUMBER = '1') THEN
+                ELSIF (IS_BALLE = '1') THEN
                     RED <= "1111";
                     GREEN <= "1111";
                     BLUE <= "1111";

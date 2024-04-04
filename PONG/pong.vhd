@@ -43,7 +43,8 @@ ARCHITECTURE structural OF pong IS
 
     COMPONENT mux_score IS
         PORT (
-            CLK, RST, J_WIN : IN STD_LOGIC;
+            CLK, RST : IN STD_LOGIC;
+            J_WIN : IN STD_LOGIC_VECTOR(1 DOWNTO 0);
             J1_SCORE, J2_SCORE : OUT STD_LOGIC_VECTOR (2 DOWNTO 0)
         );
     END COMPONENT;
@@ -82,7 +83,7 @@ BEGIN
     B1 : balle_move PORT MAP(BALLE_CLK => balle_clk, RST => RST, FRAME => frame, HCOUNT => hcount, VCOUNT => vcount, IS_BALLE => is_balle);
 
     -- Gestion des scores
-    S0 : mux_score PORT MAP(CLK => CLK, RST => RST, J_WIN => '0', J1_SCORE => j1_score, J2_SCORE => j2_score);
+    S0 : mux_score PORT MAP(CLK => CLK, RST => RST, J_WIN => "01", J1_SCORE => j1_score, J2_SCORE => j2_score);
     S1 : score_aff PORT MAP(RST => RST, HCOUNT => hcount, VCOUNT => vcount, J1_SCORE => j1_score, J2_SCORE => j2_score, IS_NUMBER => is_number);
 
     -- Rendu final sur l'écran
