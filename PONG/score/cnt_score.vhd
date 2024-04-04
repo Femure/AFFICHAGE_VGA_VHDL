@@ -3,15 +3,15 @@ USE IEEE.STD_LOGIC_1164.ALL;
 USE IEEE.STD_LOGIC_ARITH.ALL;
 USE IEEE.STD_LOGIC_UNSIGNED.ALL;
 
-ENTITY mux_score IS
+ENTITY cnt_score IS
     PORT (
         CLK, RST : IN STD_LOGIC; -- Horloge pour la mise à jour des scores et le reset
         J_WIN : IN STD_LOGIC_VECTOR(1 DOWNTO 0); -- Indique quel joueur a gagné
         J1_SCORE, J2_SCORE : OUT STD_LOGIC_VECTOR (2 DOWNTO 0) -- Le score du joueur 1 et 2
     );
-END mux_score;
+END cnt_score;
 
-ARCHITECTURE rtl OF mux_score IS
+ARCHITECTURE rtl OF cnt_score IS
     SIGNAL score_1, score_2 : STD_LOGIC_VECTOR(2 DOWNTO 0) := (OTHERS => '0'); -- Score du joueur 1 et 2
     SIGNAL prev_j1_win, prev_j2_win : STD_LOGIC := '0'; -- Score du joueur 1 et 2
 BEGIN

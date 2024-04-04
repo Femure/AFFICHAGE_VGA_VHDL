@@ -87,11 +87,13 @@ set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_vhdl -library xil_defaultlib {
+  {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/balle/balle_clk.vhd}
   {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/Balle/balle_move.vhd}
+  {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/score/cnt_score.vhd}
   {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/div_25MHz.vhd}
-  {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/Balle/div_6MHz.vhd}
   {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/image.vhd}
-  {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/score/mux_score.vhd}
+  {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/raquette/raquette_clk.vhd}
+  {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/raquette/raquette_move.vhd}
   {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/score/score_aff.vhd}
   {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/terrain/terrain_aff.vhd}
   {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/vga_controller_640_60.vhd}

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1712248596">
+<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1712256626">
   <File Type="ROUTE-PWR" Name="pong_power_routed.rpt"/>
   <File Type="PA-TCL" Name="pong.tcl"/>
   <File Type="ROUTE-PWR-SUM" Name="pong_power_summary_routed.pb"/>
@@ -86,7 +86,19 @@
   <File Type="POSTROUTE-PHYSOPT-RQS-RPT" Name="postroute_physopt_report_qor_suggestions_0.rpt"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
+    <File Path="$PPRDIR/../balle/balle_clk.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PPRDIR/../Balle/balle_move.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../score/cnt_score.vhd">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -98,19 +110,19 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PPRDIR/../Balle/div_6MHz.vhd">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
     <File Path="$PPRDIR/../image.vhd">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PPRDIR/../score/mux_score.vhd">
+    <File Path="$PPRDIR/../raquette/raquette_clk.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../raquette/raquette_move.vhd">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>

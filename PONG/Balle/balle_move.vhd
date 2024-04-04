@@ -13,14 +13,14 @@ END balle_move;
 
 ARCHITECTURE rtl OF balle_move IS
     CONSTANT BALLE_WIDTH : INTEGER := 10; -- taille du carré (balle) en pixels
-    CONSTANT SCREEN_WIDTH : INTEGER := 640; -- largeur de l    
-    CONSTANT SCREEN_HEIGHT : INTEGER := 480; -- hauteur de l'écran en pixels l'écran en pixels
-    
+    CONSTANT SCREEN_WIDTH : INTEGER := 640; -- largeur de l'écran en pixels 
+    CONSTANT SCREEN_HEIGHT : INTEGER := 480; -- hauteur de l'écran en pixels 
+
     SIGNAL xBalle : INTEGER := SCREEN_WIDTH / 2;
     SIGNAL yBalle : INTEGER := SCREEN_HEIGHT / 2;
     SIGNAL VxBalle, VyBalle : INTEGER := 2; -- déplacement en diagonale vers le bas à droite de l'écran 
 BEGIN
-    PROCESS (BALLE_CLK, RST)
+    PROCESS (BALLE_CLK, RST, FRAME, HCOUNT, VCOUNT)
     BEGIN
         IF (RST = '1') THEN -- Réinitialisation si appui sur bouton Reset
             xBalle <= SCREEN_WIDTH / 2;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1712248553" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/pong.dcp">
+<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1712256581" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/pong.dcp">
   <File Type="PA-TCL" Name="pong.tcl"/>
   <File Type="RDS-PROPCONSTRS" Name="pong_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="pong_reports.tcl"/>
@@ -11,7 +11,19 @@
   <File Type="VDS-TIMING-PB" Name="pong_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
+    <File Path="$PPRDIR/../balle/balle_clk.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PPRDIR/../Balle/balle_move.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../score/cnt_score.vhd">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -23,19 +35,19 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PPRDIR/../Balle/div_6MHz.vhd">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
     <File Path="$PPRDIR/../image.vhd">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PPRDIR/../score/mux_score.vhd">
+    <File Path="$PPRDIR/../raquette/raquette_clk.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../raquette/raquette_move.vhd">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
