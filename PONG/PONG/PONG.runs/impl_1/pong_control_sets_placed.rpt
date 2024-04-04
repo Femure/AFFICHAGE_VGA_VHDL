@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Thu Apr  4 17:59:47 2024
+| Date         : Thu Apr  4 18:37:08 2024
 | Host         : Max_Laptop running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file pong_control_sets_placed.rpt
 | Design       : pong
@@ -78,8 +78,8 @@ Table of Contents
 |  CLK_IBUF_BUFG     |                      | RST_IBUF         |                4 |              8 |         2.00 |
 |  A0/PIXEL_CLK      |                      | RST_IBUF         |                4 |             10 |         2.50 |
 |  A0/PIXEL_CLK      | A1/countY[9]_i_1_n_0 | RST_IBUF         |                6 |             10 |         1.67 |
-|  BALLE_CLK_BUFG    | B1/VyBalle_1         | RST_IBUF         |                9 |             30 |         3.33 |
 |  BALLE_CLK_BUFG    | B1/VxBalle_0         | RST_IBUF         |                9 |             30 |         3.33 |
+|  BALLE_CLK_BUFG    | B1/VyBalle_1         | RST_IBUF         |                9 |             30 |         3.33 |
 |  BALLE_CLK_BUFG    | A1/E[0]              | RST_IBUF         |               11 |             64 |         5.82 |
 +--------------------+----------------------+------------------+------------------+----------------+--------------+
 
