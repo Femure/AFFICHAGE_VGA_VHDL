@@ -21,26 +21,42 @@ ARCHITECTURE structural OF pong IS
     COMPONENT vga_controller_640_60 IS
         PORT (
             PIXEL_CLK, RST : IN STD_LOGIC;
-            HS, VS, BLANK : OUT STD_LOGIC;
+            HS, VS, BLANK, FRAME : OUT STD_LOGIC;
             HCOUNT, VCOUNT : OUT STD_LOGIC_VECTOR(10 DOWNTO 0)
+        );
+    END COMPONENT;
+
+    COMPONENT div_6MHz IS
+        PORT (
+            CLK, RST : IN STD_LOGIC;
+            BALLE_CLK : OUT STD_LOGIC
+        );
+    END COMPONENT;
+
+    COMPONENT balle_move IS
+        PORT (
+            BALLE_CLK, RST, FRAME : IN STD_LOGIC;
+            HCOUNT, VCOUNT : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
+            IS_BALLE : OUT STD_LOGIC
         );
     END COMPONENT;
 
     COMPONENT image IS
         PORT (
-            RST, BLANK : IN STD_LOGIC;
-            HCOUNT, VCOUNT : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
+            RST, BLANK, IS_BALLE : IN STD_LOGIC;
             RED, GREEN, BLUE : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
         );
     END COMPONENT;
 
-    SIGNAL pixel_clk, blank : STD_LOGIC;
+    SIGNAL pixel_clk, balle_clk, blank, frame, is_balle : STD_LOGIC;
     SIGNAL hcount, vcount : STD_LOGIC_VECTOR(10 DOWNTO 0);
 
 BEGIN
 
     U0 : div_25MHz PORT MAP(CLK => CLK, RST => RST, PIXEL_CLK => pixel_clk);
-    U1 : vga_controller_640_60 PORT MAP(PIXEL_CLK => pixel_clk, RST => RST, HS => HS, VS => VS, BLANK => blank, HCOUNT => hcount, VCOUNT => vcount);
-    U2 : image PORT MAP(RST => RST, BLANK => blank, HCOUNT => hcount, VCOUNT => vcount, RED => RED, GREEN => GREEN, BLUE => BLUE);
+    U1 : vga_controller_640_60 PORT MAP(PIXEL_CLK => pixel_clk, RST => RST, HS => HS, VS => VS, BLANK => blank, FRAME => frame, HCOUNT => hcount, VCOUNT => vcount);
+    U2 : div_6MHz PORT MAP(CLK => CLK, RST => RST, BALLE_CLK => balle_clk);
+    U3 : balle_move PORT MAP(BALLE_CLK => balle_clk, RST => RST, FRAME => frame, HCOUNT => hcount, VCOUNT => vcount, IS_BALLE => is_balle);
+    U4 : image PORT MAP(RST => RST, BLANK => blank, IS_BALLE => is_balle, RED => RED, GREEN => GREEN, BLUE => BLUE);
 
 END structural;

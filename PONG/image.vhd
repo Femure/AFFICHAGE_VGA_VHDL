@@ -5,33 +5,27 @@ USE IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 ENTITY image IS
     PORT (
-        RST, BLANK : IN STD_LOGIC;
-        HCOUNT, VCOUNT : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
+        RST, BLANK, IS_BALLE : IN STD_LOGIC;
         RED, GREEN, BLUE : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
     );
 END image;
 
 ARCHITECTURE rtl OF image IS
-CONSTANT pixel_blank : INTEGER := 640; -- nombre de pixels par ligne
 BEGIN
-    PROCESS (RST, BLANK, HCOUNT, VCOUNT)
+    PROCESS (RST, BLANK, IS_BALLE)
     BEGIN
         IF (RST = '1') THEN
             RED <= (OTHERS => '0');
             GREEN <= (OTHERS => '0');
             BLUE <= (OTHERS => '0');
         ELSE
-            IF (BLANK = '1') THEN 
-                IF (HCOUNT <= pixel_blank/3) THEN
-                    BLUE <= "1111";
-                    GREEN <= "0000";
-                    RED <= "0000";
-                ELSIF (HCOUNT <= 2*pixel_blank/3 AND HCOUNT >= pixel_blank/3) THEN
-                    BLUE <= "1111";
+            IF (BLANK = '1') THEN
+                IF (IS_BALLE = '1') THEN
+                    RED <= "1111";
                     GREEN <= "1111";
-                    RED <= "1111";
+                    BLUE <= "1111";
                 ELSE
-                    RED <= "1111";
+                    RED <= "0000";
                     GREEN <= "0000";
                     BLUE <= "0000";
                 END IF;

@@ -6,7 +6,7 @@ END tb_pong;
 
 ARCHITECTURE testbench OF tb_pong IS
 
-    COMPONENT tb_pong IS
+    COMPONENT pong IS
         PORT (
             CLK, RST : IN STD_LOGIC;
             HS, VS : OUT STD_LOGIC;
@@ -26,7 +26,7 @@ BEGIN
         VS => VS,
         RED => RED,
         GREEN => GREEN,
-        BLUE => BLUE 
+        BLUE => BLUE
     );
 
     stimulus0 : PROCESS
