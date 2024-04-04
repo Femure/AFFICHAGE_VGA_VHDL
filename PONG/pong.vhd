@@ -1,15 +1,15 @@
 LIBRARY IEEE;
 USE IEEE.std_logic_1164.ALL;
 
-ENTITY vga_monochrome IS
+ENTITY pong IS
     PORT (
         CLK, RST : IN STD_LOGIC;
         HS, VS : OUT STD_LOGIC;
         RED, GREEN, BLUE : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
     );
-END vga_monochrome;
+END pong;
 
-ARCHITECTURE structural OF vga_monochrome IS
+ARCHITECTURE structural OF pong IS
 
     COMPONENT div_25MHz IS
         PORT (

@@ -1,12 +1,12 @@
 LIBRARY IEEE;
 USE IEEE.std_logic_1164.ALL;
 
-ENTITY tb_vga_monochrome IS
-END tb_vga_monochrome;
+ENTITY tb_pong IS
+END tb_pong;
 
-ARCHITECTURE testbench OF tb_vga_monochrome IS
+ARCHITECTURE testbench OF tb_pong IS
 
-    COMPONENT vga_monochrome IS
+    COMPONENT tb_pong IS
         PORT (
             CLK, RST : IN STD_LOGIC;
             HS, VS : OUT STD_LOGIC;
@@ -19,7 +19,7 @@ ARCHITECTURE testbench OF tb_vga_monochrome IS
 
 BEGIN
 
-    DUT0 : vga_monochrome PORT MAP(
+    DUT0 : pong PORT MAP(
         CLK => CLK,
         RST => RST,
         HS => HS,
