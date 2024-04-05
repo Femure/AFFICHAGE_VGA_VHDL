@@ -59,7 +59,8 @@ ARCHITECTURE structural OF pong IS
         PORT (
             BALLE_CLK, RST, FRAME : IN STD_LOGIC;
             HCOUNT, VCOUNT : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
-            IS_BALLE : OUT STD_LOGIC
+            IS_BALLE : OUT STD_LOGIC;
+            J_WIN : OUT STD_LOGIC_VECTOR(1 DOWNTO 0)
         );
     END COMPONENT;
 
@@ -92,6 +93,7 @@ ARCHITECTURE structural OF pong IS
     SIGNAL is_terrain, is_raquette_g, is_raquette_d, is_balle, is_number : STD_LOGIC;
     SIGNAL j1_score, j2_score : STD_LOGIC_VECTOR(2 DOWNTO 0);
     SIGNAL hcount, vcount : STD_LOGIC_VECTOR(10 DOWNTO 0);
+    SIGNAL j_win : STD_LOGIC_VECTOR(1 downto 0);
 
 BEGIN
 
@@ -108,10 +110,10 @@ BEGIN
 
     -- Gestion de la balle
     B0 : balle_clk PORT MAP(CLK => CLK, RST => RST, BALLE_CLK => balle_clk_s);
-    B1 : balle_move PORT MAP(BALLE_CLK => balle_clk_s, RST => RST, FRAME => frame, HCOUNT => hcount, VCOUNT => vcount, IS_BALLE => is_balle);
+    B1 : balle_move PORT MAP(BALLE_CLK => balle_clk_s, RST => RST, FRAME => frame, HCOUNT => hcount, VCOUNT => vcount, IS_BALLE => is_balle, J_WIN => j_win);
 
     -- Gestion des scores
-    S0 : cnt_score PORT MAP(CLK => CLK, RST => RST, J_WIN => "01", J1_SCORE => j1_score, J2_SCORE => j2_score);
+    S0 : cnt_score PORT MAP(CLK => CLK, RST => RST, J_WIN => j_win, J1_SCORE => j1_score, J2_SCORE => j2_score);
     S1 : score_aff PORT MAP(RST => RST, HCOUNT => hcount, VCOUNT => vcount, J1_SCORE => j1_score, J2_SCORE => j2_score, IS_NUMBER => is_number);
 
     -- Rendu final sur l'écran
