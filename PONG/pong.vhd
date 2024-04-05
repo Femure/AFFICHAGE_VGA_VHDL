@@ -4,6 +4,7 @@ USE IEEE.std_logic_1164.ALL;
 ENTITY pong IS
     PORT (
         CLK, RST : IN STD_LOGIC;
+        PB_Haut_G, PB_Bas_G, PB_Haut_D, PB_Bas_D : IN STD_LOGIC;
         HS, VS : OUT STD_LOGIC;
         RED, GREEN, BLUE : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
     );
@@ -42,7 +43,7 @@ ARCHITECTURE structural OF pong IS
 
     COMPONENT raquette_move IS
         PORT (
-            RAQUETTE_CLK, RST, FRAME : IN STD_LOGIC;
+            RAQUETTE_CLK, RST, FRAME, PB_Haut_G, PB_Bas_G, PB_Haut_D, PB_Bas_D : IN STD_LOGIC;
             HCOUNT, VCOUNT : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
             Y_RAQUETTE_G, Y_RAQUETTE_D : OUT INTEGER;
             IS_RAQUETTE_G, IS_RAQUETTE_D : OUT STD_LOGIC
@@ -97,7 +98,7 @@ ARCHITECTURE structural OF pong IS
     SIGNAL y_raquette_g, y_raquette_d : INTEGER;
     SIGNAL j1_score, j2_score : STD_LOGIC_VECTOR(2 DOWNTO 0);
     SIGNAL hcount, vcount : STD_LOGIC_VECTOR(10 DOWNTO 0);
-    SIGNAL j_win : STD_LOGIC_VECTOR(1 downto 0);
+    SIGNAL j_win : STD_LOGIC_VECTOR(1 DOWNTO 0);
 
 BEGIN
 
@@ -111,7 +112,8 @@ BEGIN
 
     -- Gestion des raquettes
     R0 : raquette_clk PORT MAP(CLK => CLK, RST => reset, RAQUETTE_CLK => raquette_clk_s);
-    R1 : raquette_move PORT MAP(RAQUETTE_CLK => raquette_clk_s, RST => reset, FRAME => frame, HCOUNT => hcount, VCOUNT => vcount, Y_RAQUETTE_G => y_raquette_g, Y_RAQUETTE_D => y_raquette_d, IS_RAQUETTE_G => is_raquette_g, IS_RAQUETTE_D => is_raquette_d);
+    R1 : raquette_move PORT MAP(RAQUETTE_CLK => raquette_clk_s, RST => reset, FRAME => frame, PB_Haut_G => PB_Haut_G, PB_Bas_G => PB_Bas_G, PB_Haut_D => PB_Haut_D, PB_Bas_D => PB_Bas_D, HCOUNT => hcount, VCOUNT => vcount, Y_RAQUETTE_G => y_raquette_g, Y_RAQUETTE_D => y_raquette_d, IS_RAQUETTE_G => is_raquette_g, IS_RAQUETTE_D => is_raquette_d);
+    R1 : raquette_move PORT MAP(RAQUETTE_CLK => raquette_clk_s, RST => RST, FRAME => frame, HCOUNT => hcount, VCOUNT => vcount, IS_RAQUETTE_G => is_raquette_g, IS_RAQUETTE_D => is_raquette_d);
 
     -- Gestion de la balle
     B0 : balle_clk PORT MAP(CLK => CLK, RST => reset, BALLE_CLK => balle_clk_s);
