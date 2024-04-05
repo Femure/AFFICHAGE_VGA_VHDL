@@ -5,7 +5,7 @@ USE IEEE.std_logic_unsigned.ALL;
 
 ENTITY raquette_move IS
     PORT (
-        RAQUETTE_CLK, RST, FRAME : IN STD_LOGIC;
+        RAQUETTE_CLK, RST, FRAME,PB_Haut_G,Pb_Bas_G,PB_Haut_D,PB_Bas_D : IN STD_LOGIC;
         HCOUNT, VCOUNT : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
         IS_RAQUETTE_G, IS_RAQUETTE_D : OUT STD_LOGIC
     );
@@ -35,24 +35,19 @@ BEGIN
         ELSIF (RAQUETTE_CLK'event AND RAQUETTE_CLK = '1') THEN
             IF (FRAME = '1') THEN
                 -- Mouvement raquette gauche
-                yRaquetteG <= yRaquetteG + dirRaquetteG;
-                IF (yRaquetteG > SCREEN_HEIGHT - RAQUETTE_HEIGHT / 2) THEN -- rebond sur bord bas
-                    dirRaquetteG <= dirRaquetteG * (-1);
-                    yRaquetteG <= SCREEN_HEIGHT - RAQUETTE_HEIGHT / 2;
-                ELSIF yRaquetteG < RAQUETTE_HEIGHT / 2 THEN -- rebond sur bord haut
-                    dirRaquetteG <= dirRaquetteG * (-1);
-                    yRaquetteG <= RAQUETTE_HEIGHT / 2;
-                END IF;
-
+                
+				IF(PB_Haut_G='1') THEN
+					yRaquetteG <= yRaquetteG + dirRaquetteG;
                 -- Mouvement raquette droite
-                yRaquetteD <= yRaquetteD - dirRaquetteD;
-                IF (yRaquetteD > SCREEN_HEIGHT - RAQUETTE_HEIGHT / 2) THEN -- rebond sur bord bas
-                    dirRaquetteD <= dirRaquetteD * (-1);
-                    yRaquetteD <= SCREEN_HEIGHT - RAQUETTE_HEIGHT / 2;
-                ELSIF yRaquetteD < RAQUETTE_HEIGHT / 2 THEN -- rebond sur bord haut
-                    dirRaquetteD <= dirRaquetteD * (-1);
-                    yRaquetteD <= RAQUETTE_HEIGHT / 2;
-                END IF;
+				ELSIF(PB_Bas_G='1') THEN
+					yRaquetteG <= yRaquetteG - dirRaquetteG;
+				END IF;
+                IF(PB_Haut_D='1') THEN
+					yRaquetteD <= yRaquetteD + dirRaquetteD;
+                -- Mouvement raquette droite
+				ELSIF(PB_Bas_D='1') THEN
+					yRaquetteD <= yRaquetteD - dirRaquetteD;
+				END IF;
             END IF;
         END IF;
     END PROCESS;
