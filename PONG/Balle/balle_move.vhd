@@ -46,15 +46,18 @@ BEGIN
                     xBalle <= xBalle + VxBalle;
                     yBalle <= yBalle + VyBalle;
 
-                    IF ((xBalle > (X_RAQUETTE_D - RAQUETTE_WIDTH/2) - (BALLE_WIDTH / 2)) AND ((yBalle > (Y_RAQUETTE_D - RAQUETTE_HEIGHT/2) - (BALLE_WIDTH / 2)) AND (yBalle < (Y_RAQUETTE_D + RAQUETTE_HEIGHT/2) - (BALLE_WIDTH / 2)))) THEN -- rebond sur la raquette droit
+                    IF ((xBalle > (X_RAQUETTE_D - RAQUETTE_WIDTH/2) - (BALLE_WIDTH / 2))
+                        AND ((yBalle > (Y_RAQUETTE_D - RAQUETTE_HEIGHT/2) - (BALLE_WIDTH / 2))
+                        AND (yBalle < (Y_RAQUETTE_D + RAQUETTE_HEIGHT/2) - (BALLE_WIDTH / 2)))) THEN -- rebond sur la raquette droit
                         VxBalle <= VxBalle * (-1);
-                        xBalle <= (Y_RAQUETTE_D - RAQUETTE_WIDTH/2) - (BALLE_WIDTH / 2);
-                    ELSIF ((xBalle < (X_RAQUETTE_G + RAQUETTE_WIDTH/2) + (BALLE_WIDTH / 2)) AND ((yBalle > (Y_RAQUETTE_G - RAQUETTE_HEIGHT/2) - (BALLE_WIDTH / 2)) AND (yBalle < (Y_RAQUETTE_G + RAQUETTE_HEIGHT/2) - (BALLE_WIDTH / 2)))) THEN -- rebond sur la raquette gauche
+                        xBalle <= (X_RAQUETTE_D - RAQUETTE_WIDTH/2) - (BALLE_WIDTH / 2);
+                    ELSIF ((xBalle < (X_RAQUETTE_G + RAQUETTE_WIDTH/2) + (BALLE_WIDTH / 2))
+                        AND ((yBalle > (Y_RAQUETTE_G - RAQUETTE_HEIGHT/2) - (BALLE_WIDTH / 2))
+                        AND (yBalle < (Y_RAQUETTE_G + RAQUETTE_HEIGHT/2) - (BALLE_WIDTH / 2)))) THEN -- rebond sur la raquette gauche
                         VxBalle <= VxBalle * (-1);
                         xBalle <= (X_RAQUETTE_G + RAQUETTE_WIDTH/2) + (BALLE_WIDTH / 2);
                     ELSIF (xBalle > SCREEN_WIDTH - BALLE_WIDTH / 2) THEN -- rebond sur bord droit
                         jwin <= "01"; -- J1 gagne si ça tape chez J2
-
                     ELSIF (xBalle < BALLE_WIDTH / 2) THEN -- rebond sur bord gauche
                         jwin <= "10";
 
@@ -67,15 +70,6 @@ BEGIN
                         VyBalle <= VyBalle * (-1);
                         yBalle <= BALLE_WIDTH / 2;
                     END IF;
-                END IF;
-
-                -- Colision avec une raquette
-                IF (yBalle > SCREEN_HEIGHT - BALLE_WIDTH / 2) THEN -- rebond sur bord bas
-                    VyBalle <= VyBalle * (-1);
-                    yBalle <= SCREEN_HEIGHT - BALLE_WIDTH / 2;
-                ELSIF (yBalle < BALLE_WIDTH / 2) THEN -- rebond sur bord haut
-                    VyBalle <= VyBalle * (-1);
-                    yBalle <= BALLE_WIDTH / 2;
                 END IF;
 
             END IF;
