@@ -8,7 +8,7 @@ ENTITY score_aff IS
         RST : IN STD_LOGIC;
         HCOUNT, VCOUNT : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
         J1_SCORE, J2_SCORE : IN STD_LOGIC_VECTOR(2 DOWNTO 0); -- Score J1 et J2
-        IS_NUMBER : OUT STD_LOGIC -- Retour pour l'affichage 
+        IS_NUMBER, END_GAME : OUT STD_LOGIC -- Retour pour l'affichage et pour savoir si la partie est terminée
     );
 END score_aff;
 
@@ -19,6 +19,7 @@ BEGIN
     BEGIN
         IF (RST = '1') THEN
             IS_NUMBER <= '0';
+            END_GAME <= '0';
         ELSE
             -- Joueur 1 à gauche 
             CASE J1_SCORE IS
@@ -95,7 +96,7 @@ BEGIN
                         IS_NUMBER <= '1';
                     END IF;
                 WHEN OTHERS =>
-                    IS_NUMBER <= '0';
+                    END_GAME <= '1';
             END CASE;
 
             -- Joueur 2 à droite
@@ -173,7 +174,7 @@ BEGIN
                         IS_NUMBER <= '1';
                     END IF;
                 WHEN OTHERS =>
-                    IS_NUMBER <= '0';
+                    END_GAME <= '1';
             END CASE;
         END IF;
 
