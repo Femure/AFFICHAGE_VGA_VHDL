@@ -47,6 +47,16 @@ BEGIN
                     VyBalle <= VyBalle * (-1);
                     yBalle <= BALLE_WIDTH / 2;
                 END IF;
+
+                -- Colision avec une raquette
+                IF (yBalle > SCREEN_HEIGHT - BALLE_WIDTH / 2) THEN -- rebond sur bord bas
+                    VyBalle <= VyBalle * (-1);
+                    yBalle <= SCREEN_HEIGHT - BALLE_WIDTH / 2;
+                ELSIF (yBalle < BALLE_WIDTH / 2) THEN -- rebond sur bord haut
+                    VyBalle <= VyBalle * (-1);
+                    yBalle <= BALLE_WIDTH / 2;
+                END IF;
+
             END IF;
         END IF;
     END PROCESS;
