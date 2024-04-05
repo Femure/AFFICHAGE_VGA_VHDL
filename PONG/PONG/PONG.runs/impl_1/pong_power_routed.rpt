@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date             : Thu Apr  4 20:51:15 2024
+| Date             : Fri Apr  5 16:23:43 2024
 | Host             : Max_Laptop running 64-bit major release  (build 9200)
 | Command          : report_power -file pong_power_routed.rpt -pb pong_power_summary_routed.pb -rpx pong_power_routed.rpx
 | Design           : pong
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.078        |
+| Total On-Chip Power (W)  | 0.079        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.006        |
+| Dynamic (W)              | 0.007        |
 | Device Static (W)        | 0.072        |
 | Effective TJA (C/W)      | 5.0          |
 | Max Ambient (C)          | 84.6         |
@@ -53,16 +53,16 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |    <0.001 |        3 |       --- |             --- |
-| Slice Logic    |     0.002 |     1218 |       --- |             --- |
-|   LUT as Logic |     0.001 |      652 |     20800 |            3.13 |
+| Slice Logic    |     0.002 |     1146 |       --- |             --- |
+|   LUT as Logic |     0.001 |      631 |     20800 |            3.03 |
 |   CARRY4       |    <0.001 |      112 |      8150 |            1.37 |
 |   BUFG         |    <0.001 |        2 |        32 |            6.25 |
-|   Register     |    <0.001 |      284 |     41600 |            0.68 |
-|   Others       |     0.000 |       13 |       --- |             --- |
-| Signals        |     0.001 |      673 |       --- |             --- |
-| I/O            |     0.002 |       16 |       106 |           15.09 |
+|   Register     |    <0.001 |      260 |     41600 |            0.63 |
+|   Others       |     0.000 |       14 |       --- |             --- |
+| Signals        |     0.001 |      629 |       --- |             --- |
+| I/O            |     0.004 |       16 |       106 |           15.09 |
 | Static Power   |     0.072 |          |           |                 |
-| Total          |     0.078 |          |           |                 |
+| Total          |     0.079 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -141,8 +141,7 @@ Table of Contents
 +------+-----------+
 | Name | Power (W) |
 +------+-----------+
-| pong |     0.006 |
-|   B1 |     0.001 |
+| pong |     0.007 |
 |   R1 |     0.001 |
 +------+-----------+
 
