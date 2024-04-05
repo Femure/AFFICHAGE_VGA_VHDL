@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Fri Apr  5 17:30:33 2024
+| Date         : Fri Apr  5 18:38:26 2024
 | Host         : Max_Laptop running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file pong_control_sets_placed.rpt
 | Design       : pong
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |    13 |
-|    Minimum number of control sets                        |    13 |
+| Total control sets                                       |    12 |
+|    Minimum number of control sets                        |    12 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    46 |
+| Unused register locations in slices containing registers |    44 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,7 +39,7 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |    13 |
+| Total control sets |    12 |
 | >= 0 to < 4        |     4 |
 | >= 4 to < 6        |     0 |
 | >= 6 to < 8        |     0 |
@@ -47,7 +47,7 @@ Table of Contents
 | >= 10 to < 12      |     2 |
 | >= 12 to < 14      |     0 |
 | >= 14 to < 16      |     1 |
-| >= 16              |     6 |
+| >= 16              |     5 |
 +--------------------+-------+
 * Control sets can be remapped at either synth_design or opt_design
 
@@ -59,10 +59,10 @@ Table of Contents
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | No           | No                    | No                     |               3 |            2 |
-| No           | No                    | Yes                    |              26 |           10 |
+| No           | No                    | Yes                    |              26 |           14 |
 | No           | Yes                   | No                     |               2 |            2 |
 | Yes          | No                    | No                     |               0 |            0 |
-| Yes          | No                    | Yes                    |             259 |           64 |
+| Yes          | No                    | Yes                    |             197 |           52 |
 | Yes          | Yes                   | No                     |               0 |            0 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
@@ -73,19 +73,18 @@ Table of Contents
 +----------------------+----------------------+------------------+------------------+----------------+--------------+
 |     Clock Signal     |     Enable Signal    | Set/Reset Signal | Slice Load Count | Bel Load Count | Bels / Slice |
 +----------------------+----------------------+------------------+------------------+----------------+--------------+
-|  A1/score_1_reg[2]   |                      | S1/RST           |                1 |              1 |         1.00 |
-|  S0/score_1_reg[2]_0 |                      | S1/RST           |                1 |              1 |         1.00 |
+|  S0/score_1_reg[2]_1 |                      | S1/RST           |                1 |              1 |         1.00 |
+|  A1/score_2_reg[2]   |                      | S1/RST           |                1 |              1 |         1.00 |
 |  balle_clk_s_BUFG    |                      | S1/RST           |                1 |              2 |         2.00 |
 |  CLK_IBUF_BUFG       |                      |                  |                2 |              3 |         1.50 |
-|  A0/pixel_clk        |                      | S1/RST           |                4 |             10 |         2.50 |
-|  A0/pixel_clk        | A1/countY[9]_i_1_n_0 | S1/RST           |                3 |             10 |         3.33 |
-|  CLK_IBUF_BUFG       |                      | S1/RST           |                5 |             14 |         2.80 |
-|  balle_clk_s_BUFG    | B1/VxBalle           | S1/RST           |                8 |             30 |         3.75 |
-|  balle_clk_s_BUFG    | B1/VyBalle           | S1/RST           |                8 |             30 |         3.75 |
-|  raquette_clk_s_BUFG | R1/dirRaquetteD      | S1/RST           |                9 |             31 |         3.44 |
-|  raquette_clk_s_BUFG | R1/dirRaquetteG      | S1/RST           |               10 |             31 |         3.10 |
-|  balle_clk_s_BUFG    | A1/frame             | S1/RST           |               16 |             63 |         3.94 |
-|  raquette_clk_s_BUFG | A1/frame             | S1/RST           |               10 |             64 |         6.40 |
+|  A0/pixel_clk        |                      | S1/RST           |                6 |             10 |         1.67 |
+|  A0/pixel_clk        | A1/countY[9]_i_1_n_0 | S1/RST           |                4 |             10 |         2.50 |
+|  CLK_IBUF_BUFG       |                      | S1/RST           |                7 |             14 |         2.00 |
+|  balle_clk_s_BUFG    | B1/VyBalle           | S1/RST           |                9 |             30 |         3.33 |
+|  balle_clk_s_BUFG    | B1/VxBalle           | S1/RST           |               10 |             30 |         3.00 |
+|  raquette_clk_s_BUFG | R1/yRaquetteD        | S1/RST           |                8 |             32 |         4.00 |
+|  raquette_clk_s_BUFG | R1/yRaquetteG        | S1/RST           |                8 |             32 |         4.00 |
+|  balle_clk_s_BUFG    | A1/frame             | S1/RST           |               13 |             63 |         4.85 |
 +----------------------+----------------------+------------------+------------------+----------------+--------------+
 
 

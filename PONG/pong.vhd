@@ -43,10 +43,12 @@ ARCHITECTURE structural OF pong IS
 
     COMPONENT raquette_move IS
         PORT (
-            RAQUETTE_CLK, RST, FRAME, PB_Haut_G, PB_Bas_G, PB_Haut_D, PB_Bas_D : IN STD_LOGIC;
+            RAQUETTE_CLK, RST, FRAME : IN STD_LOGIC;
+            PB_Haut_G, PB_Bas_G, PB_Haut_D, PB_Bas_D : IN STD_LOGIC;
+            J_WIN : IN STD_LOGIC_VECTOR(1 DOWNTO 0);
             HCOUNT, VCOUNT : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
-            Y_RAQUETTE_G, Y_RAQUETTE_D : OUT INTEGER;
-            IS_RAQUETTE_G, IS_RAQUETTE_D : OUT STD_LOGIC
+            IS_RAQUETTE_G, IS_RAQUETTE_D : OUT STD_LOGIC;
+            Y_RAQUETTE_G, Y_RAQUETTE_D : OUT INTEGER
         );
     END COMPONENT;
 
@@ -110,14 +112,13 @@ BEGIN
     -- Gestion du terrain
     T0 : terrain_aff PORT MAP(HCOUNT => hcount, VCOUNT => vcount, IS_TERRAIN => is_terrain);
 
-    -- Gestion des raquettes
-    R0 : raquette_clk PORT MAP(CLK => CLK, RST => reset, RAQUETTE_CLK => raquette_clk_s);
-    R1 : raquette_move PORT MAP(RAQUETTE_CLK => raquette_clk_s, RST => reset, FRAME => frame, PB_Haut_G => PB_Haut_G, PB_Bas_G => PB_Bas_G, PB_Haut_D => PB_Haut_D, PB_Bas_D => PB_Bas_D, HCOUNT => hcount, VCOUNT => vcount, Y_RAQUETTE_G => y_raquette_g, Y_RAQUETTE_D => y_raquette_d, IS_RAQUETTE_G => is_raquette_g, IS_RAQUETTE_D => is_raquette_d);
-    R1 : raquette_move PORT MAP(RAQUETTE_CLK => raquette_clk_s, RST => RST, FRAME => frame, HCOUNT => hcount, VCOUNT => vcount, IS_RAQUETTE_G => is_raquette_g, IS_RAQUETTE_D => is_raquette_d);
-
     -- Gestion de la balle
     B0 : balle_clk PORT MAP(CLK => CLK, RST => reset, BALLE_CLK => balle_clk_s);
     B1 : balle_move PORT MAP(BALLE_CLK => balle_clk_s, RST => reset, FRAME => frame, HCOUNT => hcount, VCOUNT => vcount, Y_RAQUETTE_G => y_raquette_g, Y_RAQUETTE_D => y_raquette_d, IS_BALLE => is_balle, J_WIN => j_win);
+
+    -- Gestion des raquettes
+    R0 : raquette_clk PORT MAP(CLK => CLK, RST => reset, RAQUETTE_CLK => raquette_clk_s);
+    R1 : raquette_move PORT MAP(RAQUETTE_CLK => raquette_clk_s, RST => reset, FRAME => frame, J_WIN => j_win, PB_Haut_G => PB_Haut_G, PB_Bas_G => PB_Bas_G, PB_Haut_D => PB_Haut_D, PB_Bas_D => PB_Bas_D, HCOUNT => hcount, VCOUNT => vcount, Y_RAQUETTE_G => y_raquette_g, Y_RAQUETTE_D => y_raquette_d, IS_RAQUETTE_G => is_raquette_g, IS_RAQUETTE_D => is_raquette_d);
 
     -- Gestion des scores
     S0 : cnt_score PORT MAP(CLK => CLK, RST => reset, J_WIN => j_win, J1_SCORE => j1_score, J2_SCORE => j2_score);
