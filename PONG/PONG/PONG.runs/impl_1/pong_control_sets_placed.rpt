@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Thu Apr  4 20:50:57 2024
+| Date         : Fri Apr  5 14:28:48 2024
 | Host         : Max_Laptop running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file pong_control_sets_placed.rpt
 | Design       : pong
@@ -27,7 +27,7 @@ Table of Contents
 |    Minimum number of control sets                        |    11 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    36 |
+| Unused register locations in slices containing registers |    38 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -41,13 +41,13 @@ Table of Contents
 +--------------------+-------+
 | Total control sets |    11 |
 | >= 0 to < 4        |     2 |
-| >= 4 to < 6        |     0 |
+| >= 4 to < 6        |     1 |
 | >= 6 to < 8        |     0 |
 | >= 8 to < 10       |     0 |
 | >= 10 to < 12      |     3 |
 | >= 12 to < 14      |     0 |
 | >= 14 to < 16      |     0 |
-| >= 16              |     6 |
+| >= 16              |     5 |
 +--------------------+-------+
 * Control sets can be remapped at either synth_design or opt_design
 
@@ -59,10 +59,10 @@ Table of Contents
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | No           | No                    | No                     |               3 |            3 |
-| No           | No                    | Yes                    |              20 |            9 |
+| No           | No                    | Yes                    |              20 |            8 |
 | No           | Yes                   | No                     |               1 |            1 |
 | Yes          | No                    | No                     |               0 |            0 |
-| Yes          | No                    | Yes                    |             260 |           62 |
+| Yes          | No                    | Yes                    |             202 |           57 |
 | Yes          | Yes                   | No                     |               0 |            0 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
@@ -75,15 +75,15 @@ Table of Contents
 +----------------------+----------------------+------------------+------------------+----------------+--------------+
 |  S0/score_1_reg[2]_0 |                      | RST_IBUF         |                1 |              1 |         1.00 |
 |  CLK_IBUF_BUFG       |                      |                  |                3 |              3 |         1.00 |
-|  A0/pixel_clk        |                      | RST_IBUF         |                5 |             10 |         2.00 |
-|  A0/pixel_clk        | A1/countY[9]_i_1_n_0 | RST_IBUF         |                5 |             10 |         2.00 |
-|  CLK_IBUF_BUFG       |                      | RST_IBUF         |                4 |             10 |         2.50 |
-|  balle_clk_s_BUFG    | B1/VxBalle           | RST_IBUF         |                9 |             30 |         3.33 |
-|  balle_clk_s_BUFG    | B1/VyBalle           | RST_IBUF         |                8 |             30 |         3.75 |
-|  raquette_clk_s_BUFG | R1/dirRaquetteD      | RST_IBUF         |                9 |             31 |         3.44 |
-|  raquette_clk_s_BUFG | R1/dirRaquetteG      | RST_IBUF         |                9 |             31 |         3.44 |
-|  raquette_clk_s_BUFG | A1/frame             | RST_IBUF         |               10 |             64 |         6.40 |
-|  balle_clk_s_BUFG    | A1/frame             | RST_IBUF         |               12 |             64 |         5.33 |
+|  raquette_clk_s_BUFG | A1/frame             | RST_IBUF         |                4 |              4 |         1.00 |
+|  CLK_IBUF_BUFG       |                      | RST_IBUF         |                5 |             10 |         2.00 |
+|  A0/pixel_clk        |                      | RST_IBUF         |                3 |             10 |         3.33 |
+|  A0/pixel_clk        | A1/countY[9]_i_1_n_0 | RST_IBUF         |                4 |             10 |         2.50 |
+|  balle_clk_s_BUFG    | B1/VxBalle           | RST_IBUF         |               10 |             30 |         3.00 |
+|  balle_clk_s_BUFG    | B1/VyBalle           | RST_IBUF         |               10 |             30 |         3.00 |
+|  raquette_clk_s_BUFG | R1/yRaquetteD        | RST_IBUF         |                9 |             32 |         3.56 |
+|  raquette_clk_s_BUFG | R1/yRaquetteG        | RST_IBUF         |                9 |             32 |         3.56 |
+|  balle_clk_s_BUFG    | A1/frame             | RST_IBUF         |               11 |             64 |         5.82 |
 +----------------------+----------------------+------------------+------------------+----------------+--------------+
 
 
