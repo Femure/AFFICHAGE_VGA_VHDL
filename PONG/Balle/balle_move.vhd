@@ -7,8 +7,8 @@ ENTITY balle_move IS
     PORT (
         BALLE_CLK, RST, FRAME : IN STD_LOGIC;
         HCOUNT, VCOUNT : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
-        IS_BALLE : OUT STD_LOGIC;
-        Y_RAQUETTE_G, Y_RAQUETTE_D : OUT INTEGER
+        Y_RAQUETTE_G, Y_RAQUETTE_D : IN INTEGER;
+        IS_BALLE : OUT STD_LOGIC
     );
 END balle_move;
 
@@ -38,12 +38,12 @@ BEGIN
                 xBalle <= xBalle + VxBalle;
                 yBalle <= yBalle + VyBalle;
 
-                IF (xBalle > SCREEN_WIDTH - BALLE_WIDTH / 2) THEN -- rebond sur bord droit
+                IF ((xBalle > (X_RAQUETTE_D - RAQUETTE_WIDTH/2) - (BALLE_WIDTH / 2)) AND ((yBalle > (Y_RAQUETTE_D - RAQUETTE_HEIGHT/2) - (BALLE_WIDTH / 2)) AND (yBalle < (Y_RAQUETTE_D + RAQUETTE_HEIGHT/2) - (BALLE_WIDTH / 2)))) THEN -- rebond sur la raquette droit
                     VxBalle <= VxBalle * (-1);
-                    xBalle <= SCREEN_WIDTH - BALLE_WIDTH / 2;
-                ELSIF (xBalle < BALLE_WIDTH / 2) THEN -- rebond sur bord gauche
+                    xBalle <= (Y_RAQUETTE_D - RAQUETTE_WIDTH/2) - (BALLE_WIDTH / 2);
+                ELSIF ((xBalle < (X_RAQUETTE_G + RAQUETTE_WIDTH/2) + (BALLE_WIDTH / 2)) AND ((yBalle > (Y_RAQUETTE_G - RAQUETTE_HEIGHT/2) - (BALLE_WIDTH / 2)) AND (yBalle < (Y_RAQUETTE_G + RAQUETTE_HEIGHT/2) - (BALLE_WIDTH / 2)))) THEN -- rebond sur la raquette gauche
                     VxBalle <= VxBalle * (-1);
-                    xBalle <= BALLE_WIDTH / 2;
+                    xBalle <= (X_RAQUETTE_G + RAQUETTE_WIDTH/2) + (BALLE_WIDTH / 2);
                 END IF;
 
                 IF (yBalle > SCREEN_HEIGHT - BALLE_WIDTH / 2) THEN -- rebond sur bord bas
