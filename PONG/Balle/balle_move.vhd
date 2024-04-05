@@ -7,13 +7,19 @@ ENTITY balle_move IS
     PORT (
         BALLE_CLK, RST, FRAME : IN STD_LOGIC;
         HCOUNT, VCOUNT : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
-        IS_BALLE : OUT STD_LOGIC
+        IS_BALLE : OUT STD_LOGIC;
+        Y_RAQUETTE_G, Y_RAQUETTE_D : OUT INTEGER
     );
 END balle_move;
 
 ARCHITECTURE rtl OF balle_move IS
     CONSTANT BALLE_WIDTH : INTEGER := 10; -- taille du carré (balle) en pixels
     CONSTANT SCREEN_WIDTH : INTEGER := 640; -- largeur de l'écran en pixels 
+
+    CONSTANT RAQUETTE_WIDTH : INTEGER := 10; -- largeur de la raquette en pixels
+    CONSTANT RAQUETTE_HEIGHT : INTEGER := 50; -- hauteur de la raquette en pixels 
+    CONSTANT X_RAQUETTE_G : INTEGER := 20;
+    CONSTANT X_RAQUETTE_D : INTEGER := SCREEN_WIDTH - 20;
     CONSTANT SCREEN_HEIGHT : INTEGER := 480; -- hauteur de l'écran en pixels 
 
     SIGNAL xBalle : INTEGER := SCREEN_WIDTH / 2;

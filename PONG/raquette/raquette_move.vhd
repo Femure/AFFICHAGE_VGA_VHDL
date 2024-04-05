@@ -7,7 +7,8 @@ ENTITY raquette_move IS
     PORT (
         RAQUETTE_CLK, RST, FRAME : IN STD_LOGIC;
         HCOUNT, VCOUNT : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
-        IS_RAQUETTE_G, IS_RAQUETTE_D : OUT STD_LOGIC
+        IS_RAQUETTE_G, IS_RAQUETTE_D : OUT STD_LOGIC;
+        Y_RAQUETTE_G, Y_RAQUETTE_D : OUT INTEGER
     );
 END raquette_move;
 
@@ -65,4 +66,8 @@ BEGIN
         AND (VCOUNT > yRaquetteD - RAQUETTE_HEIGHT / 2) AND (VCOUNT < yRaquetteD + RAQUETTE_HEIGHT / 2)
         ELSE
         '0';
+        
+    Y_RAQUETTE_G <= yRaquetteG;
+    Y_RAQUETTE_D <= yRaquetteD;
+
 END rtl;
