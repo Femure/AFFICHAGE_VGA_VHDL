@@ -1,4 +1,3 @@
--- Augmenter la vitesse durant un point
 -- Changer angle de renvoie suivant la où la balle touche la raquette
 -- Ajouter une entrée clavier
 
@@ -65,7 +64,7 @@ ARCHITECTURE structural OF pong IS
 
     COMPONENT acc_balle_clk IS
         PORT (
-            CLK, RST : IN STD_LOGIC;
+            FRAME, RST : IN STD_LOGIC;
             ACC_BALLE : OUT STD_LOGIC
         );
     END COMPONENT;
@@ -115,7 +114,7 @@ ARCHITECTURE structural OF pong IS
 
 BEGIN
 
-    reset <= (RST OR END_GAME);
+    reset <= (RST OR end_game);
     -- Gestion de l'affichage sur l'écran
     A0 : div_25MHz PORT MAP(CLK => CLK, RST => reset, PIXEL_CLK => pixel_clk);
     A1 : vga_controller_640_60 PORT MAP(PIXEL_CLK => pixel_clk, RST => reset, HS => HS, VS => VS, BLANK => blank, FRAME => frame, HCOUNT => hcount, VCOUNT => vcount);
@@ -125,7 +124,7 @@ BEGIN
 
     -- Gestion de la balle
     B0 : balle_clk PORT MAP(CLK => CLK, RST => reset, BALLE_CLK => balle_clk_s);
-    B1 : acc_balle_clk PORT MAP(CLK => CLK, RST => reset, ACC_BALLE => acc_balle);
+    B1 : acc_balle_clk PORT MAP(FRAME => frame, RST => reset, ACC_BALLE => acc_balle);
     B2 : balle_move PORT MAP(BALLE_CLK => balle_clk_s, RST => reset, FRAME => frame, ACC_BALLE => acc_balle, HCOUNT => hcount, VCOUNT => vcount, Y_RAQUETTE_G => y_raquette_g, Y_RAQUETTE_D => y_raquette_d, IS_BALLE => is_balle, J_WIN => j_win);
 
     -- Gestion des raquettes

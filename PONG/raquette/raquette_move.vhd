@@ -50,6 +50,8 @@ BEGIN
                         IF (yRaquetteG < SCREEN_HEIGHT - RAQUETTE_HEIGHT / 2) THEN -- rebond sur bord bas
                             yRaquetteG <= yRaquetteG + dirRaquetteG;
                         END IF;
+                    ELSE
+                        dirRaquetteG <= dirRaquetteG;
                     END IF;
 
                     -- Mouvement raquette droite
@@ -61,6 +63,8 @@ BEGIN
                         IF (yRaquetteD < SCREEN_HEIGHT - RAQUETTE_HEIGHT / 2) THEN -- rebond sur bord bas
                             yRaquetteD <= yRaquetteD + dirRaquetteD;
                         END IF;
+                    ELSE
+                        dirRaquetteD <= dirRaquetteD;
                     END IF;
                 END IF;
             END IF;

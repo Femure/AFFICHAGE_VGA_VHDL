@@ -41,20 +41,25 @@ BEGIN
                 IF (jwin = "01") THEN
                     xBalle <= SCREEN_WIDTH / 2;
                     yBalle <= SCREEN_HEIGHT / 2;
-                    VxBalle <= -2;
-                    VyBalle <= -2;
+                    VxBalle <= - 2;
+                    VyBalle <= - 2;
                     jwin <= "00";
-                ELSIF (jwin >="10") THEN
+                ELSIF (jwin >= "10") THEN
                     xBalle <= SCREEN_WIDTH / 2;
                     yBalle <= SCREEN_HEIGHT / 2;
                     VxBalle <= 2;
                     VyBalle <= 2;
                     jwin <= "00";
                 ELSE
-                    -- IF (ACC_BALLE = '1') THEN
-                    --     VxBalle <= VxBalle + 5;
-                    --     VyBalle <= VyBalle + 5;
-                    -- ELSE
+                    IF (ACC_BALLE = '1') THEN
+                        IF (VxBalle >= 0) THEN
+                            VxBalle <= VxBalle + 1;
+                            VyBalle <= VyBalle + 1;
+                        ELSE
+                            VxBalle <= VxBalle - 1;
+                            VyBalle <= VyBalle - 1;
+                        END IF;
+                    ELSE
                         xBalle <= xBalle + VxBalle;
                         yBalle <= yBalle + VyBalle;
 
@@ -80,7 +85,7 @@ BEGIN
                             yBalle <= BALLE_WIDTH / 2;
                         END IF;
                     END IF;
-                -- END IF;
+                END IF;
             END IF;
         END IF;
     END PROCESS;
