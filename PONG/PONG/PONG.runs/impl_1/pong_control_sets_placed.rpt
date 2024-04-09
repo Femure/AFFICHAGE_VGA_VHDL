@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Tue Apr  9 22:05:55 2024
+| Date         : Tue Apr  9 22:26:12 2024
 | Host         : Max_Laptop running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file pong_control_sets_placed.rpt
 | Design       : pong
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |    14 |
-|    Minimum number of control sets                        |    14 |
+| Total control sets                                       |    12 |
+|    Minimum number of control sets                        |    12 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    45 |
+| Unused register locations in slices containing registers |    30 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,9 +39,9 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |    14 |
-| >= 0 to < 4        |     4 |
-| >= 4 to < 6        |     0 |
+| Total control sets |    12 |
+| >= 0 to < 4        |     1 |
+| >= 4 to < 6        |     1 |
 | >= 6 to < 8        |     1 |
 | >= 8 to < 10       |     0 |
 | >= 10 to < 12      |     2 |
@@ -58,9 +58,9 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |               4 |            2 |
-| No           | No                    | Yes                    |              51 |           20 |
-| No           | Yes                   | No                     |               2 |            2 |
+| No           | No                    | No                     |               5 |            4 |
+| No           | No                    | Yes                    |              51 |           21 |
+| No           | Yes                   | No                     |               0 |            0 |
 | Yes          | No                    | No                     |               0 |            0 |
 | Yes          | No                    | Yes                    |             202 |           62 |
 | Yes          | Yes                   | No                     |               0 |            0 |
@@ -70,23 +70,21 @@ Table of Contents
 4. Detailed Control Set Information
 -----------------------------------
 
-+----------------------+----------------------+------------------+------------------+----------------+--------------+
-|     Clock Signal     |     Enable Signal    | Set/Reset Signal | Slice Load Count | Bel Load Count | Bels / Slice |
-+----------------------+----------------------+------------------+------------------+----------------+--------------+
-|  S0/score_1_reg[0]_0 |                      | S1/RST           |                1 |              1 |         1.00 |
-|  frame_BUFG          |                      |                  |                1 |              1 |         1.00 |
-|  A1/score_1_reg[2]   |                      | S1/RST           |                1 |              1 |         1.00 |
-|  CLK_IBUF_BUFG       |                      |                  |                1 |              3 |         3.00 |
-|  balle_clk_s_BUFG    |                      | S1/RST           |                5 |              6 |         1.20 |
-|  A0/PIXEL_CLK        |                      | S1/RST           |                4 |             10 |         2.50 |
-|  A0/PIXEL_CLK        | A1/countY[9]_i_1_n_0 | S1/RST           |                5 |             10 |         2.00 |
-|  CLK_IBUF_BUFG       |                      | S1/RST           |                5 |             14 |         2.80 |
-|  frame_BUFG          |                      | S1/RST           |                6 |             21 |         3.50 |
-|  balle_clk_s_BUFG    | B2/VxBalle           | S1/RST           |                6 |             32 |         5.33 |
-|  balle_clk_s_BUFG    | B2/VyBalle           | S1/RST           |               21 |             32 |         1.52 |
-|  RAQUETTE_CLK_BUFG   | R1/yRaquetteD        | S1/RST           |                8 |             32 |         4.00 |
-|  RAQUETTE_CLK_BUFG   | R1/yRaquetteG        | S1/RST           |                8 |             32 |         4.00 |
-|  balle_clk_s_BUFG    | B2/xBalle            | S1/RST           |               14 |             64 |         4.57 |
-+----------------------+----------------------+------------------+------------------+----------------+--------------+
++--------------------+----------------------+------------------+------------------+----------------+--------------+
+|    Clock Signal    |     Enable Signal    | Set/Reset Signal | Slice Load Count | Bel Load Count | Bels / Slice |
++--------------------+----------------------+------------------+------------------+----------------+--------------+
+|  frame_BUFG        |                      |                  |                1 |              1 |         1.00 |
+|  CLK_IBUF_BUFG     |                      |                  |                3 |              4 |         1.33 |
+|  balle_clk_s_BUFG  |                      | RE0/reset_g      |                3 |              6 |         2.00 |
+|  A0/PIXEL_CLK      |                      | RE0/reset_g      |                7 |             10 |         1.43 |
+|  A0/PIXEL_CLK      | A1/countY[9]_i_1_n_0 | RE0/reset_g      |                4 |             10 |         2.50 |
+|  CLK_IBUF_BUFG     |                      | RE0/reset_g      |                5 |             14 |         2.80 |
+|  frame_BUFG        |                      | RE0/reset_g      |                6 |             21 |         3.50 |
+|  RAQUETTE_CLK_BUFG | R1/yRaquetteD        | RE0/reset_g      |                8 |             32 |         4.00 |
+|  RAQUETTE_CLK_BUFG | R1/yRaquetteG        | RE0/reset_g      |                8 |             32 |         4.00 |
+|  balle_clk_s_BUFG  | B2/VxBalle           | RE0/reset_g      |                5 |             32 |         6.40 |
+|  balle_clk_s_BUFG  | B2/VyBalle           | RE0/reset_g      |               22 |             32 |         1.45 |
+|  balle_clk_s_BUFG  | B2/xBalle            | RE0/reset_g      |               15 |             64 |         4.27 |
++--------------------+----------------------+------------------+------------------+----------------+--------------+
 
 

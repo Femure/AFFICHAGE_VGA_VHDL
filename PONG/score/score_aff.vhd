@@ -21,6 +21,8 @@ BEGIN
             IS_NUMBER <= '0';
             END_GAME <= '0';
         ELSE
+            IS_NUMBER <= '0';
+            END_GAME <= '0';
             -- Joueur 1 Ã  gauche 
             CASE J1_SCORE IS
                 WHEN "000" =>
