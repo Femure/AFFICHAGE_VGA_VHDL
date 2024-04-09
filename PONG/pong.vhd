@@ -1,4 +1,5 @@
--- Changer angle de renvoie suivant la où la balle touche la raquette
+-- Changer angle de renvoie suivant la où la balle touche la raquette + avancé
+-- Gérer le rest end_game
 -- Ajouter une entrée clavier
 
 LIBRARY IEEE;

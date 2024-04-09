@@ -22,7 +22,7 @@ ARCHITECTURE rtl OF raquette_move IS
     CONSTANT xRaquetteG : INTEGER := 20;
     CONSTANT xRaquetteD : INTEGER := SCREEN_WIDTH - 20;
 
-    SIGNAL yRaquetteG, yRaquetteD : INTEGER; -- position des raquettes
+    SIGNAL yRaquetteG, yRaquetteD : INTEGER := SCREEN_HEIGHT/2; -- position des raquettes
     SIGNAL dirRaquetteG, dirRaquetteD : INTEGER := 5; -- direction des raquettes
 
 BEGIN

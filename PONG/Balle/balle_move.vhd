@@ -25,19 +25,19 @@ ARCHITECTURE rtl OF balle_move IS
 
     SIGNAL xBalle : INTEGER := SCREEN_WIDTH / 2;
     SIGNAL yBalle : INTEGER := SCREEN_HEIGHT / 2;
-    SIGNAL VxBalle, VyBalle : INTEGER := 2; -- déplacement en diagonale vers le bas à droite de l'écran 
+    SIGNAL VxBalle, VyBalle : INTEGER := 2;
     SIGNAL jwin : STD_LOGIC_VECTOR(1 DOWNTO 0);
 BEGIN
     PROCESS (BALLE_CLK, RST, FRAME, HCOUNT, VCOUNT)
     BEGIN
-        IF (RST = '1') THEN -- Réinitialisation si appui sur bouton Reset
+        IF (RST = '1') THEN
             xBalle <= SCREEN_WIDTH / 2;
             yBalle <= SCREEN_HEIGHT / 2;
             VxBalle <= 2;
             VyBalle <= 2;
             jwin <= "00";
         ELSIF (BALLE_CLK'EVENT AND BALLE_CLK = '1') THEN
-            IF (FRAME = '1') THEN -- calcul de la position de la balle en dehors de la zone d'affichage active
+            IF (FRAME = '1') THEN
                 IF (jwin = "01") THEN
                     xBalle <= SCREEN_WIDTH / 2;
                     yBalle <= SCREEN_HEIGHT / 2;
@@ -63,24 +63,48 @@ BEGIN
                         xBalle <= xBalle + VxBalle;
                         yBalle <= yBalle + VyBalle;
 
-                        IF ((xBalle > (X_RAQUETTE_D - RAQUETTE_WIDTH/2) - (BALLE_WIDTH / 2))
-                            AND ((yBalle > (Y_RAQUETTE_D - RAQUETTE_HEIGHT/2) - (BALLE_WIDTH / 2))
-                            AND (yBalle < (Y_RAQUETTE_D + RAQUETTE_HEIGHT/2) - (BALLE_WIDTH / 2)))) THEN -- rebond sur la raquette droit
-                            VxBalle <= VxBalle * (-1);
-                            xBalle <= (X_RAQUETTE_D - RAQUETTE_WIDTH/2) - (BALLE_WIDTH / 2);
-                        ELSIF ((xBalle < (X_RAQUETTE_G + RAQUETTE_WIDTH/2) + (BALLE_WIDTH / 2))
-                            AND ((yBalle > (Y_RAQUETTE_G - RAQUETTE_HEIGHT/2) - (BALLE_WIDTH / 2))
-                            AND (yBalle < (Y_RAQUETTE_G + RAQUETTE_HEIGHT/2) - (BALLE_WIDTH / 2)))) THEN -- rebond sur la raquette gauche
-                            VxBalle <= VxBalle * (-1);
-                            xBalle <= (X_RAQUETTE_G + RAQUETTE_WIDTH/2) + (BALLE_WIDTH / 2);
-                        ELSIF (xBalle > SCREEN_WIDTH - BALLE_WIDTH / 2) THEN -- rebond sur bord droit
-                            jwin <= "01"; -- J1 gagne si ça tape chez J2
-                        ELSIF (xBalle < BALLE_WIDTH / 2) THEN -- rebond sur bord gauche
-                            jwin <= "10";
-                        ELSIF (yBalle > SCREEN_HEIGHT - BALLE_WIDTH / 2) THEN -- rebond sur bord bas
+                        IF (xBalle > SCREEN_WIDTH - BALLE_WIDTH / 2) THEN -- Rebond sur le bord droit
+                            jwin <= "01"; -- J1 gagne si car touche chez J2
+                        ELSIF (xBalle < BALLE_WIDTH / 2) THEN -- Rebond sur le bord gauche
+                            jwin <= "10"; -- J2 gagne si car touche chez J1
+                        ELSIF ((xBalle > (X_RAQUETTE_D - RAQUETTE_WIDTH/2) - (BALLE_WIDTH / 2))) THEN -- Raquette droite
+                            IF (yBalle > ((Y_RAQUETTE_D - RAQUETTE_HEIGHT/2) - (BALLE_WIDTH / 2))
+                                AND (yBalle < (Y_RAQUETTE_D - RAQUETTE_HEIGHT/3) - (BALLE_WIDTH / 2))) THEN -- Rebond sur le haut de la raquette
+                                VyBalle <= - ABS(VyBalle); -- Angle de rebond vers le haut
+                                VxBalle <= - VxBalle; -- Changement de direction
+                                xBalle <= (X_RAQUETTE_D - RAQUETTE_WIDTH/2) - (BALLE_WIDTH / 2);
+                            ELSIF (yBalle > ((Y_RAQUETTE_D - RAQUETTE_HEIGHT/3) - (BALLE_WIDTH / 2))
+                                AND (yBalle < (Y_RAQUETTE_D + RAQUETTE_HEIGHT/3) - (BALLE_WIDTH / 2))) THEN -- Rebond au milieu de la raquette
+                                -- Aucun changement d'angle
+                                VxBalle <= - VxBalle; -- Changement de direction
+                                xBalle <= (X_RAQUETTE_D - RAQUETTE_WIDTH/2) - (BALLE_WIDTH / 2);
+                            ELSIF (yBalle > ((Y_RAQUETTE_D + RAQUETTE_HEIGHT/3) - (BALLE_WIDTH / 2))
+                                AND (yBalle < (Y_RAQUETTE_D + RAQUETTE_HEIGHT/2) - (BALLE_WIDTH / 2))) THEN -- Rebond sur le bas de la raquette
+                                VyBalle <= ABS(VyBalle); -- Angle de rebond vers le bas
+                                VxBalle <= - VxBalle; -- Changement de direction
+                                xBalle <= (X_RAQUETTE_D - RAQUETTE_WIDTH/2) - (BALLE_WIDTH / 2);
+                            END IF;
+                        ELSIF ((xBalle < (X_RAQUETTE_G + RAQUETTE_WIDTH/2) + (BALLE_WIDTH / 2))) THEN -- Raquette gauche
+                            IF (yBalle > ((Y_RAQUETTE_G - RAQUETTE_HEIGHT/2) - (BALLE_WIDTH / 2))
+                                AND (yBalle < (Y_RAQUETTE_G - RAQUETTE_HEIGHT/3) - (BALLE_WIDTH / 2))) THEN -- Rebond sur le haut de la raquette
+                                VyBalle <= - ABS(VyBalle); -- Angle de rebond vers le haut
+                                VxBalle <= - VxBalle; -- Changement de direction
+                                xBalle <= (X_RAQUETTE_G + RAQUETTE_WIDTH/2) + (BALLE_WIDTH / 2);
+                            ELSIF (yBalle > ((Y_RAQUETTE_G - RAQUETTE_HEIGHT/3) - (BALLE_WIDTH / 2))
+                                AND (yBalle < (Y_RAQUETTE_G + RAQUETTE_HEIGHT/3) - (BALLE_WIDTH / 2))) THEN -- Rebond au milieu de la raquette
+                                -- Aucun changement d'angle
+                                VxBalle <= - VxBalle; -- Changement de direction
+                                xBalle <= (X_RAQUETTE_G + RAQUETTE_WIDTH/2) + (BALLE_WIDTH / 2);
+                            ELSIF (yBalle > ((Y_RAQUETTE_G + RAQUETTE_HEIGHT/3) - (BALLE_WIDTH / 2))
+                                AND (yBalle < (Y_RAQUETTE_G + RAQUETTE_HEIGHT/2) - (BALLE_WIDTH / 2))) THEN -- Rebond sur le bas de la raquette
+                                VyBalle <= ABS(VyBalle); -- Angle de rebond vers le bas
+                                VxBalle <= - VxBalle; -- Changement de direction
+                                xBalle <= (X_RAQUETTE_G + RAQUETTE_WIDTH/2) + (BALLE_WIDTH / 2);
+                            END IF;
+                        ELSIF (yBalle > SCREEN_HEIGHT - BALLE_WIDTH / 2) THEN -- Rebond sur le bord en bas
                             VyBalle <= VyBalle * (-1);
                             yBalle <= SCREEN_HEIGHT - BALLE_WIDTH / 2;
-                        ELSIF (yBalle < BALLE_WIDTH / 2) THEN -- rebond sur bord haut
+                        ELSIF (yBalle < BALLE_WIDTH / 2) THEN -- Rebond sur le bord en haut
                             VyBalle <= VyBalle * (-1);
                             yBalle <= BALLE_WIDTH / 2;
                         END IF;
@@ -89,7 +113,7 @@ BEGIN
             END IF;
         END IF;
     END PROCESS;
-    -- IS_BALLE=1 si le pixel (HCOUNT, VCOUNT) en cours de balayage est à l'intérieur du carré (balle), IS_BALLE=0 sinon
+    -- IS_BALLE=1 si le pixel en cours de balayage est à l'intérieur du carré balle, IS_BALLE=0 sinon
     IS_BALLE <= '1' WHEN (HCOUNT > xBalle - BALLE_WIDTH / 2) AND (HCOUNT < xBalle + BALLE_WIDTH / 2) AND
         (VCOUNT > yBalle - BALLE_WIDTH / 2) AND (VCOUNT < yBalle + BALLE_WIDTH / 2) ELSE
         '0';
