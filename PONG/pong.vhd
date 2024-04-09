@@ -1,3 +1,7 @@
+-- Augmenter la vitesse durant un point
+-- Changer angle de renvoie suivant la où la balle touche la raquette
+-- Ajouter une entrée clavier
+
 LIBRARY IEEE;
 USE IEEE.std_logic_1164.ALL;
 
@@ -59,9 +63,16 @@ ARCHITECTURE structural OF pong IS
         );
     END COMPONENT;
 
+    COMPONENT acc_balle_clk IS
+        PORT (
+            CLK, RST : IN STD_LOGIC;
+            ACC_BALLE : OUT STD_LOGIC
+        );
+    END COMPONENT;
+
     COMPONENT balle_move IS
         PORT (
-            BALLE_CLK, RST, FRAME : IN STD_LOGIC;
+            BALLE_CLK, RST, FRAME, ACC_BALLE : IN STD_LOGIC;
             HCOUNT, VCOUNT : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
             Y_RAQUETTE_G, Y_RAQUETTE_D : IN INTEGER;
             IS_BALLE : OUT STD_LOGIC;
@@ -95,7 +106,7 @@ ARCHITECTURE structural OF pong IS
 
     SIGNAL reset, end_game : STD_LOGIC;
     SIGNAL pixel_clk, raquette_clk_s, balle_clk_s : STD_LOGIC;
-    SIGNAL blank, frame : STD_LOGIC;
+    SIGNAL blank, frame, acc_balle : STD_LOGIC;
     SIGNAL is_terrain, is_raquette_g, is_raquette_d, is_balle, is_number : STD_LOGIC;
     SIGNAL y_raquette_g, y_raquette_d : INTEGER;
     SIGNAL j1_score, j2_score : STD_LOGIC_VECTOR(2 DOWNTO 0);
@@ -114,7 +125,8 @@ BEGIN
 
     -- Gestion de la balle
     B0 : balle_clk PORT MAP(CLK => CLK, RST => reset, BALLE_CLK => balle_clk_s);
-    B1 : balle_move PORT MAP(BALLE_CLK => balle_clk_s, RST => reset, FRAME => frame, HCOUNT => hcount, VCOUNT => vcount, Y_RAQUETTE_G => y_raquette_g, Y_RAQUETTE_D => y_raquette_d, IS_BALLE => is_balle, J_WIN => j_win);
+    B1 : acc_balle_clk PORT MAP(CLK => CLK, RST => reset, ACC_BALLE => acc_balle);
+    B2 : balle_move PORT MAP(BALLE_CLK => balle_clk_s, RST => reset, FRAME => frame, ACC_BALLE => acc_balle, HCOUNT => hcount, VCOUNT => vcount, Y_RAQUETTE_G => y_raquette_g, Y_RAQUETTE_D => y_raquette_d, IS_BALLE => is_balle, J_WIN => j_win);
 
     -- Gestion des raquettes
     R0 : raquette_clk PORT MAP(CLK => CLK, RST => reset, RAQUETTE_CLK => raquette_clk_s);
