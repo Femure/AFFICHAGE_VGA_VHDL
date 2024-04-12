@@ -1,0 +1,90 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
+| Date         : Tue Apr  9 22:26:12 2024
+| Host         : Max_Laptop running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file pong_control_sets_placed.rpt
+| Design       : pong
+| Device       : xc7a35t
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |    12 |
+|    Minimum number of control sets                        |    12 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |    30 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |    12 |
+| >= 0 to < 4        |     1 |
+| >= 4 to < 6        |     1 |
+| >= 6 to < 8        |     1 |
+| >= 8 to < 10       |     0 |
+| >= 10 to < 12      |     2 |
+| >= 12 to < 14      |     0 |
+| >= 14 to < 16      |     1 |
+| >= 16              |     6 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |               5 |            4 |
+| No           | No                    | Yes                    |              51 |           21 |
+| No           | Yes                   | No                     |               0 |            0 |
+| Yes          | No                    | No                     |               0 |            0 |
+| Yes          | No                    | Yes                    |             202 |           62 |
+| Yes          | Yes                   | No                     |               0 |            0 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++--------------------+----------------------+------------------+------------------+----------------+--------------+
+|    Clock Signal    |     Enable Signal    | Set/Reset Signal | Slice Load Count | Bel Load Count | Bels / Slice |
++--------------------+----------------------+------------------+------------------+----------------+--------------+
+|  frame_BUFG        |                      |                  |                1 |              1 |         1.00 |
+|  CLK_IBUF_BUFG     |                      |                  |                3 |              4 |         1.33 |
+|  balle_clk_s_BUFG  |                      | RE0/reset_g      |                3 |              6 |         2.00 |
+|  A0/PIXEL_CLK      |                      | RE0/reset_g      |                7 |             10 |         1.43 |
+|  A0/PIXEL_CLK      | A1/countY[9]_i_1_n_0 | RE0/reset_g      |                4 |             10 |         2.50 |
+|  CLK_IBUF_BUFG     |                      | RE0/reset_g      |                5 |             14 |         2.80 |
+|  frame_BUFG        |                      | RE0/reset_g      |                6 |             21 |         3.50 |
+|  RAQUETTE_CLK_BUFG | R1/yRaquetteD        | RE0/reset_g      |                8 |             32 |         4.00 |
+|  RAQUETTE_CLK_BUFG | R1/yRaquetteG        | RE0/reset_g      |                8 |             32 |         4.00 |
+|  balle_clk_s_BUFG  | B2/VxBalle           | RE0/reset_g      |                5 |             32 |         6.40 |
+|  balle_clk_s_BUFG  | B2/VyBalle           | RE0/reset_g      |               22 |             32 |         1.45 |
+|  balle_clk_s_BUFG  | B2/xBalle            | RE0/reset_g      |               15 |             64 |         4.27 |
++--------------------+----------------------+------------------+------------------+----------------+--------------+
+
+

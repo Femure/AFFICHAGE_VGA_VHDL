@@ -6,7 +6,7 @@ USE IEEE.STD_LOGIC_UNSIGNED.ALL;
 ENTITY vga_controller_640_60 IS
     PORT (
         PIXEL_CLK, RST : IN STD_LOGIC;
-        HS, VS, BLANK : OUT STD_LOGIC;
+        HS, VS, BLANK, FRAME : OUT STD_LOGIC;
         HCOUNT, VCOUNT : OUT STD_LOGIC_VECTOR(10 DOWNTO 0)
     );
 END vga_controller_640_60;
@@ -21,7 +21,7 @@ ARCHITECTURE rtl OF vga_controller_640_60 IS
     -- Vetical config
     CONSTANT vlines : INTEGER := 525; -- nombre de pixel par colonne
     CONSTANT vpulse : INTEGER := 2; -- largeur d'impulsion du signal VSYNC
-    cONSTANT vfp : INTEGER := 10; -- vertical front porch
+    CONSTANT vfp : INTEGER := 10; -- vertical front porch
     CONSTANT vbp : INTEGER := 33; -- vertical back porch
 
 BEGIN
@@ -48,9 +48,16 @@ BEGIN
         '1';
     VS <= '0' WHEN ((countY >= vlines - vbp - vpulse) AND (countY < vlines - vbp)) ELSE
         '1';
+
+    -- Affichage sur l'écran
     BLANK <= '1' WHEN ((countX < hpixels - hbp - hfp - hpulse) AND (countY < vlines - vbp - vfp - vpulse)) ELSE
         '0';
     HCOUNT <= countX;
     VCOUNT <= countY;
+
+
+    -- 
+    FRAME <= '1' WHEN ((countX = 0) AND (countY = vlines - vbp - vfp - vpulse)) ELSE
+        '0';
 
 END rtl;
