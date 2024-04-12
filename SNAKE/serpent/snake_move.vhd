@@ -16,14 +16,14 @@ ARCHITECTURE rtl OF snake_move IS
     CONSTANT SCREEN_WIDTH : INTEGER := 640; -- largeur de l'écran en pixels
     CONSTANT SCREEN_HEIGHT : INTEGER := 480; -- hauteur de l'écran en pixels 
     CONSTANT SNAKE_POSITION : INTEGER := 20; --- position initial du snake
-    
+
     SIGNAL xSnake, ySnake : INTEGER; -- Position de la tête du serpent
     SIGNAL dirX, dirY : INTEGER := 0; -- Direction du serpent 
-    SIGNAL snake_life = 0;
+    SIGNAL snake_life : STD_LOGIC := '0';
 
 BEGIN
- 
-    PROCESS (CLK, RST, FRAME)
+
+    PROCESS (CLK, RST, FRAME, HCOUNT, VCOUNT)
     BEGIN
         IF (RST = '1') THEN
             xSnake <= SCREEN_WIDTH/2;
@@ -33,26 +33,27 @@ BEGIN
         ELSIF (CLK'event AND CLK = '1') THEN
             IF (FRAME = '1') THEN
                 -- Mise à jour de la position de la tête du serpent
-                if (dirX != '0') THEN
-                    dirY <= '0';
+                IF (dirX /= 0) THEN
+                    dirY <= 0;
                     xSnake <= xSnake + dirX * SNAKE_SIZE;
                 END IF;
-                if (dirY != '0') THEN
-                    dirX <= '0';
+                IF (dirY /= 0) THEN
+                    dirX <= 0;
                     ySnake <= ySnake + dirY * SNAKE_SIZE;
                 END IF;
-                -- Gérer le rebondissement ou la sortie de l'écran
-                IF (xSnake < 0 OR xSnake > SCREEN_WIDTH OR ySnake < 0 OR ySnake > SCREEN_HEIGHT) THEN
+                -- Gérer la sortie de l'écran
+                IF (xSnake < SNAKE_SIZE/2 OR xSnake > SCREEN_WIDTH - SNAKE_SIZE/2
+                    OR ySnake < SNAKE_SIZE/2 OR ySnake > SCREEN_HEIGHT - SNAKE_SIZE/2) THEN
                     xSnake <= SNAKE_POSITION; -- rénitialisationa à 0
                     ySnake <= SNAKE_POSITION;
-                    snake_life = 1;
+                    snake_life <= '1';
                 END IF;
             END IF;
         END IF;
     END PROCESS;
 
-    IS_SNAKE <= '1' WHEN (HCOUNT >= xSnake AND HCOUNT < xSnake + SNAKE_SIZE) AND
-                         (VCOUNT >= ySnake AND VCOUNT < ySnake + SNAKE_SIZE) ELSE
-                '0';
+    IS_SNAKE <= '1' WHEN (HCOUNT >= xSnake - SNAKE_SIZE/2 AND HCOUNT < xSnake + SNAKE_SIZE/2) AND
+        (VCOUNT >= ySnake - SNAKE_SIZE/2 AND VCOUNT < ySnake + SNAKE_SIZE/2) ELSE
+        '0';
     SNAKE_LOSE <= snake_life;
 END rtl;
