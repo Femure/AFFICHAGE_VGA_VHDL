@@ -9,6 +9,7 @@ ENTITY food_spawn IS
     PORT (
         RST, CLK_RESPAWN, FRAME : IN STD_LOGIC;
         X_SNAKE, Y_SNAKE : IN INTEGER;
+        SEED1, SEED2 : IN INTEGER;
         HCOUNT, VCOUNT : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
         IS_EATEN, IS_FOOD : OUT STD_LOGIC
     );
@@ -20,21 +21,24 @@ ARCHITECTURE rtl OF food_spawn IS
     CONSTANT SCREEN_WIDTH : INTEGER := 640; -- largeur de l'écran en pixels 
     CONSTANT SCREEN_HEIGHT : INTEGER := 480; -- hauteur de l'écran en pixels 
 
-    SIGNAL counter : INTEGER RANGE 0 TO 2**32 - 1 := 0; -- Supposons que le compteur compte jusqu'à 32 bits
     -- Définition de la fonction pour générer des nombres pseudo-aléatoires entre min_val et max_val
-    IMPURE FUNCTION rand_int(min_val, max_val : INTEGER) RETURN INTEGER IS
-        VARIABLE seed1 : INTEGER := TO_INTEGER(TO_UNSIGNED(counter, 32));
-        VARIABLE seed2 : INTEGER := TO_INTEGER(TO_UNSIGNED(counter, 32) + 1); -- Pour diversifier les graines
-        VARIABLE r : REAL;
+    FUNCTION rand_int(rand_val : INTEGER; MIN_VAL, MAX_VAL : INTEGER) RETURN INTEGER IS
+        VARIABLE range_val : INTEGER := MAX_VAL - MIN_VAL;
+        VARIABLE normalized_val : INTEGER := rand_val;
+        VARIABLE scaled_val : INTEGER;
     BEGIN
-        uniform(seed1, seed2, r);
-        RETURN INTEGER(ROUND(r * REAL(max_val - min_val + 1) + REAL(min_val) - 0.5));
-    END FUNCTION rand_int;
+        -- Normalisation de la valeur aléatoire
+        scaled_val := normalized_val * (range_val +1) / 256; -- 256 est la plage de valeurs possibles de rand_val
+
+        -- Ajout du décalage pour obtenir une valeur dans la plage spécifiée
+        RETURN scaled_val + MIN_VAL;
+    END FUNCTION;
 
     SIGNAL xFood : INTEGER := 2 * SCREEN_WIDTH / 3;
     SIGNAL yFood : INTEGER := SCREEN_HEIGHT / 2;
     SIGNAL eaten : STD_LOGIC;
 BEGIN
+
     PROCESS (RST, FRAME, CLK_RESPAWN, X_SNAKE, Y_SNAKE, HCOUNT, VCOUNT)
     BEGIN
         IF (RST = '1') THEN
@@ -43,9 +47,9 @@ BEGIN
             eaten <= '0';
         ELSE
             IF (FRAME = '1') THEN
-                IF (eaten = '1') THEN -- Si le serpent mange la nourriture alors le nouveau cube apparaît de manière aléaoire
-                    xFood <= rand_int(FOOD_SIZE, SCREEN_WIDTH - FOOD_SIZE);
-                    yFood <= rand_int(FOOD_SIZE, SCREEN_HEIGHT - FOOD_SIZE);
+                IF (eaten = '1') THEN -- Si le serpent mange la nourriture alors le nouveau cube apparaît de manière aléatoire
+                    xFood <= rand_int(SEED1, FOOD_SIZE, SCREEN_WIDTH - FOOD_SIZE);
+                    yFood <= rand_int(SEED2, FOOD_SIZE, SCREEN_HEIGHT - FOOD_SIZE);
                     eaten <= '0';
                 ELSE
                     -- IF ((X_SNAKE > (xFood - FOOD_SIZE/2) - (SNAKE_SIZE / 2))) -- Coté gauche
