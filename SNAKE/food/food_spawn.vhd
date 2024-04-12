@@ -7,7 +7,7 @@ USE IEEE.MATH_REAL.ALL;
 
 ENTITY food_spawn IS
     PORT (
-        RST, CLK_RESPAWN, FRAME : IN STD_LOGIC;
+        RST, FRAME : IN STD_LOGIC;
         X_SNAKE, Y_SNAKE : IN INTEGER;
         SEED1, SEED2 : IN INTEGER;
         HCOUNT, VCOUNT : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
@@ -28,7 +28,7 @@ ARCHITECTURE rtl OF food_spawn IS
         VARIABLE scaled_val : INTEGER;
     BEGIN
         -- Normalisation de la valeur aléatoire
-        scaled_val := normalized_val * (range_val +1) / 256; -- 256 est la plage de valeurs possibles de rand_val
+        scaled_val := normalized_val * (range_val + 1) / 256; -- 256 est la plage de valeurs possibles de rand_val
 
         -- Ajout du décalage pour obtenir une valeur dans la plage spécifiée
         RETURN scaled_val + MIN_VAL;
@@ -39,7 +39,7 @@ ARCHITECTURE rtl OF food_spawn IS
     SIGNAL eaten : STD_LOGIC;
 BEGIN
 
-    PROCESS (RST, FRAME, CLK_RESPAWN, X_SNAKE, Y_SNAKE, HCOUNT, VCOUNT)
+    PROCESS (RST, FRAME, X_SNAKE, Y_SNAKE, HCOUNT, VCOUNT)
     BEGIN
         IF (RST = '1') THEN
             xFood <= 2 * SCREEN_WIDTH / 3;
@@ -52,11 +52,10 @@ BEGIN
                     yFood <= rand_int(SEED2, FOOD_SIZE, SCREEN_HEIGHT - FOOD_SIZE);
                     eaten <= '0';
                 ELSE
-                    -- IF ((X_SNAKE > (xFood - FOOD_SIZE/2) - (SNAKE_SIZE / 2))) -- Coté gauche
-                    --     AND ((X_SNAKE < (xFood + FOOD_SIZE/2) + (SNAKE_SIZE / 2))) -- Coté droit
-                    --     AND ((Y_SNAKE > (yFood - FOOD_SIZE/2) - (SNAKE_SIZE / 2))) -- Coté bas
-                    --     AND ((Y_SNAKE < (yFood + FOOD_SIZE/2) + (SNAKE_SIZE / 2))) THEN -- Coté haut
-                    IF (CLK_RESPAWN = '1') THEN
+                    IF ((X_SNAKE > (xFood - FOOD_SIZE/2) - (SNAKE_SIZE / 2))) -- Coté gauche
+                        AND ((X_SNAKE < (xFood + FOOD_SIZE/2) + (SNAKE_SIZE / 2))) -- Coté droit
+                        AND ((Y_SNAKE > (yFood - FOOD_SIZE/2) - (SNAKE_SIZE / 2))) -- Coté bas
+                        AND ((Y_SNAKE < (yFood + FOOD_SIZE/2) + (SNAKE_SIZE / 2))) THEN -- Coté haut
                         eaten <= '1';
                     END IF;
                 END IF;

@@ -7,7 +7,8 @@ ENTITY snake_move IS
     PORT (
         CLK, RST, FRAME : IN STD_LOGIC;
         HCOUNT, VCOUNT : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
-        IS_SNAKE, SNAKE_LOSE : OUT STD_LOGIC
+        IS_SNAKE, SNAKE_LOSE : OUT STD_LOGIC;
+        X_SNAKE, Y_SNAKE : OUT INTEGER
     );
 END snake_move;
 
@@ -56,4 +57,6 @@ BEGIN
         (VCOUNT >= ySnake - SNAKE_SIZE/2 AND VCOUNT < ySnake + SNAKE_SIZE/2) ELSE
         '0';
     SNAKE_LOSE <= snake_life;
+    X_SNAKE <= xSnake;
+    Y_SNAKE <= ySnake;
 END rtl;

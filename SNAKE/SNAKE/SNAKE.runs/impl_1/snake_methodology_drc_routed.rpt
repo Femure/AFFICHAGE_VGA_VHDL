@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Fri Apr 12 20:13:11 2024
+| Date         : Fri Apr 12 22:14:10 2024
 | Host         : Max_Laptop running 64-bit major release  (build 9200)
 | Command      : report_methodology -file snake_methodology_drc_routed.rpt -pb snake_methodology_drc_routed.pb -rpx snake_methodology_drc_routed.rpx
 | Design       : snake
@@ -27,10 +27,9 @@ Table of Contents
 +-----------+------------------+--------------------------------+------------+
 | Rule      | Severity         | Description                    | Violations |
 +-----------+------------------+--------------------------------+------------+
-| TIMING-17 | Critical Warning | Non-clocked sequential cell    | 50         |
-| DPIR-1    | Warning          | Asynchronous driver check      | 8          |
+| TIMING-17 | Critical Warning | Non-clocked sequential cell    | 39         |
 | TIMING-18 | Warning          | Missing input or output delay  | 1          |
-| TIMING-20 | Warning          | Non-clocked latch              | 25         |
+| TIMING-20 | Warning          | Non-clocked latch              | 44         |
 | LATCH-1   | Advisory         | Existing latches in the design | 1          |
 +-----------+------------------+--------------------------------+------------+
 
@@ -138,192 +137,97 @@ Related violations: <none>
 
 TIMING-17#21 Critical Warning
 Non-clocked sequential cell  
-The clock pin N0/CLK_RESPAWN_reg/C is not reached by a timing clock
+The clock pin N2/lfsr_out_reg[0]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#22 Critical Warning
 Non-clocked sequential cell  
-The clock pin N0/cnt_reg[0]/C is not reached by a timing clock
+The clock pin N2/lfsr_out_reg[1]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#23 Critical Warning
 Non-clocked sequential cell  
-The clock pin N0/cnt_reg[10]/C is not reached by a timing clock
+The clock pin N2/lfsr_out_reg[2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#24 Critical Warning
 Non-clocked sequential cell  
-The clock pin N0/cnt_reg[11]/C is not reached by a timing clock
+The clock pin N2/lfsr_out_reg[3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#25 Critical Warning
 Non-clocked sequential cell  
-The clock pin N0/cnt_reg[12]/C is not reached by a timing clock
+The clock pin N2/lfsr_out_reg[4]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#26 Critical Warning
 Non-clocked sequential cell  
-The clock pin N0/cnt_reg[13]/C is not reached by a timing clock
+The clock pin N2/lfsr_out_reg[5]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#27 Critical Warning
 Non-clocked sequential cell  
-The clock pin N0/cnt_reg[14]/C is not reached by a timing clock
+The clock pin N2/lfsr_out_reg[6]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#28 Critical Warning
 Non-clocked sequential cell  
-The clock pin N0/cnt_reg[15]/C is not reached by a timing clock
+The clock pin N2/lfsr_out_reg[7]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#29 Critical Warning
 Non-clocked sequential cell  
-The clock pin N0/cnt_reg[16]/C is not reached by a timing clock
+The clock pin S1/xSnake_reg[2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#30 Critical Warning
 Non-clocked sequential cell  
-The clock pin N0/cnt_reg[17]/C is not reached by a timing clock
+The clock pin S1/xSnake_reg[31]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#31 Critical Warning
 Non-clocked sequential cell  
-The clock pin N0/cnt_reg[18]/C is not reached by a timing clock
+The clock pin S1/xSnake_reg[4]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#32 Critical Warning
 Non-clocked sequential cell  
-The clock pin N0/cnt_reg[19]/C is not reached by a timing clock
+The clock pin S1/xSnake_reg[6]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#33 Critical Warning
 Non-clocked sequential cell  
-The clock pin N0/cnt_reg[1]/C is not reached by a timing clock
+The clock pin S1/xSnake_reg[8]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#34 Critical Warning
 Non-clocked sequential cell  
-The clock pin N0/cnt_reg[20]/C is not reached by a timing clock
+The clock pin S1/ySnake_reg[2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#35 Critical Warning
 Non-clocked sequential cell  
-The clock pin N0/cnt_reg[2]/C is not reached by a timing clock
+The clock pin S1/ySnake_reg[31]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#36 Critical Warning
 Non-clocked sequential cell  
-The clock pin N0/cnt_reg[3]/C is not reached by a timing clock
+The clock pin S1/ySnake_reg[4]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#37 Critical Warning
 Non-clocked sequential cell  
-The clock pin N0/cnt_reg[4]/C is not reached by a timing clock
+The clock pin S1/ySnake_reg[5]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#38 Critical Warning
 Non-clocked sequential cell  
-The clock pin N0/cnt_reg[5]/C is not reached by a timing clock
+The clock pin S1/ySnake_reg[6]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#39 Critical Warning
 Non-clocked sequential cell  
-The clock pin N0/cnt_reg[6]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#40 Critical Warning
-Non-clocked sequential cell  
-The clock pin N0/cnt_reg[7]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#41 Critical Warning
-Non-clocked sequential cell  
-The clock pin N0/cnt_reg[8]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#42 Critical Warning
-Non-clocked sequential cell  
-The clock pin N0/cnt_reg[9]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#43 Critical Warning
-Non-clocked sequential cell  
-The clock pin N2/lfsr_out_reg[0]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#44 Critical Warning
-Non-clocked sequential cell  
-The clock pin N2/lfsr_out_reg[1]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#45 Critical Warning
-Non-clocked sequential cell  
-The clock pin N2/lfsr_out_reg[2]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#46 Critical Warning
-Non-clocked sequential cell  
-The clock pin N2/lfsr_out_reg[3]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#47 Critical Warning
-Non-clocked sequential cell  
-The clock pin N2/lfsr_out_reg[4]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#48 Critical Warning
-Non-clocked sequential cell  
-The clock pin N2/lfsr_out_reg[5]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#49 Critical Warning
-Non-clocked sequential cell  
-The clock pin N2/lfsr_out_reg[6]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#50 Critical Warning
-Non-clocked sequential cell  
-The clock pin N2/lfsr_out_reg[7]/C is not reached by a timing clock
-Related violations: <none>
-
-DPIR-1#1 Warning
-Asynchronous driver check  
-DSP N3/rand_int3 input pin N3/rand_int3/A[0] is connected to registers with an asynchronous reset. This is preventing the possibility of merging these registers in to the DSP Block since the DSP block registers only possess synchronous reset capability.  It is suggested to recode or change these registers to remove the reset or use a synchronous reset to get the best optimization for performance, power and area.
-Related violations: <none>
-
-DPIR-1#2 Warning
-Asynchronous driver check  
-DSP N3/rand_int3 input pin N3/rand_int3/A[1] is connected to registers with an asynchronous reset. This is preventing the possibility of merging these registers in to the DSP Block since the DSP block registers only possess synchronous reset capability.  It is suggested to recode or change these registers to remove the reset or use a synchronous reset to get the best optimization for performance, power and area.
-Related violations: <none>
-
-DPIR-1#3 Warning
-Asynchronous driver check  
-DSP N3/rand_int3 input pin N3/rand_int3/A[2] is connected to registers with an asynchronous reset. This is preventing the possibility of merging these registers in to the DSP Block since the DSP block registers only possess synchronous reset capability.  It is suggested to recode or change these registers to remove the reset or use a synchronous reset to get the best optimization for performance, power and area.
-Related violations: <none>
-
-DPIR-1#4 Warning
-Asynchronous driver check  
-DSP N3/rand_int3 input pin N3/rand_int3/A[3] is connected to registers with an asynchronous reset. This is preventing the possibility of merging these registers in to the DSP Block since the DSP block registers only possess synchronous reset capability.  It is suggested to recode or change these registers to remove the reset or use a synchronous reset to get the best optimization for performance, power and area.
-Related violations: <none>
-
-DPIR-1#5 Warning
-Asynchronous driver check  
-DSP N3/rand_int3 input pin N3/rand_int3/A[4] is connected to registers with an asynchronous reset. This is preventing the possibility of merging these registers in to the DSP Block since the DSP block registers only possess synchronous reset capability.  It is suggested to recode or change these registers to remove the reset or use a synchronous reset to get the best optimization for performance, power and area.
-Related violations: <none>
-
-DPIR-1#6 Warning
-Asynchronous driver check  
-DSP N3/rand_int3 input pin N3/rand_int3/A[5] is connected to registers with an asynchronous reset. This is preventing the possibility of merging these registers in to the DSP Block since the DSP block registers only possess synchronous reset capability.  It is suggested to recode or change these registers to remove the reset or use a synchronous reset to get the best optimization for performance, power and area.
-Related violations: <none>
-
-DPIR-1#7 Warning
-Asynchronous driver check  
-DSP N3/rand_int3 input pin N3/rand_int3/A[6] is connected to registers with an asynchronous reset. This is preventing the possibility of merging these registers in to the DSP Block since the DSP block registers only possess synchronous reset capability.  It is suggested to recode or change these registers to remove the reset or use a synchronous reset to get the best optimization for performance, power and area.
-Related violations: <none>
-
-DPIR-1#8 Warning
-Asynchronous driver check  
-DSP N3/rand_int3 input pin N3/rand_int3/A[7] is connected to registers with an asynchronous reset. This is preventing the possibility of merging these registers in to the DSP Block since the DSP block registers only possess synchronous reset capability.  It is suggested to recode or change these registers to remove the reset or use a synchronous reset to get the best optimization for performance, power and area.
+The clock pin S1/ySnake_reg[7]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-18#1 Warning
@@ -348,117 +252,212 @@ Related violations: <none>
 
 TIMING-20#4 Warning
 Non-clocked latch  
-The latch N3/xFood_reg[11] cannot be properly analyzed as its control pin N3/xFood_reg[11]/G is not reached by a timing clock
+The latch N3/xFood_reg[1] cannot be properly analyzed as its control pin N3/xFood_reg[1]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#5 Warning
 Non-clocked latch  
-The latch N3/xFood_reg[1] cannot be properly analyzed as its control pin N3/xFood_reg[1]/G is not reached by a timing clock
+The latch N3/xFood_reg[2] cannot be properly analyzed as its control pin N3/xFood_reg[2]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#6 Warning
 Non-clocked latch  
-The latch N3/xFood_reg[2] cannot be properly analyzed as its control pin N3/xFood_reg[2]/G is not reached by a timing clock
+The latch N3/xFood_reg[3] cannot be properly analyzed as its control pin N3/xFood_reg[3]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#7 Warning
 Non-clocked latch  
-The latch N3/xFood_reg[3] cannot be properly analyzed as its control pin N3/xFood_reg[3]/G is not reached by a timing clock
+The latch N3/xFood_reg[4] cannot be properly analyzed as its control pin N3/xFood_reg[4]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#8 Warning
 Non-clocked latch  
-The latch N3/xFood_reg[4] cannot be properly analyzed as its control pin N3/xFood_reg[4]/G is not reached by a timing clock
+The latch N3/xFood_reg[5] cannot be properly analyzed as its control pin N3/xFood_reg[5]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#9 Warning
 Non-clocked latch  
-The latch N3/xFood_reg[5] cannot be properly analyzed as its control pin N3/xFood_reg[5]/G is not reached by a timing clock
+The latch N3/xFood_reg[6] cannot be properly analyzed as its control pin N3/xFood_reg[6]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#10 Warning
 Non-clocked latch  
-The latch N3/xFood_reg[6] cannot be properly analyzed as its control pin N3/xFood_reg[6]/G is not reached by a timing clock
+The latch N3/xFood_reg[7] cannot be properly analyzed as its control pin N3/xFood_reg[7]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#11 Warning
 Non-clocked latch  
-The latch N3/xFood_reg[7] cannot be properly analyzed as its control pin N3/xFood_reg[7]/G is not reached by a timing clock
+The latch N3/xFood_reg[8] cannot be properly analyzed as its control pin N3/xFood_reg[8]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#12 Warning
 Non-clocked latch  
-The latch N3/xFood_reg[8] cannot be properly analyzed as its control pin N3/xFood_reg[8]/G is not reached by a timing clock
+The latch N3/xFood_reg[9] cannot be properly analyzed as its control pin N3/xFood_reg[9]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#13 Warning
 Non-clocked latch  
-The latch N3/xFood_reg[9] cannot be properly analyzed as its control pin N3/xFood_reg[9]/G is not reached by a timing clock
+The latch N3/yFood_reg[0] cannot be properly analyzed as its control pin N3/yFood_reg[0]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#14 Warning
 Non-clocked latch  
-The latch N3/yFood_reg[0] cannot be properly analyzed as its control pin N3/yFood_reg[0]/G is not reached by a timing clock
+The latch N3/yFood_reg[10] cannot be properly analyzed as its control pin N3/yFood_reg[10]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#15 Warning
 Non-clocked latch  
-The latch N3/yFood_reg[10] cannot be properly analyzed as its control pin N3/yFood_reg[10]/G is not reached by a timing clock
+The latch N3/yFood_reg[11] cannot be properly analyzed as its control pin N3/yFood_reg[11]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#16 Warning
 Non-clocked latch  
-The latch N3/yFood_reg[11] cannot be properly analyzed as its control pin N3/yFood_reg[11]/G is not reached by a timing clock
+The latch N3/yFood_reg[12] cannot be properly analyzed as its control pin N3/yFood_reg[12]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#17 Warning
 Non-clocked latch  
-The latch N3/yFood_reg[1] cannot be properly analyzed as its control pin N3/yFood_reg[1]/G is not reached by a timing clock
+The latch N3/yFood_reg[13] cannot be properly analyzed as its control pin N3/yFood_reg[13]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#18 Warning
 Non-clocked latch  
-The latch N3/yFood_reg[2] cannot be properly analyzed as its control pin N3/yFood_reg[2]/G is not reached by a timing clock
+The latch N3/yFood_reg[14] cannot be properly analyzed as its control pin N3/yFood_reg[14]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#19 Warning
 Non-clocked latch  
-The latch N3/yFood_reg[3] cannot be properly analyzed as its control pin N3/yFood_reg[3]/G is not reached by a timing clock
+The latch N3/yFood_reg[15] cannot be properly analyzed as its control pin N3/yFood_reg[15]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#20 Warning
 Non-clocked latch  
-The latch N3/yFood_reg[4] cannot be properly analyzed as its control pin N3/yFood_reg[4]/G is not reached by a timing clock
+The latch N3/yFood_reg[16] cannot be properly analyzed as its control pin N3/yFood_reg[16]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#21 Warning
 Non-clocked latch  
-The latch N3/yFood_reg[5] cannot be properly analyzed as its control pin N3/yFood_reg[5]/G is not reached by a timing clock
+The latch N3/yFood_reg[17] cannot be properly analyzed as its control pin N3/yFood_reg[17]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#22 Warning
 Non-clocked latch  
-The latch N3/yFood_reg[6] cannot be properly analyzed as its control pin N3/yFood_reg[6]/G is not reached by a timing clock
+The latch N3/yFood_reg[18] cannot be properly analyzed as its control pin N3/yFood_reg[18]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#23 Warning
 Non-clocked latch  
-The latch N3/yFood_reg[7] cannot be properly analyzed as its control pin N3/yFood_reg[7]/G is not reached by a timing clock
+The latch N3/yFood_reg[19] cannot be properly analyzed as its control pin N3/yFood_reg[19]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#24 Warning
 Non-clocked latch  
-The latch N3/yFood_reg[8] cannot be properly analyzed as its control pin N3/yFood_reg[8]/G is not reached by a timing clock
+The latch N3/yFood_reg[1] cannot be properly analyzed as its control pin N3/yFood_reg[1]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#25 Warning
+Non-clocked latch  
+The latch N3/yFood_reg[20] cannot be properly analyzed as its control pin N3/yFood_reg[20]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#26 Warning
+Non-clocked latch  
+The latch N3/yFood_reg[21] cannot be properly analyzed as its control pin N3/yFood_reg[21]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#27 Warning
+Non-clocked latch  
+The latch N3/yFood_reg[22] cannot be properly analyzed as its control pin N3/yFood_reg[22]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#28 Warning
+Non-clocked latch  
+The latch N3/yFood_reg[23] cannot be properly analyzed as its control pin N3/yFood_reg[23]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#29 Warning
+Non-clocked latch  
+The latch N3/yFood_reg[24] cannot be properly analyzed as its control pin N3/yFood_reg[24]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#30 Warning
+Non-clocked latch  
+The latch N3/yFood_reg[25] cannot be properly analyzed as its control pin N3/yFood_reg[25]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#31 Warning
+Non-clocked latch  
+The latch N3/yFood_reg[26] cannot be properly analyzed as its control pin N3/yFood_reg[26]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#32 Warning
+Non-clocked latch  
+The latch N3/yFood_reg[27] cannot be properly analyzed as its control pin N3/yFood_reg[27]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#33 Warning
+Non-clocked latch  
+The latch N3/yFood_reg[28] cannot be properly analyzed as its control pin N3/yFood_reg[28]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#34 Warning
+Non-clocked latch  
+The latch N3/yFood_reg[29] cannot be properly analyzed as its control pin N3/yFood_reg[29]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#35 Warning
+Non-clocked latch  
+The latch N3/yFood_reg[2] cannot be properly analyzed as its control pin N3/yFood_reg[2]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#36 Warning
+Non-clocked latch  
+The latch N3/yFood_reg[30] cannot be properly analyzed as its control pin N3/yFood_reg[30]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#37 Warning
+Non-clocked latch  
+The latch N3/yFood_reg[31] cannot be properly analyzed as its control pin N3/yFood_reg[31]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#38 Warning
+Non-clocked latch  
+The latch N3/yFood_reg[3] cannot be properly analyzed as its control pin N3/yFood_reg[3]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#39 Warning
+Non-clocked latch  
+The latch N3/yFood_reg[4] cannot be properly analyzed as its control pin N3/yFood_reg[4]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#40 Warning
+Non-clocked latch  
+The latch N3/yFood_reg[5] cannot be properly analyzed as its control pin N3/yFood_reg[5]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#41 Warning
+Non-clocked latch  
+The latch N3/yFood_reg[6] cannot be properly analyzed as its control pin N3/yFood_reg[6]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#42 Warning
+Non-clocked latch  
+The latch N3/yFood_reg[7] cannot be properly analyzed as its control pin N3/yFood_reg[7]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#43 Warning
+Non-clocked latch  
+The latch N3/yFood_reg[8] cannot be properly analyzed as its control pin N3/yFood_reg[8]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#44 Warning
 Non-clocked latch  
 The latch N3/yFood_reg[9] cannot be properly analyzed as its control pin N3/yFood_reg[9]/G is not reached by a timing clock
 Related violations: <none>
 
 LATCH-1#1 Advisory
 Existing latches in the design  
-There are 25 latches found in the design. Inferred latches are often the result of HDL coding mistakes, such as incomplete if or case statements.
+There are 44 latches found in the design. Inferred latches are often the result of HDL coding mistakes, such as incomplete if or case statements.
 Related violations: <none>
 
 
