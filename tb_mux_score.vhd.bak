@@ -1,0 +1,72 @@
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+
+ENTITY tb_mux_score IS
+END tb_mux_score;
+
+ARCHITECTURE rtl OF tb_mux_score IS 
+
+    -- Déclaration des signaux pour simuler l'environnement du test
+    SIGNAL clk_tb     : std_logic := '0';
+    SIGNAL rst_tb     : std_logic;
+    SIGNAL j_win_tb   : std_logic;
+    
+    SIGNAL j_count_tb : std_logic;
+    SIGNAL s_count_1_tb : STD_LOGIC_VECTOR (2 DOWNTO 0);
+    SIGNAL s_count_2_tb : STD_LOGIC_VECTOR (2 DOWNTO 0);
+
+    -- Instance de l'entité mux_score pour le test
+    COMPONENT mux_score
+        PORT(
+            CLK : IN std_logic;
+            RST : IN std_logic;
+            J_WIN : IN std_logic;
+            
+            J_COUNT : OUT std_logic;
+            S_COUNT_1 : OUT STD_LOGIC_VECTOR (2 DOWNTO 0);
+            S_COUNT_2 : OUT STD_LOGIC_VECTOR (2 DOWNTO 0)
+        );
+    END COMPONENT;
+
+BEGIN
+
+    -- Instanciation du composant mux_score
+    uut: mux_score PORT MAP (
+        CLK => clk_tb,
+        RST => rst_tb,
+        J_WIN => j_win_tb,
+        
+        J_COUNT => j_count_tb,
+        S_COUNT_1 => s_count_1_tb,
+        S_COUNT_2 => s_count_2_tb
+    );
+
+    -- Processus pour générer le signal d'horloge
+    clk_process : PROCESS
+    BEGIN
+        clk_tb <= '0';
+        WAIT FOR 10 ns;  -- Période d'horloge de 20 ns
+        clk_tb <= '1';
+        WAIT FOR 10 ns;
+    END PROCESS clk_process;
+
+    -- Processus de stimulation pour tester le comportement du DUT
+    stim_proc : PROCESS
+    BEGIN
+        -- Réinitialisation
+        rst_tb <= '1';
+        WAIT FOR 20 ns;
+        rst_tb <= '0';
+        
+        -- Simuler un point pour le joueur 1
+        j_win_tb <= '0';
+        WAIT FOR 40 ns; -- Attendre deux cycles d'horloge
+        
+        -- Simuler un point pour le joueur 2
+        j_win_tb <= '1';
+        WAIT FOR 40 ns; -- Attendre deux cycles d'horloge
+
+        WAIT; -- Attend indéfiniment pour observer le comportement dans un simulateur
+    END PROCESS stim_proc;
+
+END rtl;
