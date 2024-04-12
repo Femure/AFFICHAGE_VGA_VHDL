@@ -12,6 +12,8 @@
   - Corps composé de plusieurs carrés qui se suivent l’un après l’autre
   - Corps qui grandi à chaque cubes mangé
 
+:warning: Quand vous faites votre partie, penser à pas seulement faire le module avec votre code mais aussi ajouter votre composent dans le programme principale en faisant le mapping comme ça je gagne du temps quand je regroupe tout le code
+
 ## Amélioration : 
 - Ajout de cube qui apparaissent au fur et à mesure de la partie pour bloqué le joueur
 - Accélération du serpent
