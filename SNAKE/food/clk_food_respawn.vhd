@@ -18,7 +18,7 @@ BEGIN
         IF (RST = '1') THEN
             cnt <= (OTHERS => '0');
         ELSIF (FRAME'event AND FRAME = '1') THEN
-            IF (cnt = "10") THEN -- 10 secondes à 60 Hz 
+            IF (cnt = "1001011000") THEN -- 10 secondes à 60 Hz 
                 CLK_RESPAWN <= '1';
                 cnt <= (OTHERS => '0');
             ELSE
