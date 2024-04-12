@@ -1,10 +1,16 @@
-README PONG BOYYYYYY
+# Tâches à faire projet snake 
+**1. Gestion des cubes à manger :**
+ - Apparition aléatoire
+ - disparition quand toucher -> gestion collision
+**2. Gestion déplacement du serpent avec les flèches :**
+ - Le serpent avance en continue et on peut le faire tourner seulement de 90 degré
+  - Collision avec un bord d’écran
+  - Collision avec son propre corps
+**3. Gestion corps du serpent :**
+  - Corps composé de plusieurs carrés qui se suivent l’un après l’autre
+  - Corps qui grandi à chaque cubes mangé
 
-1. Faire les raquettes
-2. Faire les compteurs de points
-3. Faire les entrées avec les push buttons
-4. Faire diviseur de fréquence pour déplacement de la raquette
-5. Faire la balle avec le moteur de ces mouvements si tape un bord 
-6. Faire diviseur de fréquence pour déplacement de la balle
-7. Faire un arrêt de jeu quand ça touche le bord écran droit ou gauche
-8. Tout assembler ensemble
+## Amélioration : 
+- Ajout de cube qui apparaissent au fur et à mesure de la partie pour bloqué le joueur
+- Accélération du serpent
+- Ajout d’un clavier en entrée
