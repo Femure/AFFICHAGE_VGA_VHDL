@@ -36,8 +36,9 @@ ARCHITECTURE structural OF snake IS
 
     COMPONENT snake_move IS
         PORT (
-            CLK, RST, FRAME : IN STD_LOGIC;
+            SNAKE_CLK, RST, FRAME : IN STD_LOGIC;
             HCOUNT, VCOUNT : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
+            PB_D, PB_G, PB_H, PB_B : IN STD_LOGIC;
             IS_SNAKE, SNAKE_LOSE : OUT STD_LOGIC;
             X_SNAKE, Y_SNAKE : OUT INTEGER
         );
@@ -92,7 +93,7 @@ BEGIN
 
     -- Gestion corps serpent 
     S0 : clk_snake PORT MAP(CLK => CLK, RST => RST, SNAKE_CLK => snake_clk);
-    S1 : snake_move PORT MAP(CLK => snake_clk, RST => RST, FRAME => frame, HCOUNT => hcount, VCOUNT => vcount, IS_SNAKE => is_snake, SNAKE_LOSE => snake_lose, X_SNAKE => x_snake, Y_SNAKE => y_snake);
+    S1 : snake_move PORT MAP(SNAKE_CLK => snake_clk, RST => RST, FRAME => frame, HCOUNT => hcount, VCOUNT => vcount, PB_G => PB_G, PB_H => PB_H, PB_D => PB_D, PB_B => PB_B, IS_SNAKE => is_snake, SNAKE_LOSE => snake_lose, X_SNAKE => x_snake, Y_SNAKE => y_snake);
 
     -- Gestion des cubes de nourriture
     -- N0 : clk_food_respawn PORT MAP(FRAME => frame, RST => RST, CLK_RESPAWN => clk_respawn);

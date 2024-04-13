@@ -11,7 +11,7 @@ ENTITY clk_snake IS
 END clk_snake ;
 
 ARCHITECTURE rtl OF clk_snake  IS
-    SIGNAL cnt : STD_LOGIC_VECTOR(1 DOWNTO 0);
+    SIGNAL cnt : STD_LOGIC_VECTOR(2 DOWNTO 0);
 BEGIN
     PROCESS (CLK, RST)
     BEGIN
@@ -19,7 +19,7 @@ BEGIN
             cnt <= (OTHERS => '0');
         ELSIF (CLK'event AND CLK = '1') THEN
             SNAKE_CLK <= cnt(1);
-            IF (cnt = "11") THEN
+            IF (cnt = "111") THEN
                 cnt <= (OTHERS => '0');
             ELSE
                 cnt <= cnt + 1;
