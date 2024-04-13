@@ -44,13 +44,6 @@ ARCHITECTURE structural OF snake IS
         );
     END COMPONENT;
 
-    COMPONENT clk_food_respawn IS
-        PORT (
-            FRAME, RST : IN STD_LOGIC;
-            CLK_RESPAWN : OUT STD_LOGIC
-        );
-    END COMPONENT;
-
     COMPONENT cnt_rand IS
         PORT (
             CLK, RST : IN STD_LOGIC;
@@ -77,7 +70,7 @@ ARCHITECTURE structural OF snake IS
         );
     END COMPONENT;
 
-    SIGNAL pixel_clk, snake_clk, clk_respawn : STD_LOGIC;
+    SIGNAL pixel_clk, snake_clk : STD_LOGIC;
     SIGNAL blank, frame : STD_LOGIC;
     SIGNAL is_snake, is_eaten, is_food : STD_LOGIC;
     SIGNAL snake_lose : STD_LOGIC;
@@ -96,7 +89,6 @@ BEGIN
     S1 : snake_move PORT MAP(SNAKE_CLK => snake_clk, RST => RST, FRAME => frame, HCOUNT => hcount, VCOUNT => vcount, PB_G => PB_G, PB_H => PB_H, PB_D => PB_D, PB_B => PB_B, IS_SNAKE => is_snake, SNAKE_LOSE => snake_lose, X_SNAKE => x_snake, Y_SNAKE => y_snake);
 
     -- Gestion des cubes de nourriture
-    -- N0 : clk_food_respawn PORT MAP(FRAME => frame, RST => RST, CLK_RESPAWN => clk_respawn);
     N1 : cnt_rand PORT MAP(CLK => CLK, RST => RST, RAND_OUT => seed1);
     N2 : cnt_rand PORT MAP(CLK => pixel_clk, RST => RST, RAND_OUT => seed2);
     N3 : food_spawn PORT MAP(RST => RST, FRAME => frame, X_SNAKE => x_snake, Y_SNAKE => y_snake, SEED1 => seed1, SEED2 => seed2, HCOUNT => hcount, VCOUNT => vcount, IS_EATEN => is_eaten, IS_FOOD => is_food);

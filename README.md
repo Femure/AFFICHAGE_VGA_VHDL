@@ -1,12 +1,12 @@
 # Tâches à faire projet snake 
 **1. Gestion des cubes à manger :**
- - Apparition aléatoire
- - disparition quand toucher -> gestion collision
+ - Apparition aléatoire à améliorer
+ - disparition quand toucher -> gestion collision OK
 
 **2. Gestion déplacement du serpent avec les flèches :**
- - Le serpent avance en continue et on peut le faire tourner seulement de 90 degré
-  - Collision avec un bord d’écran
-  - Collision avec son propre corps
+ - Le serpent avance en continue et on peut le faire tourner seulement de 90 degré OK
+ - Collision avec un bord d’écran OK
+ - Collision avec son propre corps
 
 **3. Gestion corps du serpent :**
   - Corps composé de plusieurs carrés qui se suivent l’un après l’autre
