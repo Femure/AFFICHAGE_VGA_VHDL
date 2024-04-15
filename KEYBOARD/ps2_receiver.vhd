@@ -1,12 +1,13 @@
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
-USE IEEE.NUMERIC_STD.ALL;
+USE IEEE.STD_LOGIC_ARITH.ALL;
+USE IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 ENTITY ps2_receiver IS
     PORT (
-        CLK, PS2_CLK_INT, PS2_DATA_INT : IN STD_LOGIC;
-        KEYCODE : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
-        OFLAG : OUT STD_LOGIC
+        PS2_CLK_INT, PS2_DATA_INT : IN STD_LOGIC;
+        KEYCODE : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+        ERROR : OUT STD_LOGIC
     );
 END ps2_receiver;
 
@@ -24,23 +25,5 @@ BEGIN
         ps2_word(7) XOR ps2_word(6) XOR ps2_word(5) XOR ps2_word(4) XOR ps2_word(3) XOR
         ps2_word(2) XOR ps2_word(1)));
 
-    PROCESS (CLK)
-    BEGIN
-        IF (CLK'EVENT AND CLK = '1') THEN --rising edge of system clock
-
-            IF (ps2_CLK_int = '0') THEN --low PS2 clock, PS/2 is active
-                count_idle <= 0; --reset idle counter
-            ELSIF (count_idle /= CLK_freq/18_000) THEN --PS2 clock has been high less than a half clock period (<55us)
-                count_idle <= count_idle + 1; --continue counting
-            END IF;
-
-            IF (count_idle = CLK_freq/18_000 AND error = '0') THEN --idle threshold reached and no errors detected
-                ps2_code_new <= '1'; --set flag that new PS/2 code is available
-                ps2_code <= ps2_word(8 DOWNTO 1); --output new PS/2 code
-            ELSE --PS/2 port active or error detected
-                ps2_code_new <= '0'; --set flag that PS/2 transaction is in progress
-            END IF;
-
-        END IF;
-    END PROCESS;
+    KEYCODE <= ps2_word(8 DOWNTO 1);
 END rtl;
