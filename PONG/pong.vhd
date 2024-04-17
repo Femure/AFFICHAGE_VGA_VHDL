@@ -27,7 +27,7 @@ ARCHITECTURE structural OF pong IS
 
     COMPONENT ps2_decode IS
         PORT (
-            CLK : IN STD_LOGIC;
+            RST, CLK : IN STD_LOGIC;
             PS2_CLK : IN STD_LOGIC;
             PS2_DATA : IN STD_LOGIC;
             DECODE_FLAG : OUT STD_LOGIC;
@@ -142,7 +142,7 @@ BEGIN
     RE0 : reset PORT MAP(CLK => CLK, END_GAME => end_game, RST => RST, G_RESET => reset_g);
 
     -- Gestion de l'entrée au clavier
-    K0 : ps2_decode PORT MAP(CLK => CLK, PS2_CLK => PS2_CLK, PS2_DATA => PS2_DATA, DECODE_FLAG => decode_f, DECODE_CODE => decode_code);
+    K0 : ps2_decode PORT MAP(RST => reset_g, CLK => CLK, PS2_CLK => PS2_CLK, PS2_DATA => PS2_DATA, DECODE_FLAG => decode_f, DECODE_CODE => decode_code);
 
     -- Gestion de l'affichage sur l'écran
     A0 : div_25MHz PORT MAP(CLK => CLK, RST => reset_g, PIXEL_CLK => pixel_clk);

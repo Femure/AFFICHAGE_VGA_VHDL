@@ -1,0 +1,23 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../../Balle/acc_balle_clk.vhd" \
+"../../../../../Balle/balle_clk.vhd" \
+"../../../../../Balle/balle_move.vhd" \
+"../../../../../score/cnt_score.vhd" \
+"../../../../../../KEYBOARD/debouncer.vhd" \
+"../../../../../div_25MHz.vhd" \
+"../../../../../image.vhd" \
+"../../../../../../KEYBOARD/ps2_controller.vhd" \
+"../../../../../../KEYBOARD/ps2_decode.vhd" \
+"../../../../../../KEYBOARD/ps2_keyboard.vhd" \
+"../../../../../../KEYBOARD/ps2_receiver.vhd" \
+"../../../../../raquette/raquette_clk.vhd" \
+"../../../../../raquette/raquette_move.vhd" \
+"../../../../../reset.vhd" \
+"../../../../../score/score_aff.vhd" \
+"../../../../../terrain/terrain_aff.vhd" \
+"../../../../../vga_controller_640_60.vhd" \
+"../../../../../pong.vhd" \
+
+# Do not sort compile order
+nosort

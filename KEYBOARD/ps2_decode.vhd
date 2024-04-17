@@ -5,7 +5,7 @@ USE IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 ENTITY ps2_decode IS
     PORT (
-        CLK : IN STD_LOGIC; --system clock
+        RST, CLK : IN STD_LOGIC; --system clock
         PS2_CLK : IN STD_LOGIC; --clock signal from PS/2 keyboard
         PS2_DATA : IN STD_LOGIC; --data signal from PS2 keyboard
         DECODE_FLAG : OUT STD_LOGIC; --output flag indicating new DECODE value
@@ -18,11 +18,11 @@ ARCHITECTURE rtl OF ps2_decode IS
     SIGNAL state : machine; --state machine
     SIGNAL break : STD_LOGIC := '0'; --'1' for break code, '0' for make code
     SIGNAL e0_code : STD_LOGIC := '0'; --'1' for multi-code commands, '0' for single code commands
-    SIGNAL decode : STD_LOGIC_VECTOR(3 DOWNTO 0) := "0000"; --internal value of decode translation
+    SIGNAL decode : STD_LOGIC_VECTOR(3 DOWNTO 0) := (OTHERS => '0'); --internal value of decode translation
 
     COMPONENT ps2_keyboard IS
         PORT (
-            CLK : IN STD_LOGIC; --system clock
+            RST, CLK : IN STD_LOGIC; --system clock
             PS2_CLK : IN STD_LOGIC; --clock signal from PS/2 keyboard
             PS2_DATA : IN STD_LOGIC; --data signal from PS/2 keyboard
             PS2_CODE_FLAG : OUT STD_LOGIC; --flag that new PS/2 code is available on ps2_code bus
@@ -32,16 +32,23 @@ ARCHITECTURE rtl OF ps2_decode IS
 
     SIGNAL ps2_code_flag : STD_LOGIC; --new PS2 code flag from ps2_keyboard component
     SIGNAL ps2_code : STD_LOGIC_VECTOR(7 DOWNTO 0); --PS2 code input form ps2_keyboard component
-    SIGNAL prev_ps2_code_flag : STD_LOGIC := '1'; --value of ps2_code_flag on previous clock
+    SIGNAL prev_ps2_code_flag : STD_LOGIC; --value of ps2_code_flag on previous clock
 
 BEGIN
 
     --instantiate PS2 keyboard interface logic
-    ps2_keyboard_0 : ps2_keyboard PORT MAP(CLK => CLK, PS2_CLK => PS2_CLK, PS2_DATA => PS2_DATA, PS2_CODE_FLAG => ps2_code_flag, PS2_CODE => ps2_code);
+    ps2_keyboard_0 : ps2_keyboard PORT MAP(RST => RST, CLK => CLK, PS2_CLK => PS2_CLK, PS2_DATA => PS2_DATA, PS2_CODE_FLAG => ps2_code_flag, PS2_CODE => ps2_code);
 
-    PROCESS (CLK)
+    PROCESS (RST, CLK)
     BEGIN
-        IF (CLK'EVENT AND CLK = '1') THEN
+        IF (RST = '1') THEN
+            state <= ready;
+            break <= '0';
+            e0_code <= '0';
+            decode <= (OTHERS => '0');
+            DECODE_CODE <= (OTHERS => '0');
+            DECODE_FLAG <= '0';
+        ELSIF (CLK'EVENT AND CLK = '1') THEN
             prev_ps2_code_flag <= ps2_code_flag; --keep track of previous ps2_code_flag values to determine low-to-high transitions
             CASE state IS
 

@@ -5,7 +5,7 @@ USE IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 ENTITY debouncer IS
     PORT (
-        CLK : IN STD_LOGIC;
+        RST, CLK : IN STD_LOGIC;
         I : IN STD_LOGIC;
         O : OUT STD_LOGIC
     );
@@ -15,9 +15,13 @@ ARCHITECTURE rtl OF debouncer IS
     SIGNAL count : STD_LOGIC_VECTOR(4 DOWNTO 0) := (OTHERS => '0');
     SIGNAL Iv : STD_LOGIC := '0';
 BEGIN
-    PROCESS (CLK)
+    PROCESS (RST, CLK)
     BEGIN
-        IF (CLK'event AND CLK = '1') THEN
+        IF (RST = '1') THEN
+            count <= (OTHERS => '0');
+            Iv <= '0';
+            O <= '0';
+        ELSIF (CLK'event AND CLK = '1') THEN
             IF (I = Iv) THEN
                 IF (count = 19) THEN
                     O <= I;
