@@ -126,8 +126,8 @@ BEGIN
     RE0 : reset PORT MAP(CLK => CLK, END_GAME => end_game, RST => RST, G_RESET => reset_g);
 
     -- Gestion de l'affichage sur l'écran
-    A0 : div_25MHz PORT MAP(CLK => CLK, RST => reset_g, PIXEL_CLK => pixel_clk);
-    A1 : vga_controller_640_60 PORT MAP(PIXEL_CLK => pixel_clk, RST => reset_g, HS => HS, VS => VS, BLANK => blank, FRAME => frame, HCOUNT => hcount, VCOUNT => vcount);
+    A0 : div_25MHz PORT MAP(CLK => CLK, RST => RST, PIXEL_CLK => pixel_clk);
+    A1 : vga_controller_640_60 PORT MAP(PIXEL_CLK => pixel_clk, RST => RST, HS => HS, VS => VS, BLANK => blank, FRAME => frame, HCOUNT => hcount, VCOUNT => vcount);
 
     -- Gestion du terrain
     T0 : terrain_aff PORT MAP(HCOUNT => hcount, VCOUNT => vcount, IS_TERRAIN => is_terrain);

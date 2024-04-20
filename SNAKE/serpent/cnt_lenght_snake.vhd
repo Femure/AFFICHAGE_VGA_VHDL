@@ -11,16 +11,15 @@ ENTITY cnt_lenght_snake IS
 END cnt_lenght_snake;
 
 ARCHITECTURE rtl OF cnt_lenght_snake IS
-    SIGNAL point : STD_LOGIC_VECTOR(6 DOWNTO 0) := (OTHERS => '0');
+    SIGNAL point : STD_LOGIC_VECTOR(6 DOWNTO 0);
     SIGNAL prev_flag : STD_LOGIC := '0';
 BEGIN
     PROCESS (CLK, RST, FLAG)
     BEGIN
         IF (RST = '1') THEN
             point <= (OTHERS => '0');
-            prev_flag <= '0';
         ELSIF (CLK'event AND CLK = '1') THEN
-            IF (FLAG = '1' AND prev_flag = '0') THEN
+            IF (FLAG = '1') THEN
                 point <= point + 1;
             END IF;
             prev_flag <= FLAG;

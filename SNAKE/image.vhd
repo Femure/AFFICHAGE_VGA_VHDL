@@ -19,7 +19,11 @@ BEGIN
             BLUE <= (OTHERS => '0');
         ELSE
             IF (BLANK = '1') THEN
-                IF (IS_SNAKE = '1') THEN --Bleu
+                IF (IS_NUMBER = '1') THEN -- Blanc
+                    RED <= "1111";
+                    GREEN <= "1111";
+                    BLUE <= "1111";
+                ELSIF (IS_SNAKE = '1') THEN --Bleu
                     RED <= "0000";
                     GREEN <= "0000";
                     BLUE <= "1111";
@@ -27,10 +31,6 @@ BEGIN
                     RED <= "1111";
                     GREEN <= "0000";
                     BLUE <= "0000";
-                ELSIF (IS_NUMBER = '1') THEN -- Blanc
-                    RED <= "1111";
-                    GREEN <= "1111";
-                    BLUE <= "1111";
                 ELSE
                     RED <= "0000";
                     GREEN <= "0000";

@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date             : Sat Apr 20 13:44:38 2024
+| Date             : Sat Apr 20 17:07:33 2024
 | Host             : Max_Laptop running 64-bit major release  (build 9200)
 | Command          : report_power -file snake_power_routed.rpt -pb snake_power_summary_routed.pb -rpx snake_power_routed.rpx
 | Design           : snake
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.125        |
+| Total On-Chip Power (W)  | 0.115        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.053        |
+| Dynamic (W)              | 0.043        |
 | Device Static (W)        | 0.072        |
 | Effective TJA (C/W)      | 5.0          |
 | Max Ambient (C)          | 84.4         |
@@ -53,16 +53,16 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |     0.002 |        3 |       --- |             --- |
-| Slice Logic    |     0.022 |    24535 |       --- |             --- |
-|   LUT as Logic |     0.018 |    11341 |     20800 |           54.52 |
-|   CARRY4       |     0.004 |     2984 |      8150 |           36.61 |
-|   Register     |    <0.001 |     4699 |     41600 |           11.30 |
+| Slice Logic    |     0.012 |    24541 |       --- |             --- |
+|   LUT as Logic |     0.011 |    11335 |     20800 |           54.50 |
+|   CARRY4       |     0.001 |     2984 |      8150 |           36.61 |
+|   Register     |    <0.001 |     4708 |     41600 |           11.32 |
 |   BUFG         |    <0.001 |       11 |        32 |           34.38 |
 |   Others       |     0.000 |       21 |       --- |             --- |
-| Signals        |     0.029 |    14629 |       --- |             --- |
-| I/O            |    <0.001 |       20 |       106 |           18.87 |
+| Signals        |     0.019 |    14642 |       --- |             --- |
+| I/O            |     0.010 |       20 |       106 |           18.87 |
 | Static Power   |     0.072 |          |           |                 |
-| Total          |     0.125 |          |           |                 |
+| Total          |     0.115 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -72,9 +72,9 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.062 |       0.053 |      0.010 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.042 |       0.033 |      0.010 |       NA    | Unspecified | NA         |
 | Vccaux    |       1.800 |     0.013 |       0.000 |      0.013 |       NA    | Unspecified | NA         |
-| Vcco33    |       3.300 |     0.001 |       0.000 |      0.001 |       NA    | Unspecified | NA         |
+| Vcco33    |       3.300 |     0.004 |       0.003 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -141,11 +141,12 @@ Table of Contents
 +-------+-----------+
 | Name  | Power (W) |
 +-------+-----------+
-| snake |     0.053 |
-|   A1  |     0.006 |
-|   N3  |     0.002 |
-|   RE0 |     0.003 |
-|   S1  |     0.038 |
+| snake |     0.043 |
+|   A1  |     0.014 |
+|   N1  |     0.002 |
+|   N3  |     0.005 |
+|   RE0 |     0.002 |
+|   S1  |     0.006 |
 +-------+-----------+
 
 
