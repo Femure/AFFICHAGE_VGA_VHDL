@@ -4,14 +4,14 @@ USE IEEE.std_logic_1164.ALL;
 ENTITY image IS
     PORT (
         RST, BLANK : IN STD_LOGIC;
-        IS_SNAKE, IS_FOOD : IN STD_LOGIC;
+        IS_SNAKE, IS_FOOD, IS_NUMBER : IN STD_LOGIC;
         RED, GREEN, BLUE : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
     );
 END image;
 
 ARCHITECTURE rtl OF image IS
 BEGIN
-    PROCESS (RST, BLANK, IS_SNAKE, IS_FOOD)
+    PROCESS (RST, BLANK, IS_SNAKE, IS_FOOD, IS_NUMBER)
     BEGIN
         IF (RST = '1') THEN
             RED <= (OTHERS => '0');
@@ -27,6 +27,10 @@ BEGIN
                     RED <= "1111";
                     GREEN <= "0000";
                     BLUE <= "0000";
+                ELSIF (IS_NUMBER = '1') THEN -- Blanc
+                    RED <= "1111";
+                    GREEN <= "1111";
+                    BLUE <= "1111";
                 ELSE
                     RED <= "0000";
                     GREEN <= "0000";

@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Sat Apr 13 10:07:29 2024
+| Date         : Sat Apr 20 10:57:58 2024
 | Host         : Max_Laptop running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file snake_control_sets_placed.rpt
 | Design       : snake
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |     9 |
-|    Minimum number of control sets                        |     9 |
+| Total control sets                                       |    44 |
+|    Minimum number of control sets                        |    44 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    51 |
+| Unused register locations in slices containing registers |   196 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,15 +39,15 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |     9 |
-| >= 0 to < 4        |     3 |
-| >= 4 to < 6        |     1 |
-| >= 6 to < 8        |     0 |
-| >= 8 to < 10       |     0 |
-| >= 10 to < 12      |     1 |
+| Total control sets |    44 |
+| >= 0 to < 4        |     4 |
+| >= 4 to < 6        |    10 |
+| >= 6 to < 8        |     2 |
+| >= 8 to < 10       |     1 |
+| >= 10 to < 12      |     0 |
 | >= 12 to < 14      |     1 |
 | >= 14 to < 16      |     0 |
-| >= 16              |     3 |
+| >= 16              |    26 |
 +--------------------+-------+
 * Control sets can be remapped at either synth_design or opt_design
 
@@ -59,10 +59,10 @@ Table of Contents
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | No           | No                    | No                     |               2 |            2 |
-| No           | No                    | Yes                    |              31 |           13 |
-| No           | Yes                   | No                     |              44 |           12 |
+| No           | No                    | Yes                    |            2233 |         1019 |
+| No           | Yes                   | No                     |             103 |           71 |
 | Yes          | No                    | No                     |               0 |            0 |
-| Yes          | No                    | Yes                    |              80 |           23 |
+| Yes          | No                    | Yes                    |             114 |           41 |
 | Yes          | Yes                   | No                     |               0 |            0 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
@@ -70,18 +70,53 @@ Table of Contents
 4. Detailed Control Set Information
 -----------------------------------
 
-+-----------------+----------------------+---------------------+------------------+----------------+--------------+
-|   Clock Signal  |     Enable Signal    |   Set/Reset Signal  | Slice Load Count | Bel Load Count | Bels / Slice |
-+-----------------+----------------------+---------------------+------------------+----------------+--------------+
-|  snake_clk_BUFG |                      | S1/prev_PBH_i_2_n_1 |                1 |              1 |         1.00 |
-|  S1/eaten3_out  |                      | RST_IBUF            |                1 |              1 |         1.00 |
-|  CLK_IBUF_BUFG  |                      |                     |                2 |              2 |         1.00 |
-|  snake_clk_BUFG | S1/xDirSnake         | S1/prev_PBH_i_2_n_1 |                2 |              4 |         2.00 |
-|  A0/pixel_clk   | A1/countY[9]_i_1_n_1 | RST_IBUF            |                3 |             10 |         3.33 |
-|  CLK_IBUF_BUFG  |                      | RST_IBUF            |                6 |             12 |         2.00 |
-|  A0/pixel_clk   |                      | RST_IBUF            |                6 |             18 |         3.00 |
-|  n_0_575_BUFG   |                      | RST_IBUF            |               11 |             43 |         3.91 |
-|  snake_clk_BUFG | A1/frame             | S1/prev_PBH_i_2_n_1 |               18 |             66 |         3.67 |
-+-----------------+----------------------+---------------------+------------------+----------------+--------------+
++------------------------------------+-----------------------+-----------------------------------+------------------+----------------+--------------+
+|            Clock Signal            |     Enable Signal     |          Set/Reset Signal         | Slice Load Count | Bel Load Count | Bels / Slice |
++------------------------------------+-----------------------+-----------------------------------+------------------+----------------+--------------+
+|  S1/eaten3_out                     |                       | RST_IBUF                          |                1 |              1 |         1.00 |
+|  A1/point_reg[6]                   |                       | S1/IS_SNAKE_reg_i_2_n_10          |                1 |              1 |         1.00 |
+|  snake_clk_BUFG                    |                       | S1/prev_PBH_i_2_n_10              |                1 |              1 |         1.00 |
+|  CLK_IBUF_BUFG                     |                       |                                   |                2 |              2 |         1.00 |
+|  S1/xSnake_reg[1][11]_LDC_i_1_n_10 |                       | S1/xSnake_reg[1][11]_LDC_i_2_n_10 |                4 |              4 |         1.00 |
+|  snake_clk_BUFG                    | S1/xDirSnake          | S1/prev_PBH_i_2_n_10              |                2 |              4 |         2.00 |
+|  n_2_10444_BUFG                    |                       | S1/xSnake_reg[1][8]_LDC_i_1_n_10  |                5 |              5 |         1.00 |
+|  n_3_10438_BUFG                    |                       | S1/xSnake_reg[1][9]_LDC_i_1_n_10  |                5 |              5 |         1.00 |
+|  n_4_10439_BUFG                    |                       | S1/xSnake_reg[1][6]_LDC_i_1_n_10  |                5 |              5 |         1.00 |
+|  n_6_10440_BUFG                    |                       | S1/xSnake_reg[1][4]_LDC_i_1_n_10  |                5 |              5 |         1.00 |
+|  n_7_10442_BUFG                    |                       | S1/xSnake_reg[1][3]_LDC_i_1_n_10  |                5 |              5 |         1.00 |
+|  n_8_10445_BUFG                    |                       | S1/xSnake_reg[1][7]_LDC_i_1_n_10  |                5 |              5 |         1.00 |
+|  n_9_10441_BUFG                    |                       | S1/xSnake_reg[1][5]_LDC_i_1_n_10  |                5 |              5 |         1.00 |
+|  n_5_10437_BUFG                    |                       | S1/xSnake_reg[1][10]_LDC_i_1_n_10 |                5 |              5 |         1.00 |
+|  n_1_10456_BUFG                    |                       | S1/xSnake_reg[1][2]_LDC_i_1_n_10  |                6 |              6 |         1.00 |
+|  CLK_IBUF_BUFG                     | N3/E[0]               | RST_IBUF                          |                5 |              7 |         1.40 |
+|  n_0_10436_BUFG                    |                       | S1/xSnake_reg[1][1]_LDC_i_1_n_10  |                8 |              8 |         1.00 |
+|  CLK_IBUF_BUFG                     |                       | RST_IBUF                          |                6 |             13 |         2.17 |
+|  A0/pixel_clk                      | A1/countY[9]_i_1_n_10 | RST_IBUF                          |               16 |             37 |         2.31 |
+|  A0/pixel_clk                      |                       | RST_IBUF                          |               24 |             41 |         1.71 |
+|  A1/E[0]                           |                       | RST_IBUF                          |               11 |             43 |         3.91 |
+|  snake_clk_BUFG                    | A1/frame              | S1/prev_PBH_i_2_n_10              |               18 |             66 |         3.67 |
+|  snake_clk_BUFG                    |                       | S1/xSnake_reg[1][11]_LDC_i_2_n_10 |               44 |             99 |         2.25 |
+|  snake_clk_BUFG                    |                       | S1/xSnake_reg[1][11]_LDC_i_1_n_10 |               48 |             99 |         2.06 |
+|  snake_clk_BUFG                    |                       | S1/xSnake_reg[1][2]_LDC_i_1_n_10  |               48 |             99 |         2.06 |
+|  snake_clk_BUFG                    |                       | S1/xSnake_reg[1][10]_LDC_i_1_n_10 |               42 |             99 |         2.36 |
+|  snake_clk_BUFG                    |                       | S1/xSnake_reg[1][4]_LDC_i_1_n_10  |               43 |             99 |         2.30 |
+|  snake_clk_BUFG                    |                       | S1/xSnake_reg[1][5]_LDC_i_1_n_10  |               39 |             99 |         2.54 |
+|  snake_clk_BUFG                    |                       | S1/xSnake_reg[1][8]_LDC_i_1_n_10  |               37 |             99 |         2.68 |
+|  snake_clk_BUFG                    |                       | S1/xSnake_reg[1][7]_LDC_i_1_n_10  |               46 |             99 |         2.15 |
+|  snake_clk_BUFG                    |                       | S1/xSnake_reg[1][9]_LDC_i_1_n_10  |               40 |             99 |         2.47 |
+|  snake_clk_BUFG                    |                       | S1/xSnake_reg[1][6]_LDC_i_1_n_10  |               44 |             99 |         2.25 |
+|  snake_clk_BUFG                    |                       | n_0_10436_BUFG                    |               57 |             99 |         1.74 |
+|  snake_clk_BUFG                    |                       | S1/xSnake_reg[1][3]_LDC_i_1_n_10  |               44 |             99 |         2.25 |
+|  snake_clk_BUFG                    |                       | n_3_10438_BUFG                    |               43 |             99 |         2.30 |
+|  snake_clk_BUFG                    |                       | n_4_10439_BUFG                    |               47 |             99 |         2.11 |
+|  snake_clk_BUFG                    |                       | n_6_10440_BUFG                    |               41 |             99 |         2.41 |
+|  snake_clk_BUFG                    |                       | n_7_10442_BUFG                    |               41 |             99 |         2.41 |
+|  snake_clk_BUFG                    |                       | n_2_10444_BUFG                    |               44 |             99 |         2.25 |
+|  snake_clk_BUFG                    |                       | n_9_10441_BUFG                    |               44 |             99 |         2.25 |
+|  snake_clk_BUFG                    |                       | n_1_10456_BUFG                    |               52 |             99 |         1.90 |
+|  snake_clk_BUFG                    |                       | n_5_10437_BUFG                    |               47 |             99 |         2.11 |
+|  snake_clk_BUFG                    |                       | S1/xSnake_reg[1][1]_LDC_i_1_n_10  |               50 |             99 |         1.98 |
+|  snake_clk_BUFG                    |                       | n_8_10445_BUFG                    |               47 |             99 |         2.11 |
++------------------------------------+-----------------------+-----------------------------------+------------------+----------------+--------------+
 
 

@@ -15,7 +15,7 @@ ARCHITECTURE rtl OF cnt_score IS
     SIGNAL score_1, score_2 : STD_LOGIC_VECTOR(2 DOWNTO 0) := (OTHERS => '0'); -- Score du joueur 1 et 2
     SIGNAL prev_j1_win, prev_j2_win : STD_LOGIC := '0'; -- Score du joueur 1 et 2
 BEGIN
-    PROCESS (CLK, RST)
+    PROCESS (CLK, RST, J_WIN)
     BEGIN
         IF (RST = '1') THEN
             score_1 <= (OTHERS => '0');

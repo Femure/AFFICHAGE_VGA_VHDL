@@ -38,6 +38,7 @@ ARCHITECTURE structural OF snake IS
         PORT (
             SNAKE_CLK, RST, FRAME : IN STD_LOGIC;
             HCOUNT, VCOUNT : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
+            LENGHT_SNAKE : IN STD_LOGIC_VECTOR(6 DOWNTO 0);
             PB_D, PB_G, PB_H, PB_B : IN STD_LOGIC;
             IS_SNAKE, SNAKE_LOSE : OUT STD_LOGIC;
             X_SNAKE, Y_SNAKE : OUT INTEGER
@@ -61,21 +62,37 @@ ARCHITECTURE structural OF snake IS
         );
     END COMPONENT;
 
+    COMPONENT cnt_lenght_snake IS
+        PORT (
+            CLK, RST, FLAG : IN STD_LOGIC;
+            LENGHT_SNAKE : OUT STD_LOGIC_VECTOR(6 DOWNTO 0)
+        );
+    END COMPONENT;
+
+    COMPONENT aff_score IS
+        PORT (
+            RST : IN STD_LOGIC;
+            HCOUNT, VCOUNT : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
+            SCORE : IN STD_LOGIC_VECTOR(6 DOWNTO 0);
+            IS_NUMBER : OUT STD_LOGIC
+        );
+    END COMPONENT;
+
     COMPONENT image IS
         PORT (
             RST, BLANK : IN STD_LOGIC;
-            IS_SNAKE : IN STD_LOGIC;
-            IS_FOOD : IN STD_LOGIC;
+            IS_SNAKE, IS_FOOD, IS_NUMBER : IN STD_LOGIC;
             RED, GREEN, BLUE : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
         );
     END COMPONENT;
 
     SIGNAL pixel_clk, snake_clk : STD_LOGIC;
     SIGNAL blank, frame : STD_LOGIC;
-    SIGNAL is_snake, is_eaten, is_food : STD_LOGIC;
+    SIGNAL is_snake, is_eaten, is_food, is_number : STD_LOGIC;
     SIGNAL snake_lose : STD_LOGIC;
     SIGNAL hcount, vcount : STD_LOGIC_VECTOR(10 DOWNTO 0);
     SIGNAL seed1, seed2 : INTEGER;
+    SIGNAL lenght_snake : STD_LOGIC_VECTOR(6 DOWNTO 0);
     SIGNAL x_snake, y_snake : INTEGER;
 
 BEGIN
@@ -86,14 +103,20 @@ BEGIN
 
     -- Gestion corps serpent 
     S0 : clk_snake PORT MAP(CLK => CLK, RST => RST, SNAKE_CLK => snake_clk);
-    S1 : snake_move PORT MAP(SNAKE_CLK => snake_clk, RST => RST, FRAME => frame, HCOUNT => hcount, VCOUNT => vcount, PB_G => PB_G, PB_H => PB_H, PB_D => PB_D, PB_B => PB_B, IS_SNAKE => is_snake, SNAKE_LOSE => snake_lose, X_SNAKE => x_snake, Y_SNAKE => y_snake);
+    S1 : snake_move PORT MAP(SNAKE_CLK => snake_clk, RST => RST, FRAME => frame, HCOUNT => hcount, VCOUNT => vcount, PB_G => PB_G, PB_H => PB_H, PB_D => PB_D, PB_B => PB_B, LENGHT_SNAKE => lenght_snake, IS_SNAKE => is_snake, SNAKE_LOSE => snake_lose, X_SNAKE => x_snake, Y_SNAKE => y_snake);
 
     -- Gestion des cubes de nourriture
     N1 : cnt_rand PORT MAP(CLK => CLK, RST => RST, RAND_OUT => seed1);
     N2 : cnt_rand PORT MAP(CLK => pixel_clk, RST => RST, RAND_OUT => seed2);
     N3 : food_spawn PORT MAP(RST => RST, FRAME => frame, X_SNAKE => x_snake, Y_SNAKE => y_snake, SEED1 => seed1, SEED2 => seed2, HCOUNT => hcount, VCOUNT => vcount, IS_EATEN => is_eaten, IS_FOOD => is_food);
 
+    -- Agrandi le corps quand il mange de la food
+    G0 : cnt_lenght_snake PORT MAP(CLK => CLK, RST => RST, FLAG => is_eaten, LENGHT_SNAKE => lenght_snake);
+
+    -- Gestion du score
+    SC0 : aff_score PORT MAP(RST => RST, HCOUNT => hcount, VCOUNT => vcount, SCORE => lenght_snake, IS_NUMBER => is_number);
+
     -- Rendu final sur l'écran
-    A2 : image PORT MAP(RST => RST, BLANK => blank, IS_SNAKE => is_snake, IS_FOOD => is_food, RED => RED, GREEN => GREEN, BLUE => BLUE);
+    A2 : image PORT MAP(RST => RST, BLANK => blank, IS_SNAKE => is_snake, IS_FOOD => is_food, IS_NUMBER => is_number, RED => RED, GREEN => GREEN, BLUE => BLUE);
 
 END structural;
