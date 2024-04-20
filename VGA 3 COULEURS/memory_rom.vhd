@@ -6,7 +6,7 @@ USE IEEE.STD_LOGIC_UNSIGNED.ALL;
 ENTITY memory_rom IS
     PORT (
         RST : IN STD_LOGIC;
-		HCOUNT, VCOUNT: IN STD_LOGIC_VECTOR(10 DOWNTO 0);
+		    HCOUNT, VCOUNT: IN STD_LOGIC_VECTOR(10 DOWNTO 0);
         RED, GREEN, BLUE : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
     );
 END memory_rom;
@@ -16,12 +16,12 @@ ARCHITECTURE rtl OF memory_rom IS
     TYPE data_Array IS ARRAY (0 TO 189000) OF std_logic_vector(11 DOWNTO 0);
 
     -- Initialisation des données
-	SIGNAL xPixel, yPixel : INTEGER;
+	SIGNAL hcountr, vcountr : INTEGER;
 	CONSTANT XMAX : INTEGER := 600;
 	CONSTANT YMAX : INTEGER := 315;
 
     CONSTANT data_vector : data_Array := (
-                "000000000000",
+        "000000000000",
 				"000000000000",
 				"000000000000",
 				"000000000000",
@@ -189033,26 +189033,26 @@ BEGIN
             GREEN <= (OTHERS => '0');
             BLUE <= (OTHERS => '0');
         ELSE 
-			xPixel <= 0;
-            yPixel <= 0;
+			      hcountr <= 0;
+            vcountr <= 0;
 			-- calcul du nb_pixel
-			FOR i IN HCOUNT'RANGE LOOP
-				IF HCOUNT(i) = '1' THEN
-					xPixel <= xPixel + 1; -- Incrémentation de xPixel si le bit est à '1'
-				END IF;
-			END LOOP;
+			   FOR i IN HCOUNT'RANGE LOOP
+				    IF HCOUNT(i) = '1' THEN
+					      hcountr <= hcountr + 1; -- Incrémentation de hcount si le bit est à '1'
+				    END IF;
+			   END LOOP;
 			
-			FOR i IN VCOUNT'RANGE LOOP
-				IF VCOUNT(i) = '1' THEN
-					yPixel <= yPixel + 1; -- Incrémentation de yPixel si le bit est à '1'
-				END IF;
-			END LOOP;
+			   FOR i IN VCOUNT'RANGE LOOP
+				    IF VCOUNT(i) = '1' THEN
+					      vcountr <= vcountr + 1; -- Incrémentation de vcount si le bit est à '1'
+				    END IF;
+			   END LOOP;
 			-- correspondance des pixel
-			IF (xPixel < XMAX AND yPixel < YMAX) THEN
-                RED <= data_vector((YMAX-xPixel) * (XMAX-yPixel))(0 DOWNTO 3);
-                GREEN <= data_vector((YMAX-xPixel) * (XMAX-yPixel))(4 DOWNTO 6);
-                BLUE <= data_vector((YMAX-xPixel) * (XMAX-yPixel))(7 DOWNTO 11);
-            END IF;
+			   IF (hcountr < XMAX AND vcountr < YMAX) THEN
+                RED <= data_vector((YMAX-hcountr) * (XMAX-vcountr))(3 DOWNTO 0);
+                GREEN <= data_vector((YMAX-hcountr) * (XMAX-vcountr))(7 DOWNTO 4);
+                BLUE <= data_vector((YMAX-hcountr) * (XMAX-vcountr))(11 DOWNTO 8);
+         END IF;
         END IF;
     END PROCESS;
 END rtl;
