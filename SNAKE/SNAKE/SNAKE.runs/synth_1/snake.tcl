@@ -70,12 +70,9 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param checkpoint.writeSynthRtdsInDcp 1
 set_param chipscope.maxJobs 4
-set_param synth.incrementalSynthesisCache C:/Users/maxim/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-23152-Max_Laptop/incrSyn
 set_param xicom.use_bs_reader 1
-set_msg_config -id {Synth 8-256} -limit 10000
-set_msg_config -id {Synth 8-638} -limit 10000
+set_msg_config -id {Common 17-41} -limit 10000000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a35tcpg236-1
 
@@ -98,6 +95,7 @@ read_vhdl -library xil_defaultlib {
   {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/div_25MHz.vhd}
   {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/food/food_spawn.vhd}
   {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/image.vhd}
+  {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/reset.vhd}
   {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/serpent/snake_move.vhd}
   {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/vga_controller_640_60.vhd}
   {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd}

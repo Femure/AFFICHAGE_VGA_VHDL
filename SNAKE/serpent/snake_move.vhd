@@ -9,7 +9,7 @@ ENTITY snake_move IS
         HCOUNT, VCOUNT : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
         LENGHT_SNAKE : IN STD_LOGIC_VECTOR(6 DOWNTO 0);
         PB_D, PB_G, PB_H, PB_B : IN STD_LOGIC;
-        IS_SNAKE, SNAKE_LOSE : OUT STD_LOGIC;
+        IS_SNAKE, END_GAME : OUT STD_LOGIC;
         X_SNAKE, Y_SNAKE : OUT INTEGER
     );
 END snake_move;
@@ -17,10 +17,9 @@ END snake_move;
 ARCHITECTURE rtl OF snake_move IS
 
     TYPE IntArray IS ARRAY (NATURAL RANGE <>) OF INTEGER;
-    CONSTANT SNAKE_SIZE : INTEGER := 10; -- Taille du serpent 
+    CONSTANT SNAKE_SIZE : INTEGER := 20; -- Taille du serpent 
     CONSTANT SCREEN_WIDTH : INTEGER := 640; -- largeur de l'écran en pixels
     CONSTANT SCREEN_HEIGHT : INTEGER := 480; -- hauteur de l'écran en pixels 
-    CONSTANT SNAKE_POSITION : INTEGER := 20; --- position initial du snake
     CONSTANT MAX_SNAKE_LENGHT : INTEGER := 100;
 
     SIGNAL xSnake, ySnake : IntArray(0 TO 255); -- Position de la tête du serpent
@@ -34,20 +33,6 @@ BEGIN
     PROCESS (SNAKE_CLK, RST, FRAME, HCOUNT, VCOUNT, LENGHT_SNAKE, PB_D, PB_G, PB_H, PB_B)
     BEGIN
         IF (RST = '1') THEN
-            xSnake(0) <= SCREEN_WIDTH/2;
-            ySnake(0) <= SCREEN_HEIGHT/2;
-            FOR i IN 1 TO MAX_SNAKE_LENGHT - 1 LOOP
-                xSnake(i) <= xSnake(0);
-                ySnake(i) <= xSnake(0);
-            END LOOP;
-            xDirSnake <= 1;
-            yDirSnake <= 0;
-            prev_PBG <= '0';
-            prev_PBD <= '0';
-            prev_PBH <= '0';
-            prev_PBB <= '0';
-            snake_life <= '0';
-        ELSIF (snake_life = '1') THEN
             xSnake(0) <= SCREEN_WIDTH/2;
             ySnake(0) <= SCREEN_HEIGHT/2;
             FOR i IN 1 TO MAX_SNAKE_LENGHT - 1 LOOP
@@ -81,8 +66,8 @@ BEGIN
                 -- Le serpent avance en continue en fonction de l'orientation qu'on lui a donné
                 FOR i IN 1 TO MAX_SNAKE_LENGHT - 1 LOOP
                     IF (i <= LENGHT_SNAKE) THEN
-                        xSnake(i) <= xSnake(i - 1);
-                        ySnake(i) <= xSnake(i - 1);
+                        xSnake(i) <= xSnake(i - 1) - SNAKE_SIZE * xDirSnake;
+                        ySnake(i) <= ySnake(i - 1) - SNAKE_SIZE * yDirSnake;
                     END IF;
                 END LOOP;
                 xSnake(0) <= xSnake(0) + 2 * xDirSnake;
@@ -112,7 +97,7 @@ BEGIN
         END LOOP;
     END PROCESS;
 
-    SNAKE_LOSE <= snake_life;
+    END_GAME <= snake_life;
     X_SNAKE <= xSnake(0);
     Y_SNAKE <= ySnake(0);
 END rtl;

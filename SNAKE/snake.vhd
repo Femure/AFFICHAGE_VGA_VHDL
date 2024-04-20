@@ -12,6 +12,13 @@ END snake;
 
 ARCHITECTURE structural OF snake IS
 
+    COMPONENT reset IS
+        PORT (
+            CLK, END_GAME, RST : IN STD_LOGIC;
+            G_RESET : OUT STD_LOGIC
+        );
+    END COMPONENT;
+
     COMPONENT div_25MHz IS
         PORT (
             CLK, RST : IN STD_LOGIC;
@@ -40,7 +47,7 @@ ARCHITECTURE structural OF snake IS
             HCOUNT, VCOUNT : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
             LENGHT_SNAKE : IN STD_LOGIC_VECTOR(6 DOWNTO 0);
             PB_D, PB_G, PB_H, PB_B : IN STD_LOGIC;
-            IS_SNAKE, SNAKE_LOSE : OUT STD_LOGIC;
+            IS_SNAKE, END_GAME : OUT STD_LOGIC;
             X_SNAKE, Y_SNAKE : OUT INTEGER
         );
     END COMPONENT;
@@ -86,10 +93,10 @@ ARCHITECTURE structural OF snake IS
         );
     END COMPONENT;
 
-    SIGNAL pixel_clk, snake_clk : STD_LOGIC;
+    SIGNAL reset_g, pixel_clk, snake_clk : STD_LOGIC;
     SIGNAL blank, frame : STD_LOGIC;
     SIGNAL is_snake, is_eaten, is_food, is_number : STD_LOGIC;
-    SIGNAL snake_lose : STD_LOGIC;
+    SIGNAL end_game : STD_LOGIC;
     SIGNAL hcount, vcount : STD_LOGIC_VECTOR(10 DOWNTO 0);
     SIGNAL seed1, seed2 : INTEGER;
     SIGNAL lenght_snake : STD_LOGIC_VECTOR(6 DOWNTO 0);
@@ -97,26 +104,29 @@ ARCHITECTURE structural OF snake IS
 
 BEGIN
 
+    -- Gestion du reset généralisé en cas d'appuye sur le bouton reset ou de fin de partie
+    RE0 : reset PORT MAP(CLK => CLK, END_GAME => end_game, RST => RST, G_RESET => reset_g);
+
     -- Gestion de l'affichage sur l'écran
     A0 : div_25MHz PORT MAP(CLK => CLK, RST => RST, PIXEL_CLK => pixel_clk);
     A1 : vga_controller_640_60 PORT MAP(PIXEL_CLK => pixel_clk, RST => RST, HS => HS, VS => VS, BLANK => blank, FRAME => frame, HCOUNT => hcount, VCOUNT => vcount);
 
     -- Gestion corps serpent 
-    S0 : clk_snake PORT MAP(CLK => CLK, RST => RST, SNAKE_CLK => snake_clk);
-    S1 : snake_move PORT MAP(SNAKE_CLK => snake_clk, RST => RST, FRAME => frame, HCOUNT => hcount, VCOUNT => vcount, PB_G => PB_G, PB_H => PB_H, PB_D => PB_D, PB_B => PB_B, LENGHT_SNAKE => lenght_snake, IS_SNAKE => is_snake, SNAKE_LOSE => snake_lose, X_SNAKE => x_snake, Y_SNAKE => y_snake);
+    S0 : clk_snake PORT MAP(CLK => CLK, RST => reset_g, SNAKE_CLK => snake_clk);
+    S1 : snake_move PORT MAP(SNAKE_CLK => snake_clk, RST => reset_g, FRAME => frame, HCOUNT => hcount, VCOUNT => vcount, PB_G => PB_G, PB_H => PB_H, PB_D => PB_D, PB_B => PB_B, LENGHT_SNAKE => lenght_snake, IS_SNAKE => is_snake, END_GAME => end_game, X_SNAKE => x_snake, Y_SNAKE => y_snake);
 
     -- Gestion des cubes de nourriture
-    N1 : cnt_rand PORT MAP(CLK => CLK, RST => RST, RAND_OUT => seed1);
-    N2 : cnt_rand PORT MAP(CLK => pixel_clk, RST => RST, RAND_OUT => seed2);
-    N3 : food_spawn PORT MAP(RST => RST, FRAME => frame, X_SNAKE => x_snake, Y_SNAKE => y_snake, SEED1 => seed1, SEED2 => seed2, HCOUNT => hcount, VCOUNT => vcount, IS_EATEN => is_eaten, IS_FOOD => is_food);
+    N1 : cnt_rand PORT MAP(CLK => CLK, RST => reset_g, RAND_OUT => seed1);
+    N2 : cnt_rand PORT MAP(CLK => pixel_clk, RST => reset_g, RAND_OUT => seed2);
+    N3 : food_spawn PORT MAP(RST => reset_g, FRAME => frame, X_SNAKE => x_snake, Y_SNAKE => y_snake, SEED1 => seed1, SEED2 => seed2, HCOUNT => hcount, VCOUNT => vcount, IS_EATEN => is_eaten, IS_FOOD => is_food);
 
     -- Agrandi le corps quand il mange de la food
-    G0 : cnt_lenght_snake PORT MAP(CLK => CLK, RST => RST, FLAG => is_eaten, LENGHT_SNAKE => lenght_snake);
+    G0 : cnt_lenght_snake PORT MAP(CLK => CLK, RST => reset_g, FLAG => is_eaten, LENGHT_SNAKE => lenght_snake);
 
     -- Gestion du score
-    SC0 : aff_score PORT MAP(RST => RST, HCOUNT => hcount, VCOUNT => vcount, SCORE => lenght_snake, IS_NUMBER => is_number);
+    SC0 : aff_score PORT MAP(RST => reset_g, HCOUNT => hcount, VCOUNT => vcount, SCORE => lenght_snake, IS_NUMBER => is_number);
 
     -- Rendu final sur l'écran
-    A2 : image PORT MAP(RST => RST, BLANK => blank, IS_SNAKE => is_snake, IS_FOOD => is_food, IS_NUMBER => is_number, RED => RED, GREEN => GREEN, BLUE => BLUE);
+    A2 : image PORT MAP(RST => reset_g, BLANK => blank, IS_SNAKE => is_snake, IS_FOOD => is_food, IS_NUMBER => is_number, RED => RED, GREEN => GREEN, BLUE => BLUE);
 
 END structural;
