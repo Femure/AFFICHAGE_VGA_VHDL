@@ -1,26 +1,4 @@
-LIBRARY IEEE;
-USE IEEE.STD_LOGIC_1164.ALL;
-USE IEEE.STD_LOGIC_ARITH.ALL;
-USE IEEE.STD_LOGIC_UNSIGNED.ALL;
-
-ENTITY memory_rom IS
-    PORT (
-        RST : IN STD_LOGIC;
-		    HCOUNT, VCOUNT: IN STD_LOGIC_VECTOR(10 DOWNTO 0);
-        RED, GREEN, BLUE : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
-    );
-END memory_rom;
-
-ARCHITECTURE rtl OF memory_rom IS
-
-    TYPE data_Array IS ARRAY (0 TO 189000) OF std_logic_vector(11 DOWNTO 0);
-
-    -- Initialisation des données
-	SIGNAL hcountr, vcountr : INTEGER;
-	CONSTANT XMAX : INTEGER := 600;
-	CONSTANT YMAX : INTEGER := 315;
-
-    CONSTANT data_vector : data_Array := (
+CONSTANT data_vector : data_Array := (
 	"010010011010",
 	"010110011010",
 	"010110011010",
@@ -189022,36 +189000,4 @@ ARCHITECTURE rtl OF memory_rom IS
 	"000000000000",
 	"000000000000",
 	"111111111111");
-
-	
-BEGIN
-    PROCESS(RST, HCOUNT, VCOUNT)
-    BEGIN
-        IF (RST = '1') THEN
-            RED <= (OTHERS => '0');
-            GREEN <= (OTHERS => '0');
-            BLUE <= (OTHERS => '0');
-        ELSE 
-			      hcountr <= 0;
-            vcountr <= 0;
-			-- calcul du nb_pixel
-			   FOR i IN HCOUNT'RANGE LOOP
-				    IF HCOUNT(i) = '1' THEN
-					      hcountr <= hcountr + 1; -- Incrémentation de hcount si le bit est à '1'
-				    END IF;
-			   END LOOP;
-			
-			   FOR i IN VCOUNT'RANGE LOOP
-				    IF VCOUNT(i) = '1' THEN
-					      vcountr <= vcountr + 1; -- Incrémentation de vcount si le bit est à '1'
-				    END IF;
-			   END LOOP;
-			-- correspondance des pixel
-			   IF (hcountr < XMAX AND vcountr < YMAX) THEN
-                RED <= data_vector((YMAX-hcountr) * (XMAX-vcountr))(3 DOWNTO 0);
-                GREEN <= data_vector((YMAX-hcountr) * (XMAX-vcountr))(7 DOWNTO 4);
-                BLUE <= data_vector((YMAX-hcountr) * (XMAX-vcountr))(11 DOWNTO 8);
-         END IF;
-        END IF;
-    END PROCESS;
-END rtl;
+-- Le nombre de vecteur : 189000
