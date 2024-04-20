@@ -28,14 +28,15 @@ ARCHITECTURE structural OF vga_3_chromes IS
 
     COMPONENT memory_rom IS
         PORT (
-            RST, HCOUNT, VCOUNT, FLAG, XMAX, YMAX : IN STD_LOGIC;
-            RED, GREEN, BLUE : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
-            DEP_IMA : OUT STD_LOGIC
+            RST : IN STD_LOGIC;
+            HCOUNT, VCOUNT: IN STD_LOGIC_VECTOR(10 DOWNTO 0);
+            RED, GREEN, BLUE : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
         );
     END COMPONENT;
 
     SIGNAL pixel_clk, blank : STD_LOGIC;
     SIGNAL hcount, vcount : STD_LOGIC_VECTOR(10 DOWNTO 0);
+
 
 BEGIN
 

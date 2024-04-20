@@ -5,9 +5,9 @@ USE IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 ENTITY memory_rom IS
     PORT (
-        RST, HCOUNT, VCOUNT, FLAG, XMAX, YMAX : IN STD_LOGIC;
-        RED, GREEN, BLUE : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
-        DEP_IMA : OUT STD_LOGIC
+        RST : IN STD_LOGIC;
+		HCOUNT, VCOUNT: IN STD_LOGIC_VECTOR(10 DOWNTO 0);
+        RED, GREEN, BLUE : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
     );
 END memory_rom;
 
@@ -16,8 +16,12 @@ ARCHITECTURE rtl OF memory_rom IS
     TYPE data_Array IS ARRAY (0 TO 189000) OF std_logic_vector(11 DOWNTO 0);
 
     -- Initialisation des données
+	SIGNAL hcount, vcount : INTEGER;
+	CONSTANT XMAX : INTEGER := 600;
+	CONSTANT YMAX : INTEGER := 315;
+
     CONSTANT data_vector : data_Array := (
-        "000000000000",
+                "000000000000",
 				"000000000000",
 				"000000000000",
 				"000000000000",
@@ -189019,27 +189023,35 @@ ARCHITECTURE rtl OF memory_rom IS
 				"010010011010",
 				"1111111111111");  -- bits de test
 
+
+
 BEGIN
-    PROCESS(RST, IS_SERPENT, XMAX, YMAX, HCOUNT, VCOUNT)
+    PROCESS(RST, HCOUNT, VCOUNT)
     BEGIN
         IF (RST = '1') THEN
             RED <= (OTHERS => '0');
             GREEN <= (OTHERS => '0');
             BLUE <= (OTHERS => '0');
-            DEP_IMA <= '0';
         ELSE 
-            IF (IS_SERPENT = '1') THEN
-				IF (HCOUNT = XMAX AND VCOUNT = YMAX) THEN
-					IF (data_vector(HCOUNT * VCOUNT) = data_vector(189000)) THEN
-						DEP_IMA <= '0';    -- Si la dernière valeur est la même que la valeur actuelle
-					ELSE
-						DEP_IMA <= '1';    -- Si la dernière valeur est différente de la valeur actuelle
-					END IF;
-                ELSIF (HCOUNT * VCOUNT < 189000) THEN
-                    RED <= data_vector(HCOUNT * VCOUNT)(0 DOWNTO 3);
-                    GREEN <= data_vector(HCOUNT * VCOUNT)(4 DOWNTO 6);
-                    BLUE <= data_vector(HCOUNT * VCOUNT)(7 DOWNTO 11);
-                END IF;
+			hcount <= 0;
+            vcount <= 0;
+			-- calcul du nb_pixel
+			FOR i IN HCOUNT'RANGE LOOP
+				IF HCOUNT(i) = '1' THEN
+					hcount <= hcount + 1; -- Incrémentation de hcount si le bit est à '1'
+				END IF;
+			END LOOP;
+			
+			FOR i IN VCOUNT'RANGE LOOP
+				IF VCOUNT(i) = '1' THEN
+					vcount <= vcount + 1; -- Incrémentation de vcount si le bit est à '1'
+				END IF;
+			END LOOP;
+			-- correspondance des pixel
+			IF (hcount < XMAX AND vcount < YMAX) THEN
+                RED <= data_vector((YMAX-hcount) * (XMAX-vcount))(0 DOWNTO 3);
+                GREEN <= data_vector((YMAX-hcount) * (XMAX-vcount))(4 DOWNTO 6);
+                BLUE <= data_vector((YMAX-hcount) * (XMAX-vcount))(7 DOWNTO 11);
             END IF;
         END IF;
     END PROCESS;
