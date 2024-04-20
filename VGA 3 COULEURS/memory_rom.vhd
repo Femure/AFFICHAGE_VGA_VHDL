@@ -16,7 +16,7 @@ ARCHITECTURE rtl OF memory_rom IS
     TYPE data_Array IS ARRAY (0 TO 189000) OF std_logic_vector(11 DOWNTO 0);
 
     -- Initialisation des données
-	SIGNAL hcount, vcount : INTEGER;
+	SIGNAL xPixel, yPixel : INTEGER;
 	CONSTANT XMAX : INTEGER := 600;
 	CONSTANT YMAX : INTEGER := 315;
 
@@ -189021,7 +189021,7 @@ ARCHITECTURE rtl OF memory_rom IS
 				"010110011010",
 				"010110011010",
 				"010010011010",
-				"1111111111111");  -- bits de test
+				"111111111111");  -- bits de test
 
 
 
@@ -189033,25 +189033,25 @@ BEGIN
             GREEN <= (OTHERS => '0');
             BLUE <= (OTHERS => '0');
         ELSE 
-			hcount <= 0;
-            vcount <= 0;
+			xPixel <= 0;
+            yPixel <= 0;
 			-- calcul du nb_pixel
 			FOR i IN HCOUNT'RANGE LOOP
 				IF HCOUNT(i) = '1' THEN
-					hcount <= hcount + 1; -- Incrémentation de hcount si le bit est à '1'
+					xPixel <= xPixel + 1; -- Incrémentation de xPixel si le bit est à '1'
 				END IF;
 			END LOOP;
 			
 			FOR i IN VCOUNT'RANGE LOOP
 				IF VCOUNT(i) = '1' THEN
-					vcount <= vcount + 1; -- Incrémentation de vcount si le bit est à '1'
+					yPixel <= yPixel + 1; -- Incrémentation de yPixel si le bit est à '1'
 				END IF;
 			END LOOP;
 			-- correspondance des pixel
-			IF (hcount < XMAX AND vcount < YMAX) THEN
-                RED <= data_vector((YMAX-hcount) * (XMAX-vcount))(0 DOWNTO 3);
-                GREEN <= data_vector((YMAX-hcount) * (XMAX-vcount))(4 DOWNTO 6);
-                BLUE <= data_vector((YMAX-hcount) * (XMAX-vcount))(7 DOWNTO 11);
+			IF (xPixel < XMAX AND yPixel < YMAX) THEN
+                RED <= data_vector((YMAX-xPixel) * (XMAX-yPixel))(0 DOWNTO 3);
+                GREEN <= data_vector((YMAX-xPixel) * (XMAX-yPixel))(4 DOWNTO 6);
+                BLUE <= data_vector((YMAX-xPixel) * (XMAX-yPixel))(7 DOWNTO 11);
             END IF;
         END IF;
     END PROCESS;
