@@ -113,7 +113,7 @@ ARCHITECTURE structural OF pong IS
         PORT (
             RST : IN STD_LOGIC;
             HCOUNT, VCOUNT : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
-            J1_SCORE, J2_SCORE : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+            J1_SCORE, J2_SCORE : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
             IS_NUMBER, END_GAME : OUT STD_LOGIC
         );
     END COMPONENT;
@@ -162,7 +162,7 @@ BEGIN
 
     -- Gestion des scores
     S0 : cnt_score PORT MAP(CLK => CLK, RST => reset_g, J_WIN => j_win, J1_SCORE => j1_score, J2_SCORE => j2_score);
-    S1 : score_aff PORT MAP(RST => reset_g, HCOUNT => hcount, VCOUNT => vcount, J1_SCORE => j1_score, J2_SCORE => j2_score, IS_NUMBER => is_number, END_GAME => end_game);
+    S1 : score_aff PORT MAP(RST => reset_g, HCOUNT => hcount, VCOUNT => vcount, J1_SCORE => decode_code, J2_SCORE => decode_code, IS_NUMBER => is_number, END_GAME => end_game);
 
     -- Rendu final sur l'écran
     A2 : image PORT MAP(RST => reset_g, BLANK => blank, IS_TERRAIN => is_terrain, IS_RAQUETTE_G => is_raquette_g, IS_RAQUETTE_D => is_raquette_d, IS_BALLE => is_balle, IS_NUMBER => is_number, RED => RED, GREEN => GREEN, BLUE => BLUE);

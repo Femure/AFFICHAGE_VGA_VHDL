@@ -87,8 +87,8 @@ BEGIN
                             END CASE;
                         ELSE
                             CASE ps2_code IS
-                                WHEN x"1A" => decode <= "0101"; --Z
-                                WHEN x"15" => decode <= "0110"; --Q
+                                WHEN x"1D" => decode <= "0101"; --Z
+                                WHEN x"1C" => decode <= "0110"; --Q
                                 WHEN x"1B" => decode <= "0111"; --S
                                 WHEN x"23" => decode <= "1000"; --D
                                 WHEN OTHERS => NULL;
