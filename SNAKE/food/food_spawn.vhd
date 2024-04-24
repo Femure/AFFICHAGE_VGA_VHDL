@@ -17,7 +17,7 @@ END food_spawn;
 
 ARCHITECTURE rtl OF food_spawn IS
     CONSTANT FOOD_SIZE : INTEGER := 20; -- taille de la nourriture en pixels
-    CONSTANT SNAKE_SIZE : INTEGER := 10; -- taille de la tête du serpent en pixels
+    CONSTANT SNAKE_SIZE : INTEGER := 20; -- taille de la tête du serpent en pixels
     CONSTANT SCREEN_WIDTH : INTEGER := 640; -- largeur de l'écran en pixels 
     CONSTANT SCREEN_HEIGHT : INTEGER := 480; -- hauteur de l'écran en pixels 
 

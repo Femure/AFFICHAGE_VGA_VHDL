@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date             : Wed Apr 24 19:46:51 2024
+| Date             : Wed Apr 24 21:33:24 2024
 | Host             : Max_Laptop running 64-bit major release  (build 9200)
 | Command          : report_power -file snake_power_routed.rpt -pb snake_power_summary_routed.pb -rpx snake_power_routed.rpx
 | Design           : snake
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.096        |
+| Total On-Chip Power (W)  | 0.097        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.024        |
+| Dynamic (W)              | 0.025        |
 | Device Static (W)        | 0.072        |
 | Effective TJA (C/W)      | 5.0          |
 | Max Ambient (C)          | 84.5         |
@@ -52,17 +52,17 @@ Table of Contents
 +----------------+-----------+----------+-----------+-----------------+
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
-| Clocks         |     0.003 |        3 |       --- |             --- |
-| Slice Logic    |     0.009 |    15810 |       --- |             --- |
-|   LUT as Logic |     0.008 |     9128 |     20800 |           43.88 |
-|   CARRY4       |    <0.001 |     2986 |      8150 |           36.64 |
+| Clocks         |     0.002 |        3 |       --- |             --- |
+| Slice Logic    |     0.009 |    13388 |       --- |             --- |
+|   LUT as Logic |     0.008 |     7268 |     20800 |           34.94 |
+|   CARRY4       |     0.001 |     2454 |      8150 |           30.11 |
+|   Register     |    <0.001 |     2463 |     41600 |            5.92 |
 |   BUFG         |    <0.001 |        3 |        32 |            9.38 |
-|   Register     |    <0.001 |     2459 |     41600 |            5.91 |
-|   Others       |     0.000 |       26 |       --- |             --- |
-| Signals        |     0.011 |    10183 |       --- |             --- |
-| I/O            |     0.001 |       22 |       106 |           20.75 |
+|   Others       |     0.000 |       24 |       --- |             --- |
+| Signals        |     0.010 |     9738 |       --- |             --- |
+| I/O            |     0.003 |       22 |       106 |           20.75 |
 | Static Power   |     0.072 |          |           |                 |
-| Total          |     0.096 |          |           |                 |
+| Total          |     0.097 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -72,9 +72,9 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.032 |       0.023 |      0.010 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.031 |       0.022 |      0.010 |       NA    | Unspecified | NA         |
 | Vccaux    |       1.800 |     0.013 |       0.000 |      0.013 |       NA    | Unspecified | NA         |
-| Vcco33    |       3.300 |     0.001 |       0.000 |      0.001 |       NA    | Unspecified | NA         |
+| Vcco33    |       3.300 |     0.002 |       0.001 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -141,11 +141,14 @@ Table of Contents
 +--------------------+-----------+
 | Name               | Power (W) |
 +--------------------+-----------+
-| snake              |     0.024 |
-|   A1               |     0.015 |
+| snake              |     0.025 |
+|   A1               |     0.010 |
+|   G0               |     0.001 |
 |   K0               |     0.002 |
 |     ps2_keyboard_0 |     0.001 |
-|   N4               |     0.002 |
+|   N1               |     0.002 |
+|   N4               |     0.003 |
+|   S1               |     0.003 |
 +--------------------+-----------+
 
 

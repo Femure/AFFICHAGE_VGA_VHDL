@@ -23,9 +23,8 @@ ARCHITECTURE rtl OF snake_move IS
     CONSTANT SCREEN_HEIGHT : INTEGER := 480; -- hauteur de l'écran en pixels 
     CONSTANT MAX_SNAKE_LENGHT : INTEGER := 100;
 
-    SIGNAL xSnake, ySnake : IntArray(0 TO 255); -- Position de la tête du serpent
-    SIGNAL xDirSnake : INTEGER := 1; -- L'orientation de la tête du serpent
-    SIGNAL yDirSnake : INTEGER := 0;
+    SIGNAL xSnake, ySnake : IntArray(0 TO 100); -- Position du corps du serpent
+    SIGNAL VxSnake, VySnake : IntArray(0 TO 100); -- Direction du corps du serpent
     SIGNAL snake_life : STD_LOGIC := '0'; -- Si serpent en vie 0 ou pas 1
     SIGNAL prev_PBG, prev_PBD, prev_PBB, prev_PBH : STD_LOGIC := '0'; -- Sens de déplacement du serpent
 
@@ -37,11 +36,13 @@ BEGIN
             xSnake(0) <= SCREEN_WIDTH/2;
             ySnake(0) <= SCREEN_HEIGHT/2;
             FOR i IN 1 TO MAX_SNAKE_LENGHT - 1 LOOP
-                xSnake(i) <= -10;
-                ySnake(i) <= -10;
+                xSnake(i) <= - 10;
+                ySnake(i) <= - 10;
+                VxSnake(i) <= 0;
+                VySnake(i) <= 0;
             END LOOP;
-            xDirSnake <= 1;
-            yDirSnake <= 0;
+            VxSnake(0) <= 1;
+            VySnake(0) <= 0;
             prev_PBG <= '0';
             prev_PBD <= '0';
             prev_PBH <= '0';
@@ -51,29 +52,29 @@ BEGIN
         ELSIF (SNAKE_CLK'event AND SNAKE_CLK = '1') THEN
             IF (FRAME = '1') THEN
                 -- Mise à jour de la position de la tête du serpent
-                IF (((PB_D = '1' AND prev_PBD = '0') OR DECODE_CODE = "1000") AND xDirSnake /= - 1) THEN -- On vérifie que le serpent ne puisse pas aller dans le sens opposé
-                    xDirSnake <= 1;
-                    yDirSnake <= 0;
-                ELSIF (((PB_G = '1' AND prev_PBG = '0') OR DECODE_CODE = "0110") AND xDirSnake /= 1) THEN
-                    xDirSnake <= - 1;
-                    yDirSnake <= 0;
-                ELSIF (((PB_H = '1' AND prev_PBH = '0') OR DECODE_CODE = "0101") AND yDirSnake /= 1) THEN
-                    yDirSnake <= - 1;
-                    xDirSnake <= 0;
-                ELSIF (((PB_B = '1' AND prev_PBB = '0') OR DECODE_CODE = "0111") AND yDirSnake /= - 1) THEN
-                    yDirSnake <= 1;
-                    xDirSnake <= 0;
+                IF (((PB_D = '1' AND prev_PBD = '0') OR DECODE_CODE = "1000") AND VxSnake(0) /= - 1) THEN -- On vérifie que le serpent ne puisse pas aller dans le sens opposé
+                    VxSnake(0) <= 1;
+                    VySnake(0) <= 0;
+                ELSIF (((PB_G = '1' AND prev_PBG = '0') OR DECODE_CODE = "0110") AND VxSnake(0) /= 1) THEN
+                    VxSnake(0) <= - 1;
+                    VySnake(0) <= 0;
+                ELSIF (((PB_H = '1' AND prev_PBH = '0') OR DECODE_CODE = "0101") AND VySnake(0) /= 1) THEN
+                    VxSnake(0) <= 0;
+                    VySnake(0) <= - 1;
+                ELSIF (((PB_B = '1' AND prev_PBB = '0') OR DECODE_CODE = "0111") AND VySnake(0) /= - 1) THEN
+                    VxSnake(0) <= 0;
+                    VySnake(0) <= 1;
                 END IF;
 
                 -- Le serpent avance en continue en fonction de l'orientation qu'on lui a donné
                 FOR i IN 1 TO MAX_SNAKE_LENGHT - 1 LOOP
-                    IF (i < LENGHT_SNAKE+1) THEN
-                        xSnake(i) <= xSnake(i - 1) - SNAKE_SIZE * xDirSnake;
-                        ySnake(i) <= ySnake(i - 1) - SNAKE_SIZE * yDirSnake;
+                    IF (i < LENGHT_SNAKE + 1) THEN
+                        xSnake(i) <= xSnake(i - 1) - SNAKE_SIZE * VxSnake(i - 1);
+                        ySnake(i) <= ySnake(i - 1) - SNAKE_SIZE * VySnake(i - 1);
                     END IF;
                 END LOOP;
-                xSnake(0) <= xSnake(0) + 2 * xDirSnake;
-                ySnake(0) <= ySnake(0) + 2 * yDirSnake;
+                xSnake(0) <= xSnake(0) + 2 * VxSnake(0);
+                ySnake(0) <= ySnake(0) + 2 * VySnake(0);
 
                 -- Gérer la sortie de l'écran
                 IF (xSnake(0) < SNAKE_SIZE/2 OR xSnake(0) > SCREEN_WIDTH - SNAKE_SIZE/2

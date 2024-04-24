@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1713980638" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/snake.dcp">
+<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1713987033" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/snake.dcp">
   <File Type="PA-TCL" Name="snake.tcl"/>
   <File Type="RDS-PROPCONSTRS" Name="snake_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="snake_reports.tcl"/>
@@ -109,13 +109,6 @@
     </File>
     <File Path="$PPRDIR/../snake.vhd">
       <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PPRDIR/../../KEYBOARD/tb_ps2_keyboard.vhd">
-      <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>

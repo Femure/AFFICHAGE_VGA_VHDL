@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Wed Apr 24 19:46:14 2024
+| Date         : Wed Apr 24 21:32:50 2024
 | Host         : Max_Laptop running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file snake_control_sets_placed.rpt
 | Design       : snake
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |   119 |
-|    Minimum number of control sets                        |   119 |
+| Total control sets                                       |   118 |
+|    Minimum number of control sets                        |   118 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |   269 |
+| Unused register locations in slices containing registers |   273 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,11 +39,11 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |   119 |
+| Total control sets |   118 |
 | >= 0 to < 4        |     4 |
-| >= 4 to < 6        |     6 |
-| >= 6 to < 8        |     1 |
-| >= 8 to < 10       |     2 |
+| >= 4 to < 6        |     5 |
+| >= 6 to < 8        |     2 |
+| >= 8 to < 10       |     1 |
 | >= 10 to < 12      |     1 |
 | >= 12 to < 14      |     1 |
 | >= 14 to < 16      |     0 |
@@ -58,11 +58,11 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |               4 |            3 |
-| No           | No                    | Yes                    |              68 |           40 |
+| No           | No                    | No                     |               4 |            4 |
+| No           | No                    | Yes                    |              73 |           39 |
 | No           | Yes                   | No                     |               1 |            1 |
 | Yes          | No                    | No                     |               0 |            0 |
-| Yes          | No                    | Yes                    |            2386 |          850 |
+| Yes          | No                    | Yes                    |            2385 |         1026 |
 | Yes          | Yes                   | No                     |               0 |            0 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
@@ -73,125 +73,124 @@ Table of Contents
 +-------------------------------+-----------------------------------------------------+-------------------+------------------+----------------+--------------+
 |          Clock Signal         |                    Enable Signal                    |  Set/Reset Signal | Slice Load Count | Bel Load Count | Bels / Slice |
 +-------------------------------+-----------------------------------------------------+-------------------+------------------+----------------+--------------+
-|  G0/point_reg[6]_0            |                                                     | G0/point_reg[1]_0 |                1 |              1 |         1.00 |
-|  snake_clk_BUFG               |                                                     | RE0/AR[0]         |                1 |              1 |         1.00 |
-|  food_clk_BUFG                |                                                     | RE0/AR[0]         |                1 |              1 |         1.00 |
+|  snake_clk_BUFG               |                                                     | RE0/reset_g       |                1 |              1 |         1.00 |
+|  G0/point_reg[2]_17           |                                                     | A1/point_reg[6]_3 |                1 |              1 |         1.00 |
+|  food_clk_BUFG                |                                                     | RE0/reset_g       |                1 |              1 |         1.00 |
 |  CLK_IBUF_BUFG                |                                                     | RST_IBUF          |                1 |              2 |         2.00 |
-|  CLK_IBUF_BUFG                |                                                     |                   |                3 |              4 |         1.33 |
-|  CLK_IBUF_BUFG                | K0/ps2_keyboard_0/D0/count[3]_i_1_n_0               | RE0/AR[0]         |                1 |              4 |         4.00 |
-|  CLK_IBUF_BUFG                | K0/ps2_keyboard_0/C0/FSM_sequential_state_reg[0][0] | RE0/AR[0]         |                1 |              4 |         4.00 |
-|  CLK_IBUF_BUFG                | K0/ps2_keyboard_0/C0/temp_ps2_code_reg[1]_1[0]      | RE0/AR[0]         |                1 |              4 |         4.00 |
-|  snake_clk_BUFG               | S1/xDirSnake                                        | RE0/AR[0]         |                1 |              4 |         4.00 |
-|  CLK_IBUF_BUFG                | K0/ps2_keyboard_0/D1/count[4]_i_1_n_0               | RE0/AR[0]         |                2 |              5 |         2.50 |
-|  CLK_IBUF_BUFG                | N4/eaten_reg_0[0]                                   | RE0/AR[0]         |                6 |              7 |         1.17 |
-|  CLK_IBUF_BUFG                | K0/ps2_keyboard_0/R0/E[0]                           | RE0/AR[0]         |                2 |              8 |         4.00 |
-|  pixel_clk_BUFG               |                                                     | RE0/AR[0]         |                4 |              8 |         2.00 |
-| ~K0/ps2_keyboard_0/D0/O_reg_0 |                                                     | RE0/AR[0]         |                7 |             11 |         1.57 |
-|  CLK_IBUF_BUFG                | K0/ps2_keyboard_0/C0/count_idle[0]_i_1_n_0          | RE0/AR[0]         |                4 |             13 |         3.25 |
-|  snake_clk_BUFG               | G0/point_reg[0]_8[0]                                | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[2]_18[0]                               | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  pixel_clk_BUFG               |                                                     | RST_IBUF          |               11 |             22 |         2.00 |
-|  snake_clk_BUFG               | G0/xSnake[79]_1                                     | RE0/AR[0]         |                7 |             22 |         3.14 |
-|  snake_clk_BUFG               | G0/xSnake[63]_0                                     | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/xSnake[87]_2                                     | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/xSnake[39]_4                                     | RE0/AR[0]         |                7 |             22 |         3.14 |
-|  snake_clk_BUFG               | G0/xSnake[47]_6                                     | RE0/AR[0]         |                7 |             22 |         3.14 |
-|  snake_clk_BUFG               | G0/E[0]                                             | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/xSnake[71]_3                                     | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/xSnake[15]_5                                     | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[0]_25[0]                               | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[0]_19[0]                               | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[0]_21[0]                               | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[0]_23[0]                               | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[0]_15[0]                               | RE0/AR[0]         |                6 |             22 |         3.67 |
-|  snake_clk_BUFG               | G0/point_reg[0]_26[0]                               | RE0/AR[0]         |                7 |             22 |         3.14 |
-|  snake_clk_BUFG               | G0/point_reg[0]_27[0]                               | RE0/AR[0]         |                7 |             22 |         3.14 |
-|  snake_clk_BUFG               | G0/point_reg[0]_29[0]                               | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[0]_3[0]                                | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[0]_13[0]                               | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[0]_31[0]                               | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[0]_32[0]                               | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[0]_20[0]                               | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[0]_34[0]                               | RE0/AR[0]         |                7 |             22 |         3.14 |
-|  snake_clk_BUFG               | G0/point_reg[0]_35[0]                               | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[0]_4[0]                                | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[0]_10[0]                               | RE0/AR[0]         |                7 |             22 |         3.14 |
-|  snake_clk_BUFG               | G0/point_reg[0]_14[0]                               | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[0]_24[0]                               | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[0]_1[0]                                | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[0]_30[0]                               | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[0]_11[0]                               | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[0]_12[0]                               | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[0]_33[0]                               | RE0/AR[0]         |                7 |             22 |         3.14 |
-|  snake_clk_BUFG               | G0/point_reg[0]_5[0]                                | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[0]_6[0]                                | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[0]_16[0]                               | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[0]_28[0]                               | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[0]_17[0]                               | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[0]_2[0]                                | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[0]_22[0]                               | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[2]_24[0]                               | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[2]_3[0]                                | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[2]_36[0]                               | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[2]_37[0]                               | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[4]_12[0]                               | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[1]_2[0]                                | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[1]_4[0]                                | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[2]_12[0]                               | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[2]_30[0]                               | RE0/AR[0]         |                7 |             22 |         3.14 |
-|  snake_clk_BUFG               | G0/point_reg[2]_5[0]                                | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[4]_2[0]                                | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[4]_3[0]                                | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[2]_23[0]                               | RE0/AR[0]         |                7 |             22 |         3.14 |
-|  snake_clk_BUFG               | G0/point_reg[2]_9[0]                                | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[2]_21[0]                               | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[2]_34[0]                               | RE0/AR[0]         |                7 |             22 |         3.14 |
-|  snake_clk_BUFG               | G0/point_reg[1]_3[0]                                | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[0]_9[0]                                | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[4]_4[0]                                | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[4]_5[0]                                | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[5]_6[0]                                | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[5]_7[0]                                | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[2]_33[0]                               | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[5]_1[0]                                | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[2]_28[0]                               | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[1]_8[0]                                | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[2]_13[0]                               | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[1]_17[0]                               | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[2]_11[0]                               | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[2]_15[0]                               | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[2]_20[0]                               | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[2]_27[0]                               | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[2]_31[0]                               | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[2]_32[0]                               | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[1]_7[0]                                | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[2]_41[0]                               | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[2]_7[0]                                | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[0]_7[0]                                | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[2]_17[0]                               | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[1]_9[0]                                | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[1]_6[0]                                | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[2]_19[0]                               | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[1]_5[0]                                | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[2]_16[0]                               | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[2]_29[0]                               | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[2]_26[0]                               | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[2]_4[0]                                | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[2]_10[0]                               | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[2]_6[0]                                | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[2]_2[0]                                | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[1]_16[0]                               | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[2]_14[0]                               | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[1]_18[0]                               | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[2]_22[0]                               | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[2]_25[0]                               | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[2]_8[0]                                | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[4]_11[0]                               | RE0/AR[0]         |                8 |             22 |         2.75 |
-|  snake_clk_BUFG               | G0/point_reg[2]_35[0]                               | RE0/AR[0]         |                7 |             22 |         3.14 |
-|  CLK_IBUF_BUFG                |                                                     | RE0/AR[0]         |               15 |             23 |         1.53 |
-|  pixel_clk_BUFG               | A1/countY[9]_i_1_n_0                                | RST_IBUF          |               17 |             29 |         1.71 |
-|  food_clk_BUFG                | A1/E[0]                                             | RE0/AR[0]         |               18 |             64 |         3.56 |
-|  snake_clk_BUFG               | A1/frame                                            | RE0/AR[0]         |               19 |             66 |         3.47 |
+|  CLK_IBUF_BUFG                |                                                     |                   |                4 |              4 |         1.00 |
+|  CLK_IBUF_BUFG                | K0/ps2_keyboard_0/D0/count[3]_i_1_n_0               | RE0/reset_g       |                1 |              4 |         4.00 |
+|  CLK_IBUF_BUFG                | K0/ps2_keyboard_0/C0/FSM_sequential_state_reg[0][0] | RE0/reset_g       |                1 |              4 |         4.00 |
+|  CLK_IBUF_BUFG                | K0/ps2_keyboard_0/C0/temp_ps2_code_reg[1]_1[0]      | RE0/reset_g       |                2 |              4 |         2.00 |
+|  CLK_IBUF_BUFG                | K0/ps2_keyboard_0/D1/count[4]_i_1_n_0               | RE0/reset_g       |                2 |              5 |         2.50 |
+|  snake_clk_BUFG               | S1/VxSnake[0]_0                                     | RE0/reset_g       |                2 |              6 |         3.00 |
+|  CLK_IBUF_BUFG                | N4/eaten_reg_0[0]                                   | RE0/reset_g       |                6 |              7 |         1.17 |
+|  CLK_IBUF_BUFG                | K0/ps2_keyboard_0/R0/E[0]                           | RE0/reset_g       |                2 |              8 |         4.00 |
+| ~K0/ps2_keyboard_0/D0/O_reg_0 |                                                     | RE0/reset_g       |                3 |             11 |         3.67 |
+|  CLK_IBUF_BUFG                | K0/ps2_keyboard_0/C0/count_idle[0]_i_1_n_0          | RE0/reset_g       |                4 |             13 |         3.25 |
+|  snake_clk_BUFG               | A1/point_reg[4]_2[0]                                | RE0/reset_g       |               11 |             22 |         2.00 |
+|  snake_clk_BUFG               | A1/point_reg[4]_3[0]                                | RE0/reset_g       |               11 |             22 |         2.00 |
+|  snake_clk_BUFG               | G0/xSnake[79]_0                                     | RE0/reset_g       |               13 |             22 |         1.69 |
+|  snake_clk_BUFG               | G0/xSnake[15]_1                                     | RE0/reset_g       |                9 |             22 |         2.44 |
+|  snake_clk_BUFG               | G0/xSnake[47]_2                                     | RE0/reset_g       |               12 |             22 |         1.83 |
+|  snake_clk_BUFG               | G0/E[0]                                             | RE0/reset_g       |               11 |             22 |         2.00 |
+|  snake_clk_BUFG               | G0/point_reg[3]_16[0]                               | RE0/reset_g       |               12 |             22 |         1.83 |
+|  snake_clk_BUFG               | G0/point_reg[3]_18[0]                               | RE0/reset_g       |               11 |             22 |         2.00 |
+|  snake_clk_BUFG               | G0/point_reg[3]_17[0]                               | RE0/reset_g       |               10 |             22 |         2.20 |
+|  snake_clk_BUFG               | G0/point_reg[3]_19[0]                               | RE0/reset_g       |               11 |             22 |         2.00 |
+|  snake_clk_BUFG               | G0/point_reg[2]_6[0]                                | RE0/reset_g       |                8 |             22 |         2.75 |
+|  snake_clk_BUFG               | G0/point_reg[0]_5[0]                                | RE0/reset_g       |               10 |             22 |         2.20 |
+|  snake_clk_BUFG               | G0/countY_reg[3]_rep__1_1[0]                        | RE0/reset_g       |               11 |             22 |         2.00 |
+|  snake_clk_BUFG               | G0/point_reg[2]_4[0]                                | RE0/reset_g       |               12 |             22 |         1.83 |
+|  snake_clk_BUFG               | G0/point_reg[2]_7[0]                                | RE0/reset_g       |               11 |             22 |         2.00 |
+|  snake_clk_BUFG               | G0/point_reg[3]_20[0]                               | RE0/reset_g       |               13 |             22 |         1.69 |
+|  snake_clk_BUFG               | G0/point_reg[3]_21[0]                               | RE0/reset_g       |                8 |             22 |         2.75 |
+|  snake_clk_BUFG               | G0/point_reg[3]_22[0]                               | RE0/reset_g       |               10 |             22 |         2.20 |
+|  snake_clk_BUFG               | G0/point_reg[3]_23[0]                               | RE0/reset_g       |               12 |             22 |         1.83 |
+|  snake_clk_BUFG               | G0/point_reg[3]_24[0]                               | RE0/reset_g       |                7 |             22 |         3.14 |
+|  snake_clk_BUFG               | G0/point_reg[1]_6[0]                                | RE0/reset_g       |               11 |             22 |         2.00 |
+|  snake_clk_BUFG               | G0/point_reg[3]_25[0]                               | RE0/reset_g       |                7 |             22 |         3.14 |
+|  snake_clk_BUFG               | G0/point_reg[0]_6[0]                                | RE0/reset_g       |               12 |             22 |         1.83 |
+|  snake_clk_BUFG               | G0/countY_reg[3]_rep__1[0]                          | RE0/reset_g       |                9 |             22 |         2.44 |
+|  snake_clk_BUFG               | G0/point_reg[0]_11[0]                               | RE0/reset_g       |               12 |             22 |         1.83 |
+|  snake_clk_BUFG               | G0/point_reg[0]_3[0]                                | RE0/reset_g       |                9 |             22 |         2.44 |
+|  snake_clk_BUFG               | G0/point_reg[0]_7[0]                                | RE0/reset_g       |               11 |             22 |         2.00 |
+|  snake_clk_BUFG               | G0/point_reg[1]_10[0]                               | RE0/reset_g       |               12 |             22 |         1.83 |
+|  snake_clk_BUFG               | G0/point_reg[1]_11[0]                               | RE0/reset_g       |                8 |             22 |         2.75 |
+|  snake_clk_BUFG               | G0/point_reg[1]_7[0]                                | RE0/reset_g       |               11 |             22 |         2.00 |
+|  snake_clk_BUFG               | G0/point_reg[1]_8[0]                                | RE0/reset_g       |                9 |             22 |         2.44 |
+|  snake_clk_BUFG               | G0/point_reg[0]_12[0]                               | RE0/reset_g       |               10 |             22 |         2.20 |
+|  snake_clk_BUFG               | G0/countY_reg[3]_rep__1_0[0]                        | RE0/reset_g       |                9 |             22 |         2.44 |
+|  snake_clk_BUFG               | G0/point_reg[0]_13[0]                               | RE0/reset_g       |               13 |             22 |         1.69 |
+|  snake_clk_BUFG               | G0/point_reg[0]_14[0]                               | RE0/reset_g       |               10 |             22 |         2.20 |
+|  snake_clk_BUFG               | G0/point_reg[0]_15[0]                               | RE0/reset_g       |                9 |             22 |         2.44 |
+|  snake_clk_BUFG               | G0/point_reg[0]_4[0]                                | RE0/reset_g       |               10 |             22 |         2.20 |
+|  snake_clk_BUFG               | G0/point_reg[0]_8[0]                                | RE0/reset_g       |               10 |             22 |         2.20 |
+|  snake_clk_BUFG               | G0/point_reg[2]_3[0]                                | RE0/reset_g       |                9 |             22 |         2.44 |
+|  snake_clk_BUFG               | G0/point_reg[2]_5[0]                                | RE0/reset_g       |               10 |             22 |         2.20 |
+|  snake_clk_BUFG               | G0/point_reg[0]_10[0]                               | RE0/reset_g       |               10 |             22 |         2.20 |
+|  snake_clk_BUFG               | G0/point_reg[0]_9[0]                                | RE0/reset_g       |                9 |             22 |         2.44 |
+|  snake_clk_BUFG               | G0/point_reg[2]_8[0]                                | RE0/reset_g       |                8 |             22 |         2.75 |
+|  snake_clk_BUFG               | G0/point_reg[3]_13[0]                               | RE0/reset_g       |               10 |             22 |         2.20 |
+|  snake_clk_BUFG               | G0/point_reg[3]_14[0]                               | RE0/reset_g       |                8 |             22 |         2.75 |
+|  snake_clk_BUFG               | G0/point_reg[1]_9[0]                                | RE0/reset_g       |               11 |             22 |         2.00 |
+|  snake_clk_BUFG               | G0/point_reg[3]_15[0]                               | RE0/reset_g       |                8 |             22 |         2.75 |
+|  snake_clk_BUFG               | G0/point_reg[3]_50[0]                               | RE0/reset_g       |               10 |             22 |         2.20 |
+|  snake_clk_BUFG               | G0/point_reg[3]_29[0]                               | RE0/reset_g       |                9 |             22 |         2.44 |
+|  snake_clk_BUFG               | G0/point_reg[3]_39[0]                               | RE0/reset_g       |                8 |             22 |         2.75 |
+|  snake_clk_BUFG               | G0/point_reg[3]_51[0]                               | RE0/reset_g       |                9 |             22 |         2.44 |
+|  snake_clk_BUFG               | G0/point_reg[3]_41[0]                               | RE0/reset_g       |               11 |             22 |         2.00 |
+|  snake_clk_BUFG               | G0/point_reg[3]_34[0]                               | RE0/reset_g       |               10 |             22 |         2.20 |
+|  snake_clk_BUFG               | G0/point_reg[3]_57[0]                               | RE0/reset_g       |               11 |             22 |         2.00 |
+|  snake_clk_BUFG               | G0/point_reg[3]_65[0]                               | RE0/reset_g       |               10 |             22 |         2.20 |
+|  snake_clk_BUFG               | G0/point_reg[3]_28[0]                               | RE0/reset_g       |               10 |             22 |         2.20 |
+|  snake_clk_BUFG               | G0/point_reg[3]_38[0]                               | RE0/reset_g       |                9 |             22 |         2.44 |
+|  snake_clk_BUFG               | G0/point_reg[3]_44[0]                               | RE0/reset_g       |               10 |             22 |         2.20 |
+|  snake_clk_BUFG               | G0/point_reg[3]_54[0]                               | RE0/reset_g       |                8 |             22 |         2.75 |
+|  snake_clk_BUFG               | G0/point_reg[3]_35[0]                               | RE0/reset_g       |                9 |             22 |         2.44 |
+|  snake_clk_BUFG               | G0/point_reg[3]_52[0]                               | RE0/reset_g       |                9 |             22 |         2.44 |
+|  snake_clk_BUFG               | G0/point_reg[3]_26[0]                               | RE0/reset_g       |                7 |             22 |         3.14 |
+|  snake_clk_BUFG               | G0/point_reg[3]_36[0]                               | RE0/reset_g       |               10 |             22 |         2.20 |
+|  snake_clk_BUFG               | G0/point_reg[3]_46[0]                               | RE0/reset_g       |                9 |             22 |         2.44 |
+|  snake_clk_BUFG               | G0/point_reg[3]_64[0]                               | RE0/reset_g       |               11 |             22 |         2.00 |
+|  snake_clk_BUFG               | G0/point_reg[3]_49[0]                               | RE0/reset_g       |                8 |             22 |         2.75 |
+|  snake_clk_BUFG               | G0/point_reg[3]_27[0]                               | RE0/reset_g       |                7 |             22 |         3.14 |
+|  snake_clk_BUFG               | G0/point_reg[3]_37[0]                               | RE0/reset_g       |                8 |             22 |         2.75 |
+|  snake_clk_BUFG               | G0/point_reg[3]_40[0]                               | RE0/reset_g       |               10 |             22 |         2.20 |
+|  snake_clk_BUFG               | G0/point_reg[3]_31[0]                               | RE0/reset_g       |               10 |             22 |         2.20 |
+|  snake_clk_BUFG               | G0/point_reg[3]_58[0]                               | RE0/reset_g       |               10 |             22 |         2.20 |
+|  snake_clk_BUFG               | G0/point_reg[3]_45[0]                               | RE0/reset_g       |               10 |             22 |         2.20 |
+|  snake_clk_BUFG               | G0/point_reg[3]_48[0]                               | RE0/reset_g       |               11 |             22 |         2.00 |
+|  snake_clk_BUFG               | G0/point_reg[3]_59[0]                               | RE0/reset_g       |               12 |             22 |         1.83 |
+|  snake_clk_BUFG               | G0/point_reg[3]_55[0]                               | RE0/reset_g       |                9 |             22 |         2.44 |
+|  snake_clk_BUFG               | G0/point_reg[3]_43[0]                               | RE0/reset_g       |                9 |             22 |         2.44 |
+|  snake_clk_BUFG               | G0/point_reg[3]_63[0]                               | RE0/reset_g       |                7 |             22 |         3.14 |
+|  snake_clk_BUFG               | G0/point_reg[3]_56[0]                               | RE0/reset_g       |                9 |             22 |         2.44 |
+|  snake_clk_BUFG               | G0/point_reg[3]_42[0]                               | RE0/reset_g       |                9 |             22 |         2.44 |
+|  snake_clk_BUFG               | G0/point_reg[3]_47[0]                               | RE0/reset_g       |               12 |             22 |         1.83 |
+|  snake_clk_BUFG               | G0/point_reg[3]_53[0]                               | RE0/reset_g       |                9 |             22 |         2.44 |
+|  snake_clk_BUFG               | G0/point_reg[3]_60[0]                               | RE0/reset_g       |                9 |             22 |         2.44 |
+|  snake_clk_BUFG               | G0/point_reg[3]_32[0]                               | RE0/reset_g       |                7 |             22 |         3.14 |
+|  snake_clk_BUFG               | G0/point_reg[3]_62[0]                               | RE0/reset_g       |                8 |             22 |         2.75 |
+|  snake_clk_BUFG               | G0/point_reg[3]_30[0]                               | RE0/reset_g       |                8 |             22 |         2.75 |
+|  snake_clk_BUFG               | G0/point_reg[3]_33[0]                               | RE0/reset_g       |                8 |             22 |         2.75 |
+|  snake_clk_BUFG               | G0/point_reg[3]_67[0]                               | RE0/reset_g       |                7 |             22 |         3.14 |
+|  snake_clk_BUFG               | G0/point_reg[3]_68[0]                               | RE0/reset_g       |               10 |             22 |         2.20 |
+|  snake_clk_BUFG               | G0/point_reg[3]_69[0]                               | RE0/reset_g       |                9 |             22 |         2.44 |
+|  snake_clk_BUFG               | G0/point_reg[3]_61[0]                               | RE0/reset_g       |               12 |             22 |         1.83 |
+|  snake_clk_BUFG               | G0/point_reg[3]_66[0]                               | RE0/reset_g       |                9 |             22 |         2.44 |
+|  snake_clk_BUFG               | G0/point_reg[3]_70[0]                               | RE0/reset_g       |               10 |             22 |         2.20 |
+|  snake_clk_BUFG               | G0/point_reg[6]_10[0]                               | RE0/reset_g       |                7 |             22 |         3.14 |
+|  snake_clk_BUFG               | A1/E[0]                                             | RE0/reset_g       |                8 |             22 |         2.75 |
+|  snake_clk_BUFG               | A1/xSnake[31]_1                                     | RE0/reset_g       |               10 |             22 |         2.20 |
+|  snake_clk_BUFG               | A1/xSnake[63]_0                                     | RE0/reset_g       |               11 |             22 |         2.00 |
+|  snake_clk_BUFG               | A1/countY_reg[3]_rep__1_1[0]                        | RE0/reset_g       |                7 |             22 |         3.14 |
+|  snake_clk_BUFG               | A1/countY_reg[3]_rep__1_0[0]                        | RE0/reset_g       |                8 |             22 |         2.75 |
+|  snake_clk_BUFG               | A1/point_reg[4]_1[0]                                | RE0/reset_g       |               11 |             22 |         2.00 |
+|  CLK_IBUF_BUFG                |                                                     | RE0/reset_g       |               11 |             23 |         2.09 |
+|  pixel_clk_BUFG               | A1/countY[9]_i_1_n_0                                | RST_IBUF          |               13 |             26 |         2.00 |
+|  pixel_clk_BUFG               |                                                     | RST_IBUF          |               22 |             35 |         1.59 |
+|  food_clk_BUFG                | A1/eaten_reg[0]                                     | RE0/reset_g       |               18 |             64 |         3.56 |
+|  snake_clk_BUFG               | A1/frame                                            | RE0/reset_g       |               18 |             66 |         3.67 |
 +-------------------------------+-----------------------------------------------------+-------------------+------------------+----------------+--------------+
 
 
