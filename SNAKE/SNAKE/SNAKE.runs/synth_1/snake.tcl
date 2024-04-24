@@ -89,6 +89,7 @@ OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_vhdl -library xil_defaultlib {
   {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/score/aff_score.vhd}
+  {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/food/clk_food.vhd}
   {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/serpent/clk_snake.vhd}
   {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/serpent/cnt_lenght_snake.vhd}
   {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/food/cnt_rand.vhd}

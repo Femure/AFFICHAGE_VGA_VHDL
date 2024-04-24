@@ -33,3 +33,58 @@
     <Process Command="vivado.bat" Owner="maxim" Host="MAX_LAPTOP" Pid="7664" HostCore="16" HostMemory="016371519488">
     </Process>
 </ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="maxim" Host="MAX_LAPTOP" Pid="22676" HostCore="16" HostMemory="016371519488">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="maxim" Host="MAX_LAPTOP" Pid="22352" HostCore="16" HostMemory="016371519488">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="maxim" Host="MAX_LAPTOP" Pid="19060" HostCore="16" HostMemory="016371519488">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="maxim" Host="MAX_LAPTOP" Pid="22992" HostCore="16" HostMemory="016371519488">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="maxim" Host="MAX_LAPTOP" Pid="22912" HostCore="16" HostMemory="016371519488">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="maxim" Host="MAX_LAPTOP" Pid="18100" HostCore="16" HostMemory="016371519488">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="maxim" Host="MAX_LAPTOP" Pid="20832" HostCore="16" HostMemory="016371519488">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="maxim" Host="MAX_LAPTOP" Pid="18636" HostCore="16" HostMemory="016371519488">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="maxim" Host="MAX_LAPTOP" Pid="18160" HostCore="16" HostMemory="016371519488">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="maxim" Host="MAX_LAPTOP" Pid="13848" HostCore="16" HostMemory="016371519488">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="maxim" Host="MAX_LAPTOP" Pid="15864" HostCore="16" HostMemory="016371519488">
+    </Process>
+</ProcessHandle>

@@ -7,7 +7,7 @@ USE IEEE.MATH_REAL.ALL;
 
 ENTITY food_spawn IS
     PORT (
-        RST, FRAME : IN STD_LOGIC;
+        RST, FOOD_CLK, FRAME : IN STD_LOGIC;
         X_SNAKE, Y_SNAKE : IN INTEGER;
         SEED1, SEED2 : IN INTEGER;
         HCOUNT, VCOUNT : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
@@ -45,7 +45,7 @@ BEGIN
             xFood <= 2 * SCREEN_WIDTH / 3;
             yFood <= SCREEN_HEIGHT / 2;
             eaten <= '0';
-        ELSE
+        ELSIF (FOOD_CLK'event AND FOOD_CLK = '1') THEN
             IF (FRAME = '1') THEN
                 IF (eaten = '1') THEN -- Si le serpent mange la nourriture alors le nouveau cube apparaît de manière aléatoire
                     xFood <= rand_int(SEED1, FOOD_SIZE, SCREEN_WIDTH - FOOD_SIZE);

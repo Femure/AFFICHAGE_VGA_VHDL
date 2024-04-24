@@ -37,8 +37,8 @@ BEGIN
             xSnake(0) <= SCREEN_WIDTH/2;
             ySnake(0) <= SCREEN_HEIGHT/2;
             FOR i IN 1 TO MAX_SNAKE_LENGHT - 1 LOOP
-                xSnake(i) <= xSnake(0);
-                ySnake(i) <= xSnake(0);
+                xSnake(i) <= -10;
+                ySnake(i) <= -10;
             END LOOP;
             xDirSnake <= 1;
             yDirSnake <= 0;
