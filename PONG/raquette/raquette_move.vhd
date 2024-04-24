@@ -6,6 +6,8 @@ USE IEEE.std_logic_unsigned.ALL;
 ENTITY raquette_move IS
     PORT (
         RAQUETTE_CLK, RST, FRAME : IN STD_LOGIC;
+        DECODE_FLAG : IN STD_LOGIC;
+        DECODE_CODE : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
         PB_Haut_G, PB_Bas_G, PB_Haut_D, PB_Bas_D : IN STD_LOGIC;
         J_WIN : IN STD_LOGIC_VECTOR(1 DOWNTO 0);
         HCOUNT, VCOUNT : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
@@ -42,11 +44,11 @@ BEGIN
                     yRaquetteD <= SCREEN_HEIGHT/2;
                 ELSE
                     -- Mouvement raquette gauche
-                    IF (PB_Haut_G = '1') THEN
+                    IF (PB_Haut_G = '1' OR DECODE_CODE = "0101") THEN -- Appuye sur le bouton associé ou appuye sur la touche Z
                         IF (yRaquetteG > RAQUETTE_HEIGHT / 2) THEN -- rebond sur bord haut
                             yRaquetteG <= yRaquetteG - dirRaquetteG;
                         END IF;
-                    ELSIF (PB_Bas_G = '1') THEN
+                    ELSIF (PB_Bas_G = '1' OR DECODE_CODE = "0111") THEN -- Appuye sur le bouton associé ou appuye sur la touche S
                         IF (yRaquetteG < SCREEN_HEIGHT - RAQUETTE_HEIGHT / 2) THEN -- rebond sur bord bas
                             yRaquetteG <= yRaquetteG + dirRaquetteG;
                         END IF;
@@ -55,11 +57,11 @@ BEGIN
                     END IF;
 
                     -- Mouvement raquette droite
-                    IF (PB_Haut_D = '1') THEN
+                    IF (PB_Haut_D = '1' OR DECODE_CODE = "0001") THEN -- Appuye sur le bouton associé ou appuye sur la touche ARROW UP
                         IF (yRaquetteD > RAQUETTE_HEIGHT / 2) THEN -- rebond sur bord haut
                             yRaquetteD <= yRaquetteD - dirRaquetteD;
                         END IF;
-                    ELSIF (PB_Bas_D = '1') THEN
+                    ELSIF (PB_Bas_D = '1' OR DECODE_CODE = "0011") THEN -- Appuye sur le bouton associé ou appuye sur la touche ARROW DOWN
                         IF (yRaquetteD < SCREEN_HEIGHT - RAQUETTE_HEIGHT / 2) THEN -- rebond sur bord bas
                             yRaquetteD <= yRaquetteD + dirRaquetteD;
                         END IF;

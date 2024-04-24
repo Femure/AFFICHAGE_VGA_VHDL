@@ -91,8 +91,13 @@ read_vhdl -library xil_defaultlib {
   {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/balle/balle_clk.vhd}
   {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/Balle/balle_move.vhd}
   {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/score/cnt_score.vhd}
+  {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/KEYBOARD/debouncer.vhd}
   {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/div_25MHz.vhd}
   {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/image.vhd}
+  {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/KEYBOARD/ps2_controller.vhd}
+  {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/KEYBOARD/ps2_decode.vhd}
+  {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/KEYBOARD/ps2_keyboard.vhd}
+  {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/KEYBOARD/ps2_receiver.vhd}
   {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/raquette/raquette_clk.vhd}
   {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/raquette/raquette_move.vhd}
   {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/reset.vhd}

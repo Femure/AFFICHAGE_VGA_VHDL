@@ -1,0 +1,34 @@
+Vivado Simulator v2023.2
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2023.2/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot pong_behav xil_defaultlib.pong -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling architecture rtl of entity xil_defaultlib.reset [reset_default]
+Compiling architecture rtl of entity xil_defaultlib.debouncer [debouncer_default]
+Compiling architecture rtl of entity xil_defaultlib.ps2_receiver [ps2_receiver_default]
+Compiling architecture rtl of entity xil_defaultlib.ps2_controller [ps2_controller_default]
+Compiling architecture structural of entity xil_defaultlib.ps2_keyboard [ps2_keyboard_default]
+Compiling architecture rtl of entity xil_defaultlib.ps2_decode [ps2_decode_default]
+Compiling architecture rtl of entity xil_defaultlib.div_25MHz [div_25mhz_default]
+Compiling architecture rtl of entity xil_defaultlib.vga_controller_640_60 [vga_controller_640_60_default]
+Compiling architecture rtl of entity xil_defaultlib.terrain_aff [terrain_aff_default]
+Compiling architecture rtl of entity xil_defaultlib.balle_clk [balle_clk_default]
+Compiling architecture rtl of entity xil_defaultlib.acc_balle_clk [acc_balle_clk_default]
+Compiling architecture rtl of entity xil_defaultlib.balle_move [balle_move_default]
+Compiling architecture rtl of entity xil_defaultlib.raquette_clk [raquette_clk_default]
+Compiling architecture rtl of entity xil_defaultlib.raquette_move [raquette_move_default]
+Compiling architecture rtl of entity xil_defaultlib.cnt_score [cnt_score_default]
+Compiling architecture rtl of entity xil_defaultlib.score_aff [score_aff_default]
+Compiling architecture rtl of entity xil_defaultlib.image [image_default]
+Compiling architecture structural of entity xil_defaultlib.pong
+Built simulation snapshot pong_behav
