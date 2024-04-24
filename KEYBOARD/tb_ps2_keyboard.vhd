@@ -10,10 +10,10 @@ ARCHITECTURE testbench OF tb_ps2_keyboard IS
     COMPONENT ps2_decode IS
         PORT (
             RST, CLK : IN STD_LOGIC;
-            PS2_CLK : IN STD_LOGIC; 
-            PS2_DATA : IN STD_LOGIC; 
+            PS2_CLK : IN STD_LOGIC;
+            PS2_DATA : IN STD_LOGIC;
             DECODE_FLAG : OUT STD_LOGIC;
-            DECODE_CODE : OUT STD_LOGIC_VECTOR(3 DOWNTO 0) 
+            DECODE_CODE : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
         );
     END COMPONENT;
 
@@ -134,34 +134,32 @@ BEGIN
 
         PS2_DATA <= '1';
         PS2_CLK <= '1';
-                
+
         -- UP ARROW
-        print_key("11100000", PS2_DATA, PS2_CLK, 0); -- E0
+        print_key(x"E0", PS2_DATA, PS2_CLK, 2500); -- E0
 
-        WAIT FOR 1000 us;
-        print_key("11110000", PS2_DATA, PS2_CLK, 2500); -- F0
-
-        WAIT FOR 1000 us;
-        print_key("01110101", PS2_DATA, PS2_CLK, 0); -- 75
-
-        -- DOWN ARROW
-        WAIT FOR 1000 us;
-        print_key("11100000", PS2_DATA, PS2_CLK, 0); -- E0
-
-        WAIT FOR 1000 us;
-        print_key("11110000", PS2_DATA, PS2_CLK, 2500); -- F0
-
-        WAIT FOR 1000 us;
-        print_key("01110010", PS2_DATA, PS2_CLK, 0); -- 72
-
-        -- A
         WAIT FOR 1000 us;
         print_key(x"F0", PS2_DATA, PS2_CLK, 2500); -- F0
 
         WAIT FOR 1000 us;
-        print_key(x"1A", PS2_DATA, PS2_CLK, 0); -- 1A
+        print_key(x"75", PS2_DATA, PS2_CLK, 0); -- 75
 
+        -- DOWN ARROW
+        WAIT FOR 1000 us;
+        print_key(x"E0", PS2_DATA, PS2_CLK, 2500); -- E0
 
+        WAIT FOR 1000 us;
+        print_key(x"F0", PS2_DATA, PS2_CLK, 2500); -- F0
+
+        WAIT FOR 1000 us;
+        print_key(x"72", PS2_DATA, PS2_CLK, 0); -- 72
+
+        -- Z
+        WAIT FOR 1000 us;
+        print_key(x"F0", PS2_DATA, PS2_CLK, 2500); -- F0
+
+        WAIT FOR 1000 us;
+        print_key(x"1D", PS2_DATA, PS2_CLK, 0); -- 1A
         WAIT;
 
     END PROCESS;

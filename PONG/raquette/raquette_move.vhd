@@ -44,11 +44,11 @@ BEGIN
                     yRaquetteD <= SCREEN_HEIGHT/2;
                 ELSE
                     -- Mouvement raquette gauche
-                    IF (PB_Haut_G = '1' OR (DECODE_FLAG = '1' AND DECODE_CODE = "0101")) THEN -- Appuye sur le bouton associé ou appuye sur la touche Z
+                    IF (PB_Haut_G = '1' OR DECODE_CODE = "0101") THEN -- Appuye sur le bouton associé ou appuye sur la touche Z
                         IF (yRaquetteG > RAQUETTE_HEIGHT / 2) THEN -- rebond sur bord haut
                             yRaquetteG <= yRaquetteG - dirRaquetteG;
                         END IF;
-                    ELSIF (PB_Bas_G = '1' OR (DECODE_FLAG = '1' AND DECODE_CODE = "0111")) THEN -- Appuye sur le bouton associé ou appuye sur la touche S
+                    ELSIF (PB_Bas_G = '1' OR DECODE_CODE = "0111") THEN -- Appuye sur le bouton associé ou appuye sur la touche S
                         IF (yRaquetteG < SCREEN_HEIGHT - RAQUETTE_HEIGHT / 2) THEN -- rebond sur bord bas
                             yRaquetteG <= yRaquetteG + dirRaquetteG;
                         END IF;
@@ -57,11 +57,11 @@ BEGIN
                     END IF;
 
                     -- Mouvement raquette droite
-                    IF (PB_Haut_D = '1' OR (DECODE_FLAG = '1' AND DECODE_CODE = "0001")) THEN -- Appuye sur le bouton associé ou appuye sur la touche ARROW UP
+                    IF (PB_Haut_D = '1' OR DECODE_CODE = "0001") THEN -- Appuye sur le bouton associé ou appuye sur la touche ARROW UP
                         IF (yRaquetteD > RAQUETTE_HEIGHT / 2) THEN -- rebond sur bord haut
                             yRaquetteD <= yRaquetteD - dirRaquetteD;
                         END IF;
-                    ELSIF (PB_Bas_D = '1' OR (DECODE_FLAG = '1' AND DECODE_CODE = "0011")) THEN -- Appuye sur le bouton associé ou appuye sur la touche ARROW DOWN
+                    ELSIF (PB_Bas_D = '1' OR DECODE_CODE = "0011") THEN -- Appuye sur le bouton associé ou appuye sur la touche ARROW DOWN
                         IF (yRaquetteD < SCREEN_HEIGHT - RAQUETTE_HEIGHT / 2) THEN -- rebond sur bord bas
                             yRaquetteD <= yRaquetteD + dirRaquetteD;
                         END IF;

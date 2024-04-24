@@ -32,7 +32,7 @@ ARCHITECTURE rtl OF ps2_decode IS
 
     SIGNAL ps2_code_flag : STD_LOGIC; --new PS2 code flag from ps2_keyboard component
     SIGNAL ps2_code : STD_LOGIC_VECTOR(7 DOWNTO 0); --PS2 code input form ps2_keyboard component
-    SIGNAL prev_ps2_code_flag : STD_LOGIC; --value of ps2_code_flag on previous clock
+    SIGNAL prev_ps2_code_flag : STD_LOGIC := '1'; --value of ps2_code_flag on previous clock
 
 BEGIN
 
@@ -46,17 +46,17 @@ BEGIN
             break <= '0';
             e0_code <= '0';
             decode <= (OTHERS => '0');
+            prev_ps2_code_flag <= '1';
             DECODE_CODE <= (OTHERS => '0');
             DECODE_FLAG <= '0';
         ELSIF (CLK'EVENT AND CLK = '1') THEN
             prev_ps2_code_flag <= ps2_code_flag; --keep track of previous ps2_code_flag values to determine low-to-high transitions
-            CASE state IS
 
+            CASE state IS
                     --ready state: wait for a new PS2 code to be received
                 WHEN ready =>
                     IF (prev_ps2_code_flag = '0' AND ps2_code_flag = '1') THEN --new PS2 code received
                         DECODE_FLAG <= '0'; --reset new DECODE code indicator
-                        DECODE_CODE <= "0000";
                         state <= new_code; --proceed to new_code state
                     ELSE --no new PS2 code received yet
                         state <= ready; --remain in ready state
@@ -66,6 +66,7 @@ BEGIN
                 WHEN new_code =>
                     IF (ps2_code = x"F0") THEN --code indicates that next command is break
                         break <= '1'; --set break flag
+                        DECODE_CODE <= (OTHERS => '0');
                         state <= ready; --return to ready state to await next PS2 code
                     ELSIF (ps2_code = x"E0") THEN --code indicates multi-key command
                         e0_code <= '1'; --set multi-code command flag
@@ -76,28 +77,26 @@ BEGIN
 
                     --translate state: translate PS2 code to DECODE value
                 WHEN translate =>
-                    IF (break = '1') THEN
-                        IF (e0_code = '1') THEN
-                            CASE ps2_code IS
-                                WHEN x"75" => decode <= "0001"; --UP ARROW
-                                WHEN x"6B" => decode <= "0010"; --LEFT ARROW
-                                WHEN x"72" => decode <= "0011"; --DOWN ARROW
-                                WHEN x"74" => decode <= "0100"; --RIGHT ARROW
-                                WHEN OTHERS => NULL;
-                            END CASE;
-                        ELSE
-                            CASE ps2_code IS
-                                WHEN x"1D" => decode <= "0101"; --Z
-                                WHEN x"1C" => decode <= "0110"; --Q
-                                WHEN x"1B" => decode <= "0111"; --S
-                                WHEN x"23" => decode <= "1000"; --D
-                                WHEN OTHERS => NULL;
-                            END CASE;
-                        END IF;
-                    END IF;
-                    break <= '0'; --reset break flag
+
+                    CASE ps2_code IS
+                        WHEN x"75" => decode <= "0001"; --UP ARROW
+                        WHEN x"72" => decode <= "0011"; --DOWN ARROW
+                        WHEN x"74" => decode <= "0100"; --RIGHT ARROW
+                        WHEN x"6B" => decode <= "0010"; --LEFT ARROW
+                        WHEN x"1D" => decode <= "0101"; --Z
+                        WHEN x"1C" => decode <= "0110"; --Q
+                        WHEN x"1B" => decode <= "0111"; --S
+                        WHEN x"23" => decode <= "1000"; --D
+                        WHEN OTHERS => NULL;
+                    END CASE;
+
                     e0_code <= '0'; --reset multi-code command flag
-                    state <= output; --proceed to output state
+                    IF (break = '0') THEN -- Just consider when it's a make code (hold a key)
+                        state <= output; --proceed to output state
+                    ELSE
+                        break <= '0'; --reset break flag
+                        state <= ready; --return to ready state to await next PS2 code
+                    END IF;
 
                     --output state: verify the code is valid and output the DECODE value
                 WHEN output =>
