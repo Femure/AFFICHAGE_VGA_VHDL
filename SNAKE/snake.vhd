@@ -4,6 +4,7 @@ USE IEEE.std_logic_1164.ALL;
 ENTITY snake IS
     PORT (
         CLK, RST : IN STD_LOGIC;
+        PS2_CLK, PS2_DATA : IN STD_LOGIC;
         PB_G, PB_H, PB_D, PB_B : IN STD_LOGIC;
         HS, VS : OUT STD_LOGIC;
         RED, GREEN, BLUE : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
@@ -16,6 +17,16 @@ ARCHITECTURE structural OF snake IS
         PORT (
             CLK, END_GAME, RST : IN STD_LOGIC;
             G_RESET : OUT STD_LOGIC
+        );
+    END COMPONENT;
+
+    COMPONENT ps2_decode IS
+        PORT (
+            RST, CLK : IN STD_LOGIC;
+            PS2_CLK : IN STD_LOGIC;
+            PS2_DATA : IN STD_LOGIC;
+            DECODE_FLAG : OUT STD_LOGIC;
+            DECODE_CODE : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
         );
     END COMPONENT;
 
@@ -46,6 +57,7 @@ ARCHITECTURE structural OF snake IS
             SNAKE_CLK, RST, FRAME : IN STD_LOGIC;
             HCOUNT, VCOUNT : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
             LENGHT_SNAKE : IN STD_LOGIC_VECTOR(6 DOWNTO 0);
+            DECODE_CODE : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
             PB_D, PB_G, PB_H, PB_B : IN STD_LOGIC;
             IS_SNAKE, END_GAME : OUT STD_LOGIC;
             X_SNAKE, Y_SNAKE : OUT INTEGER
@@ -95,6 +107,7 @@ ARCHITECTURE structural OF snake IS
 
     SIGNAL reset_g, pixel_clk, snake_clk : STD_LOGIC;
     SIGNAL blank, frame : STD_LOGIC;
+    SIGNAL decode_code : STD_LOGIC_VECTOR(3 DOWNTO 0);
     SIGNAL is_snake, is_eaten, is_food, is_number : STD_LOGIC;
     SIGNAL end_game : STD_LOGIC;
     SIGNAL hcount, vcount : STD_LOGIC_VECTOR(10 DOWNTO 0);
@@ -107,13 +120,16 @@ BEGIN
     -- Gestion du reset généralisé en cas d'appuye sur le bouton reset ou de fin de partie
     RE0 : reset PORT MAP(CLK => CLK, END_GAME => end_game, RST => RST, G_RESET => reset_g);
 
+    -- Gestion de l'entrée au clavier
+    K0 : ps2_decode PORT MAP(RST => reset_g, CLK => CLK, PS2_CLK => PS2_CLK, PS2_DATA => PS2_DATA, DECODE_CODE => decode_code);
+
     -- Gestion de l'affichage sur l'écran
     A0 : div_25MHz PORT MAP(CLK => CLK, RST => RST, PIXEL_CLK => pixel_clk);
     A1 : vga_controller_640_60 PORT MAP(PIXEL_CLK => pixel_clk, RST => RST, HS => HS, VS => VS, BLANK => blank, FRAME => frame, HCOUNT => hcount, VCOUNT => vcount);
 
     -- Gestion corps serpent 
     S0 : clk_snake PORT MAP(CLK => CLK, RST => reset_g, SNAKE_CLK => snake_clk);
-    S1 : snake_move PORT MAP(SNAKE_CLK => snake_clk, RST => reset_g, FRAME => frame, HCOUNT => hcount, VCOUNT => vcount, PB_G => PB_G, PB_H => PB_H, PB_D => PB_D, PB_B => PB_B, LENGHT_SNAKE => lenght_snake, IS_SNAKE => is_snake, END_GAME => end_game, X_SNAKE => x_snake, Y_SNAKE => y_snake);
+    S1 : snake_move PORT MAP(SNAKE_CLK => snake_clk, RST => reset_g, FRAME => frame, HCOUNT => hcount, VCOUNT => vcount, DECODE_CODE => decode_code, PB_G => PB_G, PB_H => PB_H, PB_D => PB_D, PB_B => PB_B, LENGHT_SNAKE => lenght_snake, IS_SNAKE => is_snake, END_GAME => end_game, X_SNAKE => x_snake, Y_SNAKE => y_snake);
 
     -- Gestion des cubes de nourriture
     N1 : cnt_rand PORT MAP(CLK => CLK, RST => reset_g, RAND_OUT => seed1);

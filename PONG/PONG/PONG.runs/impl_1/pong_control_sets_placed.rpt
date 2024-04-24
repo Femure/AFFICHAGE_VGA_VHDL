@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Wed Apr 24 17:56:43 2024
+| Date         : Wed Apr 24 18:18:13 2024
 | Host         : Max_Laptop running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file pong_control_sets_placed.rpt
 | Design       : pong
@@ -27,7 +27,7 @@ Table of Contents
 |    Minimum number of control sets                        |    24 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    94 |
+| Unused register locations in slices containing registers |    95 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -45,9 +45,9 @@ Table of Contents
 | >= 6 to < 8        |     0 |
 | >= 8 to < 10       |     1 |
 | >= 10 to < 12      |     3 |
-| >= 12 to < 14      |     2 |
+| >= 12 to < 14      |     1 |
 | >= 14 to < 16      |     0 |
-| >= 16              |     6 |
+| >= 16              |     7 |
 +--------------------+-------+
 * Control sets can be remapped at either synth_design or opt_design
 
@@ -59,10 +59,10 @@ Table of Contents
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | No           | No                    | No                     |               5 |            4 |
-| No           | No                    | Yes                    |              56 |           24 |
+| No           | No                    | Yes                    |              64 |           23 |
 | No           | Yes                   | No                     |               0 |            0 |
 | Yes          | No                    | No                     |               0 |            0 |
-| Yes          | No                    | Yes                    |             245 |           72 |
+| Yes          | No                    | Yes                    |             244 |           74 |
 | Yes          | Yes                   | No                     |               0 |            0 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
@@ -73,30 +73,30 @@ Table of Contents
 +---------------------------+-----------------------------------------------------+------------------+------------------+----------------+--------------+
 |        Clock Signal       |                    Enable Signal                    | Set/Reset Signal | Slice Load Count | Bel Load Count | Bels / Slice |
 +---------------------------+-----------------------------------------------------+------------------+------------------+----------------+--------------+
-|  CLK_IBUF_BUFG            | K0/ps2_keyboard_0/D0/load                           | RE0/reset_g      |                1 |              1 |         1.00 |
-|  CLK_IBUF_BUFG            | K0/ps2_keyboard_0/D0/O_i_1_n_0                      | RE0/reset_g      |                1 |              1 |         1.00 |
-|  CLK_IBUF_BUFG            | K0/ps2_keyboard_0/D1/Iv_i_1__0_n_0                  | RE0/reset_g      |                1 |              1 |         1.00 |
-|  CLK_IBUF_BUFG            | K0/ps2_keyboard_0/D1/O_i_1__0_n_0                   | RE0/reset_g      |                1 |              1 |         1.00 |
-|  CLK_IBUF_BUFG            | K0/ps2_keyboard_0/C0/prev_ps2_code_flag_reg         | RE0/reset_g      |                1 |              1 |         1.00 |
 |  A1/frame                 |                                                     |                  |                1 |              1 |         1.00 |
-|  balle_clk_s_BUFG         |                                                     | RE0/reset_g      |                2 |              2 |         1.00 |
+|  CLK_IBUF_BUFG            | K0/ps2_keyboard_0/D0/O_i_1__0_n_0                   | RE0/reset_g      |                1 |              1 |         1.00 |
+|  CLK_IBUF_BUFG            | K0/ps2_keyboard_0/D1/O_i_1_n_0                      | RE0/reset_g      |                1 |              1 |         1.00 |
+|  CLK_IBUF_BUFG            | K0/ps2_keyboard_0/D0/load                           | RE0/reset_g      |                1 |              1 |         1.00 |
+|  CLK_IBUF_BUFG            | K0/ps2_keyboard_0/D1/Iv_i_1__0_n_0                  | RE0/reset_g      |                1 |              1 |         1.00 |
+|  CLK_IBUF_BUFG            |                                                     | RST_IBUF         |                1 |              2 |         2.00 |
+|  balle_clk_s_BUFG         |                                                     | RE0/reset_g      |                1 |              2 |         2.00 |
 |  CLK_IBUF_BUFG            |                                                     |                  |                3 |              4 |         1.33 |
-|  CLK_IBUF_BUFG            | K0/ps2_keyboard_0/D0/count[3]_i_1_n_0               | RE0/reset_g      |                1 |              4 |         4.00 |
-|  CLK_IBUF_BUFG            | K0/ps2_keyboard_0/C0/FSM_sequential_state_reg[1][0] | RE0/reset_g      |                1 |              4 |         4.00 |
-|  CLK_IBUF_BUFG            | K0/ps2_keyboard_0/C0/temp_ps2_code_reg[7]_0[0]      | RE0/reset_g      |                2 |              4 |         2.00 |
+|  CLK_IBUF_BUFG            | K0/ps2_keyboard_0/D0/count[3]_i_1_n_0               | RE0/reset_g      |                2 |              4 |         2.00 |
+|  CLK_IBUF_BUFG            | K0/ps2_keyboard_0/C0/FSM_sequential_state_reg[0][0] | RE0/reset_g      |                1 |              4 |         4.00 |
+|  CLK_IBUF_BUFG            | K0/ps2_keyboard_0/C0/temp_ps2_code_reg[4]_0[0]      | RE0/reset_g      |                1 |              4 |         4.00 |
 |  CLK_IBUF_BUFG            | K0/ps2_keyboard_0/D1/count[4]_i_1_n_0               | RE0/reset_g      |                2 |              5 |         2.50 |
-|  CLK_IBUF_BUFG            | K0/ps2_keyboard_0/R0/E[0]                           | RE0/reset_g      |                1 |              8 |         8.00 |
-|  A0/PIXEL_CLK             |                                                     | RE0/reset_g      |                7 |             10 |         1.43 |
-|  A0/PIXEL_CLK             | A1/countY[9]_i_1_n_0                                | RE0/reset_g      |                3 |             10 |         3.33 |
+|  CLK_IBUF_BUFG            | K0/ps2_keyboard_0/R0/E[0]                           | RE0/reset_g      |                4 |              8 |         2.00 |
+|  A0/PIXEL_CLK             |                                                     | RST_IBUF         |                4 |             10 |         2.50 |
+|  A0/PIXEL_CLK             | A1/countY[9]_i_1_n_0                                | RST_IBUF         |                3 |             10 |         3.33 |
 | ~K0/ps2_keyboard_0/D0/O_0 |                                                     | RE0/reset_g      |                3 |             11 |         3.67 |
-|  CLK_IBUF_BUFG            |                                                     | RE0/reset_g      |                6 |             12 |         2.00 |
 |  CLK_IBUF_BUFG            | K0/ps2_keyboard_0/C0/count_idle[0]_i_1_n_0          | RE0/reset_g      |                4 |             13 |         3.25 |
+|  CLK_IBUF_BUFG            |                                                     | RE0/reset_g      |                8 |             18 |         2.25 |
 |  A1/frame                 |                                                     | RE0/reset_g      |                6 |             21 |         3.50 |
 |  RAQUETTE_CLK_BUFG        | K0/yRaquetteD                                       | RE0/reset_g      |                8 |             32 |         4.00 |
 |  RAQUETTE_CLK_BUFG        | K0/yRaquetteG                                       | RE0/reset_g      |                8 |             32 |         4.00 |
 |  balle_clk_s_BUFG         | B2/VyBalle                                          | RE0/reset_g      |               17 |             32 |         1.88 |
-|  balle_clk_s_BUFG         | B2/VxBalle                                          | RE0/reset_g      |                7 |             32 |         4.57 |
-|  balle_clk_s_BUFG         | B1/E[0]                                             | RE0/reset_g      |               13 |             64 |         4.92 |
+|  balle_clk_s_BUFG         | B2/VxBalle                                          | RE0/reset_g      |                6 |             32 |         5.33 |
+|  balle_clk_s_BUFG         | B1/E[0]                                             | RE0/reset_g      |               14 |             64 |         4.57 |
 +---------------------------+-----------------------------------------------------+------------------+------------------+----------------+--------------+
 
 

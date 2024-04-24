@@ -19,7 +19,7 @@ BEGIN
         IF (RST = '1') THEN
             point <= (OTHERS => '0');
         ELSIF (CLK'event AND CLK = '1') THEN
-            IF (FLAG = '1') THEN
+            IF (FLAG = '1' AND prev_flag = '0') THEN
                 point <= point + 1;
             END IF;
             prev_flag <= FLAG;

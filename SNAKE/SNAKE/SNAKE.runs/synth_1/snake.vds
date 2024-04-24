@@ -3,8 +3,8 @@
 # SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Sat Apr 20 17:03:48 2024
-# Process ID: 11316
+# Start of session at: Wed Apr 24 18:55:41 2024
+# Process ID: 17540
 # Current directory: C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/SNAKE/SNAKE.runs/synth_1
 # Command line: vivado.exe -log snake.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source snake.tcl
 # Log file: C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/SNAKE/SNAKE.runs/synth_1/snake.vds
@@ -24,65 +24,79 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 22728
+INFO: [Synth 8-7075] Helper process launched with PID 16836
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1322.094 ; gain = 442.371
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1321.504 ; gain = 441.230
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-638] synthesizing module 'snake' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:13]
-INFO: [Synth 8-3491] module 'reset' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/reset.vhd:6' bound to instance 'RE0' of component 'reset' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:108]
+INFO: [Synth 8-638] synthesizing module 'snake' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:14]
+INFO: [Synth 8-3491] module 'reset' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/reset.vhd:6' bound to instance 'RE0' of component 'reset' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:121]
 INFO: [Synth 8-638] synthesizing module 'reset' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/reset.vhd:13]
 INFO: [Synth 8-256] done synthesizing module 'reset' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/reset.vhd:13]
-INFO: [Synth 8-3491] module 'div_25MHz' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/div_25MHz.vhd:6' bound to instance 'A0' of component 'div_25MHz' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:111]
+INFO: [Synth 8-3491] module 'ps2_decode' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/KEYBOARD/ps2_decode.vhd:6' bound to instance 'K0' of component 'ps2_decode' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:124]
+INFO: [Synth 8-638] synthesizing module 'ps2_decode' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/KEYBOARD/ps2_decode.vhd:16]
+INFO: [Synth 8-3491] module 'ps2_keyboard' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/KEYBOARD/ps2_keyboard.vhd:5' bound to instance 'ps2_keyboard_0' of component 'ps2_keyboard' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/KEYBOARD/ps2_decode.vhd:39]
+INFO: [Synth 8-638] synthesizing module 'ps2_keyboard' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/KEYBOARD/ps2_keyboard.vhd:15]
+INFO: [Synth 8-3491] module 'debouncer' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/KEYBOARD/debouncer.vhd:6' bound to instance 'D0' of component 'debouncer' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/KEYBOARD/ps2_keyboard.vhd:50]
+INFO: [Synth 8-638] synthesizing module 'debouncer' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/KEYBOARD/debouncer.vhd:14]
+INFO: [Synth 8-256] done synthesizing module 'debouncer' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/KEYBOARD/debouncer.vhd:14]
+INFO: [Synth 8-3491] module 'debouncer' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/KEYBOARD/debouncer.vhd:6' bound to instance 'D1' of component 'debouncer' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/KEYBOARD/ps2_keyboard.vhd:51]
+INFO: [Synth 8-3491] module 'ps2_receiver' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/KEYBOARD/ps2_receiver.vhd:6' bound to instance 'R0' of component 'ps2_receiver' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/KEYBOARD/ps2_keyboard.vhd:54]
+INFO: [Synth 8-638] synthesizing module 'ps2_receiver' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/KEYBOARD/ps2_receiver.vhd:14]
+INFO: [Synth 8-256] done synthesizing module 'ps2_receiver' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/KEYBOARD/ps2_receiver.vhd:14]
+INFO: [Synth 8-3491] module 'ps2_controller' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/KEYBOARD/ps2_controller.vhd:6' bound to instance 'C0' of component 'ps2_controller' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/KEYBOARD/ps2_keyboard.vhd:57]
+INFO: [Synth 8-638] synthesizing module 'ps2_controller' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/KEYBOARD/ps2_controller.vhd:16]
+INFO: [Synth 8-256] done synthesizing module 'ps2_controller' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/KEYBOARD/ps2_controller.vhd:16]
+INFO: [Synth 8-256] done synthesizing module 'ps2_keyboard' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/KEYBOARD/ps2_keyboard.vhd:15]
+INFO: [Synth 8-256] done synthesizing module 'ps2_decode' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/KEYBOARD/ps2_decode.vhd:16]
+INFO: [Synth 8-3491] module 'div_25MHz' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/div_25MHz.vhd:6' bound to instance 'A0' of component 'div_25MHz' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:127]
 INFO: [Synth 8-638] synthesizing module 'div_25MHz' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/div_25MHz.vhd:13]
 INFO: [Synth 8-256] done synthesizing module 'div_25MHz' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/div_25MHz.vhd:13]
-INFO: [Synth 8-3491] module 'vga_controller_640_60' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/vga_controller_640_60.vhd:6' bound to instance 'A1' of component 'vga_controller_640_60' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:112]
+INFO: [Synth 8-3491] module 'vga_controller_640_60' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/vga_controller_640_60.vhd:6' bound to instance 'A1' of component 'vga_controller_640_60' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:128]
 INFO: [Synth 8-638] synthesizing module 'vga_controller_640_60' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/vga_controller_640_60.vhd:14]
 INFO: [Synth 8-256] done synthesizing module 'vga_controller_640_60' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/vga_controller_640_60.vhd:14]
-INFO: [Synth 8-3491] module 'clk_snake' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/serpent/clk_snake.vhd:6' bound to instance 'S0' of component 'clk_snake' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:115]
+INFO: [Synth 8-3491] module 'clk_snake' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/serpent/clk_snake.vhd:6' bound to instance 'S0' of component 'clk_snake' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:131]
 INFO: [Synth 8-638] synthesizing module 'clk_snake' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/serpent/clk_snake.vhd:13]
 INFO: [Synth 8-256] done synthesizing module 'clk_snake' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/serpent/clk_snake.vhd:13]
-INFO: [Synth 8-3491] module 'snake_move' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/serpent/snake_move.vhd:6' bound to instance 'S1' of component 'snake_move' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:116]
-INFO: [Synth 8-638] synthesizing module 'snake_move' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/serpent/snake_move.vhd:17]
-WARNING: [Synth 8-614] signal 'xSnake' is read in the process but is not in the sensitivity list [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/serpent/snake_move.vhd:33]
-WARNING: [Synth 8-614] signal 'ySnake' is read in the process but is not in the sensitivity list [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/serpent/snake_move.vhd:33]
-INFO: [Synth 8-256] done synthesizing module 'snake_move' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/serpent/snake_move.vhd:17]
-INFO: [Synth 8-3491] module 'cnt_rand' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/food/cnt_rand.vhd:7' bound to instance 'N1' of component 'cnt_rand' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:119]
+INFO: [Synth 8-3491] module 'snake_move' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/serpent/snake_move.vhd:6' bound to instance 'S1' of component 'snake_move' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:132]
+INFO: [Synth 8-638] synthesizing module 'snake_move' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/serpent/snake_move.vhd:18]
+WARNING: [Synth 8-614] signal 'xSnake' is read in the process but is not in the sensitivity list [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/serpent/snake_move.vhd:34]
+WARNING: [Synth 8-614] signal 'ySnake' is read in the process but is not in the sensitivity list [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/serpent/snake_move.vhd:34]
+INFO: [Synth 8-256] done synthesizing module 'snake_move' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/serpent/snake_move.vhd:18]
+INFO: [Synth 8-3491] module 'cnt_rand' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/food/cnt_rand.vhd:7' bound to instance 'N1' of component 'cnt_rand' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:135]
 INFO: [Synth 8-638] synthesizing module 'cnt_rand' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/food/cnt_rand.vhd:14]
 INFO: [Synth 8-256] done synthesizing module 'cnt_rand' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/food/cnt_rand.vhd:14]
-INFO: [Synth 8-3491] module 'cnt_rand' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/food/cnt_rand.vhd:7' bound to instance 'N2' of component 'cnt_rand' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:120]
-INFO: [Synth 8-3491] module 'food_spawn' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/food/food_spawn.vhd:8' bound to instance 'N3' of component 'food_spawn' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:121]
+INFO: [Synth 8-3491] module 'cnt_rand' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/food/cnt_rand.vhd:7' bound to instance 'N2' of component 'cnt_rand' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:136]
+INFO: [Synth 8-3491] module 'food_spawn' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/food/food_spawn.vhd:8' bound to instance 'N3' of component 'food_spawn' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:137]
 INFO: [Synth 8-638] synthesizing module 'food_spawn' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/food/food_spawn.vhd:18]
 WARNING: [Synth 8-614] signal 'eaten' is read in the process but is not in the sensitivity list [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/food/food_spawn.vhd:42]
 WARNING: [Synth 8-614] signal 'xFood' is read in the process but is not in the sensitivity list [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/food/food_spawn.vhd:42]
 WARNING: [Synth 8-614] signal 'yFood' is read in the process but is not in the sensitivity list [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/food/food_spawn.vhd:42]
 INFO: [Synth 8-256] done synthesizing module 'food_spawn' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/food/food_spawn.vhd:18]
-INFO: [Synth 8-3491] module 'cnt_lenght_snake' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/serpent/cnt_lenght_snake.vhd:6' bound to instance 'G0' of component 'cnt_lenght_snake' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:124]
+INFO: [Synth 8-3491] module 'cnt_lenght_snake' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/serpent/cnt_lenght_snake.vhd:6' bound to instance 'G0' of component 'cnt_lenght_snake' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:140]
 INFO: [Synth 8-638] synthesizing module 'cnt_lenght_snake' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/serpent/cnt_lenght_snake.vhd:13]
 INFO: [Synth 8-256] done synthesizing module 'cnt_lenght_snake' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/serpent/cnt_lenght_snake.vhd:13]
-INFO: [Synth 8-3491] module 'aff_score' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/score/aff_score.vhd:7' bound to instance 'SC0' of component 'aff_score' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:127]
+INFO: [Synth 8-3491] module 'aff_score' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/score/aff_score.vhd:7' bound to instance 'SC0' of component 'aff_score' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:143]
 INFO: [Synth 8-638] synthesizing module 'aff_score' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/score/aff_score.vhd:16]
 WARNING: [Synth 8-614] signal 'dizaine' is read in the process but is not in the sensitivity list [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/score/aff_score.vhd:23]
 WARNING: [Synth 8-614] signal 'unite' is read in the process but is not in the sensitivity list [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/score/aff_score.vhd:23]
 INFO: [Synth 8-256] done synthesizing module 'aff_score' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/score/aff_score.vhd:16]
-INFO: [Synth 8-3491] module 'image' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/image.vhd:4' bound to instance 'A2' of component 'image' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:130]
+INFO: [Synth 8-3491] module 'image' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/image.vhd:4' bound to instance 'A2' of component 'image' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:146]
 INFO: [Synth 8-638] synthesizing module 'image' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/image.vhd:12]
 INFO: [Synth 8-256] done synthesizing module 'image' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/image.vhd:12]
-INFO: [Synth 8-256] done synthesizing module 'snake' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:13]
-WARNING: [Synth 8-6014] Unused sequential element prev_flag_reg was removed.  [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/serpent/cnt_lenght_snake.vhd:25]
-WARNING: [Synth 8-7129] Port FRAME in module food_spawn is either unconnected or has no load
+INFO: [Synth 8-256] done synthesizing module 'snake' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:14]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1506.605 ; gain = 626.883
+Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1510.562 ; gain = 630.289
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 1506.605 ; gain = 626.883
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1510.562 ; gain = 630.289
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 1506.605 ; gain = 626.883
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1510.562 ; gain = 630.289
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.277 . Memory (MB): peak = 1506.605 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.165 . Memory (MB): peak = 1510.562 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -93,35 +107,45 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/snake_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1600.191 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1610.871 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.060 . Memory (MB): peak = 1600.191 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.038 . Memory (MB): peak = 1610.871 ; gain = 0.000
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:21 ; elapsed = 00:00:24 . Memory (MB): peak = 1600.191 ; gain = 720.469
+Finished Constraint Validation : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1610.871 ; gain = 730.598
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:21 ; elapsed = 00:00:24 . Memory (MB): peak = 1600.191 ; gain = 720.469
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1610.871 ; gain = 730.598
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:21 ; elapsed = 00:00:24 . Memory (MB): peak = 1600.191 ; gain = 720.469
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1610.871 ; gain = 730.598
 ---------------------------------------------------------------------------------
-WARNING: [Synth 8-327] inferring latch for variable 'IS_SNAKE_reg' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/serpent/snake_move.vhd:94]
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'ps2_decode'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                   ready |                               00 |                               00
+                new_code |                               01 |                               01
+               translate |                               10 |                               10
+                  output |                               11 |                               11
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'ps2_decode'
+WARNING: [Synth 8-327] inferring latch for variable 'IS_SNAKE_reg' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/serpent/snake_move.vhd:50]
 WARNING: [Synth 8-327] inferring latch for variable 'eaten_reg' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/food/food_spawn.vhd:47]
 WARNING: [Synth 8-327] inferring latch for variable 'xFood_reg' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/food/food_spawn.vhd:45]
 WARNING: [Synth 8-327] inferring latch for variable 'yFood_reg' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/food/food_spawn.vhd:46]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:24 ; elapsed = 00:00:27 . Memory (MB): peak = 1600.191 ; gain = 720.469
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 1610.871 ; gain = 730.598
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -135,19 +159,23 @@ Detailed RTL Component Info :
 	   3 Input   13 Bit       Adders := 204   
 	   2 Input   12 Bit       Adders := 404   
 	   2 Input   11 Bit       Adders := 2     
-	   2 Input    7 Bit       Adders := 1     
+	   2 Input    7 Bit       Adders := 2     
+	   2 Input    5 Bit       Adders := 2     
 	   2 Input    3 Bit       Adders := 1     
 	   2 Input    2 Bit       Adders := 1     
 +---XORs : 
+	   9 Input      1 Bit         XORs := 1     
 	   4 Input      1 Bit         XORs := 2     
 +---Registers : 
 	               32 Bit    Registers := 200   
-	               11 Bit    Registers := 2     
-	                8 Bit    Registers := 2     
+	               11 Bit    Registers := 3     
+	                8 Bit    Registers := 3     
 	                7 Bit    Registers := 1     
+	                5 Bit    Registers := 2     
+	                4 Bit    Registers := 2     
 	                3 Bit    Registers := 1     
 	                2 Bit    Registers := 1     
-	                1 Bit    Registers := 8     
+	                1 Bit    Registers := 17    
 +---Multipliers : 
 	               6x32  Multipliers := 2     
 	              11x32  Multipliers := 1     
@@ -156,10 +184,15 @@ Detailed RTL Component Info :
 	   2 Input   32 Bit        Muxes := 4     
 	   2 Input   31 Bit        Muxes := 2     
 	   2 Input   11 Bit        Muxes := 2     
+	   2 Input    5 Bit        Muxes := 2     
 	   2 Input    4 Bit        Muxes := 10    
+	   4 Input    4 Bit        Muxes := 1     
 	   2 Input    3 Bit        Muxes := 2     
-	   2 Input    2 Bit        Muxes := 3     
-	   2 Input    1 Bit        Muxes := 212   
+	   2 Input    2 Bit        Muxes := 6     
+	   4 Input    2 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 412   
+	   9 Input    1 Bit        Muxes := 1     
+	   4 Input    1 Bit        Muxes := 5     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -175,87 +208,27 @@ Finished Part Resource Summary
 ---------------------------------------------------------------------------------
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-3886] merging instance 'xDirSnake_reg[31]' (FDCE) to 'xDirSnake_reg[30]'
-INFO: [Synth 8-3886] merging instance 'yDirSnake_reg[31]' (FDCE) to 'yDirSnake_reg[1]'
-INFO: [Synth 8-3886] merging instance 'yDirSnake_reg[30]' (FDCE) to 'yDirSnake_reg[1]'
-INFO: [Synth 8-3886] merging instance 'xDirSnake_reg[30]' (FDCE) to 'xDirSnake_reg[29]'
-INFO: [Synth 8-3886] merging instance 'yDirSnake_reg[29]' (FDCE) to 'yDirSnake_reg[1]'
-INFO: [Synth 8-3886] merging instance 'yDirSnake_reg[28]' (FDCE) to 'yDirSnake_reg[1]'
-INFO: [Synth 8-3886] merging instance 'yDirSnake_reg[27]' (FDCE) to 'yDirSnake_reg[1]'
-INFO: [Synth 8-3886] merging instance 'yDirSnake_reg[26]' (FDCE) to 'yDirSnake_reg[1]'
-INFO: [Synth 8-3886] merging instance 'yDirSnake_reg[25]' (FDCE) to 'yDirSnake_reg[1]'
-INFO: [Synth 8-3886] merging instance 'yDirSnake_reg[1]' (FDCE) to 'yDirSnake_reg[2]'
-INFO: [Synth 8-3886] merging instance 'yDirSnake_reg[2]' (FDCE) to 'yDirSnake_reg[24]'
-INFO: [Synth 8-3886] merging instance 'yDirSnake_reg[3]' (FDCE) to 'yDirSnake_reg[24]'
-INFO: [Synth 8-3886] merging instance 'yDirSnake_reg[4]' (FDCE) to 'yDirSnake_reg[24]'
-INFO: [Synth 8-3886] merging instance 'yDirSnake_reg[5]' (FDCE) to 'yDirSnake_reg[24]'
-INFO: [Synth 8-3886] merging instance 'yDirSnake_reg[6]' (FDCE) to 'yDirSnake_reg[24]'
-INFO: [Synth 8-3886] merging instance 'yDirSnake_reg[7]' (FDCE) to 'yDirSnake_reg[24]'
-INFO: [Synth 8-3886] merging instance 'yDirSnake_reg[8]' (FDCE) to 'yDirSnake_reg[24]'
-INFO: [Synth 8-3886] merging instance 'yDirSnake_reg[9]' (FDCE) to 'yDirSnake_reg[24]'
-INFO: [Synth 8-3886] merging instance 'yDirSnake_reg[10]' (FDCE) to 'yDirSnake_reg[24]'
-INFO: [Synth 8-3886] merging instance 'yDirSnake_reg[11]' (FDCE) to 'yDirSnake_reg[24]'
-INFO: [Synth 8-3886] merging instance 'yDirSnake_reg[12]' (FDCE) to 'yDirSnake_reg[24]'
-INFO: [Synth 8-3886] merging instance 'yDirSnake_reg[13]' (FDCE) to 'yDirSnake_reg[24]'
-INFO: [Synth 8-3886] merging instance 'yDirSnake_reg[14]' (FDCE) to 'yDirSnake_reg[24]'
-INFO: [Synth 8-3886] merging instance 'yDirSnake_reg[15]' (FDCE) to 'yDirSnake_reg[24]'
-INFO: [Synth 8-3886] merging instance 'yDirSnake_reg[16]' (FDCE) to 'yDirSnake_reg[24]'
-INFO: [Synth 8-3886] merging instance 'yDirSnake_reg[17]' (FDCE) to 'yDirSnake_reg[24]'
-INFO: [Synth 8-3886] merging instance 'yDirSnake_reg[18]' (FDCE) to 'yDirSnake_reg[24]'
-INFO: [Synth 8-3886] merging instance 'yDirSnake_reg[19]' (FDCE) to 'yDirSnake_reg[24]'
-INFO: [Synth 8-3886] merging instance 'yDirSnake_reg[20]' (FDCE) to 'yDirSnake_reg[24]'
-INFO: [Synth 8-3886] merging instance 'yDirSnake_reg[21]' (FDCE) to 'yDirSnake_reg[24]'
-INFO: [Synth 8-3886] merging instance 'yDirSnake_reg[22]' (FDCE) to 'yDirSnake_reg[24]'
-INFO: [Synth 8-3886] merging instance 'yDirSnake_reg[23]' (FDCE) to 'yDirSnake_reg[24]'
-INFO: [Synth 8-3886] merging instance 'xDirSnake_reg[29]' (FDCE) to 'xDirSnake_reg[28]'
-INFO: [Synth 8-3886] merging instance 'xDirSnake_reg[28]' (FDCE) to 'xDirSnake_reg[27]'
-INFO: [Synth 8-3886] merging instance 'xDirSnake_reg[27]' (FDCE) to 'xDirSnake_reg[26]'
-INFO: [Synth 8-3886] merging instance 'xDirSnake_reg[26]' (FDCE) to 'xDirSnake_reg[25]'
-INFO: [Synth 8-3886] merging instance 'xDirSnake_reg[1]' (FDCE) to 'xDirSnake_reg[25]'
-INFO: [Synth 8-3886] merging instance 'xDirSnake_reg[2]' (FDCE) to 'xDirSnake_reg[25]'
-INFO: [Synth 8-3886] merging instance 'xDirSnake_reg[3]' (FDCE) to 'xDirSnake_reg[25]'
-INFO: [Synth 8-3886] merging instance 'xDirSnake_reg[4]' (FDCE) to 'xDirSnake_reg[25]'
-INFO: [Synth 8-3886] merging instance 'xDirSnake_reg[5]' (FDCE) to 'xDirSnake_reg[25]'
-INFO: [Synth 8-3886] merging instance 'xDirSnake_reg[6]' (FDCE) to 'xDirSnake_reg[25]'
-INFO: [Synth 8-3886] merging instance 'xDirSnake_reg[7]' (FDCE) to 'xDirSnake_reg[25]'
-INFO: [Synth 8-3886] merging instance 'xDirSnake_reg[8]' (FDCE) to 'xDirSnake_reg[25]'
-INFO: [Synth 8-3886] merging instance 'xDirSnake_reg[9]' (FDCE) to 'xDirSnake_reg[25]'
-INFO: [Synth 8-3886] merging instance 'xDirSnake_reg[10]' (FDCE) to 'xDirSnake_reg[25]'
-INFO: [Synth 8-3886] merging instance 'xDirSnake_reg[11]' (FDCE) to 'xDirSnake_reg[25]'
-INFO: [Synth 8-3886] merging instance 'xDirSnake_reg[12]' (FDCE) to 'xDirSnake_reg[25]'
-INFO: [Synth 8-3886] merging instance 'xDirSnake_reg[13]' (FDCE) to 'xDirSnake_reg[25]'
-INFO: [Synth 8-3886] merging instance 'xDirSnake_reg[14]' (FDCE) to 'xDirSnake_reg[25]'
-INFO: [Synth 8-3886] merging instance 'xDirSnake_reg[15]' (FDCE) to 'xDirSnake_reg[25]'
-INFO: [Synth 8-3886] merging instance 'xDirSnake_reg[16]' (FDCE) to 'xDirSnake_reg[25]'
-INFO: [Synth 8-3886] merging instance 'xDirSnake_reg[17]' (FDCE) to 'xDirSnake_reg[25]'
-INFO: [Synth 8-3886] merging instance 'xDirSnake_reg[18]' (FDCE) to 'xDirSnake_reg[25]'
-INFO: [Synth 8-3886] merging instance 'xDirSnake_reg[19]' (FDCE) to 'xDirSnake_reg[25]'
-INFO: [Synth 8-3886] merging instance 'xDirSnake_reg[20]' (FDCE) to 'xDirSnake_reg[25]'
-INFO: [Synth 8-3886] merging instance 'xDirSnake_reg[21]' (FDCE) to 'xDirSnake_reg[25]'
-INFO: [Synth 8-3886] merging instance 'xDirSnake_reg[22]' (FDCE) to 'xDirSnake_reg[25]'
-INFO: [Synth 8-3886] merging instance 'xDirSnake_reg[23]' (FDCE) to 'xDirSnake_reg[25]'
-INFO: [Synth 8-3886] merging instance 'xDirSnake_reg[24]' (FDCE) to 'xDirSnake_reg[25]'
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:39 ; elapsed = 00:01:11 . Memory (MB): peak = 1600.191 ; gain = 720.469
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:58 ; elapsed = 00:01:01 . Memory (MB): peak = 1610.871 ; gain = 730.598
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:43 ; elapsed = 00:01:16 . Memory (MB): peak = 1600.191 ; gain = 720.469
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:02 ; elapsed = 00:01:05 . Memory (MB): peak = 1610.871 ; gain = 730.598
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:46 ; elapsed = 00:01:19 . Memory (MB): peak = 1600.191 ; gain = 720.469
+Finished Timing Optimization : Time (s): cpu = 00:01:04 ; elapsed = 00:01:07 . Memory (MB): peak = 1610.871 ; gain = 730.598
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
-WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:49 ; elapsed = 00:01:23 . Memory (MB): peak = 1600.191 ; gain = 720.469
+Finished Technology Mapping : Time (s): cpu = 00:01:08 ; elapsed = 00:01:11 . Memory (MB): peak = 1610.871 ; gain = 730.598
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -273,37 +246,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:54 ; elapsed = 00:01:28 . Memory (MB): peak = 1600.191 ; gain = 720.469
+Finished IO Insertion : Time (s): cpu = 00:01:12 ; elapsed = 00:01:15 . Memory (MB): peak = 1610.871 ; gain = 730.598
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:54 ; elapsed = 00:01:28 . Memory (MB): peak = 1600.191 ; gain = 720.469
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:12 ; elapsed = 00:01:16 . Memory (MB): peak = 1610.871 ; gain = 730.598
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:55 ; elapsed = 00:01:29 . Memory (MB): peak = 1600.191 ; gain = 720.469
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:13 ; elapsed = 00:01:17 . Memory (MB): peak = 1610.871 ; gain = 730.598
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:55 ; elapsed = 00:01:29 . Memory (MB): peak = 1600.191 ; gain = 720.469
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:13 ; elapsed = 00:01:17 . Memory (MB): peak = 1610.871 ; gain = 730.598
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:55 ; elapsed = 00:01:29 . Memory (MB): peak = 1600.191 ; gain = 720.469
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:13 ; elapsed = 00:01:17 . Memory (MB): peak = 1610.871 ; gain = 730.598
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:55 ; elapsed = 00:01:29 . Memory (MB): peak = 1600.191 ; gain = 720.469
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:13 ; elapsed = 00:01:17 . Memory (MB): peak = 1610.871 ; gain = 730.598
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -320,47 +293,45 @@ Report Cell Usage:
 |      |Cell   |Count |
 +------+-------+------+
 |1     |BUFG   |    12|
-|2     |CARRY4 |  2984|
-|3     |LUT1   |   813|
-|4     |LUT2   |  2645|
-|5     |LUT3   |  9036|
-|6     |LUT4   |  4139|
-|7     |LUT5   |    97|
-|8     |LUT6   |   249|
-|9     |FDCE   |  2502|
-|10    |FDPE   |  2201|
-|11    |FDRE   |     3|
-|12    |LD     |     1|
-|13    |LDC    |   154|
-|14    |LDP    |    10|
-|15    |IBUF   |     6|
-|16    |OBUF   |    14|
+|2     |CARRY4 |  2986|
+|3     |LUT1   |   797|
+|4     |LUT2   |  2542|
+|5     |LUT3   |  8934|
+|6     |LUT4   |  3924|
+|7     |LUT5   |   393|
+|8     |LUT6   |   234|
+|9     |FDCE   |  2441|
+|10    |FDPE   |  2202|
+|11    |FDRE   |     4|
+|12    |LDC    |   186|
+|13    |LDP    |    10|
+|14    |IBUF   |     8|
+|15    |OBUF   |    14|
 +------+-------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:55 ; elapsed = 00:01:29 . Memory (MB): peak = 1600.191 ; gain = 720.469
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:13 ; elapsed = 00:01:17 . Memory (MB): peak = 1610.871 ; gain = 730.598
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 5 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:42 ; elapsed = 00:01:24 . Memory (MB): peak = 1600.191 ; gain = 626.883
-Synthesis Optimization Complete : Time (s): cpu = 00:00:55 ; elapsed = 00:01:30 . Memory (MB): peak = 1600.191 ; gain = 720.469
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:03 ; elapsed = 00:01:14 . Memory (MB): peak = 1610.871 ; gain = 630.289
+Synthesis Optimization Complete : Time (s): cpu = 00:01:14 ; elapsed = 00:01:17 . Memory (MB): peak = 1610.871 ; gain = 730.598
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.264 . Memory (MB): peak = 1600.191 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 3149 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.252 . Memory (MB): peak = 1610.871 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 3182 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1600.191 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1613.719 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 165 instances were transformed.
-  LD => LDCE: 1 instance 
-  LDC => LDCE: 154 instances
+  A total of 196 instances were transformed.
+  LDC => LDCE: 186 instances
   LDP => LDPE: 10 instances
 
-Synth Design complete | Checksum: 50219b56
+Synth Design complete | Checksum: 4168e669
 INFO: [Common 17-83] Releasing license: Synthesis
-114 Infos, 14 Warnings, 0 Critical Warnings and 0 Errors encountered.
+72 Infos, 12 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:01:01 ; elapsed = 00:01:37 . Memory (MB): peak = 1600.191 ; gain = 1112.711
-Write ShapeDB Complete: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.050 . Memory (MB): peak = 1600.191 ; gain = 0.000
+synth_design: Time (s): cpu = 00:01:19 ; elapsed = 00:01:24 . Memory (MB): peak = 1613.719 ; gain = 1124.363
+Write ShapeDB Complete: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.049 . Memory (MB): peak = 1613.719 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/SNAKE/SNAKE.runs/synth_1/snake.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file snake_utilization_synth.rpt -pb snake_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Sat Apr 20 17:05:34 2024...
+INFO: [Common 17-206] Exiting Vivado at Wed Apr 24 18:57:14 2024...

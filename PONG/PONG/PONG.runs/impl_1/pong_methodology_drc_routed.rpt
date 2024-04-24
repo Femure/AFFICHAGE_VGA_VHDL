@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Wed Apr 24 17:57:01 2024
+| Date         : Wed Apr 24 18:18:31 2024
 | Host         : Max_Laptop running 64-bit major release  (build 9200)
 | Command      : report_methodology -file pong_methodology_drc_routed.rpt -pb pong_methodology_drc_routed.pb -rpx pong_methodology_drc_routed.rpx
 | Design       : pong
@@ -23,12 +23,12 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 263
+             Violations found: 262
 +-----------+------------------+-------------------------------+------------+
 | Rule      | Severity         | Description                   | Violations |
 +-----------+------------------+-------------------------------+------------+
 | TIMING-17 | Critical Warning | Non-clocked sequential cell   | 247        |
-| TIMING-18 | Warning          | Missing input or output delay | 16         |
+| TIMING-18 | Warning          | Missing input or output delay | 15         |
 +-----------+------------------+-------------------------------+------------+
 
 2. REPORT DETAILS
@@ -1305,45 +1305,40 @@ Related violations: <none>
 
 TIMING-18#8 Warning
 Missing input or output delay  
-An output delay is missing on DECODE_FLAG relative to the rising and/or falling clock edge(s) of sys_clk_pin.
+An output delay is missing on GREEN[0] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
 Related violations: <none>
 
 TIMING-18#9 Warning
 Missing input or output delay  
-An output delay is missing on GREEN[0] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
+An output delay is missing on GREEN[1] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
 Related violations: <none>
 
 TIMING-18#10 Warning
 Missing input or output delay  
-An output delay is missing on GREEN[1] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
+An output delay is missing on GREEN[2] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
 Related violations: <none>
 
 TIMING-18#11 Warning
 Missing input or output delay  
-An output delay is missing on GREEN[2] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
+An output delay is missing on GREEN[3] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
 Related violations: <none>
 
 TIMING-18#12 Warning
 Missing input or output delay  
-An output delay is missing on GREEN[3] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
+An output delay is missing on RED[0] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
 Related violations: <none>
 
 TIMING-18#13 Warning
 Missing input or output delay  
-An output delay is missing on RED[0] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
+An output delay is missing on RED[1] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
 Related violations: <none>
 
 TIMING-18#14 Warning
 Missing input or output delay  
-An output delay is missing on RED[1] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
-Related violations: <none>
-
-TIMING-18#15 Warning
-Missing input or output delay  
 An output delay is missing on RED[2] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
 Related violations: <none>
 
-TIMING-18#16 Warning
+TIMING-18#15 Warning
 Missing input or output delay  
 An output delay is missing on RED[3] relative to the rising and/or falling clock edge(s) of sys_clk_pin.
 Related violations: <none>

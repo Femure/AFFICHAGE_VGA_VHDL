@@ -46,19 +46,19 @@ BEGIN
             yFood <= SCREEN_HEIGHT / 2;
             eaten <= '0';
         ELSE
-            -- IF (FRAME = '1') THEN
-            IF (eaten = '1') THEN -- Si le serpent mange la nourriture alors le nouveau cube apparaît de manière aléatoire
-                xFood <= rand_int(SEED1, FOOD_SIZE, SCREEN_WIDTH - FOOD_SIZE);
-                yFood <= rand_int(SEED2, FOOD_SIZE, SCREEN_HEIGHT - FOOD_SIZE);
-                eaten <= '0';
-            ELSE
-                IF (X_SNAKE > xFood - FOOD_SIZE/2 - SNAKE_SIZE / 2) -- Coté gauche
-                    AND (X_SNAKE < xFood + FOOD_SIZE/2 + SNAKE_SIZE / 2) -- Coté droit
-                    AND (Y_SNAKE > yFood - FOOD_SIZE/2 - SNAKE_SIZE / 2) -- Coté bas
-                    AND (Y_SNAKE < yFood + FOOD_SIZE/2 + SNAKE_SIZE / 2) THEN -- Coté haut
-                    eaten <= '1';
+            IF (FRAME = '1') THEN
+                IF (eaten = '1') THEN -- Si le serpent mange la nourriture alors le nouveau cube apparaît de manière aléatoire
+                    xFood <= rand_int(SEED1, FOOD_SIZE, SCREEN_WIDTH - FOOD_SIZE);
+                    yFood <= rand_int(SEED2, FOOD_SIZE, SCREEN_HEIGHT - FOOD_SIZE);
+                    eaten <= '0';
+                ELSE
+                    IF (X_SNAKE > xFood - FOOD_SIZE/2 - SNAKE_SIZE / 2) -- Coté gauche
+                        AND (X_SNAKE < xFood + FOOD_SIZE/2 + SNAKE_SIZE / 2) -- Coté droit
+                        AND (Y_SNAKE > yFood - FOOD_SIZE/2 - SNAKE_SIZE / 2) -- Coté bas
+                        AND (Y_SNAKE < yFood + FOOD_SIZE/2 + SNAKE_SIZE / 2) THEN -- Coté haut
+                        eaten <= '1';
+                    END IF;
                 END IF;
-                -- END IF;
             END IF;
         END IF;
     END PROCESS;

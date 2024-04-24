@@ -115,7 +115,6 @@ proc step_failed { step } {
 OPTRACE "impl_1" END { }
 }
 
-set_msg_config -id {Common 17-41} -limit 10000000
 set_msg_config  -id {Synth 8-327}  -string {{WARNING: [Synth 8-327] inferring latch for variable 'IS_SNAKE_reg' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/serpent/snake_move.vhd:93]}}  -suppress 
 
 OPTRACE "impl_1" START { ROLLUP_1 }

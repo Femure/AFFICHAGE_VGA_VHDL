@@ -8,6 +8,7 @@ ENTITY snake_move IS
         SNAKE_CLK, RST, FRAME : IN STD_LOGIC;
         HCOUNT, VCOUNT : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
         LENGHT_SNAKE : IN STD_LOGIC_VECTOR(6 DOWNTO 0);
+        DECODE_CODE : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
         PB_D, PB_G, PB_H, PB_B : IN STD_LOGIC;
         IS_SNAKE, END_GAME : OUT STD_LOGIC;
         X_SNAKE, Y_SNAKE : OUT INTEGER
@@ -30,7 +31,7 @@ ARCHITECTURE rtl OF snake_move IS
 
 BEGIN
 
-    PROCESS (SNAKE_CLK, RST, FRAME, HCOUNT, VCOUNT, LENGHT_SNAKE, PB_D, PB_G, PB_H, PB_B)
+    PROCESS (SNAKE_CLK, RST, FRAME, HCOUNT, VCOUNT, LENGHT_SNAKE, DECODE_CODE, PB_D, PB_G, PB_H, PB_B)
     BEGIN
         IF (RST = '1') THEN
             xSnake(0) <= SCREEN_WIDTH/2;
@@ -46,26 +47,27 @@ BEGIN
             prev_PBH <= '0';
             prev_PBB <= '0';
             snake_life <= '0';
+            IS_SNAKE <= '0';
         ELSIF (SNAKE_CLK'event AND SNAKE_CLK = '1') THEN
             IF (FRAME = '1') THEN
                 -- Mise à jour de la position de la tête du serpent
-                IF (PB_D = '1' AND prev_PBD = '0' AND xDirSnake /= - 1) THEN -- On vérifie que le serpent ne puisse pas aller dans le sens opposé
+                IF (((PB_D = '1' AND prev_PBD = '0') OR DECODE_CODE = "1000") AND xDirSnake /= - 1) THEN -- On vérifie que le serpent ne puisse pas aller dans le sens opposé
                     xDirSnake <= 1;
                     yDirSnake <= 0;
-                ELSIF (PB_G = '1' AND prev_PBG = '0' AND xDirSnake /= 1) THEN
+                ELSIF (((PB_G = '1' AND prev_PBG = '0') OR DECODE_CODE = "0110") AND xDirSnake /= 1) THEN
                     xDirSnake <= - 1;
                     yDirSnake <= 0;
-                ELSIF (PB_H = '1' AND prev_PBH = '0' AND yDirSnake /= 1) THEN
+                ELSIF (((PB_H = '1' AND prev_PBH = '0') OR DECODE_CODE = "0101") AND yDirSnake /= 1) THEN
                     yDirSnake <= - 1;
                     xDirSnake <= 0;
-                ELSIF (PB_B = '1' AND prev_PBB = '0' AND yDirSnake /= - 1) THEN
+                ELSIF (((PB_B = '1' AND prev_PBB = '0') OR DECODE_CODE = "0111") AND yDirSnake /= - 1) THEN
                     yDirSnake <= 1;
                     xDirSnake <= 0;
                 END IF;
 
                 -- Le serpent avance en continue en fonction de l'orientation qu'on lui a donné
                 FOR i IN 1 TO MAX_SNAKE_LENGHT - 1 LOOP
-                    IF (i <= LENGHT_SNAKE) THEN
+                    IF (i < LENGHT_SNAKE+1) THEN
                         xSnake(i) <= xSnake(i - 1) - SNAKE_SIZE * xDirSnake;
                         ySnake(i) <= ySnake(i - 1) - SNAKE_SIZE * yDirSnake;
                     END IF;

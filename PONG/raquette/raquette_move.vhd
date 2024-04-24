@@ -6,7 +6,6 @@ USE IEEE.std_logic_unsigned.ALL;
 ENTITY raquette_move IS
     PORT (
         RAQUETTE_CLK, RST, FRAME : IN STD_LOGIC;
-        DECODE_FLAG : IN STD_LOGIC;
         DECODE_CODE : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
         PB_Haut_G, PB_Bas_G, PB_Haut_D, PB_Bas_D : IN STD_LOGIC;
         J_WIN : IN STD_LOGIC_VECTOR(1 DOWNTO 0);

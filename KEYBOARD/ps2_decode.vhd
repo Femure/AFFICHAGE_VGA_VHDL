@@ -17,7 +17,6 @@ ARCHITECTURE rtl OF ps2_decode IS
     TYPE machine IS(ready, new_code, translate, output); --needed states
     SIGNAL state : machine; --state machine
     SIGNAL break : STD_LOGIC := '0'; --'1' for break code, '0' for make code
-    SIGNAL e0_code : STD_LOGIC := '0'; --'1' for multi-code commands, '0' for single code commands
     SIGNAL decode : STD_LOGIC_VECTOR(3 DOWNTO 0) := (OTHERS => '0'); --internal value of decode translation
 
     COMPONENT ps2_keyboard IS
@@ -44,7 +43,6 @@ BEGIN
         IF (RST = '1') THEN
             state <= ready;
             break <= '0';
-            e0_code <= '0';
             decode <= (OTHERS => '0');
             prev_ps2_code_flag <= '1';
             DECODE_CODE <= (OTHERS => '0');
@@ -68,9 +66,6 @@ BEGIN
                         break <= '1'; --set break flag
                         DECODE_CODE <= (OTHERS => '0');
                         state <= ready; --return to ready state to await next PS2 code
-                    ELSIF (ps2_code = x"E0") THEN --code indicates multi-key command
-                        e0_code <= '1'; --set multi-code command flag
-                        state <= ready; --return to ready state to await next PS2 code
                     ELSE --code is the last PS2 code in the make/break code
                         state <= translate; --proceed to translate state
                     END IF;
@@ -90,7 +85,6 @@ BEGIN
                         WHEN OTHERS => NULL;
                     END CASE;
 
-                    e0_code <= '0'; --reset multi-code command flag
                     IF (break = '0') THEN -- Just consider when it's a make code (hold a key)
                         state <= output; --proceed to output state
                     ELSE
