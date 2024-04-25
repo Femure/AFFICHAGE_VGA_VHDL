@@ -44,7 +44,7 @@ BEGIN
             END LOOP;
             xDirSnake <= 1;
             yDirSnake <= 0;
-            delay <= 12;
+            delay <= 8;
             count <= 0;
             prev_PBG <= '0';
             prev_PBD <= '0';
@@ -78,10 +78,10 @@ BEGIN
                             xSnake(i) <= xSnake(i - 1);
                             ySnake(i) <= ySnake(i - 1);
                             -- Gérer quand la tête touche le corps
-                            -- IF (xSnake(0) >= xSnake(i) - SNAKE_SIZE/2) AND (xSnake(0) < xSnake(i) + SNAKE_SIZE/2) AND
-                            --     (ySnake(0) >= ySnake(i) - SNAKE_SIZE/2) AND (ySnake(0) < ySnake(i) + SNAKE_SIZE/2) THEN
-                            --     snake_life <= '1';
-                            -- END IF;
+                            IF (xSnake(0) >= xSnake(i) - SNAKE_SIZE/2) AND (xSnake(0) < xSnake(i) + SNAKE_SIZE/2) AND
+                                (ySnake(0) >= ySnake(i) - SNAKE_SIZE/2) AND (ySnake(0) < ySnake(i) + SNAKE_SIZE/2) THEN
+                                snake_life <= '1';
+                            END IF;
                         END IF;
                     END LOOP;
                     xSnake(0) <= xSnake(0) + SNAKE_SIZE * xDirSnake;

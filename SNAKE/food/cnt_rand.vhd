@@ -16,23 +16,23 @@ ARCHITECTURE rtl OF cnt_rand IS
     CONSTANT SCREEN_WIDTH : INTEGER := 640; -- largeur de l'écran en pixels
     CONSTANT SCREEN_HEIGHT : INTEGER := 480; -- hauteur de l'écran en pixels 
 
-    SIGNAL random_x, random_y : INTEGER := FOOD_SIZE;
+    SIGNAL random_x, random_y : INTEGER := FOOD_SIZE/2;
 
 BEGIN
     PROCESS (CLK, RST)
     BEGIN
         IF (RST = '1') THEN
-            random_x <= FOOD_SIZE;
-            random_y <= FOOD_SIZE;
+            random_x <= FOOD_SIZE/2;
+            random_y <= FOOD_SIZE/2;
         ELSIF (CLK'event AND CLK = '1') THEN
             -- Génération de coordonnées aléatoires dans les limites de l'écran
-            IF (random_x = SCREEN_WIDTH - FOOD_SIZE) THEN
-                random_x <= FOOD_SIZE;
+            IF (random_x = SCREEN_WIDTH - FOOD_SIZE/2) THEN
+                random_x <= FOOD_SIZE/2;
             ELSE
                 random_x <= random_x + 1;
             END IF;
-            IF (random_y = SCREEN_HEIGHT - FOOD_SIZE) THEN
-                random_y <= FOOD_SIZE;
+            IF (random_y = SCREEN_HEIGHT - FOOD_SIZE/2) THEN
+                random_y <= FOOD_SIZE/2;
             ELSE
                 random_y <= random_y + 1;
             END IF;
