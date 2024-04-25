@@ -7,25 +7,37 @@ USE IEEE.NUMERIC_STD.ALL;
 ENTITY cnt_rand IS
     PORT (
         CLK, RST : IN STD_LOGIC;
-        RAND_OUT : OUT INTEGER
+        X_RANDOM, Y_RANDOM : OUT INTEGER
     );
 END cnt_rand;
 
 ARCHITECTURE rtl OF cnt_rand IS
-    SIGNAL lfsr_out : STD_LOGIC_VECTOR(7 DOWNTO 0) := (OTHERS => '1'); -- Initialisation avec une valeur non-nulle
+    CONSTANT FOOD_SIZE : INTEGER := 20; -- taille de la nourriture en pixels
+    CONSTANT SCREEN_WIDTH : INTEGER := 640; -- largeur de l'écran en pixels
+    CONSTANT SCREEN_HEIGHT : INTEGER := 480; -- hauteur de l'écran en pixels 
+
+    SIGNAL random_x, random_y : INTEGER := FOOD_SIZE;
 
 BEGIN
-    -- LFSR pour générer un nombre pseudo-aléatoire
     PROCESS (CLK, RST)
     BEGIN
         IF (RST = '1') THEN
-            lfsr_out <= (OTHERS => '1');
+            random_x <= FOOD_SIZE;
+            random_y <= FOOD_SIZE;
         ELSIF (CLK'event AND CLK = '1') THEN
-            -- Mise à jour de lfsr_out en utilisant un polynôme XOR approprié (0x80)
-            lfsr_out <= lfsr_out(6 DOWNTO 0) & (lfsr_out(7) XOR lfsr_out(4) XOR lfsr_out(3) XOR lfsr_out(1));
+            -- Génération de coordonnées aléatoires dans les limites de l'écran
+            IF (random_x = SCREEN_WIDTH - FOOD_SIZE) THEN
+                random_x <= FOOD_SIZE;
+            ELSE
+                random_x <= random_x + 1;
+            END IF;
+            IF (random_y = SCREEN_HEIGHT - FOOD_SIZE) THEN
+                random_y <= FOOD_SIZE;
+            ELSE
+                random_y <= random_y + 1;
+            END IF;
         END IF;
     END PROCESS;
-
-    -- Conversion de lfsr_out en entier pour la sortie
-    RAND_OUT <= TO_INTEGER(IEEE.NUMERIC_STD.UNSIGNED(lfsr_out));
+    X_RANDOM <= random_x;
+    Y_RANDOM <= random_y;
 END rtl;

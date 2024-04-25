@@ -67,7 +67,7 @@ ARCHITECTURE structural OF snake IS
     COMPONENT cnt_rand IS
         PORT (
             CLK, RST : IN STD_LOGIC;
-            RAND_OUT : OUT INTEGER
+            X_RANDOM, Y_RANDOM : OUT INTEGER
         );
     END COMPONENT;
 
@@ -82,7 +82,7 @@ ARCHITECTURE structural OF snake IS
         PORT (
             RST, FOOD_CLK, FRAME : IN STD_LOGIC;
             X_SNAKE, Y_SNAKE : IN INTEGER;
-            SEED1, SEED2 : IN INTEGER;
+            X_RANDOM, Y_RANDOM : IN INTEGER;
             HCOUNT, VCOUNT : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
             IS_EATEN, IS_FOOD : OUT STD_LOGIC
         );
@@ -120,7 +120,7 @@ ARCHITECTURE structural OF snake IS
     SIGNAL hcount, vcount : STD_LOGIC_VECTOR(10 DOWNTO 0);
     SIGNAL seed1, seed2 : INTEGER;
     SIGNAL lenght_snake : STD_LOGIC_VECTOR(6 DOWNTO 0);
-    SIGNAL x_snake, y_snake : INTEGER;
+    SIGNAL x_snake, y_snake, x_random, y_random : INTEGER;
 
 BEGIN
 
@@ -139,10 +139,9 @@ BEGIN
     S1 : snake_move PORT MAP(SNAKE_CLK => snake_clk, RST => reset_g, FRAME => frame, HCOUNT => hcount, VCOUNT => vcount, DECODE_CODE => decode_code, PB_G => PB_G, PB_H => PB_H, PB_D => PB_D, PB_B => PB_B, LENGHT_SNAKE => lenght_snake, IS_SNAKE => is_snake, END_GAME => end_game, X_SNAKE => x_snake, Y_SNAKE => y_snake);
 
     -- Gestion des cubes de nourriture
-    N1 : cnt_rand PORT MAP(CLK => CLK, RST => reset_g, RAND_OUT => seed1);
-    N2 : cnt_rand PORT MAP(CLK => pixel_clk, RST => reset_g, RAND_OUT => seed2);
-    N3 : clk_food PORT MAP(CLK => CLK, RST => reset_g, FOOD_CLK => food_clk);
-    N4 : food_spawn PORT MAP(RST => reset_g, FOOD_CLK => food_clk, FRAME => frame, X_SNAKE => x_snake, Y_SNAKE => y_snake, SEED1 => seed1, SEED2 => seed2, HCOUNT => hcount, VCOUNT => vcount, IS_EATEN => is_eaten, IS_FOOD => is_food);
+    N1 : clk_food PORT MAP(CLK => CLK, RST => reset_g, FOOD_CLK => food_clk);
+    N2 : cnt_rand PORT MAP(CLK => food_clk, RST => reset_g, X_RANDOM => x_random, Y_RANDOM => y_random);
+    N3 : food_spawn PORT MAP(RST => reset_g, FOOD_CLK => food_clk, FRAME => frame, X_SNAKE => x_snake, Y_SNAKE => y_snake, X_RANDOM => x_random, Y_RANDOM => y_random, HCOUNT => hcount, VCOUNT => vcount, IS_EATEN => is_eaten, IS_FOOD => is_food);
 
     -- Agrandi le corps quand il mange de la food
     G0 : cnt_lenght_snake PORT MAP(CLK => CLK, RST => reset_g, FLAG => is_eaten, LENGHT_SNAKE => lenght_snake);

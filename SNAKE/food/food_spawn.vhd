@@ -9,7 +9,7 @@ ENTITY food_spawn IS
     PORT (
         RST, FOOD_CLK, FRAME : IN STD_LOGIC;
         X_SNAKE, Y_SNAKE : IN INTEGER;
-        SEED1, SEED2 : IN INTEGER;
+        X_RANDOM, Y_RANDOM : IN INTEGER;
         HCOUNT, VCOUNT : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
         IS_EATEN, IS_FOOD : OUT STD_LOGIC
     );
@@ -21,25 +21,12 @@ ARCHITECTURE rtl OF food_spawn IS
     CONSTANT SCREEN_WIDTH : INTEGER := 640; -- largeur de l'écran en pixels 
     CONSTANT SCREEN_HEIGHT : INTEGER := 480; -- hauteur de l'écran en pixels 
 
-    -- Définition de la fonction pour générer des nombres pseudo-aléatoires entre min_val et max_val
-    FUNCTION rand_int(rand_val : INTEGER; MIN_VAL, MAX_VAL : INTEGER) RETURN INTEGER IS
-        VARIABLE range_val : INTEGER := MAX_VAL - MIN_VAL;
-        VARIABLE normalized_val : INTEGER := rand_val;
-        VARIABLE scaled_val : INTEGER;
-    BEGIN
-        -- Normalisation de la valeur aléatoire
-        scaled_val := normalized_val * (range_val + 1) / 256; -- 256 est la plage de valeurs possibles de rand_val
-
-        -- Ajout du décalage pour obtenir une valeur dans la plage spécifiée
-        RETURN scaled_val + MIN_VAL;
-    END FUNCTION;
-
     SIGNAL xFood : INTEGER := 2 * SCREEN_WIDTH / 3;
     SIGNAL yFood : INTEGER := SCREEN_HEIGHT / 2;
     SIGNAL eaten : STD_LOGIC := '0';
 BEGIN
 
-    PROCESS (RST, FRAME, X_SNAKE, Y_SNAKE, HCOUNT, VCOUNT, SEED1, SEED2)
+    PROCESS (FOOD_CLK, RST, FRAME, X_SNAKE, Y_SNAKE, HCOUNT, VCOUNT, X_RANDOM, Y_RANDOM)
     BEGIN
         IF (RST = '1') THEN
             xFood <= 2 * SCREEN_WIDTH / 3;
@@ -48,8 +35,8 @@ BEGIN
         ELSIF (FOOD_CLK'event AND FOOD_CLK = '1') THEN
             IF (FRAME = '1') THEN
                 IF (eaten = '1') THEN -- Si le serpent mange la nourriture alors le nouveau cube apparaît de manière aléatoire
-                    xFood <= rand_int(SEED1, FOOD_SIZE, SCREEN_WIDTH - FOOD_SIZE);
-                    yFood <= rand_int(SEED2, FOOD_SIZE, SCREEN_HEIGHT - FOOD_SIZE);
+                    xFood <= X_RANDOM;
+                    yFood <= Y_RANDOM;
                     eaten <= '0';
                 ELSE
                     IF (X_SNAKE > xFood - FOOD_SIZE/2 - SNAKE_SIZE / 2) -- Coté gauche

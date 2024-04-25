@@ -20,7 +20,7 @@ BEGIN
     dizaine <= STD_LOGIC_VECTOR(to_unsigned(to_integer(IEEE.NUMERIC_STD.unsigned(SCORE)) / 10, dizaine'length));
     unite <= STD_LOGIC_VECTOR(to_unsigned(to_integer(IEEE.NUMERIC_STD.unsigned(SCORE)) MOD 10, unite'length));
 
-    PROCESS (RST, HCOUNT, VCOUNT, SCORE)
+    PROCESS (RST, HCOUNT, VCOUNT, dizaine, unite)
     BEGIN
         IF (RST = '1') THEN
             IS_NUMBER <= '0';
