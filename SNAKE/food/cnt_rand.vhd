@@ -26,12 +26,12 @@ BEGIN
             random_y <= FOOD_SIZE/2;
         ELSIF (CLK'event AND CLK = '1') THEN
             -- Génération de coordonnées aléatoires dans les limites de l'écran
-            IF (random_x = SCREEN_WIDTH - FOOD_SIZE/2) THEN
+            IF (random_x > SCREEN_WIDTH - FOOD_SIZE/2) THEN
                 random_x <= FOOD_SIZE/2;
             ELSE
                 random_x <= random_x + 1;
             END IF;
-            IF (random_y = SCREEN_HEIGHT - FOOD_SIZE/2) THEN
+            IF (random_y > SCREEN_HEIGHT - FOOD_SIZE/2) THEN
                 random_y <= FOOD_SIZE/2;
             ELSE
                 random_y <= random_y + 1;
