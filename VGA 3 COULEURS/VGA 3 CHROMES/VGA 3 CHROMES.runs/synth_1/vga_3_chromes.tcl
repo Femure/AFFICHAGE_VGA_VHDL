@@ -70,6 +70,9 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param chipscope.maxJobs 4
+set_param xicom.use_bs_reader 1
+set_msg_config  -id {Synth 8-327}  -string {{WARNING: [Synth 8-327] inferring latch for variable 'IS_SNAKE_reg' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/serpent/snake_move.vhd:93]}}  -suppress 
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a35tcpg236-1
 
@@ -103,6 +106,8 @@ read_xdc {{C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/VGA MONOCHROME/BASYS3.xdc}}
 set_property used_in_implementation false [get_files {{C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/VGA MONOCHROME/BASYS3.xdc}}]
 
 set_param ips.enableIPCacheLiteLoad 1
+
+read_checkpoint -auto_incremental -incremental {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/VGA 3 COULEURS/VGA 3 CHROMES/VGA 3 CHROMES.srcs/utils_1/imports/synth_1/vga_3_chromes.dcp}
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }

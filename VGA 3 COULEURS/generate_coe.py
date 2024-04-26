@@ -2,8 +2,8 @@ from PIL import Image
 import os
 
 # Nouveau nom de l'image source et du fichier COE
-image_source = 'serpent_start.jpg'
-coe_file = 'serpent_start.coe'
+image_source = 'mario.jpg'
+coe_file = 'mario.coe'
 
 # Dimensions de l'image
 MAX_PIXELS = 307200  # 640x480
