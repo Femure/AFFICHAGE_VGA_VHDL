@@ -87,7 +87,7 @@ BEGIN
                     count <= 0;
 
                     -- Accélération du serpent toutes les dizaines atteintes 
-                    IF (to_integer(IEEE.NUMERIC_STD.unsigned(LENGHT_SNAKE)) / 10 /= 0 AND prev_dizaine /= to_integer(IEEE.NUMERIC_STD.unsigned(LENGHT_SNAKE)) / 10) THEN
+                    IF (to_integer(IEEE.NUMERIC_STD.unsigned(LENGHT_SNAKE)) / 10 /= 0 AND prev_dizaine /= to_integer(IEEE.NUMERIC_STD.unsigned(LENGHT_SNAKE)) / 10 AND delay > 0) THEN
                         delay <= delay - 1;
                         prev_dizaine <= to_integer(IEEE.NUMERIC_STD.unsigned(LENGHT_SNAKE)) / 10;
                     END IF;

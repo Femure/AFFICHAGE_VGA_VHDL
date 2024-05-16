@@ -8,9 +8,9 @@ ENTITY clk_snake IS
         CLK, RST : IN STD_LOGIC;
         SNAKE_CLK : OUT STD_LOGIC
     );
-END clk_snake ;
+END clk_snake;
 
-ARCHITECTURE rtl OF clk_snake  IS
+ARCHITECTURE rtl OF clk_snake IS
     SIGNAL cnt : STD_LOGIC_VECTOR(2 DOWNTO 0);
 BEGIN
     PROCESS (CLK, RST)

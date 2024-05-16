@@ -1,3 +1,5 @@
+-- Changer le delay pour faire moins sacader l'affichage 
+
 LIBRARY IEEE;
 USE IEEE.std_logic_1164.ALL;
 
@@ -131,7 +133,7 @@ BEGIN
     S1 : snake_move PORT MAP(SNAKE_CLK => snake_clk, RST => g_reset, FRAME => frame, HCOUNT => hcount, VCOUNT => vcount, DECODE_CODE => decode_code, PB_G => PB_G, PB_H => PB_H, PB_D => PB_D, PB_B => PB_B, LENGHT_SNAKE => lenght_snake, IS_SNAKE_BODY => is_snake_body, IS_SNAKE_HEAD => is_snake_head, END_GAME => end_game, X_SNAKE => x_snake, Y_SNAKE => y_snake);
 
     -- Gestion des cubes de nourriture
-    N1 : cnt_rand PORT MAP(CLK => CLK, RST => g_reset, X_RANDOM => x_random, Y_RANDOM => y_random);
+    N1 : cnt_rand PORT MAP(CLK => frame, RST => g_reset, X_RANDOM => x_random, Y_RANDOM => y_random);
     N2 : food_spawn PORT MAP(RST => g_reset, FOOD_CLK => snake_clk, FRAME => frame, X_SNAKE => x_snake, Y_SNAKE => y_snake, X_RANDOM => x_random, Y_RANDOM => y_random, HCOUNT => hcount, VCOUNT => vcount, IS_EATEN => is_eaten, IS_FOOD => is_food);
 
     -- Agrandi le corps quand il mange de la nourriture
