@@ -70,6 +70,8 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param chipscope.maxJobs 4
+set_param xicom.use_bs_reader 1
 set_msg_config  -id {Synth 8-327}  -string {{WARNING: [Synth 8-327] inferring latch for variable 'IS_SNAKE_reg' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/serpent/snake_move.vhd:93]}}  -suppress 
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a35tcpg236-1
@@ -87,11 +89,10 @@ OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_vhdl -library xil_defaultlib {
   {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/balle/acc_balle_clk.vhd}
-  {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/balle/balle_clk.vhd}
   {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/Balle/balle_move.vhd}
   {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/score/cnt_score.vhd}
   {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/KEYBOARD/debouncer.vhd}
-  {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/div_25MHz.vhd}
+  {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/VGA MONOCHROME/div_25MHz.vhd}
   {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/image.vhd}
   {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/KEYBOARD/ps2_controller.vhd}
   {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/KEYBOARD/ps2_decode.vhd}

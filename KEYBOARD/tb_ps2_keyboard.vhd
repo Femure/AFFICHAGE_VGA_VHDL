@@ -20,6 +20,7 @@ ARCHITECTURE testbench OF tb_ps2_keyboard IS
     SIGNAL RST, CLK, PS2_CLK, PS2_DATA, DECODE_FLAG : STD_LOGIC;
     SIGNAL DECODE_CODE : STD_LOGIC_VECTOR(3 DOWNTO 0);
 
+    -- Envoie d'une trame PS2 avec les paramètres choisis
     PROCEDURE print_key(CONSTANT KEY : IN STD_LOGIC_VECTOR(7 DOWNTO 0); SIGNAL PS2_DATA : OUT STD_LOGIC; SIGNAL PS2_CLK : OUT STD_LOGIC; CONSTANT CLK_DELAY : IN INTEGER) IS
     BEGIN
 
@@ -129,15 +130,14 @@ BEGIN
         WAIT;
     END PROCESS stimulus0;
 
-    wave : PROCESS
+    -- Simulation d'un envoie d'une trame PS2 lors de la pression d'une touche du clavier
+    ps2_code : PROCESS
     BEGIN
 
         PS2_DATA <= '1';
         PS2_CLK <= '1';
 
         -- UP ARROW
-        print_key(x"E0", PS2_DATA, PS2_CLK, 2500); -- E0
-
         WAIT FOR 1000 us;
         print_key(x"F0", PS2_DATA, PS2_CLK, 2500); -- F0
 

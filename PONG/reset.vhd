@@ -14,6 +14,7 @@ ARCHITECTURE rtl OF reset IS
 BEGIN
     PROCESS (CLK, RST)
     BEGIN
+        -- Gestion du reset généralisé en cas d'appuye sur le bouton reset ou de fin de partie
         IF (CLK'event AND CLK = '1') THEN
             G_RESET <= RST OR END_GAME;
         END IF;

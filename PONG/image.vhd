@@ -20,32 +20,32 @@ BEGIN
             BLUE <= (OTHERS => '0');
         ELSE
             IF (BLANK = '1') THEN
-                IF (IS_NUMBER = '1') THEN
+                IF (IS_NUMBER = '1') THEN -- Le score est en blanc
                     RED <= "1111";
                     GREEN <= "1111";
                     BLUE <= "1111";
-                ELSIF (IS_BALLE = '1') THEN -- Jaune
-                    RED <= "1111";
-                    GREEN <= "1111";
-                    BLUE <= "0000";
-                ELSIF (IS_TERRAIN = '1') THEN
-                    RED <= "1111";
-                    GREEN <= "1111";
-                    BLUE <= "1111";
-                ELSIF (IS_RAQUETTE_G = '1') THEN --Cyan
+                ELSIF (IS_RAQUETTE_G = '1') THEN -- La raquette gauche est en cyan
                     RED <= "0000";
                     GREEN <= "0101";
                     BLUE <= "1100";
-                ELSIF (IS_RAQUETTE_D = '1') THEN --Magenta
+                ELSIF (IS_RAQUETTE_D = '1') THEN -- La raquette droite est en magenta
                     RED <= "1100";
                     GREEN <= "0000";
                     BLUE <= "0101";
-                ELSE
+                ELSIF (IS_BALLE = '1') THEN -- La balle est en jaune
+                    RED <= "1111";
+                    GREEN <= "1111";
+                    BLUE <= "0000";
+                ELSIF (IS_TERRAIN = '1') THEN -- La ligne au milieu du terrain est en blanc
+                    RED <= "1111";
+                    GREEN <= "1111";
+                    BLUE <= "1111";
+                ELSE -- Le terrain est en noir
                     RED <= "0000";
                     GREEN <= "0000";
                     BLUE <= "0000";
                 END IF;
-            ELSE
+            ELSE -- Le terrain est en noir
                 RED <= "0000";
                 GREEN <= "0000";
                 BLUE <= "0000";

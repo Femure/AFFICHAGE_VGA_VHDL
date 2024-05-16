@@ -14,6 +14,7 @@ ECHO is off.
     ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 
 source snake.tcl -notrace
+create_project: Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 485.539 ; gain = 177.887
 Command: read_checkpoint -auto_incremental -incremental {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/SNAKE/SNAKE.srcs/utils_1/imports/synth_1/snake.dcp}
 INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/SNAKE/SNAKE.srcs/utils_1/imports/synth_1/snake.dcp for incremental synthesis
 INFO: [Vivado 12-7989] Please ensure there are no constraint changes
@@ -26,15 +27,15 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 22288
+INFO: [Synth 8-7075] Helper process launched with PID 13620
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1319.867 ; gain = 439.746
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1320.578 ; gain = 440.418
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-638] synthesizing module 'snake' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:14]
-INFO: [Synth 8-3491] module 'reset' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/reset.vhd:6' bound to instance 'RE0' of component 'reset' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:128]
-INFO: [Synth 8-638] synthesizing module 'reset' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/reset.vhd:13]
-INFO: [Synth 8-256] done synthesizing module 'reset' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/reset.vhd:13]
-INFO: [Synth 8-3491] module 'ps2_decode' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/KEYBOARD/ps2_decode.vhd:6' bound to instance 'K0' of component 'ps2_decode' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:131]
+INFO: [Synth 8-638] synthesizing module 'snake' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:16]
+INFO: [Synth 8-3491] module 'reset' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/reset.vhd:6' bound to instance 'RE0' of component 'reset' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:122]
+INFO: [Synth 8-638] synthesizing module 'reset' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/reset.vhd:13]
+INFO: [Synth 8-256] done synthesizing module 'reset' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/reset.vhd:13]
+INFO: [Synth 8-3491] module 'ps2_decode' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/KEYBOARD/ps2_decode.vhd:6' bound to instance 'K0' of component 'ps2_decode' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:125]
 INFO: [Synth 8-638] synthesizing module 'ps2_decode' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/KEYBOARD/ps2_decode.vhd:16]
 INFO: [Synth 8-3491] module 'ps2_keyboard' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/KEYBOARD/ps2_keyboard.vhd:5' bound to instance 'ps2_keyboard_0' of component 'ps2_keyboard' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/KEYBOARD/ps2_decode.vhd:39]
 INFO: [Synth 8-638] synthesizing module 'ps2_keyboard' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/KEYBOARD/ps2_keyboard.vhd:15]
@@ -50,50 +51,47 @@ INFO: [Synth 8-638] synthesizing module 'ps2_controller' [C:/Users/maxim/VHDL/FP
 INFO: [Synth 8-256] done synthesizing module 'ps2_controller' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/KEYBOARD/ps2_controller.vhd:16]
 INFO: [Synth 8-256] done synthesizing module 'ps2_keyboard' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/KEYBOARD/ps2_keyboard.vhd:15]
 INFO: [Synth 8-256] done synthesizing module 'ps2_decode' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/KEYBOARD/ps2_decode.vhd:16]
-INFO: [Synth 8-3491] module 'div_25MHz' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/div_25MHz.vhd:6' bound to instance 'A0' of component 'div_25MHz' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:134]
-INFO: [Synth 8-638] synthesizing module 'div_25MHz' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/div_25MHz.vhd:13]
-INFO: [Synth 8-256] done synthesizing module 'div_25MHz' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/div_25MHz.vhd:13]
-INFO: [Synth 8-3491] module 'vga_controller_640_60' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/vga_controller_640_60.vhd:6' bound to instance 'A1' of component 'vga_controller_640_60' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:135]
-INFO: [Synth 8-638] synthesizing module 'vga_controller_640_60' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/vga_controller_640_60.vhd:14]
-INFO: [Synth 8-256] done synthesizing module 'vga_controller_640_60' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/vga_controller_640_60.vhd:14]
-INFO: [Synth 8-3491] module 'clk_snake' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/serpent/clk_snake.vhd:6' bound to instance 'S0' of component 'clk_snake' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:138]
+INFO: [Synth 8-3491] module 'div_25MHz' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/VGA MONOCHROME/div_25MHz.vhd:6' bound to instance 'A0' of component 'div_25MHz' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:128]
+INFO: [Synth 8-638] synthesizing module 'div_25MHz' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/VGA MONOCHROME/div_25MHz.vhd:13]
+INFO: [Synth 8-256] done synthesizing module 'div_25MHz' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/VGA MONOCHROME/div_25MHz.vhd:13]
+INFO: [Synth 8-3491] module 'vga_controller_640_60' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/vga_controller_640_60.vhd:6' bound to instance 'A1' of component 'vga_controller_640_60' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:129]
+INFO: [Synth 8-638] synthesizing module 'vga_controller_640_60' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/vga_controller_640_60.vhd:14]
+INFO: [Synth 8-256] done synthesizing module 'vga_controller_640_60' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/vga_controller_640_60.vhd:14]
+INFO: [Synth 8-3491] module 'clk_snake' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/serpent/clk_snake.vhd:6' bound to instance 'S0' of component 'clk_snake' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:132]
 INFO: [Synth 8-638] synthesizing module 'clk_snake' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/serpent/clk_snake.vhd:13]
 INFO: [Synth 8-256] done synthesizing module 'clk_snake' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/serpent/clk_snake.vhd:13]
-INFO: [Synth 8-3491] module 'snake_move' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/serpent/snake_move.vhd:7' bound to instance 'S1' of component 'snake_move' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:139]
+INFO: [Synth 8-3491] module 'snake_move' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/serpent/snake_move.vhd:7' bound to instance 'S1' of component 'snake_move' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:133]
 INFO: [Synth 8-638] synthesizing module 'snake_move' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/serpent/snake_move.vhd:19]
 INFO: [Synth 8-256] done synthesizing module 'snake_move' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/serpent/snake_move.vhd:19]
-INFO: [Synth 8-3491] module 'clk_food' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/food/clk_food.vhd:6' bound to instance 'N1' of component 'clk_food' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:142]
-INFO: [Synth 8-638] synthesizing module 'clk_food' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/food/clk_food.vhd:13]
-INFO: [Synth 8-256] done synthesizing module 'clk_food' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/food/clk_food.vhd:13]
-INFO: [Synth 8-3491] module 'cnt_rand' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/food/cnt_rand.vhd:7' bound to instance 'N2' of component 'cnt_rand' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:143]
+INFO: [Synth 8-3491] module 'cnt_rand' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/food/cnt_rand.vhd:7' bound to instance 'N1' of component 'cnt_rand' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:136]
 INFO: [Synth 8-638] synthesizing module 'cnt_rand' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/food/cnt_rand.vhd:14]
 INFO: [Synth 8-256] done synthesizing module 'cnt_rand' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/food/cnt_rand.vhd:14]
-INFO: [Synth 8-3491] module 'food_spawn' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/food/food_spawn.vhd:8' bound to instance 'N3' of component 'food_spawn' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:144]
+INFO: [Synth 8-3491] module 'food_spawn' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/food/food_spawn.vhd:8' bound to instance 'N2' of component 'food_spawn' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:137]
 INFO: [Synth 8-638] synthesizing module 'food_spawn' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/food/food_spawn.vhd:18]
 INFO: [Synth 8-256] done synthesizing module 'food_spawn' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/food/food_spawn.vhd:18]
-INFO: [Synth 8-3491] module 'cnt_lenght_snake' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/serpent/cnt_lenght_snake.vhd:6' bound to instance 'G0' of component 'cnt_lenght_snake' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:147]
+INFO: [Synth 8-3491] module 'cnt_lenght_snake' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/serpent/cnt_lenght_snake.vhd:6' bound to instance 'G0' of component 'cnt_lenght_snake' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:140]
 INFO: [Synth 8-638] synthesizing module 'cnt_lenght_snake' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/serpent/cnt_lenght_snake.vhd:13]
 INFO: [Synth 8-256] done synthesizing module 'cnt_lenght_snake' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/serpent/cnt_lenght_snake.vhd:13]
-INFO: [Synth 8-3491] module 'aff_score' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/score/aff_score.vhd:7' bound to instance 'SC0' of component 'aff_score' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:150]
-INFO: [Synth 8-638] synthesizing module 'aff_score' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/score/aff_score.vhd:16]
-INFO: [Synth 8-256] done synthesizing module 'aff_score' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/score/aff_score.vhd:16]
-INFO: [Synth 8-3491] module 'image' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/image.vhd:4' bound to instance 'A2' of component 'image' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:153]
+INFO: [Synth 8-3491] module 'score_aff' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/score/score_aff.vhd:7' bound to instance 'SC0' of component 'score_aff' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:143]
+INFO: [Synth 8-638] synthesizing module 'score_aff' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/score/score_aff.vhd:16]
+INFO: [Synth 8-256] done synthesizing module 'score_aff' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/score/score_aff.vhd:16]
+INFO: [Synth 8-3491] module 'image' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/image.vhd:4' bound to instance 'A2' of component 'image' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:146]
 INFO: [Synth 8-638] synthesizing module 'image' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/image.vhd:12]
 INFO: [Synth 8-256] done synthesizing module 'image' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/image.vhd:12]
-INFO: [Synth 8-256] done synthesizing module 'snake' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:14]
+INFO: [Synth 8-256] done synthesizing module 'snake' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd:16]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1491.004 ; gain = 610.883
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1442.219 ; gain = 562.059
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1491.004 ; gain = 610.883
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 1442.219 ; gain = 562.059
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1491.004 ; gain = 610.883
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 1442.219 ; gain = 562.059
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.099 . Memory (MB): peak = 1491.004 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.021 . Memory (MB): peak = 1442.219 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -104,29 +102,29 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/snake_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1541.602 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1508.750 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 The system cannot find the path specified.
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.023 . Memory (MB): peak = 1541.602 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 1508.750 ; gain = 0.000
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 1541.602 ; gain = 661.480
+Finished Constraint Validation : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1508.750 ; gain = 628.590
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 1541.602 ; gain = 661.480
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1508.750 ; gain = 628.590
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 1541.602 ; gain = 661.480
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1508.750 ; gain = 628.590
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'ps2_decode'
 ---------------------------------------------------------------------------------------------------
@@ -139,45 +137,46 @@ INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'ps2_d
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'ps2_decode'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1541.602 ; gain = 661.480
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 1508.750 ; gain = 628.590
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
 +---Adders : 
-	   3 Input   33 Bit       Adders := 140   
-	   2 Input   32 Bit       Adders := 280   
-	   3 Input   13 Bit       Adders := 284   
-	   2 Input   12 Bit       Adders := 284   
+	   3 Input   33 Bit       Adders := 20    
+	   2 Input   32 Bit       Adders := 40    
+	   3 Input   13 Bit       Adders := 44    
+	   2 Input   12 Bit       Adders := 44    
 	   2 Input   11 Bit       Adders := 2     
 	   2 Input    7 Bit       Adders := 1     
 	   2 Input    5 Bit       Adders := 2     
-	   2 Input    3 Bit       Adders := 2     
+	   2 Input    3 Bit       Adders := 1     
 	   2 Input    2 Bit       Adders := 1     
 +---XORs : 
 	   9 Input      1 Bit         XORs := 1     
 +---Registers : 
-	               32 Bit    Registers := 143   
+	               32 Bit    Registers := 23    
 	               11 Bit    Registers := 3     
 	                8 Bit    Registers := 1     
 	                7 Bit    Registers := 1     
 	                5 Bit    Registers := 2     
 	                4 Bit    Registers := 2     
-	                3 Bit    Registers := 2     
+	                3 Bit    Registers := 1     
 	                2 Bit    Registers := 1     
-	                1 Bit    Registers := 15    
+	                1 Bit    Registers := 14    
 +---Multipliers : 
 	               6x32  Multipliers := 2     
 +---Muxes : 
 	   2 Input   11 Bit        Muxes := 2     
 	   2 Input    5 Bit        Muxes := 2     
-	   2 Input    4 Bit        Muxes := 10    
 	   4 Input    4 Bit        Muxes := 1     
-	   2 Input    3 Bit        Muxes := 3     
-	   2 Input    2 Bit        Muxes := 6     
+	   2 Input    4 Bit        Muxes := 1     
+	   7 Input    4 Bit        Muxes := 3     
+	   2 Input    3 Bit        Muxes := 2     
 	   4 Input    2 Bit        Muxes := 1     
-	   2 Input    1 Bit        Muxes := 431   
+	   2 Input    2 Bit        Muxes := 6     
+	   2 Input    1 Bit        Muxes := 54    
 	   9 Input    1 Bit        Muxes := 1     
 	   4 Input    1 Bit        Muxes := 5     
 ---------------------------------------------------------------------------------
@@ -197,25 +196,25 @@ Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:48 ; elapsed = 00:00:49 . Memory (MB): peak = 1716.711 ; gain = 836.590
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:23 ; elapsed = 00:00:25 . Memory (MB): peak = 1508.750 ; gain = 628.590
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:52 ; elapsed = 00:00:54 . Memory (MB): peak = 1716.711 ; gain = 836.590
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 1508.750 ; gain = 628.590
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:01:01 ; elapsed = 00:01:03 . Memory (MB): peak = 1716.711 ; gain = 836.590
+Finished Timing Optimization : Time (s): cpu = 00:00:28 ; elapsed = 00:00:31 . Memory (MB): peak = 1508.750 ; gain = 628.590
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:01:11 ; elapsed = 00:01:13 . Memory (MB): peak = 1716.711 ; gain = 836.590
+Finished Technology Mapping : Time (s): cpu = 00:00:29 ; elapsed = 00:00:32 . Memory (MB): peak = 1508.750 ; gain = 628.590
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -233,37 +232,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:01:15 ; elapsed = 00:01:18 . Memory (MB): peak = 1716.711 ; gain = 836.590
+Finished IO Insertion : Time (s): cpu = 00:00:33 ; elapsed = 00:00:36 . Memory (MB): peak = 1508.750 ; gain = 628.590
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:01:15 ; elapsed = 00:01:18 . Memory (MB): peak = 1716.711 ; gain = 836.590
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:33 ; elapsed = 00:00:36 . Memory (MB): peak = 1508.750 ; gain = 628.590
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:17 ; elapsed = 00:01:19 . Memory (MB): peak = 1716.711 ; gain = 836.590
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:33 ; elapsed = 00:00:36 . Memory (MB): peak = 1508.750 ; gain = 628.590
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:01:17 ; elapsed = 00:01:19 . Memory (MB): peak = 1716.711 ; gain = 836.590
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:33 ; elapsed = 00:00:36 . Memory (MB): peak = 1508.750 ; gain = 628.590
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:01:17 ; elapsed = 00:01:19 . Memory (MB): peak = 1716.711 ; gain = 836.590
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:33 ; elapsed = 00:00:36 . Memory (MB): peak = 1508.750 ; gain = 628.590
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:01:17 ; elapsed = 00:01:19 . Memory (MB): peak = 1716.711 ; gain = 836.590
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:33 ; elapsed = 00:00:36 . Memory (MB): peak = 1508.750 ; gain = 628.590
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -279,44 +278,43 @@ Report Cell Usage:
 +------+-------+------+
 |      |Cell   |Count |
 +------+-------+------+
-|1     |BUFG   |     4|
-|2     |CARRY4 |  5733|
-|3     |LUT1   |  7275|
-|4     |LUT2   |  7309|
-|5     |LUT3   |   123|
-|6     |LUT4   |  4388|
-|7     |LUT5   |   100|
-|8     |LUT6   |   212|
-|9     |FDCE   |   547|
-|10    |FDPE   |  4097|
-|11    |FDRE   |     4|
+|1     |BUFG   |     2|
+|2     |CARRY4 |   933|
+|3     |LUT1   |  1107|
+|4     |LUT2   |  1455|
+|5     |LUT3   |    77|
+|6     |LUT4   |   680|
+|7     |LUT5   |    52|
+|8     |LUT6   |   118|
+|9     |FDCE   |   346|
+|10    |FDPE   |   567|
+|11    |FDRE   |     3|
 |12    |IBUF   |     8|
 |13    |OBUF   |    14|
 +------+-------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:01:17 ; elapsed = 00:01:19 . Memory (MB): peak = 1716.711 ; gain = 836.590
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:33 ; elapsed = 00:00:36 . Memory (MB): peak = 1508.750 ; gain = 628.590
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:01:07 ; elapsed = 00:01:17 . Memory (MB): peak = 1716.711 ; gain = 785.992
-Synthesis Optimization Complete : Time (s): cpu = 00:01:17 ; elapsed = 00:01:19 . Memory (MB): peak = 1716.711 ; gain = 836.590
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:26 ; elapsed = 00:00:34 . Memory (MB): peak = 1508.750 ; gain = 562.059
+Synthesis Optimization Complete : Time (s): cpu = 00:00:33 ; elapsed = 00:00:36 . Memory (MB): peak = 1508.750 ; gain = 628.590
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.324 . Memory (MB): peak = 1716.711 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 5733 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.050 . Memory (MB): peak = 1508.750 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 933 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
-WARNING: [Netlist 29-101] Netlist 'snake' is not ideal for floorplanning, since the cellview 'snake_move' contains a large number of primitives.  Please consider enabling hierarchy in synthesis if you want to do floorplanning.
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1716.711 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1508.750 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 The system cannot find the path specified.
-Synth Design complete | Checksum: d0ab970e
+Synth Design complete | Checksum: 74609f90
 INFO: [Common 17-83] Releasing license: Synthesis
-74 Infos, 2 Warnings, 0 Critical Warnings and 0 Errors encountered.
+71 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:01:24 ; elapsed = 00:01:27 . Memory (MB): peak = 1716.711 ; gain = 1228.699
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.059 . Memory (MB): peak = 1716.711 ; gain = 0.000
+synth_design: Time (s): cpu = 00:00:36 ; elapsed = 00:00:52 . Memory (MB): peak = 1508.750 ; gain = 1019.262
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.011 . Memory (MB): peak = 1508.750 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/SNAKE/SNAKE.runs/synth_1/snake.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file snake_utilization_synth.rpt -pb snake_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Fri Apr 26 12:00:09 2024...
+INFO: [Common 17-206] Exiting Vivado at Thu May 16 10:32:05 2024...

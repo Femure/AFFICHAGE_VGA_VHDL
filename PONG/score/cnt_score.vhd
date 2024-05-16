@@ -5,15 +5,15 @@ USE IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 ENTITY cnt_score IS
     PORT (
-        CLK, RST : IN STD_LOGIC; -- Horloge pour la mise à jour des scores et le reset
-        J_WIN : IN STD_LOGIC_VECTOR(1 DOWNTO 0); -- Indique quel joueur a gagné
-        J1_SCORE, J2_SCORE : OUT STD_LOGIC_VECTOR (2 DOWNTO 0) -- Le score du joueur 1 et 2
+        CLK, RST : IN STD_LOGIC;
+        J_WIN : IN STD_LOGIC_VECTOR(1 DOWNTO 0); 
+        J1_SCORE, J2_SCORE : OUT STD_LOGIC_VECTOR (2 DOWNTO 0)
     );
 END cnt_score;
 
 ARCHITECTURE rtl OF cnt_score IS
     SIGNAL score_1, score_2 : STD_LOGIC_VECTOR(2 DOWNTO 0) := (OTHERS => '0'); -- Score du joueur 1 et 2
-    SIGNAL prev_j1_win, prev_j2_win : STD_LOGIC := '0'; -- Score du joueur 1 et 2
+    SIGNAL prev_j1_win, prev_j2_win : STD_LOGIC := '0';
 BEGIN
     PROCESS (CLK, RST, J_WIN)
     BEGIN

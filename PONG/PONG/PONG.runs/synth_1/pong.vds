@@ -3,8 +3,8 @@
 # SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Thu Apr 25 21:01:10 2024
-# Process ID: 15860
+# Start of session at: Wed May 15 16:36:14 2024
+# Process ID: 23432
 # Current directory: C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/PONG/PONG.runs/synth_1
 # Command line: vivado.exe -log pong.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source pong.tcl
 # Log file: C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/PONG/PONG.runs/synth_1/pong.vds
@@ -24,15 +24,15 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 15560
+INFO: [Synth 8-7075] Helper process launched with PID 3544
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1320.758 ; gain = 440.773
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1320.645 ; gain = 439.012
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-638] synthesizing module 'pong' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/pong.vhd:18]
-INFO: [Synth 8-3491] module 'reset' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/reset.vhd:6' bound to instance 'RE0' of component 'reset' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/pong.vhd:139]
+INFO: [Synth 8-638] synthesizing module 'pong' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/pong.vhd:14]
+INFO: [Synth 8-3491] module 'reset' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/reset.vhd:6' bound to instance 'RE0' of component 'reset' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/pong.vhd:129]
 INFO: [Synth 8-638] synthesizing module 'reset' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/reset.vhd:13]
 INFO: [Synth 8-256] done synthesizing module 'reset' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/reset.vhd:13]
-INFO: [Synth 8-3491] module 'ps2_decode' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/KEYBOARD/ps2_decode.vhd:6' bound to instance 'K0' of component 'ps2_decode' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/pong.vhd:142]
+INFO: [Synth 8-3491] module 'ps2_decode' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/KEYBOARD/ps2_decode.vhd:6' bound to instance 'K0' of component 'ps2_decode' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/pong.vhd:132]
 INFO: [Synth 8-638] synthesizing module 'ps2_decode' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/KEYBOARD/ps2_decode.vhd:16]
 INFO: [Synth 8-3491] module 'ps2_keyboard' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/KEYBOARD/ps2_keyboard.vhd:5' bound to instance 'ps2_keyboard_0' of component 'ps2_keyboard' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/KEYBOARD/ps2_decode.vhd:39]
 INFO: [Synth 8-638] synthesizing module 'ps2_keyboard' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/KEYBOARD/ps2_keyboard.vhd:15]
@@ -48,53 +48,50 @@ INFO: [Synth 8-638] synthesizing module 'ps2_controller' [C:/Users/maxim/VHDL/FP
 INFO: [Synth 8-256] done synthesizing module 'ps2_controller' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/KEYBOARD/ps2_controller.vhd:16]
 INFO: [Synth 8-256] done synthesizing module 'ps2_keyboard' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/KEYBOARD/ps2_keyboard.vhd:15]
 INFO: [Synth 8-256] done synthesizing module 'ps2_decode' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/KEYBOARD/ps2_decode.vhd:16]
-INFO: [Synth 8-3491] module 'div_25MHz' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/div_25MHz.vhd:6' bound to instance 'A0' of component 'div_25MHz' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/pong.vhd:145]
-INFO: [Synth 8-638] synthesizing module 'div_25MHz' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/div_25MHz.vhd:13]
-INFO: [Synth 8-256] done synthesizing module 'div_25MHz' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/div_25MHz.vhd:13]
-INFO: [Synth 8-3491] module 'vga_controller_640_60' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/vga_controller_640_60.vhd:6' bound to instance 'A1' of component 'vga_controller_640_60' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/pong.vhd:146]
+INFO: [Synth 8-3491] module 'div_25MHz' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/VGA MONOCHROME/div_25MHz.vhd:6' bound to instance 'A0' of component 'div_25MHz' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/pong.vhd:135]
+INFO: [Synth 8-638] synthesizing module 'div_25MHz' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/VGA MONOCHROME/div_25MHz.vhd:13]
+INFO: [Synth 8-256] done synthesizing module 'div_25MHz' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/VGA MONOCHROME/div_25MHz.vhd:13]
+INFO: [Synth 8-3491] module 'vga_controller_640_60' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/vga_controller_640_60.vhd:6' bound to instance 'A1' of component 'vga_controller_640_60' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/pong.vhd:136]
 INFO: [Synth 8-638] synthesizing module 'vga_controller_640_60' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/vga_controller_640_60.vhd:14]
 INFO: [Synth 8-256] done synthesizing module 'vga_controller_640_60' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/vga_controller_640_60.vhd:14]
-INFO: [Synth 8-3491] module 'terrain_aff' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/terrain/terrain_aff.vhd:6' bound to instance 'T0' of component 'terrain_aff' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/pong.vhd:149]
+INFO: [Synth 8-3491] module 'terrain_aff' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/terrain/terrain_aff.vhd:6' bound to instance 'T0' of component 'terrain_aff' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/pong.vhd:139]
 INFO: [Synth 8-638] synthesizing module 'terrain_aff' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/terrain/terrain_aff.vhd:13]
 INFO: [Synth 8-256] done synthesizing module 'terrain_aff' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/terrain/terrain_aff.vhd:13]
-INFO: [Synth 8-3491] module 'balle_clk' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/balle/balle_clk.vhd:6' bound to instance 'B0' of component 'balle_clk' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/pong.vhd:152]
-INFO: [Synth 8-638] synthesizing module 'balle_clk' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/balle/balle_clk.vhd:13]
-INFO: [Synth 8-256] done synthesizing module 'balle_clk' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/balle/balle_clk.vhd:13]
-INFO: [Synth 8-3491] module 'acc_balle_clk' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/balle/acc_balle_clk.vhd:6' bound to instance 'B1' of component 'acc_balle_clk' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/pong.vhd:153]
-INFO: [Synth 8-638] synthesizing module 'acc_balle_clk' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/balle/acc_balle_clk.vhd:13]
-INFO: [Synth 8-256] done synthesizing module 'acc_balle_clk' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/balle/acc_balle_clk.vhd:13]
-INFO: [Synth 8-3491] module 'balle_move' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/Balle/balle_move.vhd:6' bound to instance 'B2' of component 'balle_move' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/pong.vhd:154]
+INFO: [Synth 8-3491] module 'acc_balle_clk' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/balle/acc_balle_clk.vhd:6' bound to instance 'B0' of component 'acc_balle_clk' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/pong.vhd:142]
+INFO: [Synth 8-638] synthesizing module 'acc_balle_clk' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/balle/acc_balle_clk.vhd:14]
+INFO: [Synth 8-256] done synthesizing module 'acc_balle_clk' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/balle/acc_balle_clk.vhd:14]
+INFO: [Synth 8-3491] module 'balle_move' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/Balle/balle_move.vhd:6' bound to instance 'B1' of component 'balle_move' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/pong.vhd:143]
 INFO: [Synth 8-638] synthesizing module 'balle_move' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/Balle/balle_move.vhd:16]
 INFO: [Synth 8-256] done synthesizing module 'balle_move' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/Balle/balle_move.vhd:16]
-INFO: [Synth 8-3491] module 'raquette_clk' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/raquette/raquette_clk.vhd:6' bound to instance 'R0' of component 'raquette_clk' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/pong.vhd:157]
+INFO: [Synth 8-3491] module 'raquette_clk' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/raquette/raquette_clk.vhd:6' bound to instance 'R0' of component 'raquette_clk' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/pong.vhd:146]
 INFO: [Synth 8-638] synthesizing module 'raquette_clk' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/raquette/raquette_clk.vhd:13]
 INFO: [Synth 8-256] done synthesizing module 'raquette_clk' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/raquette/raquette_clk.vhd:13]
-INFO: [Synth 8-3491] module 'raquette_move' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/raquette/raquette_move.vhd:6' bound to instance 'R1' of component 'raquette_move' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/pong.vhd:158]
+INFO: [Synth 8-3491] module 'raquette_move' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/raquette/raquette_move.vhd:6' bound to instance 'R1' of component 'raquette_move' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/pong.vhd:147]
 INFO: [Synth 8-638] synthesizing module 'raquette_move' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/raquette/raquette_move.vhd:18]
 INFO: [Synth 8-256] done synthesizing module 'raquette_move' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/raquette/raquette_move.vhd:18]
-INFO: [Synth 8-3491] module 'cnt_score' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/score/cnt_score.vhd:6' bound to instance 'S0' of component 'cnt_score' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/pong.vhd:161]
+INFO: [Synth 8-3491] module 'cnt_score' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/score/cnt_score.vhd:6' bound to instance 'S0' of component 'cnt_score' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/pong.vhd:150]
 INFO: [Synth 8-638] synthesizing module 'cnt_score' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/score/cnt_score.vhd:14]
 INFO: [Synth 8-256] done synthesizing module 'cnt_score' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/score/cnt_score.vhd:14]
-INFO: [Synth 8-3491] module 'score_aff' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/score/score_aff.vhd:6' bound to instance 'S1' of component 'score_aff' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/pong.vhd:162]
+INFO: [Synth 8-3491] module 'score_aff' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/score/score_aff.vhd:6' bound to instance 'S1' of component 'score_aff' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/pong.vhd:151]
 INFO: [Synth 8-638] synthesizing module 'score_aff' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/score/score_aff.vhd:15]
 INFO: [Synth 8-256] done synthesizing module 'score_aff' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/score/score_aff.vhd:15]
-INFO: [Synth 8-3491] module 'image' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/image.vhd:6' bound to instance 'A2' of component 'image' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/pong.vhd:165]
+INFO: [Synth 8-3491] module 'image' declared at 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/image.vhd:6' bound to instance 'A2' of component 'image' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/pong.vhd:154]
 INFO: [Synth 8-638] synthesizing module 'image' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/image.vhd:13]
 INFO: [Synth 8-256] done synthesizing module 'image' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/image.vhd:13]
-INFO: [Synth 8-256] done synthesizing module 'pong' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/pong.vhd:18]
+INFO: [Synth 8-256] done synthesizing module 'pong' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/pong.vhd:14]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1436.832 ; gain = 556.848
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1438.980 ; gain = 557.348
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1436.832 ; gain = 556.848
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1438.980 ; gain = 557.348
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1436.832 ; gain = 556.848
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1438.980 ; gain = 557.348
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.013 . Memory (MB): peak = 1436.832 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.013 . Memory (MB): peak = 1438.980 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -105,28 +102,28 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/pong_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1539.262 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1538.441 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 1539.262 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 1538.441 ; gain = 0.000
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 1539.262 ; gain = 659.277
+Finished Constraint Validation : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1538.441 ; gain = 656.809
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 1539.262 ; gain = 659.277
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1538.441 ; gain = 656.809
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 1539.262 ; gain = 659.277
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1538.441 ; gain = 656.809
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'ps2_decode'
 ---------------------------------------------------------------------------------------------------
@@ -139,7 +136,7 @@ INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'ps2_d
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'ps2_decode'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1539.262 ; gain = 659.277
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1538.441 ; gain = 656.809
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -152,7 +149,7 @@ Detailed RTL Component Info :
 	   2 Input   12 Bit       Adders := 8     
 	   2 Input   11 Bit       Adders := 2     
 	   2 Input    5 Bit       Adders := 2     
-	   2 Input    3 Bit       Adders := 3     
+	   2 Input    3 Bit       Adders := 2     
 	   2 Input    2 Bit       Adders := 2     
 +---XORs : 
 	   9 Input      1 Bit         XORs := 1     
@@ -162,23 +159,24 @@ Detailed RTL Component Info :
 	                8 Bit    Registers := 1     
 	                5 Bit    Registers := 2     
 	                4 Bit    Registers := 2     
-	                3 Bit    Registers := 3     
+	                3 Bit    Registers := 2     
 	                2 Bit    Registers := 3     
 	                1 Bit    Registers := 15    
 +---Muxes : 
 	   2 Input   32 Bit        Muxes := 14    
+	   4 Input   32 Bit        Muxes := 1     
 	   2 Input   31 Bit        Muxes := 1     
 	   2 Input   11 Bit        Muxes := 2     
 	   2 Input    5 Bit        Muxes := 2     
-	   4 Input    4 Bit        Muxes := 1     
-	   8 Input    4 Bit        Muxes := 2     
-	   7 Input    4 Bit        Muxes := 1     
-	   2 Input    3 Bit        Muxes := 1     
+	   4 Input    4 Bit        Muxes := 3     
+	   2 Input    4 Bit        Muxes := 7     
+	   5 Input    4 Bit        Muxes := 1     
 	   4 Input    2 Bit        Muxes := 2     
-	   2 Input    2 Bit        Muxes := 7     
+	   2 Input    2 Bit        Muxes := 5     
 	   2 Input    1 Bit        Muxes := 35    
 	   9 Input    1 Bit        Muxes := 1     
 	   4 Input    1 Bit        Muxes := 5     
+	  26 Input    1 Bit        Muxes := 1     
 	   8 Input    1 Bit        Muxes := 2     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
@@ -197,25 +195,25 @@ Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 1539.262 ; gain = 659.277
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:19 ; elapsed = 00:00:19 . Memory (MB): peak = 1538.441 ; gain = 656.809
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:21 ; elapsed = 00:00:23 . Memory (MB): peak = 1539.262 ; gain = 659.277
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:22 ; elapsed = 00:00:23 . Memory (MB): peak = 1538.441 ; gain = 656.809
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:21 ; elapsed = 00:00:23 . Memory (MB): peak = 1539.262 ; gain = 659.277
+Finished Timing Optimization : Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 1538.441 ; gain = 656.809
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:22 ; elapsed = 00:00:23 . Memory (MB): peak = 1539.262 ; gain = 659.277
+Finished Technology Mapping : Time (s): cpu = 00:00:25 ; elapsed = 00:00:26 . Memory (MB): peak = 1538.441 ; gain = 656.809
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -233,37 +231,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:25 ; elapsed = 00:00:27 . Memory (MB): peak = 1539.262 ; gain = 659.277
+Finished IO Insertion : Time (s): cpu = 00:00:28 ; elapsed = 00:00:29 . Memory (MB): peak = 1538.441 ; gain = 656.809
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:25 ; elapsed = 00:00:27 . Memory (MB): peak = 1539.262 ; gain = 659.277
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:28 ; elapsed = 00:00:29 . Memory (MB): peak = 1538.441 ; gain = 656.809
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:25 ; elapsed = 00:00:27 . Memory (MB): peak = 1539.262 ; gain = 659.277
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:28 ; elapsed = 00:00:29 . Memory (MB): peak = 1538.441 ; gain = 656.809
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:25 ; elapsed = 00:00:27 . Memory (MB): peak = 1539.262 ; gain = 659.277
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:28 ; elapsed = 00:00:29 . Memory (MB): peak = 1538.441 ; gain = 656.809
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:25 ; elapsed = 00:00:27 . Memory (MB): peak = 1539.262 ; gain = 659.277
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:28 ; elapsed = 00:00:29 . Memory (MB): peak = 1538.441 ; gain = 656.809
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:25 ; elapsed = 00:00:27 . Memory (MB): peak = 1539.262 ; gain = 659.277
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:28 ; elapsed = 00:00:29 . Memory (MB): peak = 1538.441 ; gain = 656.809
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -280,41 +278,41 @@ Report Cell Usage:
 |      |Cell   |Count |
 +------+-------+------+
 |1     |BUFG   |     3|
-|2     |CARRY4 |   282|
-|3     |LUT1   |   253|
+|2     |CARRY4 |   270|
+|3     |LUT1   |   221|
 |4     |LUT2   |   496|
-|5     |LUT3   |   243|
-|6     |LUT4   |   422|
-|7     |LUT5   |    33|
-|8     |LUT6   |   150|
-|9     |FDCE   |   291|
-|10    |FDPE   |    17|
-|11    |FDRE   |     5|
+|5     |LUT3   |    94|
+|6     |LUT4   |   465|
+|7     |LUT5   |   106|
+|8     |LUT6   |   190|
+|9     |FDCE   |   318|
+|10    |FDPE   |    16|
+|11    |FDRE   |    36|
 |12    |IBUF   |     8|
 |13    |OBUF   |    14|
 +------+-------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:25 ; elapsed = 00:00:27 . Memory (MB): peak = 1539.262 ; gain = 659.277
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:28 ; elapsed = 00:00:29 . Memory (MB): peak = 1538.441 ; gain = 656.809
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:19 ; elapsed = 00:00:25 . Memory (MB): peak = 1539.262 ; gain = 556.848
-Synthesis Optimization Complete : Time (s): cpu = 00:00:26 ; elapsed = 00:00:27 . Memory (MB): peak = 1539.262 ; gain = 659.277
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:21 ; elapsed = 00:00:28 . Memory (MB): peak = 1538.441 ; gain = 557.348
+Synthesis Optimization Complete : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 1538.441 ; gain = 656.809
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.024 . Memory (MB): peak = 1539.262 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 282 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.023 . Memory (MB): peak = 1538.441 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 270 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1539.262 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1538.441 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Synth Design complete | Checksum: 3de856df
+Synth Design complete | Checksum: d37f7b35
 INFO: [Common 17-83] Releasing license: Synthesis
-77 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
+74 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:28 ; elapsed = 00:00:31 . Memory (MB): peak = 1539.262 ; gain = 1048.883
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 1539.262 ; gain = 0.000
+synth_design: Time (s): cpu = 00:00:31 ; elapsed = 00:00:34 . Memory (MB): peak = 1538.441 ; gain = 1049.590
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 1538.441 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/PONG/PONG.runs/synth_1/pong.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file pong_utilization_synth.rpt -pb pong_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Thu Apr 25 21:01:49 2024...
+INFO: [Common 17-206] Exiting Vivado at Wed May 15 16:36:55 2024...

@@ -16,62 +16,51 @@ ENTITY raquette_move IS
 END raquette_move;
 
 ARCHITECTURE rtl OF raquette_move IS
-    CONSTANT RAQUETTE_WIDTH : INTEGER := 10; -- largeur de la raquette en pixels
-    CONSTANT RAQUETTE_HEIGHT : INTEGER := 50; -- hauteur de la raquette en pixels 
-    CONSTANT SCREEN_WIDTH : INTEGER := 640; -- largeur de l'écran en pixels
-    CONSTANT SCREEN_HEIGHT : INTEGER := 480; -- hauteur de l'écran en pixels 
-    CONSTANT xRaquetteG : INTEGER := 20;
-    CONSTANT xRaquetteD : INTEGER := SCREEN_WIDTH - 20;
+    CONSTANT RAQUETTE_WIDTH : INTEGER := 10; -- Largeur de la raquette en pixels
+    CONSTANT RAQUETTE_HEIGHT : INTEGER := 50; -- Hauteur de la raquette en pixels 
+    CONSTANT SCREEN_WIDTH : INTEGER := 640; -- Largeur de l'écran en pixels
+    CONSTANT SCREEN_HEIGHT : INTEGER := 480; -- Hauteur de l'écran en pixels 
+    CONSTANT dirRaquettes : INTEGER := 5; -- Direction des raquettes
+    CONSTANT xRaquetteG : INTEGER := 20; -- Position de la raquette gauche en x
+    CONSTANT xRaquetteD : INTEGER := SCREEN_WIDTH - 20; -- Position de la raquette droite en x
 
-    SIGNAL yRaquetteG, yRaquetteD : INTEGER := SCREEN_HEIGHT/2; -- position des raquettes
-    SIGNAL dirRaquetteG, dirRaquetteD : INTEGER := 5; -- direction des raquettes
+    SIGNAL yRaquetteG, yRaquetteD : INTEGER := SCREEN_HEIGHT/2; -- Position des raquettes en y
 
 BEGIN
-    -- Calcul de la position
-    PROCESS (RAQUETTE_CLK, RST, FRAME, HCOUNT, VCOUNT)
+    PROCESS (RAQUETTE_CLK, RST, FRAME, HCOUNT, VCOUNT, J_WIN)
     BEGIN
-        IF (RST = '1') THEN
+        IF (RST = '1' OR J_WIN > 0) THEN
+            -- Replacement des raquettes après un reset ou un point gagné
             yRaquetteG <= SCREEN_HEIGHT/2;
-            dirRaquetteG <= 5;
-
             yRaquetteD <= SCREEN_HEIGHT/2;
-            dirRaquetteD <= 5;
         ELSIF (RAQUETTE_CLK'event AND RAQUETTE_CLK = '1') THEN
             IF (FRAME = '1') THEN
-                IF (J_WIN > "00") THEN
-                    yRaquetteG <= SCREEN_HEIGHT/2;
-                    yRaquetteD <= SCREEN_HEIGHT/2;
-                ELSE
-                    -- Mouvement raquette gauche
-                    IF (PB_Haut_G = '1' OR DECODE_CODE = "0101") THEN -- Appuye sur le bouton associé ou appuye sur la touche Z
-                        IF (yRaquetteG > RAQUETTE_HEIGHT / 2) THEN -- rebond sur bord haut
-                            yRaquetteG <= yRaquetteG - dirRaquetteG;
-                        END IF;
-                    ELSIF (PB_Bas_G = '1' OR DECODE_CODE = "0111") THEN -- Appuye sur le bouton associé ou appuye sur la touche S
-                        IF (yRaquetteG < SCREEN_HEIGHT - RAQUETTE_HEIGHT / 2) THEN -- rebond sur bord bas
-                            yRaquetteG <= yRaquetteG + dirRaquetteG;
-                        END IF;
-                    ELSE
-                        dirRaquetteG <= dirRaquetteG;
+                -- Mouvement raquette gauche
+                IF (PB_Haut_G = '1' OR DECODE_CODE = "0101") THEN -- Pression sur le bouton associé ou sur la touche Z
+                    IF (yRaquetteG > RAQUETTE_HEIGHT / 2) THEN -- Rebond sur bord haut
+                        yRaquetteG <= yRaquetteG - dirRaquettes;
                     END IF;
+                ELSIF (PB_Bas_G = '1' OR DECODE_CODE = "0111") THEN -- Pression sur le bouton associé ou sur la touche S
+                    IF (yRaquetteG < SCREEN_HEIGHT - RAQUETTE_HEIGHT / 2) THEN -- Rebond sur bord bas
+                        yRaquetteG <= yRaquetteG + dirRaquettes;
+                    END IF;
+                END IF;
 
-                    -- Mouvement raquette droite
-                    IF (PB_Haut_D = '1' OR DECODE_CODE = "0001") THEN -- Appuye sur le bouton associé ou appuye sur la touche ARROW UP
-                        IF (yRaquetteD > RAQUETTE_HEIGHT / 2) THEN -- rebond sur bord haut
-                            yRaquetteD <= yRaquetteD - dirRaquetteD;
-                        END IF;
-                    ELSIF (PB_Bas_D = '1' OR DECODE_CODE = "0011") THEN -- Appuye sur le bouton associé ou appuye sur la touche ARROW DOWN
-                        IF (yRaquetteD < SCREEN_HEIGHT - RAQUETTE_HEIGHT / 2) THEN -- rebond sur bord bas
-                            yRaquetteD <= yRaquetteD + dirRaquetteD;
-                        END IF;
-                    ELSE
-                        dirRaquetteD <= dirRaquetteD;
+                -- Mouvement raquette droite
+                IF (PB_Haut_D = '1' OR DECODE_CODE = "0001") THEN -- Pression sur le bouton associé ou sur la touche ARROW UP
+                    IF (yRaquetteD > RAQUETTE_HEIGHT / 2) THEN -- Rebond sur bord haut
+                        yRaquetteD <= yRaquetteD - dirRaquettes;
+                    END IF;
+                ELSIF (PB_Bas_D = '1' OR DECODE_CODE = "0011") THEN -- Pression sur le bouton associé ou sur la touche ARROW DOWN
+                    IF (yRaquetteD < SCREEN_HEIGHT - RAQUETTE_HEIGHT / 2) THEN -- Rebond sur bord bas
+                        yRaquetteD <= yRaquetteD + dirRaquettes;
                     END IF;
                 END IF;
             END IF;
         END IF;
     END PROCESS;
 
+    -- Regarde si le pixel en cours de balayage est à l'intérieur de la raquette gauche ou de la raquette droite
     IS_RAQUETTE_G <= '1' WHEN (HCOUNT > xRaquetteG - RAQUETTE_WIDTH / 2) AND (HCOUNT < xRaquetteG + RAQUETTE_WIDTH / 2)
         AND (VCOUNT > yRaquetteG - RAQUETTE_HEIGHT / 2) AND (VCOUNT < yRaquetteG + RAQUETTE_HEIGHT / 2)
         ELSE
@@ -81,6 +70,7 @@ BEGIN
         ELSE
         '0';
 
+    -- Revoie la position en y de la raquette gauche et de la raquette droite
     Y_RAQUETTE_G <= yRaquetteG;
     Y_RAQUETTE_D <= yRaquetteD;
 

@@ -16,21 +16,21 @@ ENTITY food_spawn IS
 END food_spawn;
 
 ARCHITECTURE rtl OF food_spawn IS
-    CONSTANT FOOD_SIZE : INTEGER := 20; -- taille de la nourriture en pixels
-    CONSTANT SNAKE_SIZE : INTEGER := 20; -- taille de la tête du serpent en pixels
-    CONSTANT SCREEN_WIDTH : INTEGER := 640; -- largeur de l'écran en pixels 
-    CONSTANT SCREEN_HEIGHT : INTEGER := 480; -- hauteur de l'écran en pixels 
+    CONSTANT SNAKE_SIZE : INTEGER := 20; -- Taille des parties du corps du serpent en pixels
+    CONSTANT FOOD_SIZE : INTEGER := 20; -- Taille de la nourriture en pixels
+    CONSTANT SCREEN_WIDTH : INTEGER := 640; -- Largeur de l'écran en pixels
+    CONSTANT SCREEN_HEIGHT : INTEGER := 480; -- Hauteur de l'écran en pixels 
 
-    SIGNAL xFood : INTEGER := 2 * SCREEN_WIDTH / 3;
-    SIGNAL yFood : INTEGER := SCREEN_HEIGHT / 2;
-    SIGNAL eaten : STD_LOGIC := '0';
+    SIGNAL xFood : INTEGER := 2 * SCREEN_WIDTH / 3; -- Position de la nourriture en x
+    SIGNAL yFood : INTEGER := SCREEN_HEIGHT / 2; -- Position de la nourriture en y
+    SIGNAL eaten : STD_LOGIC := '0'; -- Indique si la nourritture a été mangé par le serpent
 BEGIN
 
     PROCESS (FOOD_CLK, RST, FRAME, X_SNAKE, Y_SNAKE, HCOUNT, VCOUNT, X_RANDOM, Y_RANDOM)
     BEGIN
         IF (RST = '1') THEN
             xFood <= 2 * SCREEN_WIDTH / 3;
-            yFood <= SCREEN_HEIGHT / 2;
+            yFood <= SCREEN_HEIGHT / 2 - 10;
             eaten <= '0';
         ELSIF (FOOD_CLK'event AND FOOD_CLK = '1') THEN
             IF (FRAME = '1') THEN
@@ -39,6 +39,7 @@ BEGIN
                     yFood <= Y_RANDOM;
                     eaten <= '0';
                 ELSE
+                    -- Vérifie si la tête du serpent entre en collision avec la nourriture 
                     IF (X_SNAKE > xFood - FOOD_SIZE/2 - SNAKE_SIZE / 2) -- Coté gauche
                         AND (X_SNAKE < xFood + FOOD_SIZE/2 + SNAKE_SIZE / 2) -- Coté droit
                         AND (Y_SNAKE > yFood - FOOD_SIZE/2 - SNAKE_SIZE / 2) -- Coté bas
@@ -53,5 +54,6 @@ BEGIN
     IS_FOOD <= '1' WHEN (HCOUNT > xFood - FOOD_SIZE / 2) AND (HCOUNT < xFood + FOOD_SIZE / 2) AND
         (VCOUNT > yFood - FOOD_SIZE / 2) AND (VCOUNT < yFood + FOOD_SIZE / 2) ELSE
         '0';
+    -- Indique si la nourritture a été mangé par le serpent
     IS_EATEN <= eaten;
 END rtl;
