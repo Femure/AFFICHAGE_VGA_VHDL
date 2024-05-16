@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Thu May 16 15:53:41 2024
+| Date         : Fri May 17 00:07:55 2024
 | Host         : Max_Laptop running 64-bit major release  (build 9200)
 | Command      : report_timing_summary -max_paths 10 -report_unconstrained -file snake_timing_summary_routed.rpt -pb snake_timing_summary_routed.pb -rpx snake_timing_summary_routed.rpx -warn_on_violation
 | Design       : snake
