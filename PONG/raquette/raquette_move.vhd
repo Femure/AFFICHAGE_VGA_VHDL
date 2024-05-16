@@ -5,7 +5,7 @@ USE IEEE.std_logic_unsigned.ALL;
 
 ENTITY raquette_move IS
     PORT (
-        RAQUETTE_CLK, RST, FRAME : IN STD_LOGIC;
+        FRAME, RST : IN STD_LOGIC;
         DECODE_CODE : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
         PB_Haut_G, PB_Bas_G, PB_Haut_D, PB_Bas_D : IN STD_LOGIC;
         J_WIN : IN STD_LOGIC_VECTOR(1 DOWNTO 0);
@@ -23,18 +23,21 @@ ARCHITECTURE rtl OF raquette_move IS
     CONSTANT dirRaquettes : INTEGER := 5; -- Direction des raquettes
     CONSTANT xRaquetteG : INTEGER := 20; -- Position de la raquette gauche en x
     CONSTANT xRaquetteD : INTEGER := SCREEN_WIDTH - 20; -- Position de la raquette droite en x
+    CONSTANT delay : INTEGER := 1; -- La vitesse des raquettes max
 
     SIGNAL yRaquetteG, yRaquetteD : INTEGER := SCREEN_HEIGHT/2; -- Position des raquettes en y
+    SIGNAL count : INTEGER := 0; -- Compteur pour la vitesse des raquettes
 
 BEGIN
-    PROCESS (RAQUETTE_CLK, RST, FRAME, HCOUNT, VCOUNT, J_WIN)
+    PROCESS (FRAME, RST, HCOUNT, VCOUNT, J_WIN)
     BEGIN
         IF (RST = '1' OR J_WIN > 0) THEN
             -- Replacement des raquettes après un reset ou un point gagné
             yRaquetteG <= SCREEN_HEIGHT/2;
             yRaquetteD <= SCREEN_HEIGHT/2;
-        ELSIF (RAQUETTE_CLK'event AND RAQUETTE_CLK = '1') THEN
-            IF (FRAME = '1') THEN
+        ELSIF (FRAME'event AND FRAME = '1') THEN
+            count <= count + 1;
+            IF (count >= delay) THEN -- Vérifie si le compteur atteint le delay ce qui définit la vitesse des raquettes
                 -- Mouvement raquette gauche
                 IF (PB_Haut_G = '1' OR DECODE_CODE = "0101") THEN -- Pression sur le bouton associé ou sur la touche Z
                     IF (yRaquetteG > RAQUETTE_HEIGHT / 2) THEN -- Rebond sur bord haut
@@ -56,6 +59,7 @@ BEGIN
                         yRaquetteD <= yRaquetteD + dirRaquettes;
                     END IF;
                 END IF;
+                count <= 0;
             END IF;
         END IF;
     END PROCESS;

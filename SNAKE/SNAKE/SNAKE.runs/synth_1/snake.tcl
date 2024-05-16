@@ -88,11 +88,9 @@ set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_vhdl -library xil_defaultlib {
-  {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/serpent/clk_snake.vhd}
-  {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/serpent/cnt_lenght_snake.vhd}
-  {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/food/cnt_rand.vhd}
   {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/KEYBOARD/debouncer.vhd}
   {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/VGA MONOCHROME/div_25MHz.vhd}
+  {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/food/food_rand.vhd}
   {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/food/food_spawn.vhd}
   {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/image.vhd}
   {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/KEYBOARD/ps2_controller.vhd}
@@ -101,6 +99,7 @@ read_vhdl -library xil_defaultlib {
   {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/KEYBOARD/ps2_receiver.vhd}
   {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/reset.vhd}
   {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/score/score_aff.vhd}
+  {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/serpent/snake_lenght_cnt.vhd}
   {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/serpent/snake_move.vhd}
   {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/PONG/vga_controller_640_60.vhd}
   {C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/SNAKE/snake.vhd}

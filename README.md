@@ -18,4 +18,4 @@
 - Ajout de cube qui apparaissent au fur et à mesure de la partie pour bloqué le joueur
 - Accélération du serpent OK
 - Ajout d’un clavier en entrée OK
-- Faire un affichage plus esthétique (terrain, serpent et nourriture)
+- Faire un affichage plus esthétique (terrain, serpent et nourriture) OK

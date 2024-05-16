@@ -12,7 +12,7 @@ ENTITY image IS
 END image;
 
 ARCHITECTURE rtl OF image IS
-CONSTANT pixel_blank : INTEGER := 640; -- nombre de pixels par ligne
+    CONSTANT pixel_blank : INTEGER := 640; -- Nombre de pixels par ligne
 BEGIN
     PROCESS (RST, BLANK, HCOUNT, VCOUNT)
     BEGIN
@@ -21,16 +21,17 @@ BEGIN
             GREEN <= (OTHERS => '0');
             BLUE <= (OTHERS => '0');
         ELSE
-            IF (BLANK = '1') THEN 
-                IF (HCOUNT <= pixel_blank/3) THEN
+            IF (BLANK = '1') THEN
+                -- Drapeau bleu blanc rouge 
+                IF (HCOUNT <= pixel_blank/3) THEN  -- Partie gauche en bleu 
                     BLUE <= "1111";
                     GREEN <= "0000";
                     RED <= "0000";
-                ELSIF (HCOUNT <= 2*pixel_blank/3 AND HCOUNT >= pixel_blank/3) THEN
+                ELSIF (HCOUNT <= 2 * pixel_blank/3 AND HCOUNT >= pixel_blank/3) THEN -- Partie au milieu en blanc 
                     BLUE <= "1111";
                     GREEN <= "1111";
                     RED <= "1111";
-                ELSE
+                ELSE -- Partie droite en rouge 
                     RED <= "1111";
                     GREEN <= "0000";
                     BLUE <= "0000";

@@ -5,7 +5,7 @@ USE IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 ENTITY balle_move IS
     PORT (
-        BALLE_CLK, RST, FRAME, ACC_BALLE : IN STD_LOGIC;
+        CLK, FRAME, RST, ACC_BALLE : IN STD_LOGIC;
         HCOUNT, VCOUNT : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
         Y_RAQUETTE_G, Y_RAQUETTE_D : IN INTEGER;
         IS_BALLE : OUT STD_LOGIC;
@@ -14,7 +14,7 @@ ENTITY balle_move IS
 END balle_move;
 
 ARCHITECTURE rtl OF balle_move IS
-    CONSTANT BALLE_WIDTH : INTEGER := 10; -- Taille du carré (balle) en pixels
+    CONSTANT BALLE_WIDTH : INTEGER := 10; -- Taille de la balle en pixels
     CONSTANT SCREEN_WIDTH : INTEGER := 640; -- Largeur de l'écran en pixels 
 
     CONSTANT RAQUETTE_WIDTH : INTEGER := 10; -- Largeur de la raquette en pixels
@@ -31,7 +31,7 @@ ARCHITECTURE rtl OF balle_move IS
     SIGNAL acc_balle_tmp : STD_LOGIC := '0'; -- Variable temporelle qui garde en mémoire lorsque la balle doit accélérée
     SIGNAL jwin : STD_LOGIC_VECTOR(1 DOWNTO 0); -- Indique quel joueur a gagné
 BEGIN
-    PROCESS (BALLE_CLK, RST, FRAME, HCOUNT, VCOUNT)
+    PROCESS (CLK, FRAME, RST, HCOUNT, VCOUNT)
     BEGIN
         IF (RST = '1') THEN
             xBalle <= SCREEN_WIDTH / 4;
@@ -40,90 +40,89 @@ BEGIN
             VyBalle <= 2;
             jwin <= "00";
             delay <= 1;
-        ELSIF (BALLE_CLK'EVENT AND BALLE_CLK = '1') THEN
-            IF (FRAME = '1') THEN -- Vérifie si tous les pixels de l'écran ont été parcourus
-                IF (jwin = "01") THEN -- Si le joueur de droite a gagné, on réinitialise les valeurs de la balle en conséquence
-                    xBalle <= SCREEN_WIDTH / 2;
-                    yBalle <= SCREEN_HEIGHT / 2;
-                    VxBalle <= - 2;
-                    VyBalle <= - 2;
-                    jwin <= "00";
-                    delay <= 1;
-                ELSIF (jwin = "10") THEN -- Si le joueur de gauche a gagné, on réinitialise les valeurs de la balle en conséquence
-                    xBalle <= SCREEN_WIDTH / 2;
-                    yBalle <= SCREEN_HEIGHT / 2;
-                    VxBalle <= 2;
-                    VyBalle <= 2;
-                    jwin <= "00";
-                    delay <= 1;
-                ELSE
+        ELSIF (CLK'EVENT AND CLK = '1') THEN
+            IF (jwin = "01") THEN -- Si le joueur de droite a gagné, on réinitialise les valeurs de la balle en conséquence
+                xBalle <= SCREEN_WIDTH / 2;
+                yBalle <= SCREEN_HEIGHT / 2;
+                VxBalle <= - 2;
+                VyBalle <= - 2;
+                jwin <= "00";
+                delay <= 1;
+            ELSIF (jwin = "10") THEN -- Si le joueur de gauche a gagné, on réinitialise les valeurs de la balle en conséquence
+                xBalle <= SCREEN_WIDTH / 2;
+                yBalle <= SCREEN_HEIGHT / 2;
+                VxBalle <= 2;
+                VyBalle <= 2;
+                jwin <= "00";
+                delay <= 1;
+            ELSE
+                IF (FRAME = '1') THEN
                     count <= count + 1;
                     IF (ACC_BALLE = '1') THEN -- Accélération de la balle a bout de 10 sec 
                         acc_balle_tmp <= '1';
-                    ELSE
-                        -- Calcul des nouvelles positions de la balle en fonction des conditions de rebond et de vitesse
-                        IF (count >= delay) THEN -- Vérifie si le compteur atteint le delay ce qui définit la vitesse de la balle
-                            -- Modification de la position de la balle suivant sa direction en x et en y 
-                            xBalle <= xBalle + VxBalle;
-                            yBalle <= yBalle + VyBalle;
+                    END IF;
+                    -- Calcul des nouvelles positions de la balle en fonction des conditions de rebond et de vitesse
+                    IF (count >= delay) THEN -- Vérifie si le compteur atteint le delay ce qui définit la vitesse de la balle
+                        -- Modification de la position de la balle suivant sa direction en x et en y 
+                        xBalle <= xBalle + VxBalle;
+                        yBalle <= yBalle + VyBalle;
 
-                            IF (xBalle > SCREEN_WIDTH - BALLE_WIDTH / 2) THEN -- Rebond sur le bord droit
-                                jwin <= "01"; -- J1 gagne si car touche chez J2
-                            ELSIF (xBalle < BALLE_WIDTH / 2) THEN -- Rebond sur le bord gauche
-                                jwin <= "10"; -- J2 gagne si car touche chez J1
-                            ELSIF ((xBalle > (X_RAQUETTE_D - RAQUETTE_WIDTH/2) - (BALLE_WIDTH / 2))
-                                AND (xBalle < (X_RAQUETTE_D + RAQUETTE_WIDTH/2) - (BALLE_WIDTH / 2))) THEN -- Raquette droite
-                                IF (acc_balle_tmp = '1' AND delay >= 0) THEN -- Accélération de la balle seulement lors d'un renvoie 
-                                    delay <= delay - 1;
-                                    acc_balle_tmp <= '0';
-                                END IF;
-                                IF (yBalle > ((Y_RAQUETTE_D - RAQUETTE_HEIGHT/2) - (BALLE_WIDTH / 2))
-                                    AND (yBalle < (Y_RAQUETTE_D - RAQUETTE_HEIGHT/3) - (BALLE_WIDTH / 2))) THEN -- Rebond sur le haut de la raquette
-                                    VyBalle <= - ABS(VyBalle); -- Angle de rebond vers le haut
-                                    VxBalle <= - VxBalle; -- Changement de direction
-                                    xBalle <= (X_RAQUETTE_D - RAQUETTE_WIDTH/2) - (BALLE_WIDTH / 2);
-                                ELSIF (yBalle > ((Y_RAQUETTE_D - RAQUETTE_HEIGHT/3) - (BALLE_WIDTH / 2))
-                                    AND (yBalle < (Y_RAQUETTE_D + RAQUETTE_HEIGHT/3) - (BALLE_WIDTH / 2))) THEN -- Rebond au milieu de la raquette
-                                    -- Aucun changement d'angle
-                                    VxBalle <= - VxBalle; -- Changement de direction
-                                    xBalle <= (X_RAQUETTE_D - RAQUETTE_WIDTH/2) - (BALLE_WIDTH / 2);
-                                ELSIF (yBalle > ((Y_RAQUETTE_D + RAQUETTE_HEIGHT/3) - (BALLE_WIDTH / 2))
-                                    AND (yBalle < (Y_RAQUETTE_D + RAQUETTE_HEIGHT/2) - (BALLE_WIDTH / 2))) THEN -- Rebond sur le bas de la raquette
-                                    VyBalle <= ABS(VyBalle); -- Angle de rebond vers le bas
-                                    VxBalle <= - VxBalle; -- Changement de direction
-                                    xBalle <= (X_RAQUETTE_D - RAQUETTE_WIDTH/2) - (BALLE_WIDTH / 2);
-                                END IF;
-                            ELSIF ((xBalle < (X_RAQUETTE_G + RAQUETTE_WIDTH/2) + (BALLE_WIDTH / 2))
-                                AND (xBalle > (X_RAQUETTE_G - RAQUETTE_WIDTH/2) + (BALLE_WIDTH / 2))) THEN -- Raquette gauche
-                                IF (acc_balle_tmp = '1' AND delay >= 0) THEN -- Accélération de la balle seulement lors d'un renvoie 
-                                    delay <= delay - 1;
-                                    acc_balle_tmp <= '0';
-                                END IF;
-                                IF (yBalle > ((Y_RAQUETTE_G - RAQUETTE_HEIGHT/2) - (BALLE_WIDTH / 2))
-                                    AND (yBalle < (Y_RAQUETTE_G - RAQUETTE_HEIGHT/3) - (BALLE_WIDTH / 2))) THEN -- Rebond sur le haut de la raquette
-                                    VyBalle <= - ABS(VyBalle); -- Angle de rebond vers le haut
-                                    VxBalle <= - VxBalle; -- Changement de direction
-                                    xBalle <= (X_RAQUETTE_G + RAQUETTE_WIDTH/2) + (BALLE_WIDTH / 2);
-                                ELSIF (yBalle > ((Y_RAQUETTE_G - RAQUETTE_HEIGHT/3) - (BALLE_WIDTH / 2))
-                                    AND (yBalle < (Y_RAQUETTE_G + RAQUETTE_HEIGHT/3) - (BALLE_WIDTH / 2))) THEN -- Rebond au milieu de la raquette
-                                    -- Aucun changement d'angle
-                                    VxBalle <= - VxBalle; -- Changement de direction
-                                    xBalle <= (X_RAQUETTE_G + RAQUETTE_WIDTH/2) + (BALLE_WIDTH / 2);
-                                ELSIF (yBalle > ((Y_RAQUETTE_G + RAQUETTE_HEIGHT/3) - (BALLE_WIDTH / 2))
-                                    AND (yBalle < (Y_RAQUETTE_G + RAQUETTE_HEIGHT/2) - (BALLE_WIDTH / 2))) THEN -- Rebond sur le bas de la raquette
-                                    VyBalle <= ABS(VyBalle); -- Angle de rebond vers le bas
-                                    VxBalle <= - VxBalle; -- Changement de direction
-                                    xBalle <= (X_RAQUETTE_G + RAQUETTE_WIDTH/2) + (BALLE_WIDTH / 2);
-                                END IF;
-                            ELSIF (yBalle > SCREEN_HEIGHT - BALLE_WIDTH / 2) THEN -- Rebond sur le bord en bas
-                                VyBalle <= VyBalle * (-1);
-                                yBalle <= SCREEN_HEIGHT - BALLE_WIDTH / 2;
-                            ELSIF (yBalle < BALLE_WIDTH / 2) THEN -- Rebond sur le bord en haut
-                                VyBalle <= VyBalle * (-1);
-                                yBalle <= BALLE_WIDTH / 2;
+                        IF (xBalle > SCREEN_WIDTH - BALLE_WIDTH / 2) THEN -- Rebond sur le bord droit
+                            jwin <= "01"; -- J1 gagne si car touche chez J2
+                        ELSIF (xBalle < BALLE_WIDTH / 2) THEN -- Rebond sur le bord gauche
+                            jwin <= "10"; -- J2 gagne si car touche chez J1
+                        ELSIF ((xBalle > (X_RAQUETTE_D - RAQUETTE_WIDTH/2) - (BALLE_WIDTH / 2))
+                            AND (xBalle < (X_RAQUETTE_D + RAQUETTE_WIDTH/2) - (BALLE_WIDTH / 2))) THEN -- Raquette droite
+                            IF (acc_balle_tmp = '1' AND delay >= 0) THEN -- Accélération de la balle seulement lors d'un renvoie 
+                                delay <= delay - 1;
+                                acc_balle_tmp <= '0';
                             END IF;
-                            count <= 0;
+                            IF (yBalle > ((Y_RAQUETTE_D - RAQUETTE_HEIGHT/2) - (BALLE_WIDTH / 2))
+                                AND (yBalle < (Y_RAQUETTE_D - RAQUETTE_HEIGHT/3) - (BALLE_WIDTH / 2))) THEN -- Rebond sur le haut de la raquette
+                                VyBalle <= - ABS(VyBalle); -- Angle de rebond vers le haut
+                                VxBalle <= - VxBalle; -- Changement de direction
+                                xBalle <= (X_RAQUETTE_D - RAQUETTE_WIDTH/2) - (BALLE_WIDTH / 2);
+                            ELSIF (yBalle > ((Y_RAQUETTE_D - RAQUETTE_HEIGHT/3) - (BALLE_WIDTH / 2))
+                                AND (yBalle < (Y_RAQUETTE_D + RAQUETTE_HEIGHT/3) - (BALLE_WIDTH / 2))) THEN -- Rebond au milieu de la raquette
+                                -- Aucun changement d'angle
+                                VxBalle <= - VxBalle; -- Changement de direction
+                                xBalle <= (X_RAQUETTE_D - RAQUETTE_WIDTH/2) - (BALLE_WIDTH / 2);
+                            ELSIF (yBalle > ((Y_RAQUETTE_D + RAQUETTE_HEIGHT/3) - (BALLE_WIDTH / 2))
+                                AND (yBalle < (Y_RAQUETTE_D + RAQUETTE_HEIGHT/2) - (BALLE_WIDTH / 2))) THEN -- Rebond sur le bas de la raquette
+                                VyBalle <= ABS(VyBalle); -- Angle de rebond vers le bas
+                                VxBalle <= - VxBalle; -- Changement de direction
+                                xBalle <= (X_RAQUETTE_D - RAQUETTE_WIDTH/2) - (BALLE_WIDTH / 2);
+                            END IF;
+                        ELSIF ((xBalle < (X_RAQUETTE_G + RAQUETTE_WIDTH/2) + (BALLE_WIDTH / 2))
+                            AND (xBalle > (X_RAQUETTE_G - RAQUETTE_WIDTH/2) + (BALLE_WIDTH / 2))) THEN -- Raquette gauche
+                            IF (acc_balle_tmp = '1' AND delay >= 0) THEN -- Accélération de la balle seulement lors d'un renvoie 
+                                delay <= delay - 1;
+                                acc_balle_tmp <= '0';
+                            END IF;
+                            IF (yBalle > ((Y_RAQUETTE_G - RAQUETTE_HEIGHT/2) - (BALLE_WIDTH / 2))
+                                AND (yBalle < (Y_RAQUETTE_G - RAQUETTE_HEIGHT/3) - (BALLE_WIDTH / 2))) THEN -- Rebond sur le haut de la raquette
+                                VyBalle <= - ABS(VyBalle); -- Angle de rebond vers le haut
+                                VxBalle <= - VxBalle; -- Changement de direction
+                                xBalle <= (X_RAQUETTE_G + RAQUETTE_WIDTH/2) + (BALLE_WIDTH / 2);
+                            ELSIF (yBalle > ((Y_RAQUETTE_G - RAQUETTE_HEIGHT/3) - (BALLE_WIDTH / 2))
+                                AND (yBalle < (Y_RAQUETTE_G + RAQUETTE_HEIGHT/3) - (BALLE_WIDTH / 2))) THEN -- Rebond au milieu de la raquette
+                                -- Aucun changement d'angle
+                                VxBalle <= - VxBalle; -- Changement de direction
+                                xBalle <= (X_RAQUETTE_G + RAQUETTE_WIDTH/2) + (BALLE_WIDTH / 2);
+                            ELSIF (yBalle > ((Y_RAQUETTE_G + RAQUETTE_HEIGHT/3) - (BALLE_WIDTH / 2))
+                                AND (yBalle < (Y_RAQUETTE_G + RAQUETTE_HEIGHT/2) - (BALLE_WIDTH / 2))) THEN -- Rebond sur le bas de la raquette
+                                VyBalle <= ABS(VyBalle); -- Angle de rebond vers le bas
+                                VxBalle <= - VxBalle; -- Changement de direction
+                                xBalle <= (X_RAQUETTE_G + RAQUETTE_WIDTH/2) + (BALLE_WIDTH / 2);
+                            END IF;
+                        ELSIF (yBalle > SCREEN_HEIGHT - BALLE_WIDTH / 2) THEN -- Rebond sur le bord en bas
+                            VyBalle <= VyBalle * (-1);
+                            yBalle <= SCREEN_HEIGHT - BALLE_WIDTH / 2;
+                        ELSIF (yBalle < BALLE_WIDTH / 2) THEN -- Rebond sur le bord en haut
+                            VyBalle <= VyBalle * (-1);
+                            yBalle <= BALLE_WIDTH / 2;
                         END IF;
+                        count <= 0;
                     END IF;
                 END IF;
             END IF;

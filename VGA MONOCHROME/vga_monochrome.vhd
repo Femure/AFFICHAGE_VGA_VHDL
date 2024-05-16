@@ -39,8 +39,11 @@ ARCHITECTURE structural OF vga_monochrome IS
 
 BEGIN
 
-    U0 : div_25MHz PORT MAP(CLK => CLK, RST => RST, PIXEL_CLK => pixel_clk);
-    U1 : vga_controller_640_60 PORT MAP(PIXEL_CLK => pixel_clk, RST => RST, HS => HS, VS => VS, BLANK => blank, HCOUNT => hcount, VCOUNT => vcount);
-    U2 : image PORT MAP(RST => RST, BLANK => blank, HCOUNT => hcount, VCOUNT => vcount, RED => RED, GREEN => GREEN, BLUE => BLUE);
+    -- Gestion de l'affichage sur l'écran
+    A0 : div_25MHz PORT MAP(CLK => CLK, RST => RST, PIXEL_CLK => pixel_clk);
+    A1 : vga_controller_640_60 PORT MAP(PIXEL_CLK => pixel_clk, RST => RST, HS => HS, VS => VS, BLANK => blank, HCOUNT => hcount, VCOUNT => vcount);
+    
+    -- Rendu final sur l'écran
+    A2 : image PORT MAP(RST => RST, BLANK => blank, HCOUNT => hcount, VCOUNT => vcount, RED => RED, GREEN => GREEN, BLUE => BLUE);
 
 END structural;

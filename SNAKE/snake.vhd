@@ -47,16 +47,9 @@ ARCHITECTURE structural OF snake IS
         );
     END COMPONENT;
 
-    COMPONENT clk_snake IS
-        PORT (
-            CLK, RST : IN STD_LOGIC;
-            SNAKE_CLK : OUT STD_LOGIC
-        );
-    END COMPONENT;
-
     COMPONENT snake_move IS
         PORT (
-            SNAKE_CLK, RST, FRAME : IN STD_LOGIC;
+            FRAME, RST : IN STD_LOGIC;
             HCOUNT, VCOUNT : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
             LENGHT_SNAKE : IN STD_LOGIC_VECTOR(6 DOWNTO 0);
             DECODE_CODE : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
@@ -66,16 +59,16 @@ ARCHITECTURE structural OF snake IS
         );
     END COMPONENT;
 
-    COMPONENT cnt_rand IS
+    COMPONENT food_rand IS
         PORT (
-            CLK, RST : IN STD_LOGIC;
+            FRAME, RST : IN STD_LOGIC;
             X_RANDOM, Y_RANDOM : OUT INTEGER
         );
     END COMPONENT;
 
     COMPONENT food_spawn IS
         PORT (
-            RST, FOOD_CLK, FRAME : IN STD_LOGIC;
+            RST, FRAME : IN STD_LOGIC;
             X_SNAKE, Y_SNAKE : IN INTEGER;
             X_RANDOM, Y_RANDOM : IN INTEGER;
             HCOUNT, VCOUNT : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
@@ -83,9 +76,9 @@ ARCHITECTURE structural OF snake IS
         );
     END COMPONENT;
 
-    COMPONENT cnt_lenght_snake IS
+    COMPONENT snake_lenght_cnt IS
         PORT (
-            CLK, RST, FLAG : IN STD_LOGIC;
+            FRAME, RST, FLAG : IN STD_LOGIC;
             LENGHT_SNAKE : OUT STD_LOGIC_VECTOR(6 DOWNTO 0)
         );
     END COMPONENT;
@@ -107,11 +100,11 @@ ARCHITECTURE structural OF snake IS
         );
     END COMPONENT;
 
-    SIGNAL g_reset, pixel_clk, snake_clk : STD_LOGIC;
+    SIGNAL g_reset, end_game : STD_LOGIC;
     SIGNAL blank, frame : STD_LOGIC;
     SIGNAL decode_code : STD_LOGIC_VECTOR(3 DOWNTO 0);
     SIGNAL is_snake_body, is_snake_head, is_eaten, is_food, is_number : STD_LOGIC;
-    SIGNAL end_game : STD_LOGIC;
+    SIGNAL pixel_clk : STD_LOGIC;
     SIGNAL hcount, vcount : STD_LOGIC_VECTOR(10 DOWNTO 0);
     SIGNAL lenght_snake : STD_LOGIC_VECTOR(6 DOWNTO 0);
     SIGNAL x_snake, y_snake, x_random, y_random : INTEGER;
@@ -122,22 +115,21 @@ BEGIN
     RE0 : reset PORT MAP(CLK => CLK, END_GAME => end_game, RST => RST, G_RESET => g_reset);
 
     -- Gestion de l'entrée au clavier
-    K0 : ps2_decode PORT MAP(RST => g_reset, CLK => CLK, PS2_CLK => PS2_CLK, PS2_DATA => PS2_DATA, DECODE_CODE => decode_code);
+    K0 : ps2_decode PORT MAP(CLK => CLK, RST => g_reset, PS2_CLK => PS2_CLK, PS2_DATA => PS2_DATA, DECODE_CODE => decode_code);
 
     -- Gestion de l'affichage sur l'écran
     A0 : div_25MHz PORT MAP(CLK => CLK, RST => RST, PIXEL_CLK => pixel_clk);
     A1 : vga_controller_640_60 PORT MAP(PIXEL_CLK => pixel_clk, RST => RST, HS => HS, VS => VS, BLANK => blank, FRAME => frame, HCOUNT => hcount, VCOUNT => vcount);
 
     -- Gestion corps serpent 
-    S0 : clk_snake PORT MAP(CLK => CLK, RST => g_reset, SNAKE_CLK => snake_clk);
-    S1 : snake_move PORT MAP(SNAKE_CLK => snake_clk, RST => g_reset, FRAME => frame, HCOUNT => hcount, VCOUNT => vcount, DECODE_CODE => decode_code, PB_G => PB_G, PB_H => PB_H, PB_D => PB_D, PB_B => PB_B, LENGHT_SNAKE => lenght_snake, IS_SNAKE_BODY => is_snake_body, IS_SNAKE_HEAD => is_snake_head, END_GAME => end_game, X_SNAKE => x_snake, Y_SNAKE => y_snake);
+    S1 : snake_move PORT MAP(FRAME => frame, RST => g_reset, HCOUNT => hcount, VCOUNT => vcount, DECODE_CODE => decode_code, PB_G => PB_G, PB_H => PB_H, PB_D => PB_D, PB_B => PB_B, LENGHT_SNAKE => lenght_snake, IS_SNAKE_BODY => is_snake_body, IS_SNAKE_HEAD => is_snake_head, END_GAME => end_game, X_SNAKE => x_snake, Y_SNAKE => y_snake);
 
     -- Gestion des cubes de nourriture
-    N1 : cnt_rand PORT MAP(CLK => frame, RST => g_reset, X_RANDOM => x_random, Y_RANDOM => y_random);
-    N2 : food_spawn PORT MAP(RST => g_reset, FOOD_CLK => snake_clk, FRAME => frame, X_SNAKE => x_snake, Y_SNAKE => y_snake, X_RANDOM => x_random, Y_RANDOM => y_random, HCOUNT => hcount, VCOUNT => vcount, IS_EATEN => is_eaten, IS_FOOD => is_food);
+    N0 : food_rand PORT MAP(FRAME => frame, RST => g_reset, X_RANDOM => x_random, Y_RANDOM => y_random);
+    N1 : food_spawn PORT MAP(FRAME => frame, RST => g_reset, X_SNAKE => x_snake, Y_SNAKE => y_snake, X_RANDOM => x_random, Y_RANDOM => y_random, HCOUNT => hcount, VCOUNT => vcount, IS_EATEN => is_eaten, IS_FOOD => is_food);
 
     -- Agrandi le corps quand il mange de la nourriture
-    G0 : cnt_lenght_snake PORT MAP(CLK => CLK, RST => g_reset, FLAG => is_eaten, LENGHT_SNAKE => lenght_snake);
+    G0 : snake_lenght_cnt PORT MAP(FRAME => frame, RST => g_reset, FLAG => is_eaten, LENGHT_SNAKE => lenght_snake);
 
     -- Gestion du score
     SC0 : score_aff PORT MAP(RST => g_reset, HCOUNT => hcount, VCOUNT => vcount, SCORE => lenght_snake, IS_NUMBER => is_number);

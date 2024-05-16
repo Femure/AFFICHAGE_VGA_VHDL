@@ -52,16 +52,9 @@ ARCHITECTURE structural OF pong IS
         );
     END COMPONENT;
 
-    COMPONENT raquette_clk IS
-        PORT (
-            CLK, RST : IN STD_LOGIC;
-            RAQUETTE_CLK : OUT STD_LOGIC
-        );
-    END COMPONENT;
-
     COMPONENT raquette_move IS
         PORT (
-            RAQUETTE_CLK, RST, FRAME : IN STD_LOGIC;
+            FRAME, RST : IN STD_LOGIC;
             DECODE_CODE : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
             PB_Haut_G, PB_Bas_G, PB_Haut_D, PB_Bas_D : IN STD_LOGIC;
             J_WIN : IN STD_LOGIC_VECTOR(1 DOWNTO 0);
@@ -81,7 +74,7 @@ ARCHITECTURE structural OF pong IS
 
     COMPONENT balle_move IS
         PORT (
-            BALLE_CLK, RST, FRAME, ACC_BALLE : IN STD_LOGIC;
+            CLK, FRAME, RST, ACC_BALLE : IN STD_LOGIC;
             HCOUNT, VCOUNT : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
             Y_RAQUETTE_G, Y_RAQUETTE_D : IN INTEGER;
             IS_BALLE : OUT STD_LOGIC;
@@ -89,7 +82,7 @@ ARCHITECTURE structural OF pong IS
         );
     END COMPONENT;
 
-    COMPONENT cnt_score IS
+    COMPONENT score_cnt IS
         PORT (
             CLK, RST : IN STD_LOGIC;
             J_WIN : IN STD_LOGIC_VECTOR(1 DOWNTO 0);
@@ -115,7 +108,7 @@ ARCHITECTURE structural OF pong IS
 
     SIGNAL g_reset, end_game : STD_LOGIC;
     SIGNAL decode_code : STD_LOGIC_VECTOR(3 DOWNTO 0);
-    SIGNAL pixel_clk, clk_raquette : STD_LOGIC;
+    SIGNAL pixel_clk : STD_LOGIC;
     SIGNAL blank, frame, acc_balle : STD_LOGIC;
     SIGNAL is_terrain, is_raquette_g, is_raquette_d, is_balle, is_number : STD_LOGIC;
     SIGNAL y_raquette_g, y_raquette_d : INTEGER;
@@ -138,16 +131,15 @@ BEGIN
     -- Gestion du terrain
     T0 : terrain_aff PORT MAP(HCOUNT => hcount, VCOUNT => vcount, IS_TERRAIN => is_terrain);
 
-    -- Gestion de la balle
-    B0 : acc_balle_clk PORT MAP(FRAME => frame, RST => g_reset,J_WIN => j_win,  ACC_BALLE => acc_balle);
-    B1 : balle_move PORT MAP(BALLE_CLK => CLK, RST => g_reset, FRAME => frame, ACC_BALLE => acc_balle, HCOUNT => hcount, VCOUNT => vcount, Y_RAQUETTE_G => y_raquette_g, Y_RAQUETTE_D => y_raquette_d, IS_BALLE => is_balle, J_WIN => j_win);
-
     -- Gestion des raquettes
-    R0 : raquette_clk PORT MAP(CLK => CLK, RST => g_reset, RAQUETTE_CLK => clk_raquette);
-    R1 : raquette_move PORT MAP(RAQUETTE_CLK => clk_raquette, RST => g_reset, FRAME => frame, J_WIN => j_win, DECODE_CODE => decode_code, PB_Haut_G => PB_Haut_G, PB_Bas_G => PB_Bas_G, PB_Haut_D => PB_Haut_D, PB_Bas_D => PB_Bas_D, HCOUNT => hcount, VCOUNT => vcount, Y_RAQUETTE_G => y_raquette_g, Y_RAQUETTE_D => y_raquette_d, IS_RAQUETTE_G => is_raquette_g, IS_RAQUETTE_D => is_raquette_d);
+    R0 : raquette_move PORT MAP(FRAME => frame, RST => g_reset, J_WIN => j_win, DECODE_CODE => decode_code, PB_Haut_G => PB_Haut_G, PB_Bas_G => PB_Bas_G, PB_Haut_D => PB_Haut_D, PB_Bas_D => PB_Bas_D, HCOUNT => hcount, VCOUNT => vcount, Y_RAQUETTE_G => y_raquette_g, Y_RAQUETTE_D => y_raquette_d, IS_RAQUETTE_G => is_raquette_g, IS_RAQUETTE_D => is_raquette_d);
+
+    -- Gestion de la balle
+    B0 : acc_balle_clk PORT MAP(FRAME => frame, RST => g_reset, J_WIN => j_win, ACC_BALLE => acc_balle);
+    B1 : balle_move PORT MAP(CLK => CLK, FRAME => frame, RST => g_reset, ACC_BALLE => acc_balle, HCOUNT => hcount, VCOUNT => vcount, Y_RAQUETTE_G => y_raquette_g, Y_RAQUETTE_D => y_raquette_d, IS_BALLE => is_balle, J_WIN => j_win);
 
     -- Gestion des scores
-    S0 : cnt_score PORT MAP(CLK => CLK, RST => g_reset, J_WIN => j_win, J1_SCORE => j1_score, J2_SCORE => j2_score);
+    S0 : score_cnt PORT MAP(CLK => CLK, RST => g_reset, J_WIN => j_win, J1_SCORE => j1_score, J2_SCORE => j2_score);
     S1 : score_aff PORT MAP(RST => g_reset, HCOUNT => hcount, VCOUNT => vcount, J1_SCORE => j1_score, J2_SCORE => j2_score, IS_NUMBER => is_number, END_GAME => end_game);
 
     -- Rendu final sur l'écran

@@ -18,7 +18,7 @@ BEGIN
             GREEN <= (OTHERS => '0');
             BLUE <= (OTHERS => '0');
         ELSE
-            IF (BLANK = '1') THEN
+            IF (BLANK = '1') THEN --- Image toute en rouge
                 RED <= "1111";
             ELSE
                 RED <= "0000";

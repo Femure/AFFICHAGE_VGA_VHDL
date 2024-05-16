@@ -7,7 +7,7 @@ USE IEEE.MATH_REAL.ALL;
 
 ENTITY food_spawn IS
     PORT (
-        RST, FOOD_CLK, FRAME : IN STD_LOGIC;
+        RST, FRAME : IN STD_LOGIC;
         X_SNAKE, Y_SNAKE : IN INTEGER;
         X_RANDOM, Y_RANDOM : IN INTEGER;
         HCOUNT, VCOUNT : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
@@ -25,25 +25,23 @@ ARCHITECTURE rtl OF food_spawn IS
     SIGNAL yFood : INTEGER := SCREEN_HEIGHT / 2; -- Position de la nourriture en y
 BEGIN
 
-    PROCESS (FOOD_CLK, RST, FRAME, X_SNAKE, Y_SNAKE, HCOUNT, VCOUNT, X_RANDOM, Y_RANDOM)
+    PROCESS (FRAME, RST, X_SNAKE, Y_SNAKE, HCOUNT, VCOUNT, X_RANDOM, Y_RANDOM)
     BEGIN
         IF (RST = '1') THEN
             xFood <= 3 * SCREEN_WIDTH / 4 - FOOD_SIZE/2;
             yFood <= SCREEN_HEIGHT / 2 - FOOD_SIZE/2;
             IS_EATEN <= '0';
-        ELSIF (FOOD_CLK'event AND FOOD_CLK = '1') THEN
-            IF (FRAME = '1') THEN
-                IS_EATEN <= '0';
-                -- Vérifie si la tête du serpent entre en collision avec la nourriture 
-                IF (X_SNAKE > xFood - FOOD_SIZE/2 - SNAKE_SIZE / 2) -- Coté gauche
-                    AND (X_SNAKE < xFood + FOOD_SIZE/2 + SNAKE_SIZE / 2) -- Coté droit
-                    AND (Y_SNAKE > yFood - FOOD_SIZE/2 - SNAKE_SIZE / 2) -- Coté bas
-                    AND (Y_SNAKE < yFood + FOOD_SIZE/2 + SNAKE_SIZE / 2) THEN -- Coté haut
-                    IS_EATEN <= '1';
-                    -- Si le serpent mange la nourriture alors le nouveau cube apparaît de manière aléatoire
-                    xFood <= X_RANDOM;
-                    yFood <= Y_RANDOM;
-                END IF;
+        ELSIF (FRAME'event AND FRAME = '1') THEN
+            IS_EATEN <= '0';
+            -- Vérifie si la tête du serpent entre en collision avec la nourriture 
+            IF (X_SNAKE > xFood - FOOD_SIZE/2 - SNAKE_SIZE / 2) -- Coté gauche
+                AND (X_SNAKE < xFood + FOOD_SIZE/2 + SNAKE_SIZE / 2) -- Coté droit
+                AND (Y_SNAKE > yFood - FOOD_SIZE/2 - SNAKE_SIZE / 2) -- Coté bas
+                AND (Y_SNAKE < yFood + FOOD_SIZE/2 + SNAKE_SIZE / 2) THEN -- Coté haut
+                IS_EATEN <= '1';
+                -- Si le serpent mange la nourriture alors le nouveau cube apparaît de manière aléatoire
+                xFood <= X_RANDOM;
+                yFood <= Y_RANDOM;
             END IF;
         END IF;
     END PROCESS;
