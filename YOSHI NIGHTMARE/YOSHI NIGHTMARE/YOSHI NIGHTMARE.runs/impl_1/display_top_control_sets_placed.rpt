@@ -1,0 +1,109 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
+| Date         : Fri May 17 11:19:32 2024
+| Host         : Max_Laptop running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file display_top_control_sets_placed.rpt
+| Design       : display_top
+| Device       : xc7a35t
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |    31 |
+|    Minimum number of control sets                        |    31 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |   137 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |    31 |
+| >= 0 to < 4        |     4 |
+| >= 4 to < 6        |     1 |
+| >= 6 to < 8        |     0 |
+| >= 8 to < 10       |     2 |
+| >= 10 to < 12      |    10 |
+| >= 12 to < 14      |     2 |
+| >= 14 to < 16      |     1 |
+| >= 16              |    11 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |              68 |           40 |
+| No           | No                    | Yes                    |             344 |          118 |
+| No           | Yes                   | No                     |              16 |            6 |
+| Yes          | No                    | No                     |               0 |            0 |
+| Yes          | No                    | Yes                    |             295 |          117 |
+| Yes          | Yes                   | No                     |              12 |           10 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++-------------------------+------------------------------------------------+----------------------------------+------------------+----------------+--------------+
+|       Clock Signal      |                  Enable Signal                 |         Set/Reset Signal         | Slice Load Count | Bel Load Count | Bels / Slice |
++-------------------------+------------------------------------------------+----------------------------------+------------------+----------------+--------------+
+|  clk_IBUF_BUFG          | controller/left_next                           | hard_reset_IBUF                  |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG          | controller/right_next                          | hard_reset_IBUF                  |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG          | controller/start_next                          | hard_reset_IBUF                  |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG          | controller/A_next                              | hard_reset_IBUF                  |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG          | controller/FSM_sequential_state_reg[3]_i_1_n_0 | hard_reset_IBUF                  |                3 |              4 |         1.33 |
+|  clk_IBUF_BUFG          |                                                | vsync_unit/h_count_reg_reg[9]_11 |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG          |                                                | vsync_unit/h_count_reg_reg[7]_5  |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG          | vsync_unit/v_count_reg0                        | hard_reset_IBUF                  |                7 |             10 |         1.43 |
+|  clk_IBUF_BUFG          | yoshi_unit/s_x_next                            | game_FSM/reset                   |                3 |             10 |         3.33 |
+|  clk_IBUF_BUFG          | yoshi_unit/s_y_next                            | game_FSM/reset                   |                3 |             10 |         3.33 |
+|  ghost_bottom_unit/tick |                                                | game_FSM/reset                   |                5 |             10 |         2.00 |
+|  ghost_bottom_unit/tick | yoshi_unit/s_y_reg_reg[9]_1[0]                 | game_FSM/reset                   |                3 |             10 |         3.33 |
+|  ghost_top_unit/tick    |                                                | game_FSM/reset                   |                7 |             10 |         1.43 |
+|  ghost_top_unit/tick    | yoshi_unit/E[0]                                | game_FSM/reset                   |                3 |             10 |         3.33 |
+|  clk_IBUF_BUFG          |                                                | hard_reset_IBUF                  |                6 |             11 |         1.83 |
+|  clk_IBUF_BUFG          | vsync_unit/h_count_reg[9]_i_1_n_0              | hard_reset_IBUF                  |                5 |             11 |         2.20 |
+|  clk_IBUF_BUFG          | controller/count_next                          | hard_reset_IBUF                  |                5 |             11 |         2.20 |
+|  clk_IBUF_BUFG          | eggs_unit/score_reg0                           | game_FSM/reset                   |                7 |             12 |         1.71 |
+|  clk_IBUF_BUFG          | vsync_unit/pixel_reg_reg[1]_0                  | vsync_unit/rgb_reg               |               10 |             12 |         1.20 |
+|  clk_IBUF_BUFG          | yoshi_unit/start_next_y                        | game_FSM/reset                   |                8 |             15 |         1.88 |
+|  clk_IBUF_BUFG          | yoshi_unit/x_start_next                        | game_FSM/reset                   |                9 |             16 |         1.78 |
+|  ghost_crazy_unit/tick  |                                                | game_FSM/reset                   |               11 |             20 |         1.82 |
+|  clk_IBUF_BUFG          | yoshi_unit/x_time_next                         | game_FSM/reset                   |                9 |             20 |         2.22 |
+|  clk_IBUF_BUFG          | yoshi_unit/jump_t_next                         | game_FSM/reset                   |               11 |             20 |         1.82 |
+|  clk_IBUF_BUFG          | eggs_unit/E[0]                                 | game_FSM/reset                   |                6 |             21 |         3.50 |
+|  clk_IBUF_BUFG          | yoshi_unit/walk_t_next                         | game_FSM/reset                   |                7 |             25 |         3.57 |
+|  clk_IBUF_BUFG          | yoshi_unit/extra_up_next                       | game_FSM/reset                   |               11 |             26 |         2.36 |
+|  clk_IBUF_BUFG          | game_FSM/timeout_next                          | hard_reset_IBUF                  |                6 |             28 |         4.67 |
+|  clk_IBUF_BUFG          | score_display_unit/bcd_unit/bcd_0_next         | game_FSM/reset                   |                7 |             32 |         4.57 |
+|  clk_IBUF_BUFG          |                                                |                                  |               40 |             68 |         1.70 |
+|  clk_IBUF_BUFG          |                                                | game_FSM/reset                   |               89 |            293 |         3.29 |
++-------------------------+------------------------------------------------+----------------------------------+------------------+----------------+--------------+
+
+

@@ -1,0 +1,486 @@
+
+*** Running vivado
+    with args -log display_top.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source display_top.tcl
+
+
+ECHO is off.
+ECHO is off.
+
+****** Vivado v2023.2 (64-bit)
+  **** SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+  **** IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+  **** SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source display_top.tcl -notrace
+Command: synth_design -top display_top -part xc7a35tcpg236-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 17748
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1316.492 ; gain = 438.676
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-6901] identifier 'waiting' is used before its declaration [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/eggs.v:89]
+WARNING: [Synth 8-6901] identifier 'head_on' is used before its declaration [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/yoshi_sprite.v:476]
+WARNING: [Synth 8-6901] identifier 'head_on' is used before its declaration [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/yoshi_sprite.v:477]
+WARNING: [Synth 8-6901] identifier 'torso_on' is used before its declaration [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/yoshi_sprite.v:478]
+WARNING: [Synth 8-6901] identifier 'torso_on' is used before its declaration [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/yoshi_sprite.v:479]
+WARNING: [Synth 8-6901] identifier 'head_on' is used before its declaration [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/yoshi_sprite.v:482]
+WARNING: [Synth 8-6901] identifier 'torso_on' is used before its declaration [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/yoshi_sprite.v:483]
+INFO: [Synth 8-6157] synthesizing module 'display_top' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/display_top.v:1]
+INFO: [Synth 8-6157] synthesizing module 'vga_sync' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/vga_sync.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'vga_sync' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/vga_sync.v:1]
+INFO: [Synth 8-6157] synthesizing module 'nes_controller' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/nes_controller.v:1]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/nes_controller.v:76]
+INFO: [Synth 8-6155] done synthesizing module 'nes_controller' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/nes_controller.v:1]
+INFO: [Synth 8-6157] synthesizing module 'yoshi_sprite' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/yoshi_sprite.v:1]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/yoshi_sprite.v:136]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/yoshi_sprite.v:312]
+INFO: [Synth 8-6157] synthesizing module 'yoshi_rom' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/yoshi_rom.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'yoshi_rom' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/yoshi_rom.v:1]
+INFO: [Synth 8-6157] synthesizing module 'yoshi_ghost_rom' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/yoshi_ghost_rom.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'yoshi_ghost_rom' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/yoshi_ghost_rom.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'yoshi_sprite' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/yoshi_sprite.v:1]
+INFO: [Synth 8-6157] synthesizing module 'ghost_crazy' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/ghost_crazy.v:1]
+INFO: [Synth 8-6157] synthesizing module 'ghost_crazy_rom' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/ghost_crazy_rom.v:1]
+INFO: [Synth 8-226] default block is never used [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/ghost_crazy_rom.v:22]
+INFO: [Synth 8-6155] done synthesizing module 'ghost_crazy_rom' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/ghost_crazy_rom.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'ghost_crazy' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/ghost_crazy.v:1]
+INFO: [Synth 8-6157] synthesizing module 'ghost_top' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/ghost_top.v:1]
+INFO: [Synth 8-6157] synthesizing module 'ghost_normal_rom' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/ghost_normal_rom.v:1]
+INFO: [Synth 8-226] default block is never used [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/ghost_normal_rom.v:22]
+INFO: [Synth 8-6155] done synthesizing module 'ghost_normal_rom' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/ghost_normal_rom.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'ghost_top' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/ghost_top.v:1]
+INFO: [Synth 8-6157] synthesizing module 'ghost_bottom' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/ghost_bottom.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'ghost_bottom' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/ghost_bottom.v:1]
+INFO: [Synth 8-6157] synthesizing module 'platforms' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/platforms.v:1]
+INFO: [Synth 8-6157] synthesizing module 'walls_rom' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/walls_rom.v:1]
+INFO: [Synth 8-226] default block is never used [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/walls_rom.v:22]
+INFO: [Synth 8-6155] done synthesizing module 'walls_rom' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/walls_rom.v:1]
+INFO: [Synth 8-6157] synthesizing module 'blocks_rom' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/blocks_rom.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'blocks_rom' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/blocks_rom.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'platforms' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/platforms.v:1]
+INFO: [Synth 8-6157] synthesizing module 'grounded' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/grounded.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'grounded' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/grounded.v:1]
+INFO: [Synth 8-6157] synthesizing module 'background_ghost_rom' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/background_ghost_rom.v:1]
+INFO: [Synth 8-226] default block is never used [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/background_ghost_rom.v:22]
+INFO: [Synth 8-6155] done synthesizing module 'background_ghost_rom' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/background_ghost_rom.v:1]
+INFO: [Synth 8-6157] synthesizing module 'enemy_collision' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/enemy_collision.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'enemy_collision' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/enemy_collision.v:1]
+INFO: [Synth 8-6157] synthesizing module 'eggs' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/eggs.v:1]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/eggs.v:120]
+INFO: [Synth 8-6157] synthesizing module 'eggs_rom' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/eggs_rom.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'eggs_rom' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/eggs_rom.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'eggs' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/eggs.v:1]
+INFO: [Synth 8-6157] synthesizing module 'score_display' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/score_display.v:1]
+INFO: [Synth 8-6157] synthesizing module 'binary2bcd' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/binary2bcd.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'binary2bcd' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/binary2bcd.v:1]
+INFO: [Synth 8-6157] synthesizing module 'numbers_rom' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/numbers_rom.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'numbers_rom' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/numbers_rom.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'score_display' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/score_display.v:1]
+INFO: [Synth 8-6157] synthesizing module 'hearts_display' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/hearts_display.v:1]
+INFO: [Synth 8-6157] synthesizing module 'hearts_rom' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/hearts_rom.v:1]
+INFO: [Synth 8-226] default block is never used [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/hearts_rom.v:22]
+INFO: [Synth 8-6155] done synthesizing module 'hearts_rom' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/hearts_rom.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'hearts_display' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/hearts_display.v:1]
+INFO: [Synth 8-6157] synthesizing module 'game_state_machine' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/game_state_machine.v:1]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/game_state_machine.v:64]
+INFO: [Synth 8-6155] done synthesizing module 'game_state_machine' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/game_state_machine.v:1]
+INFO: [Synth 8-6157] synthesizing module 'game_logo_display' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/game_logo_display.v:1]
+INFO: [Synth 8-6157] synthesizing module 'game_logo_rom' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/game_logo_rom.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'game_logo_rom' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/game_logo_rom.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'game_logo_display' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/game_logo_display.v:1]
+INFO: [Synth 8-6157] synthesizing module 'gameover_display' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/gameover_display.v:1]
+INFO: [Synth 8-6157] synthesizing module 'gameover_rom' [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/gameover_rom.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'gameover_rom' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/gameover_rom.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'gameover_display' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/gameover_display.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'display_top' (0#1) [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/display_top.v:1]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 1703.328 ; gain = 825.512
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 1703.328 ; gain = 825.512
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 1703.328 ; gain = 825.512
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.036 . Memory (MB): peak = 1703.328 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/basys3.xdc]
+Finished Parsing XDC File [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/basys3.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/basys3.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/display_top_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/display_top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1703.328 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+The system cannot find the path specified.
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.013 . Memory (MB): peak = 1703.328 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:20 ; elapsed = 00:00:22 . Memory (MB): peak = 1703.328 ; gain = 825.512
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a35tcpg236-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:20 ; elapsed = 00:00:22 . Memory (MB): peak = 1703.328 ; gain = 825.512
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:20 ; elapsed = 00:00:22 . Memory (MB): peak = 1703.328 ; gain = 825.512
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg_reg' in module 'nes_controller'
+INFO: [Synth 8-802] inferred FSM for state register 'x_state_reg_reg' in module 'yoshi_sprite'
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg_y_reg' in module 'yoshi_sprite'
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg_reg' in module 'eggs'
+INFO: [Synth 8-802] inferred FSM for state register 'game_state_reg_reg' in module 'game_state_machine'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                latch_en |                             0000 |                             0000
+             read_A_wait |                             0001 |                             0001
+                  read_B |                             0010 |                             0010
+             read_select |                             0011 |                             0011
+              read_start |                             0100 |                             0100
+                 read_up |                             0101 |                             0101
+               read_down |                             0110 |                             0110
+               read_left |                             0111 |                             0111
+              read_right |                             1000 |                             1000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg_reg' using encoding 'sequential' in module 'nes_controller'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                standing |                              000 |                              000
+                 walking |                              001 |                              001
+                 jump_up |                              010 |                              010
+              jump_extra |                              011 |                              011
+               jump_down |                              100 |                              100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg_y_reg' using encoding 'sequential' in module 'yoshi_sprite'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  no_dir |                               00 |                               00
+                   right |                               01 |                               10
+                    left |                               10 |                               01
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'x_state_reg_reg' using encoding 'sequential' in module 'yoshi_sprite'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 waiting |                                0 |                               00
+                 respawn |                                1 |                               01
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg_reg' using encoding 'sequential' in module 'eggs'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    init |                              000 |                              000
+                    idle |                              001 |                              001
+                 playing |                              010 |                              010
+                gameover |                              011 |                              100
+                     hit |                              100 |                              011
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'game_state_reg_reg' using encoding 'sequential' in module 'game_state_machine'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 1703.328 ; gain = 825.512
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   32 Bit       Adders := 4     
+	   2 Input   28 Bit       Adders := 2     
+	   2 Input   26 Bit       Adders := 5     
+	   2 Input   25 Bit       Adders := 1     
+	   2 Input   20 Bit       Adders := 6     
+	   2 Input   14 Bit       Adders := 5     
+	   3 Input   12 Bit       Adders := 11    
+	   2 Input   11 Bit       Adders := 22    
+	   2 Input   10 Bit       Adders := 19    
+	   2 Input    9 Bit       Adders := 1     
+	   2 Input    8 Bit       Adders := 2     
+	   4 Input    7 Bit       Adders := 2     
+	   3 Input    7 Bit       Adders := 1     
+	   2 Input    7 Bit       Adders := 6     
+	   4 Input    5 Bit       Adders := 3     
+	   2 Input    5 Bit       Adders := 1     
+	   3 Input    4 Bit       Adders := 6     
+	   2 Input    4 Bit       Adders := 8     
+	   2 Input    3 Bit       Adders := 2     
+	   2 Input    2 Bit       Adders := 2     
++---Registers : 
+	               28 Bit    Registers := 2     
+	               26 Bit    Registers := 4     
+	               25 Bit    Registers := 1     
+	               20 Bit    Registers := 4     
+	               16 Bit    Registers := 1     
+	               15 Bit    Registers := 1     
+	               14 Bit    Registers := 2     
+	               12 Bit    Registers := 1     
+	               11 Bit    Registers := 6     
+	               10 Bit    Registers := 23    
+	                9 Bit    Registers := 5     
+	                8 Bit    Registers := 3     
+	                6 Bit    Registers := 1     
+	                5 Bit    Registers := 1     
+	                4 Bit    Registers := 8     
+	                3 Bit    Registers := 1     
+	                2 Bit    Registers := 2     
+	                1 Bit    Registers := 19    
++---ROMs : 
+	                    ROMs := 11    
++---Muxes : 
+	   2 Input   28 Bit        Muxes := 2     
+	   5 Input   28 Bit        Muxes := 1     
+	   2 Input   26 Bit        Muxes := 4     
+	   5 Input   26 Bit        Muxes := 1     
+	   2 Input   25 Bit        Muxes := 1     
+	   5 Input   25 Bit        Muxes := 1     
+	   2 Input   24 Bit        Muxes := 1     
+	   2 Input   20 Bit        Muxes := 22    
+	   5 Input   20 Bit        Muxes := 2     
+	   3 Input   20 Bit        Muxes := 2     
+	   2 Input   14 Bit        Muxes := 1     
+	   2 Input   12 Bit        Muxes := 22    
+	   2 Input   11 Bit        Muxes := 3     
+	   9 Input   11 Bit        Muxes := 1     
+	   2 Input   10 Bit        Muxes := 15    
+	   7 Input    9 Bit        Muxes := 1     
+	   2 Input    8 Bit        Muxes := 2     
+	   2 Input    7 Bit        Muxes := 2     
+	   4 Input    7 Bit        Muxes := 1     
+	   3 Input    6 Bit        Muxes := 1     
+	   5 Input    6 Bit        Muxes := 1     
+	   2 Input    5 Bit        Muxes := 9     
+	   9 Input    4 Bit        Muxes := 1     
+	   2 Input    4 Bit        Muxes := 14    
+	  11 Input    4 Bit        Muxes := 1     
+	   4 Input    4 Bit        Muxes := 2     
+	   5 Input    4 Bit        Muxes := 1     
+	 512 Input    4 Bit        Muxes := 1     
+	   5 Input    3 Bit        Muxes := 3     
+	   2 Input    3 Bit        Muxes := 6     
+	   5 Input    2 Bit        Muxes := 2     
+	   3 Input    2 Bit        Muxes := 2     
+	   2 Input    2 Bit        Muxes := 6     
+	   2 Input    1 Bit        Muxes := 90    
+	   9 Input    1 Bit        Muxes := 12    
+	   5 Input    1 Bit        Muxes := 13    
+	   3 Input    1 Bit        Muxes := 6     
+	   6 Input    1 Bit        Muxes := 1     
+	 458 Input    1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 90 (col length:60)
+BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:01 ; elapsed = 00:01:04 . Memory (MB): peak = 1703.328 ; gain = 825.512
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+ROM: Preliminary Mapping Report
++------------------+------------+---------------+----------------+
+|Module Name       | RTL Object | Depth x Width | Implemented As | 
++------------------+------------+---------------+----------------+
+|yoshi_sprite      | sel_rep    | 2048x9        | Block RAM      | 
+|yoshi_sprite      | sel        | 2048x8        | Block RAM      | 
+|ghost_crazy       | sel        | 512x8         | Block RAM      | 
+|ghost_top         | sel        | 512x8         | Block RAM      | 
+|ghost_bottom      | sel        | 512x8         | Block RAM      | 
+|platforms         | sel        | 2048x12       | Block RAM      | 
+|platforms         | sel        | 512x8         | Block RAM      | 
+|eggs              | sel        | 2048x12       | Block RAM      | 
+|game_logo_display | sel        | 32768x12      | Block RAM      | 
+|gameover_display  | sel        | 2048x6        | Block RAM      | 
+|display_top       | sel        | 65536x9       | Block RAM      | 
++------------------+------------+---------------+----------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:05 ; elapsed = 00:01:08 . Memory (MB): peak = 1703.328 ; gain = 825.512
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:01:08 ; elapsed = 00:01:11 . Memory (MB): peak = 1703.328 ; gain = 825.512
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+INFO: [Synth 8-7052] The timing for the instance yoshi_unit/sel_rep (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance yoshi_unit/sel (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance ghost_crazy_unit/sel (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance ghost_top_unit/sel (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance ghost_top_unit/sel (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance platforms_unit/sel (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance platforms_unit/sel__0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance eggs_unit/sel (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance game_logo_display_unit/sel_0_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance game_logo_display_unit/sel_0_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance game_logo_display_unit/sel_0_2 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance game_logo_display_unit/sel_0_3 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance game_logo_display_unit/sel_0_4 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance game_logo_display_unit/sel_0_5 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance game_logo_display_unit/sel_0_6 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance game_logo_display_unit/sel_0_7 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance game_logo_display_unit/sel_0_8 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance game_logo_display_unit/sel_0_9 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance game_logo_display_unit/sel_0_10 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance game_logo_display_unit/sel_0_11 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance gameover_display_unit/sel (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance sel_1_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance sel_1_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance sel_1_2 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance sel_1_3 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance sel_1_4 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance sel_1_5 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance sel_1_6 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance sel_1_7 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance sel_1_8 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:01:10 ; elapsed = 00:01:13 . Memory (MB): peak = 1703.328 ; gain = 825.512
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:01:14 ; elapsed = 00:01:17 . Memory (MB): peak = 1704.168 ; gain = 826.352
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:14 ; elapsed = 00:01:17 . Memory (MB): peak = 1704.168 ; gain = 826.352
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:14 ; elapsed = 00:01:17 . Memory (MB): peak = 1704.168 ; gain = 826.352
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:14 ; elapsed = 00:01:17 . Memory (MB): peak = 1704.168 ; gain = 826.352
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:14 ; elapsed = 00:01:17 . Memory (MB): peak = 1704.184 ; gain = 826.367
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:14 ; elapsed = 00:01:17 . Memory (MB): peak = 1704.184 ; gain = 826.367
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+---------+------+
+|      |Cell     |Count |
++------+---------+------+
+|1     |BUFG     |     1|
+|2     |CARRY4   |   334|
+|3     |LUT1     |   191|
+|4     |LUT2     |   411|
+|5     |LUT3     |   293|
+|6     |LUT4     |   738|
+|7     |LUT5     |   341|
+|8     |LUT6     |   731|
+|9     |MUXF7    |     3|
+|10    |RAMB18E1 |     6|
+|16    |RAMB36E1 |    32|
+|47    |FDCE     |   576|
+|48    |FDPE     |    63|
+|49    |FDRE     |    94|
+|50    |IBUF     |     3|
+|51    |OBUF     |    28|
++------+---------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:14 ; elapsed = 00:01:17 . Memory (MB): peak = 1704.184 ; gain = 826.367
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:59 ; elapsed = 00:01:15 . Memory (MB): peak = 1704.184 ; gain = 826.367
+Synthesis Optimization Complete : Time (s): cpu = 00:01:14 ; elapsed = 00:01:17 . Memory (MB): peak = 1704.184 ; gain = 826.367
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.044 . Memory (MB): peak = 1716.219 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 375 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1719.918 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+The system cannot find the path specified.
+Synth Design complete | Checksum: c2902a83
+INFO: [Common 17-83] Releasing license: Synthesis
+123 Infos, 8 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:01:17 ; elapsed = 00:01:22 . Memory (MB): peak = 1719.918 ; gain = 1236.082
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 1719.918 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Users/maxim/VHDL/FPGA/AFFICHAGE VGA/YOSHI NIGHTMARE/YOSHI NIGHTMARE/YOSHI NIGHTMARE.runs/synth_1/display_top.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file display_top_utilization_synth.rpt -pb display_top_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Fri May 17 11:18:44 2024...
